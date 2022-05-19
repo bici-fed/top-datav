@@ -135,7 +135,7 @@ import {
 import { PlusOutlined, MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 import ColorPicker from '../../../common/ColorPicker/ColorPicker';
 import { canvas } from '../../index';
-import { alignNodes } from '@top-datav/layout/src/align';
+import { alignNodes } from '@top-datav/layout';
 import CustomIcon from '../../../config/iconConfig';
 import DataBindModal from '../../../FilterDataPoint';
 import styles from './index.module.css';
