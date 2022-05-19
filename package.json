@@ -48,7 +48,7 @@
     "antd": "4.20.2",
     "babel-plugin-import": "^1.12.2",
     "lerna": "4.x",
-    "father-build": "^1.17.2",
+    "father-build": "^1.22.1",
     "gh-pages": "^3.0.0",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
