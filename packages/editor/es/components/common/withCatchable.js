@@ -18,6 +18,9 @@ function _typeof(obj) {
   );
 }
 
+import 'antd/lib/empty/style';
+import _Empty from 'antd/lib/empty';
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -158,7 +161,6 @@ function _getPrototypeOf(o) {
 }
 
 import * as React from 'react';
-import { Empty } from 'antd';
 import CustomIcon from '../config/iconConfig';
 export default function withCatchable(WrappedComponent, errorChild) {
   return /*#__PURE__*/ (function (_React$Component) {
@@ -199,7 +201,7 @@ export default function withCatchable(WrappedComponent, errorChild) {
                       background: '#4A4A4A',
                     },
                   },
-                  /*#__PURE__*/ React.createElement(Empty, {
+                  /*#__PURE__*/ React.createElement(_Empty, {
                     image: /*#__PURE__*/ React.createElement(CustomIcon, {
                       type: 'iconwushuju',
                     }),

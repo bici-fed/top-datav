@@ -1,3 +1,16 @@
+import 'antd/lib/space/style';
+import _Space from 'antd/lib/space';
+import 'antd/lib/tag/style';
+import _Tag from 'antd/lib/tag';
+import 'antd/lib/popover/style';
+import _Popover from 'antd/lib/popover';
+import 'antd/lib/tooltip/style';
+import _Tooltip from 'antd/lib/tooltip';
+import 'antd/lib/menu/style';
+import _Menu from 'antd/lib/menu';
+import 'antd/lib/button/style';
+import _Button from 'antd/lib/button';
+
 function _slicedToArray(arr, i) {
   return (
     _arrayWithHoles(arr) ||
@@ -64,7 +77,6 @@ function _arrayWithHoles(arr) {
 }
 
 import React, { useEffect, useImperativeHandle, useState } from 'react';
-import { Button, Menu, Popover, Tag, Space, Tooltip } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { useFullscreen } from 'ahooks';
 import CustomIcon from '../config/iconConfig';
@@ -141,7 +153,7 @@ var headTools = [
     title: 'Ctrl+U',
   },
 ];
-var ButtonGroup = Button.Group;
+var ButtonGroup = _Button.Group;
 var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
   var canvas = props.canvas,
     scaleVal = props.scaleVal,
@@ -414,7 +426,7 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
    */
 
   var scaleMenu = /*#__PURE__*/ React.createElement(
-    Menu,
+    _Menu,
     {
       onClick: function onClick(data) {
         return handleSelectScaleMenu(data);
@@ -424,28 +436,28 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
       },
     },
     /*#__PURE__*/ React.createElement(
-      Menu.Item,
+      _Menu.Item,
       {
         key: '50',
       },
       '50%',
     ),
     /*#__PURE__*/ React.createElement(
-      Menu.Item,
+      _Menu.Item,
       {
         key: '100',
       },
       '100%',
     ),
     /*#__PURE__*/ React.createElement(
-      Menu.Item,
+      _Menu.Item,
       {
         key: '150',
       },
       '150%',
     ),
     /*#__PURE__*/ React.createElement(
-      Menu.Item,
+      _Menu.Item,
       {
         key: '200',
       },
@@ -474,7 +486,7 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
     headTools.map(function (item, index) {
       return item
         ? /*#__PURE__*/ React.createElement(
-            Tooltip,
+            _Tooltip,
             {
               placement: 'bottom',
               title: item.title,
@@ -521,7 +533,7 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
           lineHeight: '36px',
         },
       },
-      /*#__PURE__*/ React.createElement(Button, {
+      /*#__PURE__*/ React.createElement(_Button, {
         size: 'small',
         shape: 'circle',
         icon: /*#__PURE__*/ React.createElement(MinusOutlined, {
@@ -534,7 +546,7 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
         },
       }),
       /*#__PURE__*/ React.createElement(
-        Popover,
+        _Popover,
         {
           content: scaleMenu,
           trigger: 'click',
@@ -553,7 +565,7 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
           '%',
         ),
       ),
-      /*#__PURE__*/ React.createElement(Button, {
+      /*#__PURE__*/ React.createElement(_Button, {
         size: 'small',
         shape: 'circle',
         icon: /*#__PURE__*/ React.createElement(PlusOutlined, {
@@ -603,7 +615,7 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
       ),
     ),
     /*#__PURE__*/ React.createElement(
-      Tag,
+      _Tag,
       {
         color: '#F0DCCE',
         visible: !isSave,
@@ -626,19 +638,19 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
         },
       },
       /*#__PURE__*/ React.createElement(
-        Space,
+        _Space,
         {
           size: 'large',
         },
         /*#__PURE__*/ React.createElement(
-          Button,
+          _Button,
           {
             onClick: handlePreview,
           },
           '\u9884\u89C8',
         ),
         /*#__PURE__*/ React.createElement(
-          Button,
+          _Button,
           {
             type: 'primary',
             onClick: handleSave,

@@ -1,5 +1,12 @@
+import 'antd/lib/table/style';
+import _Table from 'antd/lib/table';
+import 'antd/lib/result/style';
+import _Result from 'antd/lib/result';
+import 'antd/lib/date-picker/style';
+import _DatePicker from 'antd/lib/date-picker';
+import 'antd/lib/button/style';
+import _Button from 'antd/lib/button';
 import { registerNode } from '@top-datav/core';
-import { Button, DatePicker, Result, Table } from 'antd';
 import drawReactNode from './drawReactNode';
 import WebPage from '../WebPage';
 import ProductQueue from '../../customMade/ProductQueue';
@@ -9,10 +16,10 @@ import LiveVideo from '../LiveVideo';
 import QTLiveVideo from '../QTLiveVideo';
 import DateFormat from '../DateFormat';
 export function register() {
-  registerNode('button', drawReactNode(Button), null, null, null);
-  registerNode('datePicker', drawReactNode(DatePicker), null, null, null);
-  registerNode('result', drawReactNode(Result), null, null, null);
-  registerNode('table', drawReactNode(Table), null, null, null);
+  registerNode('button', drawReactNode(_Button), null, null, null);
+  registerNode('datePicker', drawReactNode(_DatePicker), null, null, null);
+  registerNode('result', drawReactNode(_Result), null, null, null);
+  registerNode('table', drawReactNode(_Table), null, null, null);
   registerNode('webPage', drawReactNode(WebPage), null, null, null);
   registerNode('productQueue', drawReactNode(ProductQueue), null, null, null);
   registerNode('pdMonthReport', drawReactNode(PDMonthReport), null, null, null);

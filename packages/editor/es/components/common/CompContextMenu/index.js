@@ -1,3 +1,10 @@
+import 'antd/lib/input/style';
+import _Input from 'antd/lib/input';
+import 'antd/lib/form/style';
+import _Form from 'antd/lib/form';
+import 'antd/lib/modal/style';
+import _Modal from 'antd/lib/modal';
+
 function _slicedToArray(arr, i) {
   return (
     _arrayWithHoles(arr) ||
@@ -64,10 +71,9 @@ function _arrayWithHoles(arr) {
 }
 
 import React, { useState, Fragment } from 'react';
-import { Modal, Form, Input } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import styles from './index.module.css';
-var confirm = Modal.confirm;
+var confirm = _Modal.confirm;
 
 var CompContextMenu = function CompContextMenu(props) {
   var contextMenuRef = props.contextMenuRef,
@@ -122,7 +128,7 @@ var CompContextMenu = function CompContextMenu(props) {
   };
 
   var renderNewComponentModal = /*#__PURE__*/ React.createElement(
-    Modal,
+    _Modal,
     {
       title: '\u91CD\u547D\u540D',
       visible: visible,
@@ -136,12 +142,12 @@ var CompContextMenu = function CompContextMenu(props) {
       },
     },
     /*#__PURE__*/ React.createElement(
-      Form,
+      _Form,
       {
         form: form,
       },
       /*#__PURE__*/ React.createElement(
-        Form.Item,
+        _Form.Item,
         {
           rules: [
             {
@@ -160,7 +166,7 @@ var CompContextMenu = function CompContextMenu(props) {
           label: '\u7EC4\u4EF6\u540D\u5B57',
           name: 'componentName',
         },
-        /*#__PURE__*/ React.createElement(Input, {
+        /*#__PURE__*/ React.createElement(_Input, {
           placeholder: '\u8F93\u5165\u7EC4\u4EF6\u540D\u5B57',
           id: 'componentName',
           maxLength: 20,

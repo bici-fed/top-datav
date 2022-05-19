@@ -1,3 +1,18 @@
+import 'antd/lib/input-number/style';
+import _InputNumber from 'antd/lib/input-number';
+import 'antd/lib/col/style';
+import _Col from 'antd/lib/col';
+import 'antd/lib/row/style';
+import _Row from 'antd/lib/row';
+import 'antd/lib/form/style';
+import _Form from 'antd/lib/form';
+import 'antd/lib/select/style';
+import _Select from 'antd/lib/select';
+import 'antd/lib/tabs/style';
+import _Tabs from 'antd/lib/tabs';
+import 'antd/lib/collapse/style';
+import _Collapse from 'antd/lib/collapse';
+
 function _slicedToArray(arr, i) {
   return (
     _arrayWithHoles(arr) ||
@@ -64,18 +79,17 @@ function _arrayWithHoles(arr) {
 }
 
 import React, { useMemo, useEffect } from 'react';
-import { Form, InputNumber, Tabs, Collapse, Row, Col, Select } from 'antd';
 import './index.module.css';
 import ColorPicker from '../../../common/ColorPicker/ColorPicker';
-var Panel = Collapse.Panel;
-var TabPane = Tabs.TabPane;
-var Option = Select.Option;
+var Panel = _Collapse.Panel;
+var TabPane = _Tabs.TabPane;
+var Option = _Select.Option;
 
 var LineCanvasProps = function LineCanvasProps(_ref) {
   var data = _ref.data,
     onFormValueChange = _ref.onFormValueChange;
 
-  var _Form$useForm = Form.useForm(),
+  var _Form$useForm = _Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
@@ -114,21 +128,21 @@ var LineCanvasProps = function LineCanvasProps(_ref) {
       var _data$line, _data$line$data;
 
       return /*#__PURE__*/ React.createElement(
-        Form,
+        _Form,
         {
           form: form,
           onValuesChange: handleFormValueChange,
         },
         /*#__PURE__*/ React.createElement(
-          Row,
+          _Row,
           null,
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'strokeStyle',
                 label: '\u7EBF\u6761\u989C\u8272',
@@ -137,18 +151,18 @@ var LineCanvasProps = function LineCanvasProps(_ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'name',
                 label: '\u7EBF\u6761\u7C7B\u578B',
               },
               /*#__PURE__*/ React.createElement(
-                Select,
+                _Select,
                 {
                   style: {
                     width: '95%',
@@ -191,18 +205,18 @@ var LineCanvasProps = function LineCanvasProps(_ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'dash',
                 label: '\u7EBF\u6761\u6837\u5F0F',
               },
               /*#__PURE__*/ React.createElement(
-                Select,
+                _Select,
                 {
                   style: {
                     width: '95%',
@@ -240,17 +254,17 @@ var LineCanvasProps = function LineCanvasProps(_ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'lineWidth',
                 label: '\u7EBF\u6761\u5BBD\u5EA6',
               },
-              /*#__PURE__*/ React.createElement(InputNumber, {
+              /*#__PURE__*/ React.createElement(_InputNumber, {
                 style: {
                   width: '95%',
                 },
@@ -259,18 +273,18 @@ var LineCanvasProps = function LineCanvasProps(_ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'fromArrow',
                 label: '\u8D77\u70B9\u7BAD\u5934',
               },
               /*#__PURE__*/ React.createElement(
-                Select,
+                _Select,
                 {
                   style: {
                     width: '95%',
@@ -350,18 +364,18 @@ var LineCanvasProps = function LineCanvasProps(_ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'toArrow',
                 label: '\u7ED3\u675F\u7BAD\u5934',
               },
               /*#__PURE__*/ React.createElement(
-                Select,
+                _Select,
                 {
                   style: {
                     width: '95%',
@@ -451,7 +465,7 @@ var LineCanvasProps = function LineCanvasProps(_ref) {
       className: 'rightArea',
     },
     /*#__PURE__*/ React.createElement(
-      Collapse,
+      _Collapse,
       {
         defaultActiveKey: ['1'],
         expandIconPosition: 'right',

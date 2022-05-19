@@ -1,3 +1,6 @@
+import 'antd/lib/empty/style';
+import _Empty from 'antd/lib/empty';
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -42,7 +45,6 @@ function _defineProperty(obj, key, value) {
 }
 
 import React, { useEffect, useRef } from 'react';
-import { Empty } from 'antd';
 import reactCSS from 'reactcss';
 import './style.css';
 import { useTable } from 'react-table';
@@ -230,7 +232,7 @@ var Table = function Table(props) {
                   }),
                 ),
               )
-            : /*#__PURE__*/ React.createElement(Empty, {
+            : /*#__PURE__*/ React.createElement(_Empty, {
                 image: /*#__PURE__*/ React.createElement(CustomIcon, {
                   type: 'iconwushuju',
                 }),

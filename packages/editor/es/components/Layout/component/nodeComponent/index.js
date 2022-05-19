@@ -1,3 +1,36 @@
+import 'antd/lib/space/style';
+import _Space from 'antd/lib/space';
+import 'antd/lib/message/style';
+import _message from 'antd/lib/message';
+import 'antd/lib/tooltip/style';
+import _Tooltip from 'antd/lib/tooltip';
+import 'antd/lib/popconfirm/style';
+import _Popconfirm from 'antd/lib/popconfirm';
+import 'antd/lib/tag/style';
+import _Tag from 'antd/lib/tag';
+import 'antd/lib/radio/style';
+import _Radio from 'antd/lib/radio';
+import 'antd/lib/button/style';
+import _Button from 'antd/lib/button';
+import 'antd/lib/input-number/style';
+import _InputNumber from 'antd/lib/input-number';
+import 'antd/lib/checkbox/style';
+import _Checkbox from 'antd/lib/checkbox';
+import 'antd/lib/col/style';
+import _Col from 'antd/lib/col';
+import 'antd/lib/row/style';
+import _Row from 'antd/lib/row';
+import 'antd/lib/form/style';
+import _Form from 'antd/lib/form';
+import 'antd/lib/select/style';
+import _Select from 'antd/lib/select';
+import 'antd/lib/input/style';
+import _Input from 'antd/lib/input';
+import 'antd/lib/tabs/style';
+import _Tabs from 'antd/lib/tabs';
+import 'antd/lib/collapse/style';
+import _Collapse from 'antd/lib/collapse';
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -114,24 +147,6 @@ import React, {
   useCallback,
   useImperativeHandle,
 } from 'react';
-import {
-  Form,
-  InputNumber,
-  Tabs,
-  Collapse,
-  Row,
-  Col,
-  Input,
-  Select,
-  Tag,
-  Checkbox,
-  Button,
-  Space,
-  Tooltip,
-  Radio,
-  message,
-  Popconfirm,
-} from 'antd';
 import { PlusOutlined, MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 import ColorPicker from '../../../common/ColorPicker/ColorPicker';
 import { canvas } from '../../index';
@@ -151,10 +166,10 @@ import { fetchDataSourceList } from '../../../data/api';
 import { getPieOptionByChangeProp } from '../../../config/charts/pie';
 import { getBarOption } from '../../../config/charts/bar';
 import { getHorizontalBarOption } from '../../../config/charts/horizontalbar';
-var Panel = Collapse.Panel;
-var TabPane = Tabs.TabPane;
-var TextArea = Input.TextArea;
-var Option = Select.Option; // 对齐方式 key 对齐方式 val 图标名称
+var Panel = _Collapse.Panel;
+var TabPane = _Tabs.TabPane;
+var TextArea = _Input.TextArea;
+var Option = _Select.Option; // 对齐方式 key 对齐方式 val 图标名称
 
 var alignObj = {
   left: ['左对齐', 'iconzuoduiqi'],
@@ -185,11 +200,11 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
     onCustomizedDynamicFormChange = _ref.onCustomizedDynamicFormChange,
     uploaConfig = _ref.uploaConfig;
 
-  var _Form$useForm = Form.useForm(),
+  var _Form$useForm = _Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
-  var _Form$useForm3 = Form.useForm(),
+  var _Form$useForm3 = _Form.useForm(),
     _Form$useForm4 = _slicedToArray(_Form$useForm3, 1),
     propertyForm = _Form$useForm4[0];
 
@@ -962,26 +977,26 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           key: 'pos',
         },
         /*#__PURE__*/ React.createElement(
-          Form,
+          _Form,
           {
             form: form,
             onValuesChange: handleValuesChange,
           },
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             null,
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 14,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'x',
                   label: '\u4F4D\u7F6E',
                 },
-                /*#__PURE__*/ React.createElement(Input, {
+                /*#__PURE__*/ React.createElement(_Input, {
                   suffix: /*#__PURE__*/ React.createElement(
                     'span',
                     {
@@ -995,17 +1010,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 9,
                 push: 1,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'y',
                 },
-                /*#__PURE__*/ React.createElement(Input, {
+                /*#__PURE__*/ React.createElement(_Input, {
                   suffix: /*#__PURE__*/ React.createElement(
                     'span',
                     {
@@ -1019,17 +1034,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 14,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'width',
                   label: '\u5BBD\u9AD8',
                 },
-                /*#__PURE__*/ React.createElement(Input, {
+                /*#__PURE__*/ React.createElement(_Input, {
                   suffix: /*#__PURE__*/ React.createElement(
                     'span',
                     {
@@ -1043,17 +1058,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 9,
                 push: 1,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'height',
                 },
-                /*#__PURE__*/ React.createElement(Input, {
+                /*#__PURE__*/ React.createElement(_Input, {
                   suffix: /*#__PURE__*/ React.createElement(
                     'span',
                     {
@@ -1070,17 +1085,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               data === null || data === void 0 ? void 0 : data.node.name,
             ) &&
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 14,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'rotate',
                     label: '\u65CB\u8F6C',
                   },
-                  /*#__PURE__*/ React.createElement(Input, {
+                  /*#__PURE__*/ React.createElement(_Input, {
                     suffix: /*#__PURE__*/ React.createElement(
                       'span',
                       {
@@ -1112,23 +1127,23 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           key: 'fill',
         },
         /*#__PURE__*/ React.createElement(
-          Form,
+          _Form,
           {
             form: form,
             onValuesChange: handleValuesChange,
           },
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             {
               align: 'middle',
             },
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 8,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'showFillStyle',
                   label: '\u989C\u8272',
@@ -1138,16 +1153,16 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   labelAlign: 'left',
                   valuePropName: 'checked',
                 },
-                /*#__PURE__*/ React.createElement(Checkbox, null),
+                /*#__PURE__*/ React.createElement(_Checkbox, null),
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 push: 1,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'fillStyle',
                 },
@@ -1173,23 +1188,23 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           key: 'border',
         },
         /*#__PURE__*/ React.createElement(
-          Form,
+          _Form,
           {
             form: form,
             onValuesChange: handleValuesChange,
           },
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             {
               align: 'middle',
             },
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 8,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'showBoardColor',
                   label: '\u989C\u8272',
@@ -1199,17 +1214,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   labelAlign: 'left',
                   valuePropName: 'checked',
                 },
-                /*#__PURE__*/ React.createElement(Checkbox, null),
+                /*#__PURE__*/ React.createElement(_Checkbox, null),
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 6,
                 push: 1,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'strokeStyle',
                 },
@@ -1217,17 +1232,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 push: 2,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'lineWidth',
                   initialValue: 1,
                 },
-                /*#__PURE__*/ React.createElement(InputNumber, {
+                /*#__PURE__*/ React.createElement(_InputNumber, {
                   min: 1,
                 }),
               ),
@@ -1312,21 +1327,21 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           key: 'font',
         },
         /*#__PURE__*/ React.createElement(
-          Form,
+          _Form,
           {
             form: form,
             onValuesChange: handleValuesChange,
           },
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             null,
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 14,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'color',
                   label: '\u989C\u8272\u5B57\u53F7',
@@ -1339,16 +1354,16 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 10,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'fontSize',
                 },
-                /*#__PURE__*/ React.createElement(InputNumber, {
+                /*#__PURE__*/ React.createElement(_InputNumber, {
                   min: 0,
                   style: {
                     width: '100%',
@@ -1358,21 +1373,21 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             null,
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 24,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'fontFamily',
                   label: '\u5B57\u4F53',
                 },
                 /*#__PURE__*/ React.createElement(
-                  Select,
+                  _Select,
                   {
                     allowClear: true,
                     getPopupContainer: function getPopupContainer() {
@@ -1464,29 +1479,29 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             null,
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 24,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   wrapperCol: {
                     offset: 4,
                   },
                 },
                 /*#__PURE__*/ React.createElement(
-                  Button.Group,
+                  _Button.Group,
                   {
                     style: {
                       width: '100%',
                       justifyContent: 'flex-end',
                     },
                   },
-                  /*#__PURE__*/ React.createElement(Button, {
+                  /*#__PURE__*/ React.createElement(_Button, {
                     size: 'small',
                     style: {
                       width: '50%',
@@ -1499,7 +1514,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       return fontStyleChange('fontStyle');
                     },
                   }),
-                  /*#__PURE__*/ React.createElement(Button, {
+                  /*#__PURE__*/ React.createElement(_Button, {
                     size: 'small',
                     style: {
                       width: '50%',
@@ -1521,15 +1536,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               Fragment,
               null,
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 24,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'textAlign',
                       wrapperCol: {
@@ -1537,7 +1552,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       },
                     },
                     /*#__PURE__*/ React.createElement(
-                      Radio.Group,
+                      _Radio.Group,
                       {
                         buttonStyle: 'solid',
                         style: {
@@ -1545,7 +1560,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         },
                       },
                       /*#__PURE__*/ React.createElement(
-                        Radio.Button,
+                        _Radio.Button,
                         {
                           value: 'left',
                           style: {
@@ -1558,7 +1573,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         }),
                       ),
                       /*#__PURE__*/ React.createElement(
-                        Radio.Button,
+                        _Radio.Button,
                         {
                           value: 'center',
                           style: {
@@ -1571,7 +1586,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         }),
                       ),
                       /*#__PURE__*/ React.createElement(
-                        Radio.Button,
+                        _Radio.Button,
                         {
                           value: 'right',
                           style: {
@@ -1584,7 +1599,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         }),
                       ),
                       /*#__PURE__*/ React.createElement(
-                        Radio.Button,
+                        _Radio.Button,
                         {
                           value: 'justify',
                           style: {
@@ -1601,20 +1616,20 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 24,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'text',
                       label: '\u5185\u5BB9',
                     },
-                    /*#__PURE__*/ React.createElement(Input, null),
+                    /*#__PURE__*/ React.createElement(_Input, null),
                   ),
                 ),
               ),
@@ -1646,13 +1661,13 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
         },
       };
       return /*#__PURE__*/ React.createElement(
-        Form,
+        _Form,
         _objectSpread({}, formItemLayout),
         /*#__PURE__*/ React.createElement(
-          Col,
+          _Col,
           null,
           /*#__PURE__*/ React.createElement(
-            Form.Item,
+            _Form.Item,
             {
               label: 'ID',
             },
@@ -1662,7 +1677,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 className: 'ant-form-text',
               },
               /*#__PURE__*/ React.createElement(
-                Tag,
+                _Tag,
                 {
                   color: '#f50',
                 },
@@ -1693,21 +1708,21 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             key: 'biciTimer',
           },
           /*#__PURE__*/ React.createElement(
-            Form,
+            _Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 10,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'date.show',
                     valuePropName: 'checked',
@@ -1717,16 +1732,16 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     },
                     labelAlign: 'left',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 14,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'date.format',
                     rules: [
@@ -1737,7 +1752,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     ],
                   },
                   /*#__PURE__*/ React.createElement(
-                    Select,
+                    _Select,
                     {
                       placeholder: '\u8BBE\u7F6E\u65E5\u671F\u683C\u5F0F',
                       onChange: onSetBiciTimerDataFmt,
@@ -1769,15 +1784,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 10,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'time.show',
                     valuePropName: 'checked',
@@ -1787,16 +1802,16 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     },
                     labelAlign: 'left',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 14,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'time.format',
                     rules: [
@@ -1807,7 +1822,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     ],
                   },
                   /*#__PURE__*/ React.createElement(
-                    Select,
+                    _Select,
                     {
                       placeholder: '\u8BBE\u7F6E\u65F6\u95F4\u683C\u5F0F',
                       onChange: onSetBiciTimerDataFmt,
@@ -1976,21 +1991,21 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
   var renderExtraDataForm = useMemo(
     function () {
       return /*#__PURE__*/ React.createElement(
-        Form,
+        _Form,
         {
           form: propertyForm,
           onValuesChange: handlePropertyValuesChange,
         },
         /*#__PURE__*/ React.createElement(
-          Row,
+          _Row,
           null,
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'dataMethod',
                 label: '\u5173\u8054\u65B9\u5F0F',
@@ -2003,7 +2018,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 (property === null || property === void 0 ? void 0 : property.echartsType) ==
                   'verticalBar'
                 ? /*#__PURE__*/ React.createElement(
-                    Select,
+                    _Select,
                     {
                       placeholder: '\u9009\u62E9',
                       onChange: handlePropertyDataMethodChange,
@@ -2025,7 +2040,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     ),
                   )
                 : /*#__PURE__*/ React.createElement(
-                    Select,
+                    _Select,
                     {
                       placeholder: '\u9009\u62E9',
                       onChange: handlePropertyDataMethodChange,
@@ -2054,18 +2069,18 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 React.Fragment,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 24,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'dataSourceId',
                       label: '\u63A5\u53E3\u6765\u6E90',
                     },
                     /*#__PURE__*/ React.createElement(
-                      Select,
+                      _Select,
                       {
                         showSearch: true,
                         style: {
@@ -2089,18 +2104,18 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 24,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'dataSourceUrl',
                       label: '\u63A5\u53E3\u540D\u79F0',
                     },
                     /*#__PURE__*/ React.createElement(
-                      Select,
+                      _Select,
                       {
                         showSearch: true,
                         style: {
@@ -2123,12 +2138,12 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 24,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'dataFormat',
                       label: '\u62A5\u6587\u683C\u5F0F',
@@ -2143,34 +2158,34 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 15,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'pullRate',
                       label: '\u62C9\u53D6\u9891\u7387',
                     },
-                    /*#__PURE__*/ React.createElement(InputNumber, {
+                    /*#__PURE__*/ React.createElement(_InputNumber, {
                       min: 0,
                       max: 1000000,
                     }),
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 5,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'pullRateUnit',
                     },
                     /*#__PURE__*/ React.createElement(
-                      Select,
+                      _Select,
                       {
                         style: {
                           width: 60,
@@ -2203,27 +2218,27 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 4,
                   },
-                  /*#__PURE__*/ React.createElement(Form.Item, null, '\xA0\xA0\u4E00\u6B21'),
+                  /*#__PURE__*/ React.createElement(_Form.Item, null, '\xA0\xA0\u4E00\u6B21'),
                 ),
               )
             : '',
           (property === null || property === void 0 ? void 0 : property.dataMethod) == 'point'
             ? /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 24,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u6570\u636E\u70B9',
                   },
                   /*#__PURE__*/ React.createElement(
-                    Button,
+                    _Button,
                     {
                       type: 'dashed',
                       onClick: function onClick() {
@@ -2246,13 +2261,13 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 : property.dataPointSelectedRows) || []
             ).map(function (item, index) {
               return /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 24,
                   key: index,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u6570\u636E\u70B9'.concat(index + 1),
                     key: index,
@@ -2264,7 +2279,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   },
                   /*#__PURE__*/ React.createElement('span', null, item.dataName || item.name),
                   /*#__PURE__*/ React.createElement(
-                    Popconfirm,
+                    _Popconfirm,
                     {
                       placement: 'left',
                       title: '\u786E\u5B9A\u5220\u9664\u6570\u636E\u70B9\u5417\uFF1F',
@@ -2274,7 +2289,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       okText: '\u662F',
                       cancelText: '\u5426',
                     },
-                    /*#__PURE__*/ React.createElement(Button, {
+                    /*#__PURE__*/ React.createElement(_Button, {
                       type: 'link',
                       icon: /*#__PURE__*/ React.createElement(DeleteOutlined, null),
                     }),
@@ -2283,17 +2298,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               );
             }),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'dataDot',
                 label: '\u663E\u793A\u7CBE\u5EA6',
               },
-              /*#__PURE__*/ React.createElement(InputNumber, {
+              /*#__PURE__*/ React.createElement(_InputNumber, {
                 min: 0,
                 max: 5,
               }),
@@ -2306,12 +2321,12 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             data.node.name == 'stationCarousel' ||
             data.node.name == 'emptyCom') &&
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 24,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'reqData',
                   label: '\u8BF7\u6C42\u53C2\u6570',
@@ -2322,12 +2337,12 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'dataPointReq',
                 label: '\u7ED1\u5B9A\u8BBE\u5907\u6570\u636E\u70B9',
@@ -2354,7 +2369,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
   var renderAlign = useMemo(
     function () {
       return /*#__PURE__*/ React.createElement(
-        Row,
+        _Row,
         {
           justify: 'space-around',
           style: {
@@ -2363,20 +2378,20 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
         },
         Object.keys(alignObj).map(function (key, index) {
           return /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               key: index,
               span: 4,
             },
             /*#__PURE__*/ React.createElement(
-              Tooltip,
+              _Tooltip,
               {
                 title: alignObj[key][0],
                 getPopupContainer: function getPopupContainer() {
                   return document.querySelector('#editLayout');
                 },
               },
-              /*#__PURE__*/ React.createElement(Button, {
+              /*#__PURE__*/ React.createElement(_Button, {
                 size: 'large',
                 type: 'text',
                 icon: /*#__PURE__*/ React.createElement(CustomIcon, {
@@ -2399,12 +2414,13 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
     var top = propertyForm.getFieldValue('limit.top');
 
     if (top < bottom) {
-      message.config({
+      _message.config({
         getContainer: function getContainer() {
           return document.getElementById('editLayout');
         },
       });
-      message.error('下限不能大于上限');
+
+      _message.error('下限不能大于上限');
     }
   };
 
@@ -2463,21 +2479,21 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             key: 'info',
           },
           /*#__PURE__*/ React.createElement(
-            Form,
+            _Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 10,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u6807\u9898',
                     name: 'showTitle',
@@ -2487,20 +2503,20 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     labelAlign: 'left',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 14,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'cardTitle',
                   },
-                  /*#__PURE__*/ React.createElement(Input, {
+                  /*#__PURE__*/ React.createElement(_Input, {
                     placeholder: '\u6807\u9898\u540D\u79F0',
                     maxLength: 20,
                     style: {
@@ -2511,15 +2527,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 24,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'limitType',
                     label: '\u4E0A\u4E0B\u9650',
@@ -2528,7 +2544,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     },
                     labelAlign: 'left',
                   },
-                  /*#__PURE__*/ React.createElement(Radio.Group, {
+                  /*#__PURE__*/ React.createElement(_Radio.Group, {
                     options: [
                       {
                         label: ' 自定义 ',
@@ -2550,36 +2566,36 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               {
                 justify: 'space-between',
               },
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 4,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'showLimit',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 20,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Input.Group,
+                  _Input.Group,
                   {
                     compact: true,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'limit.bottom',
                       dependencies: ['limit.top'],
@@ -2598,14 +2614,14 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         },
                       ],
                     },
-                    /*#__PURE__*/ React.createElement(InputNumber, {
+                    /*#__PURE__*/ React.createElement(_InputNumber, {
                       style: {
                         width: 88,
                       },
                       placeholder: '\u4E0B\u9650',
                     }),
                   ),
-                  /*#__PURE__*/ React.createElement(Input, {
+                  /*#__PURE__*/ React.createElement(_Input, {
                     style: {
                       width: 30,
                       pointerEvents: 'none',
@@ -2614,7 +2630,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     disabled: true,
                   }),
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'limit.top',
                       dependencies: ['limit.bottom'],
@@ -2633,7 +2649,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         },
                       ],
                     },
-                    /*#__PURE__*/ React.createElement(InputNumber, {
+                    /*#__PURE__*/ React.createElement(_InputNumber, {
                       style: {
                         width: 88,
                       },
@@ -2654,13 +2670,13 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               key: key,
             },
             /*#__PURE__*/ React.createElement(
-              Form,
+              _Form,
               {
                 form: propertyForm,
                 onValuesChange: handlePropertyValuesChange,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: ''.concat(key, '.fontFamily'),
                   label: '\u5B57\u4F53',
@@ -2670,7 +2686,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   labelAlign: 'left',
                 },
                 /*#__PURE__*/ React.createElement(
-                  Select,
+                  _Select,
                   {
                     allowClear: true,
                     getPopupContainer: function getPopupContainer() {
@@ -2760,24 +2776,24 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 7,
                   },
-                  /*#__PURE__*/ React.createElement(Form.Item, {
+                  /*#__PURE__*/ React.createElement(_Form.Item, {
                     label: '\u989C\u8272\u5B57\u53F7',
                   }),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 6,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: ''.concat(key, '.color'),
                     },
@@ -2785,16 +2801,16 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 11,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: ''.concat(key, '.fontSize'),
                     },
-                    /*#__PURE__*/ React.createElement(InputNumber, {
+                    /*#__PURE__*/ React.createElement(_InputNumber, {
                       min: 12,
                       style: {
                         width: '100%',
@@ -2804,38 +2820,38 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 7,
                   },
-                  /*#__PURE__*/ React.createElement(Form.Item, {
+                  /*#__PURE__*/ React.createElement(_Form.Item, {
                     label: '\u80CC\u666F\u989C\u8272',
                   }),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 4,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: ''.concat(key, '.showBkColor'),
                       valuePropName: 'checked',
                     },
-                    /*#__PURE__*/ React.createElement(Checkbox, null),
+                    /*#__PURE__*/ React.createElement(_Checkbox, null),
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 10,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: ''.concat(key, '.bkColor'),
                     },
@@ -2886,12 +2902,13 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
     var tmpSet = new Set(vals);
 
     if (tmpSet.size !== vals.length) {
-      message.config({
+      _message.config({
         getContainer: function getContainer() {
           return document.getElementById('editLayout');
         },
       });
-      message.error('单点值不能重复');
+
+      _message.error('单点值不能重复');
     }
   };
 
@@ -2905,14 +2922,16 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
     var flag = false;
 
     if (!vals.flat().includes(undefined)) {
-      message.config({
+      _message.config({
         getContainer: function getContainer() {
           return document.getElementById('editLayout');
         },
       });
+
       vals.some(function (item) {
         if (item[1] < item[0]) {
-          message.error('下限不能大于上限');
+          _message.error('下限不能大于上限');
+
           flag = true;
           return true;
         }
@@ -2921,7 +2940,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
       var nums = eraseOverlapIntervals(vals);
 
       if (nums.length !== 0) {
-        message.error('范围值出现重叠');
+        _message.error('范围值出现重叠');
       }
     }
   };
@@ -2942,7 +2961,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           key: 'biciLight',
         },
         /*#__PURE__*/ React.createElement(
-          Form,
+          _Form,
           {
             form: propertyForm,
             onValuesChange: handlePropertyValuesChange,
@@ -2952,12 +2971,12 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             labelAlign: 'left',
           },
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'color',
                 label: '\u989C\u8272',
@@ -2966,17 +2985,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'size',
                 label: '\u5C3A\u5BF8',
               },
-              /*#__PURE__*/ React.createElement(InputNumber, {
+              /*#__PURE__*/ React.createElement(_InputNumber, {
                 placeholder: '\u8BF7\u8F93\u5165\u76F4\u5F84',
                 min: 0,
                 style: {
@@ -2987,26 +3006,26 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 wrapperCol: {
                   offset: 6,
                 },
               },
               /*#__PURE__*/ React.createElement(
-                Button.Group,
+                _Button.Group,
                 {
                   style: {
                     width: '100%',
                   },
                 },
                 /*#__PURE__*/ React.createElement(
-                  Button,
+                  _Button,
                   {
                     block: true,
                     size: 'small',
@@ -3021,7 +3040,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   '\u5C0F',
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Button,
+                  _Button,
                   {
                     block: true,
                     size: 'small',
@@ -3036,7 +3055,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   '\u4E2D',
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Button,
+                  _Button,
                   {
                     block: true,
                     size: 'small',
@@ -3054,15 +3073,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             null,
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 10,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'showText',
                   label: '\u6587\u5B57\u6807\u7B7E',
@@ -3071,37 +3090,37 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   },
                   valuePropName: 'checked',
                 },
-                /*#__PURE__*/ React.createElement(Checkbox, null),
+                /*#__PURE__*/ React.createElement(_Checkbox, null),
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 14,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   name: 'text',
                 },
-                /*#__PURE__*/ React.createElement(Input, {
+                /*#__PURE__*/ React.createElement(_Input, {
                   maxLength: 10,
                 }),
               ),
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'stateType',
                 label: '\u72B6\u6001\u5B9A\u4E49',
               },
-              /*#__PURE__*/ React.createElement(Radio.Group, {
+              /*#__PURE__*/ React.createElement(_Radio.Group, {
                 options: [
                   {
                     label: '单点值',
@@ -3128,7 +3147,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Form.List,
+            _Form.List,
             {
               name: 'lightRange',
             },
@@ -3140,7 +3159,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 null,
                 fields.map(function (field) {
                   return /*#__PURE__*/ React.createElement(
-                    Space,
+                    _Space,
                     {
                       key: field.key,
                       style: {
@@ -3151,7 +3170,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       size: 'small',
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       _objectSpread(
                         _objectSpread({}, field),
                         {},
@@ -3166,7 +3185,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         Fragment,
                         null,
                         /*#__PURE__*/ React.createElement(
-                          Form.Item,
+                          _Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3180,13 +3199,13 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                               ],
                             },
                           ),
-                          /*#__PURE__*/ React.createElement(InputNumber, {
+                          /*#__PURE__*/ React.createElement(_InputNumber, {
                             placeholder: '\u6570\u503C',
                             onBlur: checkPilotSingleRepeat,
                           }),
                         ),
                         /*#__PURE__*/ React.createElement(
-                          Form.Item,
+                          _Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3194,7 +3213,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                               name: [field.name, 'lightRangeText'],
                             },
                           ),
-                          /*#__PURE__*/ React.createElement(Input, {
+                          /*#__PURE__*/ React.createElement(_Input, {
                             placeholder: '\u6587\u672C',
                           }),
                         ),
@@ -3204,7 +3223,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         Fragment,
                         null,
                         /*#__PURE__*/ React.createElement(
-                          Form.Item,
+                          _Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3218,7 +3237,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                               ],
                             },
                           ),
-                          /*#__PURE__*/ React.createElement(InputNumber, {
+                          /*#__PURE__*/ React.createElement(_InputNumber, {
                             style: {
                               width: 60,
                             },
@@ -3226,7 +3245,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                           }),
                         ),
                         /*#__PURE__*/ React.createElement(
-                          Form.Item,
+                          _Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3240,7 +3259,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                               ],
                             },
                           ),
-                          /*#__PURE__*/ React.createElement(InputNumber, {
+                          /*#__PURE__*/ React.createElement(_InputNumber, {
                             style: {
                               width: 60,
                             },
@@ -3249,7 +3268,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                           }),
                         ),
                         /*#__PURE__*/ React.createElement(
-                          Form.Item,
+                          _Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3257,7 +3276,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                               name: [field.name, 'lightRangeText'],
                             },
                           ),
-                          /*#__PURE__*/ React.createElement(Input, {
+                          /*#__PURE__*/ React.createElement(_Input, {
                             style: {
                               width: 50,
                             },
@@ -3266,7 +3285,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         ),
                       ),
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       null,
                       /*#__PURE__*/ React.createElement(MinusCircleOutlined, {
                         onClick: function onClick() {
@@ -3278,10 +3297,10 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 }),
                 fields.length < 10 &&
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     null,
                     /*#__PURE__*/ React.createElement(
-                      Button,
+                      _Button,
                       {
                         type: 'dashed',
                         onClick: function onClick() {
@@ -3314,7 +3333,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           key: 'style',
         },
         /*#__PURE__*/ React.createElement(
-          Form,
+          _Form,
           {
             form: propertyForm,
             onValuesChange: handlePropertyValuesChange,
@@ -3324,15 +3343,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               React.Fragment,
               null,
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 10,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       label: '\u5355\u4F4D',
                       name: 'chartUnitChecked',
@@ -3342,20 +3361,20 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       labelAlign: 'left',
                       valuePropName: 'checked',
                     },
-                    /*#__PURE__*/ React.createElement(Checkbox, null),
+                    /*#__PURE__*/ React.createElement(_Checkbox, null),
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 14,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'chartUnit',
                     },
-                    /*#__PURE__*/ React.createElement(Input, {
+                    /*#__PURE__*/ React.createElement(_Input, {
                       placeholder: '\u5355\u4F4D',
                       maxLength: 5,
                     }),
@@ -3363,15 +3382,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 10,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       label: '\u523B\u5EA6',
                       name: 'markChecked',
@@ -3381,20 +3400,20 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       labelAlign: 'left',
                       valuePropName: 'checked',
                     },
-                    /*#__PURE__*/ React.createElement(Checkbox, null),
+                    /*#__PURE__*/ React.createElement(_Checkbox, null),
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 14,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'marks',
                     },
-                    /*#__PURE__*/ React.createElement(InputNumber, {
+                    /*#__PURE__*/ React.createElement(_InputNumber, {
                       placeholder: '\u523B\u5EA6\u4E2A\u6570',
                       min: 1,
                       max: 100,
@@ -3403,15 +3422,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 24,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'chartTitleColor',
                       label: '\u6807\u9898\u989C\u8272',
@@ -3426,25 +3445,25 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             null,
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               null,
-              /*#__PURE__*/ React.createElement(Form.Item, {
+              /*#__PURE__*/ React.createElement(_Form.Item, {
                 label: '\u8303\u56F4',
               }),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               null,
               /*#__PURE__*/ React.createElement(
-                Input.Group,
+                _Input.Group,
                 {
                   compact: true,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'dataMin',
                     dependencies: ['dataMax'],
@@ -3463,14 +3482,14 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       },
                     ],
                   },
-                  /*#__PURE__*/ React.createElement(InputNumber, {
+                  /*#__PURE__*/ React.createElement(_InputNumber, {
                     style: {
                       width: 85,
                     },
                     placeholder: '\u4E0B\u9650',
                   }),
                 ),
-                /*#__PURE__*/ React.createElement(Input, {
+                /*#__PURE__*/ React.createElement(_Input, {
                   style: {
                     width: 30,
                     pointerEvents: 'none',
@@ -3479,7 +3498,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   disabled: true,
                 }),
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'dataMax',
                     rules: [
@@ -3501,7 +3520,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       },
                     ],
                   },
-                  /*#__PURE__*/ React.createElement(InputNumber, {
+                  /*#__PURE__*/ React.createElement(_InputNumber, {
                     style: {
                       width: 85,
                     },
@@ -3513,40 +3532,40 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             null,
-            /*#__PURE__*/ React.createElement(Form.Item, {
+            /*#__PURE__*/ React.createElement(_Form.Item, {
               label: '\u989C\u8272\u5206\u533A',
             }),
           ),
           ((property === null || property === void 0 ? void 0 : property.dataColors) || []).map(
             function (item, index) {
               return /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 {
                   key: index,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 3,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'checked-'.concat(index),
                       valuePropName: 'checked',
                     },
-                    /*#__PURE__*/ React.createElement(Checkbox, null),
+                    /*#__PURE__*/ React.createElement(_Checkbox, null),
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 6,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'color-'.concat(index),
                     },
@@ -3554,21 +3573,21 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   ),
                 ),
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 15,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Input.Group,
+                    _Input.Group,
                     {
                       compact: true,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'bottom-'.concat(index),
                       },
-                      /*#__PURE__*/ React.createElement(InputNumber, {
+                      /*#__PURE__*/ React.createElement(_InputNumber, {
                         style: {
                           width: 60,
                         },
@@ -3576,7 +3595,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         disabled: true,
                       }),
                     ),
-                    /*#__PURE__*/ React.createElement(Input, {
+                    /*#__PURE__*/ React.createElement(_Input, {
                       style: {
                         width: 30,
                         pointerEvents: 'none',
@@ -3585,11 +3604,11 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       disabled: true,
                     }),
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'top-'.concat(index),
                       },
-                      /*#__PURE__*/ React.createElement(InputNumber, {
+                      /*#__PURE__*/ React.createElement(_InputNumber, {
                         style: {
                           width: 60,
                         },
@@ -3622,21 +3641,21 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             key: 'info',
           },
           /*#__PURE__*/ React.createElement(
-            Form,
+            _Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 10,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u6807\u9898',
                     name: 'chartTitleChecked',
@@ -3646,20 +3665,20 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     labelAlign: 'left',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 14,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'chartTitle',
                   },
-                  /*#__PURE__*/ React.createElement(Input, {
+                  /*#__PURE__*/ React.createElement(_Input, {
                     placeholder: '\u6807\u9898\u540D\u79F0',
                     maxLength: 20,
                   }),
@@ -3667,15 +3686,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 10,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u5355\u4F4D',
                     name: 'chartUnitChecked',
@@ -3685,20 +3704,20 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     labelAlign: 'left',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 14,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'chartUnit',
                   },
-                  /*#__PURE__*/ React.createElement(Input, {
+                  /*#__PURE__*/ React.createElement(_Input, {
                     placeholder: '\u5355\u4F4D',
                     maxLength: 20,
                   }),
@@ -3706,15 +3725,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 10,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u523B\u5EA6',
                     name: 'markChecked',
@@ -3724,20 +3743,20 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     labelAlign: 'left',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 13,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'marks',
                   },
-                  /*#__PURE__*/ React.createElement(InputNumber, {
+                  /*#__PURE__*/ React.createElement(_InputNumber, {
                     placeholder: '\u523B\u5EA6\u4E2A\u6570',
                     min: 1,
                     max: 100,
@@ -3746,15 +3765,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 24,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'chartTitleColor',
                     label: '\u6807\u9898\u989C\u8272',
@@ -3792,36 +3811,36 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             key: 'lineInfo',
           },
           /*#__PURE__*/ React.createElement(
-            Form,
+            _Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 6,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u6807\u9898',
                     name: 'chartTitleChecked',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 6,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'chartTitleColor',
                   },
@@ -3829,16 +3848,16 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 12,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'chartTitle',
                   },
-                  /*#__PURE__*/ React.createElement(Input, {
+                  /*#__PURE__*/ React.createElement(_Input, {
                     placeholder: '\u6807\u9898',
                     maxLength: 20,
                   }),
@@ -3846,17 +3865,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 24,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   label: '\u4E0A\u4E0B\u9650',
                   name: 'limitType',
                 },
-                /*#__PURE__*/ React.createElement(Radio.Group, {
+                /*#__PURE__*/ React.createElement(_Radio.Group, {
                   options: [
                     {
                       label: '自定义',
@@ -3883,32 +3902,32 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               {
                 justify: 'space-between',
               },
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'dataTopChecked',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Input.Group,
+                  _Input.Group,
                   {
                     compact: true,
                   },
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'dataBottom',
                       dependencies: ['dataTop'],
@@ -3927,7 +3946,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         },
                       ],
                     },
-                    /*#__PURE__*/ React.createElement(InputNumber, {
+                    /*#__PURE__*/ React.createElement(_InputNumber, {
                       style: {
                         width: 85,
                       },
@@ -3935,7 +3954,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       readOnly: !showSelectDataPoint,
                     }),
                   ),
-                  /*#__PURE__*/ React.createElement(Input, {
+                  /*#__PURE__*/ React.createElement(_Input, {
                     style: {
                       width: 30,
                       pointerEvents: 'none',
@@ -3944,7 +3963,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     disabled: true,
                   }),
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       name: 'dataTop',
                       dependencies: ['dataBottom'],
@@ -3963,7 +3982,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         },
                       ],
                     },
-                    /*#__PURE__*/ React.createElement(InputNumber, {
+                    /*#__PURE__*/ React.createElement(_InputNumber, {
                       style: {
                         width: 85,
                       },
@@ -3975,25 +3994,25 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               {
                 style: {
                   display: showSelectDataPoint ? 'none' : 'block',
                 },
               },
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   push: 4,
                   span: 20,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'selectDataPoint',
                   },
                   /*#__PURE__*/ React.createElement(
-                    Select,
+                    _Select,
                     {
                       style: {
                         width: '100%',
@@ -4029,23 +4048,23 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             key: 'lineStyle',
           },
           /*#__PURE__*/ React.createElement(
-            Form,
+            _Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 24,
               },
               /*#__PURE__*/ React.createElement(
-                Form.Item,
+                _Form.Item,
                 {
                   label: '\u7EBF\u578B',
                   name: 'smooth',
                 },
-                /*#__PURE__*/ React.createElement(Radio.Group, {
+                /*#__PURE__*/ React.createElement(_Radio.Group, {
                   options: [
                     {
                       label: '曲线',
@@ -4065,15 +4084,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 10,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u80CC\u666F\u8272',
                     labelCol: {
@@ -4083,17 +4102,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     name: 'chartBackgroundChecked',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 12,
                   push: 2,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'chartBackgroundColor',
                   },
@@ -4102,15 +4121,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 10,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     label: '\u53C2\u8003\u7EBF',
                     labelCol: {
@@ -4120,17 +4139,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     name: 'lineReferenceChecked',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ React.createElement(Checkbox, null),
+                  /*#__PURE__*/ React.createElement(_Checkbox, null),
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 12,
                   push: 2,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'lineReferenceColor',
                   },
@@ -4139,24 +4158,24 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               ),
             ),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 8,
                 },
-                /*#__PURE__*/ React.createElement(Form.Item, {
+                /*#__PURE__*/ React.createElement(_Form.Item, {
                   label: '\u66F2\u7EBF\u989C\u8272',
                 }),
               ),
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 16,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.List,
+                  _Form.List,
                   {
                     name: 'lineGraphRange',
                   },
@@ -4168,7 +4187,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       null,
                       fields.map(function (field) {
                         return /*#__PURE__*/ React.createElement(
-                          Space,
+                          _Space,
                           {
                             key: field.key,
                             style: {
@@ -4179,7 +4198,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                             size: 20,
                           },
                           /*#__PURE__*/ React.createElement(
-                            Form.Item,
+                            _Form.Item,
                             _objectSpread(
                               _objectSpread({}, field),
                               {},
@@ -4191,10 +4210,10 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                                 },
                               },
                             ),
-                            /*#__PURE__*/ React.createElement(Checkbox, null),
+                            /*#__PURE__*/ React.createElement(_Checkbox, null),
                           ),
                           /*#__PURE__*/ React.createElement(
-                            Form.Item,
+                            _Form.Item,
                             _objectSpread(
                               _objectSpread({}, field),
                               {},
@@ -4208,7 +4227,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                             /*#__PURE__*/ React.createElement(ColorPicker, null),
                           ),
                           /*#__PURE__*/ React.createElement(
-                            Form.Item,
+                            _Form.Item,
                             {
                               style: {
                                 display: 'none',
@@ -4225,14 +4244,14 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       }),
                       fields.length < 10
                         ? /*#__PURE__*/ React.createElement(
-                            Form.Item,
+                            _Form.Item,
                             {
                               style: {
                                 display: 'none',
                               },
                             },
                             /*#__PURE__*/ React.createElement(
-                              Button,
+                              _Button,
                               {
                                 type: 'dashed',
                                 ref: addLineColorBtnRef,
@@ -4297,7 +4316,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
   var renderVideoProp = useMemo(
     function () {
       return /*#__PURE__*/ React.createElement(
-        Form,
+        _Form,
         {
           form: propertyForm,
           onValuesChange: handlePropertyValuesChange,
@@ -4307,18 +4326,18 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               React.Fragment,
               null,
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Form.Item,
+                    _Form.Item,
                     {
                       label: '\u89C6\u9891\u6E90',
                     },
                     /*#__PURE__*/ React.createElement(
-                      Button,
+                      _Button,
                       {
                         type: 'dashed',
                         onClick: function onClick() {
@@ -4335,17 +4354,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 ),
               ),
               /*#__PURE__*/ React.createElement(
-                Row,
+                _Row,
                 null,
                 (selectedVideoRows || []).map(function (item, index) {
                   return /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 24,
                       key: index,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         label: '\u89C6\u9891\u6E90'.concat(index + 1),
                         key: index,
@@ -4363,7 +4382,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         item.name,
                       ),
                       /*#__PURE__*/ React.createElement(
-                        Popconfirm,
+                        _Popconfirm,
                         {
                           placement: 'left',
                           title: '\u786E\u5B9A\u5220\u89C6\u9891\u6E90\u5417\uFF1F',
@@ -4373,7 +4392,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                           okText: '\u662F',
                           cancelText: '\u5426',
                         },
-                        /*#__PURE__*/ React.createElement(Button, {
+                        /*#__PURE__*/ React.createElement(_Button, {
                           type: 'link',
                           icon: /*#__PURE__*/ React.createElement(DeleteOutlined, null),
                         }),
@@ -4386,15 +4405,15 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           : '',
         name == 'QTLiveVideo'
           ? /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               null,
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 24,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Form.Item,
+                  _Form.Item,
                   {
                     name: 'videoURL',
                     label: 'RTSP\u76F4\u64AD\u6E90',
@@ -4431,7 +4450,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
     renderAlign,
     !data.multi &&
       /*#__PURE__*/ React.createElement(
-        Tabs,
+        _Tabs,
         {
           defaultActiveKey: '1',
           centered: true,
@@ -4454,7 +4473,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               },
             },
             /*#__PURE__*/ React.createElement(
-              Collapse,
+              _Collapse,
               {
                 defaultActiveKey: ['pos', 'lineInfo', 'lineStyle', 'info', 'style'],
                 expandIconPosition: 'right',
@@ -4509,14 +4528,14 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               },
             },
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               {
                 style: {
                   margin: '0 15px',
                 },
               },
               /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 24,
                 },

@@ -1,3 +1,16 @@
+import 'antd/lib/button/style';
+import _Button from 'antd/lib/button';
+import 'antd/lib/select/style';
+import _Select from 'antd/lib/select';
+import 'antd/lib/col/style';
+import _Col from 'antd/lib/col';
+import 'antd/lib/form/style';
+import _Form from 'antd/lib/form';
+import 'antd/lib/collapse/style';
+import _Collapse from 'antd/lib/collapse';
+import 'antd/lib/input/style';
+import _Input from 'antd/lib/input';
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -134,18 +147,17 @@ function _arrayWithHoles(arr) {
 }
 
 import React, { useState, useMemo } from 'react';
-import { Button, Collapse, Select, Col, Form, Input } from 'antd';
 import { useCallback } from 'react';
 import './index.css';
 import { useEffect } from 'react';
-var TextArea = Input.TextArea;
-var Panel = Collapse.Panel;
+var TextArea = _Input.TextArea;
+var Panel = _Collapse.Panel;
 
 var Page = function Page(_ref) {
   var onEventValueChange = _ref.onEventValueChange,
     canvasData = _ref.canvasData;
 
-  var _Form$useForm = Form.useForm(),
+  var _Form$useForm = _Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
@@ -196,22 +208,22 @@ var Page = function Page(_ref) {
 
   var renderFontForm = function renderFontForm(item, idx) {
     return /*#__PURE__*/ React.createElement(
-      Form,
+      _Form,
       {
         form: form,
       },
       /*#__PURE__*/ React.createElement(
-        Col,
+        _Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          Form.Item,
+          _Form.Item,
           {
             label: '\u4E8B\u4EF6\u7C7B\u578B',
           },
           /*#__PURE__*/ React.createElement(
-            Select,
+            _Select,
             {
               placeholder: '\u8BF7\u9009\u62E9\u4E8B\u4EF6\u7C7B\u578B',
               onSelect: function onSelect(value) {
@@ -219,28 +231,28 @@ var Page = function Page(_ref) {
               },
             },
             /*#__PURE__*/ React.createElement(
-              Select.Option,
+              _Select.Option,
               {
                 value: '0',
               },
               '\u5355\u51FB',
             ),
             /*#__PURE__*/ React.createElement(
-              Select.Option,
+              _Select.Option,
               {
                 value: '1',
               },
               '\u53CC\u51FB',
             ),
             /*#__PURE__*/ React.createElement(
-              Select.Option,
+              _Select.Option,
               {
                 value: '2',
               },
               'webSocket\u4E8B\u4EF6',
             ),
             /*#__PURE__*/ React.createElement(
-              Select.Option,
+              _Select.Option,
               {
                 value: '3',
               },
@@ -262,17 +274,17 @@ var Page = function Page(_ref) {
         React.Fragment,
         null,
         /*#__PURE__*/ React.createElement(
-          Col,
+          _Col,
           {
             span: 24,
           },
           /*#__PURE__*/ React.createElement(
-            Form.Item,
+            _Form.Item,
             {
               label: '\u4E8B\u4EF6\u884C\u4E3A',
             },
             /*#__PURE__*/ React.createElement(
-              Select,
+              _Select,
               {
                 placeholder: '\u8BF7\u9009\u62E9\u4E8B\u4EF6\u884C\u4E3A',
                 onSelect: function onSelect(value) {
@@ -280,35 +292,35 @@ var Page = function Page(_ref) {
                 },
               },
               /*#__PURE__*/ React.createElement(
-                Select.Option,
+                _Select.Option,
                 {
                   value: '0',
                 },
                 '\u8DF3\u8F6C\u94FE\u63A5',
               ),
               /*#__PURE__*/ React.createElement(
-                Select.Option,
+                _Select.Option,
                 {
                   value: '1',
                 },
                 '\u6267\u884C\u52A8\u753B',
               ),
               /*#__PURE__*/ React.createElement(
-                Select.Option,
+                _Select.Option,
                 {
                   value: '2',
                 },
                 '\u6267\u884C\u51FD\u6570',
               ),
               /*#__PURE__*/ React.createElement(
-                Select.Option,
+                _Select.Option,
                 {
                   value: '3',
                 },
                 '\u6267\u884Cwindow\u4E0B\u7684\u5168\u5C40\u51FD\u6570',
               ),
               /*#__PURE__*/ React.createElement(
-                Select.Option,
+                _Select.Option,
                 {
                   value: '4',
                 },
@@ -331,16 +343,16 @@ var Page = function Page(_ref) {
           React.Fragment,
           null,
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 label: '\u6D88\u606F\u540D',
               },
-              /*#__PURE__*/ React.createElement(Input, {
+              /*#__PURE__*/ React.createElement(_Input, {
                 placeholder: '\u8BF7\u8F93\u5165\u81EA\u5B9A\u4E49\u6D88\u606F\u540D',
               }),
             ),
@@ -353,16 +365,16 @@ var Page = function Page(_ref) {
           React.Fragment,
           null,
           /*#__PURE__*/ React.createElement(
-            Form.Item,
+            _Form.Item,
             {
               label: 'Topic',
             },
             /*#__PURE__*/ React.createElement(
-              Col,
+              _Col,
               {
                 span: 24,
               },
-              /*#__PURE__*/ React.createElement(Input, {
+              /*#__PURE__*/ React.createElement(_Input, {
                 placeholder: '\u8BF7\u8F93\u5165Topic/subtopic',
               }),
             ),
@@ -385,16 +397,16 @@ var Page = function Page(_ref) {
           React.Fragment,
           null,
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 label: '\u94FE\u63A5\u5730\u5740',
               },
-              /*#__PURE__*/ React.createElement(Input, {
+              /*#__PURE__*/ React.createElement(_Input, {
                 placeholder: '\u8BF7\u8F93\u5165\u94FE\u63A5\u5730\u5740',
                 onChange: function onChange(e) {
                   return onHandleCodeChange(e, idx);
@@ -403,16 +415,16 @@ var Page = function Page(_ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 24,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 label: '\u53C2\u6570\u503C',
               },
-              /*#__PURE__*/ React.createElement(Input, {
+              /*#__PURE__*/ React.createElement(_Input, {
                 placeholder: '_black',
               }),
             ),
@@ -421,12 +433,12 @@ var Page = function Page(_ref) {
 
       case '2':
         return /*#__PURE__*/ React.createElement(
-          Col,
+          _Col,
           {
             span: 24,
           },
           /*#__PURE__*/ React.createElement(
-            Form.Item,
+            _Form.Item,
             {
               label: '\u81EA\u5B9A\u4E49\u4EE3\u7801',
             },
@@ -485,7 +497,7 @@ var Page = function Page(_ref) {
     function () {
       if (eventData.length < 1) return;
       return /*#__PURE__*/ React.createElement(
-        Collapse,
+        _Collapse,
         null,
         eventData
           .map(function (item) {
@@ -530,7 +542,7 @@ var Page = function Page(_ref) {
     'div',
     null,
     /*#__PURE__*/ React.createElement(
-      Button,
+      _Button,
       {
         type: 'primary',
         className: 'event-button',

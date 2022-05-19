@@ -1,3 +1,25 @@
+import 'antd/lib/input-number/style';
+import _InputNumber from 'antd/lib/input-number';
+import 'antd/lib/button/style';
+import _Button from 'antd/lib/button';
+import 'antd/lib/upload/style';
+import _Upload from 'antd/lib/upload';
+import 'antd/lib/input/style';
+import _Input from 'antd/lib/input';
+import 'antd/lib/popover/style';
+import _Popover from 'antd/lib/popover';
+import 'antd/lib/checkbox/style';
+import _Checkbox from 'antd/lib/checkbox';
+import 'antd/lib/col/style';
+import _Col from 'antd/lib/col';
+import 'antd/lib/row/style';
+import _Row from 'antd/lib/row';
+import 'antd/lib/message/style';
+import _message from 'antd/lib/message';
+import 'antd/lib/form/style';
+import _Form from 'antd/lib/form';
+import 'antd/lib/collapse/style';
+import _Collapse from 'antd/lib/collapse';
 var _excluded = [
   'data',
   'baseUrl',
@@ -146,19 +168,6 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 // @ts-nocheck
 import React, { useMemo, useEffect, useState } from 'react';
-import {
-  Form,
-  Row,
-  Col,
-  Input,
-  Collapse,
-  Button,
-  Popover,
-  Upload,
-  Checkbox,
-  message,
-  InputNumber,
-} from 'antd';
 import { DownOutlined, UploadOutlined } from '@ant-design/icons';
 import ColorPicker from '../../../common/ColorPicker/ColorPicker';
 import ReactSwitch from '../../../common/ReactSwitch';
@@ -167,7 +176,7 @@ import CustomIcon from '../../../config/iconConfig';
 import { dynamicWebSocketData } from '../../../common/DynamicWebSocketData';
 import { calcCanvas } from '../../../utils/cacl';
 import * as _ from 'lodash';
-var Panel = Collapse.Panel;
+var Panel = _Collapse.Panel;
 var panelSizeObj = {
   '16:9': ['1920*1080', '1680*1050', '1600*900', '1366*768'],
   '4:3': ['1024*768', '800*600'],
@@ -183,7 +192,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     uploadConfig = _ref.uploadConfig,
     props = _objectWithoutProperties(_ref, _excluded);
 
-  var _Form$useForm = Form.useForm(),
+  var _Form$useForm = _Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
@@ -312,7 +321,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     var isLt1M = file.size / 1024 / 1024 / 1024 < 10;
 
     if (!isLt1M) {
-      message.error('上传图片不可大于10M');
+      _message.error('上传图片不可大于10M');
     }
 
     return isLt1M;
@@ -502,13 +511,13 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
             },
             /*#__PURE__*/ React.createElement('h3', null, key),
             /*#__PURE__*/ React.createElement(
-              Row,
+              _Row,
               {
                 gutter: [0, 16],
               },
               panelSizeObj[key].map(function (val, index) {
                 return /*#__PURE__*/ React.createElement(
-                  Col,
+                  _Col,
                   {
                     span: 12,
                     key: index,
@@ -547,7 +556,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
       },
       (props.preInstallBgImages || []).map(function (item) {
         return /*#__PURE__*/ React.createElement(
-          Row,
+          _Row,
           {
             key: item.key,
             style: {
@@ -566,7 +575,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
             width: 260,
             height: 120,
           }),
-          /*#__PURE__*/ React.createElement(Checkbox, {
+          /*#__PURE__*/ React.createElement(_Checkbox, {
             style: {
               position: 'absolute',
               top: 0,
@@ -579,7 +588,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     ),
   );
   var renderDefultOptions = /*#__PURE__*/ React.createElement(
-    Collapse,
+    _Collapse,
     {
       defaultActiveKey: ['1', '2', '3'],
       expandIconPosition: 'right',
@@ -593,12 +602,12 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
         key: '1',
       },
       /*#__PURE__*/ React.createElement(
-        Form,
+        _Form,
         {
           form: form,
         },
         /*#__PURE__*/ React.createElement(
-          Popover,
+          _Popover,
           {
             placement: 'bottom',
             trigger: 'click',
@@ -621,19 +630,19 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
             },
           },
           /*#__PURE__*/ React.createElement(
-            Form.Item,
+            _Form.Item,
             {
               name: 'sizeVal',
               initialValue: '\u81EA\u5B9A\u4E49',
             },
-            /*#__PURE__*/ React.createElement(Input, {
+            /*#__PURE__*/ React.createElement(_Input, {
               suffix: /*#__PURE__*/ React.createElement(DownOutlined, null),
               readOnly: true,
             }),
           ),
         ),
         /*#__PURE__*/ React.createElement(
-          Row,
+          _Row,
           {
             style: {
               marginTop: 15,
@@ -642,44 +651,44 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
             align: 'middle',
           },
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 9,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'w',
               },
-              /*#__PURE__*/ React.createElement(Input, {
+              /*#__PURE__*/ React.createElement(_Input, {
                 suffix: 'W',
                 onChange: panelSizeChange,
               }),
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 9,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'h',
               },
-              /*#__PURE__*/ React.createElement(Input, {
+              /*#__PURE__*/ React.createElement(_Input, {
                 suffix: 'H',
                 onChange: panelSizeChange,
               }),
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               span: 5,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               null,
               /*#__PURE__*/ React.createElement(ReactSwitch, {
                 onChange: handleRCSwitchStateChange,
@@ -713,13 +722,13 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
         key: '2',
       },
       /*#__PURE__*/ React.createElement(
-        Form,
+        _Form,
         {
           form: form,
           onValuesChange: handleFormValueChange,
         },
         /*#__PURE__*/ React.createElement(
-          Popover,
+          _Popover,
           {
             placement: 'bottom',
             trigger: 'click',
@@ -744,19 +753,19 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
             },
           },
           /*#__PURE__*/ React.createElement(
-            Form.Item,
+            _Form.Item,
             {
               name: 'bgVal',
               initialValue: preBgImageName,
             },
-            /*#__PURE__*/ React.createElement(Input, {
+            /*#__PURE__*/ React.createElement(_Input, {
               readOnly: true,
               suffix: /*#__PURE__*/ React.createElement(DownOutlined, null),
             }),
           ),
         ),
         /*#__PURE__*/ React.createElement(
-          Row,
+          _Row,
           {
             style: {
               marginTop: 15,
@@ -764,29 +773,29 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
             align: 'middle',
           },
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               push: 1,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'bgColorCheck',
                 label: '\u80CC\u666F\u989C\u8272',
                 valuePropName: 'checked',
               },
-              /*#__PURE__*/ React.createElement(Checkbox, {
+              /*#__PURE__*/ React.createElement(_Checkbox, {
                 onChange: bkColorCheckChange,
               }),
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               push: 2,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'bgColor',
               },
@@ -795,35 +804,35 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
           ),
         ),
         /*#__PURE__*/ React.createElement(
-          Row,
+          _Row,
           null,
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               push: 1,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'bgImgCheck',
                 label: '\u80CC\u666F\u56FE\u7247',
                 valuePropName: 'checked',
               },
-              /*#__PURE__*/ React.createElement(Checkbox, {
+              /*#__PURE__*/ React.createElement(_Checkbox, {
                 onChange: handleBgImgChange,
               }),
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               push: 2,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               null,
               /*#__PURE__*/ React.createElement(
-                Upload,
+                _Upload,
                 {
                   action: ''
                     .concat(uploadConfig.preInstall.baseURL, '/')
@@ -838,7 +847,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
                   onChange: bgUploadChange,
                 },
                 /*#__PURE__*/ React.createElement(
-                  Button,
+                  _Button,
                   {
                     icon: /*#__PURE__*/ React.createElement(UploadOutlined, null),
                   },
@@ -857,40 +866,40 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
         key: '3',
       },
       /*#__PURE__*/ React.createElement(
-        Form,
+        _Form,
         {
           form: form,
           onValuesChange: handleFormValueChange,
         },
         /*#__PURE__*/ React.createElement(
-          Row,
+          _Row,
           {
             align: 'middle',
           },
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               push: 1,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'gridCheck',
                 label: '\u7F51\u683C',
                 valuePropName: 'checked',
               },
-              /*#__PURE__*/ React.createElement(Checkbox, {
+              /*#__PURE__*/ React.createElement(_Checkbox, {
                 onChange: gridOnChange,
               }),
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               push: 2,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'gridColor',
               },
@@ -898,18 +907,18 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
             ),
           ),
           /*#__PURE__*/ React.createElement(
-            Col,
+            _Col,
             {
               push: 3,
               span: 8,
             },
             /*#__PURE__*/ React.createElement(
-              Form.Item,
+              _Form.Item,
               {
                 name: 'gridSize',
                 initialValue: 30,
               },
-              /*#__PURE__*/ React.createElement(InputNumber, {
+              /*#__PURE__*/ React.createElement(_InputNumber, {
                 min: 1,
               }),
             ),

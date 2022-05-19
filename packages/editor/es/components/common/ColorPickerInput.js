@@ -1,7 +1,8 @@
+import 'antd/lib/select/style';
+import _Select from 'antd/lib/select';
 import React from 'react';
-import { Select } from 'antd';
 import ColorPicker from './ColorPicker/ColorPicker';
-var Option = Select.Option;
+var Option = _Select.Option;
 
 var ColorPickerInput = function ColorPickerInput(_ref) {
   var _ref$value = _ref.value,

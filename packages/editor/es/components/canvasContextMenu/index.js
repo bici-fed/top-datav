@@ -18,6 +18,15 @@ function _typeof(obj) {
   );
 }
 
+import 'antd/lib/input/style';
+import _Input from 'antd/lib/input';
+import 'antd/lib/form/style';
+import _Form from 'antd/lib/form';
+import 'antd/lib/modal/style';
+import _Modal from 'antd/lib/modal';
+import 'antd/lib/message/style';
+import _message from 'antd/lib/message';
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -219,7 +228,6 @@ function _getPrototypeOf(o) {
 
 import React, { Component } from 'react';
 import styles from './index.module.css';
-import { Form, Input, Modal, message } from 'antd';
 import { clientParam } from '../data/api';
 import { replacer } from '../utils/serializing';
 import * as _ from 'lodash';
@@ -350,8 +358,8 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
                         newComVisible: false,
                       });
 
-                      message.info('添加到自定义组件成功').then(function () {
-                        message.destroy();
+                      _message.info('添加到自定义组件成功').then(function () {
+                        _message.destroy();
                       });
 
                       _this.props.getNewComponents();
@@ -403,7 +411,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
 
     _this.renderNewComponentModal = function () {
       return /*#__PURE__*/ React.createElement(
-        Modal,
+        _Modal,
         {
           title: '\u6DFB\u52A0\u5230\u81EA\u5B9A\u4E49\u7EC4\u4EF6',
           visible: _this.state.newComVisible,
@@ -417,13 +425,13 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
           },
         },
         /*#__PURE__*/ React.createElement(
-          Form,
+          _Form,
           {
             ref: _this.formRef,
             preserve: false,
           },
           /*#__PURE__*/ React.createElement(
-            Form.Item,
+            _Form.Item,
             {
               rules: [
                 {
@@ -438,7 +446,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
               label: '\u7EC4\u4EF6\u540D\u5B57',
               name: 'componentName',
             },
-            /*#__PURE__*/ React.createElement(Input, {
+            /*#__PURE__*/ React.createElement(_Input, {
               placeholder: '\u8F93\u5165\u7EC4\u4EF6\u540D\u5B57',
               id: 'componentName',
               maxLength: 20,

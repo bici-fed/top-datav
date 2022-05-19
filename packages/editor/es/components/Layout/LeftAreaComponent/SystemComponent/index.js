@@ -1,17 +1,22 @@
+import 'antd/lib/col/style';
+import _Col from 'antd/lib/col';
+import 'antd/lib/row/style';
+import _Row from 'antd/lib/row';
+import 'antd/lib/collapse/style';
+import _Collapse from 'antd/lib/collapse';
 import React from 'react';
-import { Row, Col, Collapse } from 'antd';
 import styles from '../../index.module.css';
 import CustomIcon from '../../../config/iconConfig';
 import { defaultToolsConfig } from '../../../config/config';
 import * as _ from 'lodash';
-var Panel = Collapse.Panel;
+var Panel = _Collapse.Panel;
 
 var Layout = function Layout(_ref) {
   var Tools = _ref.Tools,
     onDrag = _ref.onDrag,
     toolConfig = _ref.toolConfig;
   return /*#__PURE__*/ React.createElement(
-    Collapse,
+    _Collapse,
     {
       defaultActiveKey: ['0'],
       expandIconPosition: 'right',
@@ -31,7 +36,7 @@ var Layout = function Layout(_ref) {
             className: styles.button,
           },
           /*#__PURE__*/ React.createElement(
-            Row,
+            _Row,
             {
               align: 'middle',
             },
@@ -46,7 +51,7 @@ var Layout = function Layout(_ref) {
 
               var it = item.children[itm];
               return /*#__PURE__*/ React.createElement(
-                Col,
+                _Col,
                 {
                   span: 8,
                   key: idx,

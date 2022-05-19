@@ -8,7 +8,7 @@ import preBgImg1 from './bg01.jpg';
 import preBgImg2 from './bg02.jpg';
 import preBgImg3 from './bg03.jpg';
 import preBgImg4 from './bg04.svg';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 import DataBindModal from './FilterDataPoint';
 import { industry_List } from './common/config';
 import VideoMonitoringModal from './VideoMonitoring';

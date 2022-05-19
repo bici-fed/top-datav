@@ -1,3 +1,26 @@
+import 'antd/lib/button/style';
+import _Button from 'antd/lib/button';
+import 'antd/lib/space/style';
+import _Space from 'antd/lib/space';
+import 'antd/lib/radio/style';
+import _Radio from 'antd/lib/radio';
+import 'antd/lib/input-number/style';
+import _InputNumber from 'antd/lib/input-number';
+import 'antd/lib/checkbox/style';
+import _Checkbox from 'antd/lib/checkbox';
+import 'antd/lib/col/style';
+import _Col from 'antd/lib/col';
+import 'antd/lib/row/style';
+import _Row from 'antd/lib/row';
+import 'antd/lib/form/style';
+import _Form from 'antd/lib/form';
+import 'antd/lib/select/style';
+import _Select from 'antd/lib/select';
+import 'antd/lib/input/style';
+import _Input from 'antd/lib/input';
+import 'antd/lib/collapse/style';
+import _Collapse from 'antd/lib/collapse';
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -42,27 +65,14 @@ function _defineProperty(obj, key, value) {
 }
 
 import React, { Fragment } from 'react';
-import {
-  Button,
-  Checkbox,
-  Col,
-  Collapse,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-  Space,
-  Radio,
-} from 'antd';
 import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import * as _ from 'lodash';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import CustomIcon from '../../config/iconConfig';
 import CheckboxGroup from '../CheckboxGroup';
-var Panel = Collapse.Panel;
-var TextArea = Input.TextArea;
-var Option = Select.Option;
+var Panel = _Collapse.Panel;
+var TextArea = _Input.TextArea;
+var Option = _Select.Option;
 var alignObj = {
   left: ['左对齐', 'iconzuoduiqi'],
   right: ['右对齐', 'iconyouduiqi'],
@@ -92,7 +102,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
     React.Fragment,
     null,
     /*#__PURE__*/ React.createElement(
-      Collapse,
+      _Collapse,
       {
         defaultActiveKey: ['0', '1'],
       },
@@ -104,7 +114,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
             key: index,
           },
           /*#__PURE__*/ React.createElement(
-            Form,
+            _Form,
             {
               fields: item.formItems,
               onFieldsChange: function onFieldsChange(_, allFields) {
@@ -113,13 +123,13 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
             },
             hasField(item.formItems, 'username')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     null,
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'username',
                         label: 'username',
@@ -130,20 +140,20 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                         ],
                       },
-                      /*#__PURE__*/ React.createElement(Input, null),
+                      /*#__PURE__*/ React.createElement(_Input, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'color')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     null,
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'color',
                         label: 'color',
@@ -154,20 +164,20 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                         ],
                       },
-                      /*#__PURE__*/ React.createElement(Input, null),
+                      /*#__PURE__*/ React.createElement(_Input, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'fontStyle')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     null,
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'fontStyle',
                         label: '\u5B57\u4F53\u989C\u8272',
@@ -182,52 +192,52 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'refreshRate')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 8,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'refreshRateCheck',
                         label: '\u5237\u65B0\u9891\u7387',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 9,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'refreshRate',
                         label: '',
                       },
-                      /*#__PURE__*/ React.createElement(InputNumber, {
+                      /*#__PURE__*/ React.createElement(_InputNumber, {
                         min: 0,
                         max: 1000000,
                       }),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 4,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'pullRateUnit',
                       },
                       /*#__PURE__*/ React.createElement(
-                        Select,
+                        _Select,
                         {
                           style: {
                             width: 40,
@@ -260,23 +270,23 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     null,
-                    /*#__PURE__*/ React.createElement(Form.Item, null, '\u4E00\u6B21'),
+                    /*#__PURE__*/ React.createElement(_Form.Item, null, '\u4E00\u6B21'),
                   ),
                 )
               : '',
             hasField(item.formItems, 'iframe')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 24,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'iframe',
                         label: '\u7F51\u9875\u5730\u5740',
@@ -297,49 +307,49 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'title')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 7,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'titleShow',
                         label: '\u6807\u9898',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 17,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'title',
                       },
-                      /*#__PURE__*/ React.createElement(Input, null),
+                      /*#__PURE__*/ React.createElement(_Input, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'titleFontFamily')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 24,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'titleFontFamily',
                         label: '\u5B57\u4F53',
@@ -349,7 +359,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                         labelAlign: 'left',
                       },
                       /*#__PURE__*/ React.createElement(
-                        Select,
+                        _Select,
                         {
                           allowClear: true,
                           getPopupContainer: function getPopupContainer() {
@@ -443,15 +453,15 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'titleFontColor')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'titleFontColor',
                         label: '\u989C\u8272\u5B57\u53F7',
@@ -460,16 +470,16 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'titleFontSize',
                       },
-                      /*#__PURE__*/ React.createElement(InputNumber, {
+                      /*#__PURE__*/ React.createElement(_InputNumber, {
                         style: {
                           width: '100%',
                         },
@@ -483,16 +493,16 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                   React.Fragment,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Row,
+                    _Row,
                     null,
                     /*#__PURE__*/ React.createElement(
-                      Col,
+                      _Col,
                       {
                         span: 18,
                         offset: 6,
                       },
                       /*#__PURE__*/ React.createElement(
-                        Form.Item,
+                        _Form.Item,
                         {
                           label: '',
                           name: 'titlePosition',
@@ -501,7 +511,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                         },
                         /*#__PURE__*/ React.createElement(
-                          Radio.Group,
+                          _Radio.Group,
                           {
                             style: {
                               width: '100%',
@@ -509,7 +519,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                             size: 'small',
                           },
                           /*#__PURE__*/ React.createElement(
-                            Radio.Button,
+                            _Radio.Button,
                             {
                               style: {
                                 width: '33%',
@@ -522,7 +532,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                             }),
                           ),
                           /*#__PURE__*/ React.createElement(
-                            Radio.Button,
+                            _Radio.Button,
                             {
                               style: {
                                 width: '33%',
@@ -535,7 +545,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                             }),
                           ),
                           /*#__PURE__*/ React.createElement(
-                            Radio.Button,
+                            _Radio.Button,
                             {
                               style: {
                                 width: '33%',
@@ -552,16 +562,16 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Row,
+                    _Row,
                     null,
                     /*#__PURE__*/ React.createElement(
-                      Col,
+                      _Col,
                       {
                         span: 18,
                         offset: 6,
                       },
                       /*#__PURE__*/ React.createElement(
-                        Form.Item,
+                        _Form.Item,
                         {
                           label: '',
                           name: 'titleFontStyle',
@@ -574,15 +584,15 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'headerFontColor')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'headerFontColor',
                         label: '\u8868\u5934\u5B57\u8272',
@@ -591,46 +601,46 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'headerFontSize',
                       },
-                      /*#__PURE__*/ React.createElement(InputNumber, null),
+                      /*#__PURE__*/ React.createElement(_InputNumber, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'theadBkColorShow')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 10,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'theadBkColorShow',
                         label: '\u8868\u5934\u80CC\u666F',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'theadBkColor',
                       },
@@ -641,30 +651,30 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'tbodyBkColor')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 10,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'tbodyBkColorShow',
                         label: '\u8868\u683C\u80CC\u666F',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'tbodyBkColor',
                       },
@@ -675,30 +685,30 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'tbBorderShow')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 10,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'tbBorderShow',
                         label: '\u8868\u683C\u8FB9\u6846',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 6,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'tbBorderColor',
                       },
@@ -706,45 +716,45 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 5,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'tbBorderSize',
                       },
-                      /*#__PURE__*/ React.createElement(InputNumber, null),
+                      /*#__PURE__*/ React.createElement(_InputNumber, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'chartShape')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     null,
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartShape',
                         label: '\u997C/\u73AF\u56FE',
                       },
                       /*#__PURE__*/ React.createElement(
-                        Radio.Group,
+                        _Radio.Group,
                         null,
                         /*#__PURE__*/ React.createElement(
-                          Radio,
+                          _Radio,
                           {
                             value: 'pie',
                           },
                           '\u997C\u72B6\u56FE',
                         ),
                         /*#__PURE__*/ React.createElement(
-                          Radio,
+                          _Radio,
                           {
                             value: 'circle',
                           },
@@ -757,38 +767,38 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'chartBkColorChecked')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ React.createElement(Form.Item, {
+                    /*#__PURE__*/ React.createElement(_Form.Item, {
                       label: '\u80CC\u666F\u989C\u8272',
                     }),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 3,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartBkColorChecked',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartBkColor',
                       },
@@ -799,43 +809,43 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'chartOrder')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ React.createElement(Form.Item, {
+                    /*#__PURE__*/ React.createElement(_Form.Item, {
                       label: '\u81EA\u52A8\u6392\u5E8F',
                     }),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 3,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartOrderChecked',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 13,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartOrder',
                       },
                       /*#__PURE__*/ React.createElement(
-                        Select,
+                        _Select,
                         {
                           allowClear: true,
                           getPopupContainer: function getPopupContainer() {
@@ -863,24 +873,24 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'lineGraphRange')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ React.createElement(Form.Item, {
+                    /*#__PURE__*/ React.createElement(_Form.Item, {
                       label: '\u56FE\u5F62\u989C\u8272',
                     }),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 16,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.List,
+                      _Form.List,
                       {
                         name: 'lineGraphRange',
                       },
@@ -892,7 +902,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           null,
                           fields.map(function (field) {
                             return /*#__PURE__*/ React.createElement(
-                              Space,
+                              _Space,
                               {
                                 key: field.key,
                                 style: {
@@ -903,7 +913,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                                 size: 20,
                               },
                               /*#__PURE__*/ React.createElement(
-                                Form.Item,
+                                _Form.Item,
                                 _objectSpread(
                                   _objectSpread({}, field),
                                   {},
@@ -915,10 +925,10 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                                     },
                                   },
                                 ),
-                                /*#__PURE__*/ React.createElement(Checkbox, null),
+                                /*#__PURE__*/ React.createElement(_Checkbox, null),
                               ),
                               /*#__PURE__*/ React.createElement(
-                                Form.Item,
+                                _Form.Item,
                                 _objectSpread(
                                   _objectSpread({}, field),
                                   {},
@@ -932,7 +942,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                                 /*#__PURE__*/ React.createElement(ColorPicker, null),
                               ),
                               /*#__PURE__*/ React.createElement(
-                                Form.Item,
+                                _Form.Item,
                                 {
                                   style: {
                                     display: 'none',
@@ -948,14 +958,14 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           }),
                           fields.length < 10
                             ? /*#__PURE__*/ React.createElement(
-                                Form.Item,
+                                _Form.Item,
                                 {
                                   style: {
                                     display: 'none',
                                   },
                                 },
                                 /*#__PURE__*/ React.createElement(
-                                  Button,
+                                  _Button,
                                   {
                                     type: 'dashed',
                                     onClick: function onClick() {
@@ -976,38 +986,38 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'chartBkColorShow')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ React.createElement(Form.Item, {
+                    /*#__PURE__*/ React.createElement(_Form.Item, {
                       label: '\u80CC\u666F\u989C\u8272',
                     }),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 3,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartBkColorShow',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartBkColor',
                       },
@@ -1018,38 +1028,38 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               : '',
             hasField(item.formItems, 'chartRefLineShow')
               ? /*#__PURE__*/ React.createElement(
-                  Row,
+                  _Row,
                   null,
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ React.createElement(Form.Item, {
+                    /*#__PURE__*/ React.createElement(_Form.Item, {
                       label: '\u53C2\u8003\u7EBF',
                     }),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 3,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartRefLineShow',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ React.createElement(Checkbox, null),
+                      /*#__PURE__*/ React.createElement(_Checkbox, null),
                     ),
                   ),
                   /*#__PURE__*/ React.createElement(
-                    Col,
+                    _Col,
                     {
                       span: 12,
                     },
                     /*#__PURE__*/ React.createElement(
-                      Form.Item,
+                      _Form.Item,
                       {
                         name: 'chartRefLineColor',
                       },

@@ -1,3 +1,12 @@
+import 'antd/lib/row/style';
+import _Row from 'antd/lib/row';
+import 'antd/lib/col/style';
+import _Col from 'antd/lib/col';
+import 'antd/lib/dropdown/style';
+import _Dropdown from 'antd/lib/dropdown';
+import 'antd/lib/menu/style';
+import _Menu from 'antd/lib/menu';
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -96,7 +105,6 @@ function _arrayWithHoles(arr) {
 }
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Row, Col, Menu, Dropdown, Button } from 'antd';
 import { CloseOutlined, RedoOutlined, VideoCameraAddOutlined } from '@ant-design/icons';
 import { useFullscreen } from 'ahooks';
 import flvjs from 'flv.js';
@@ -276,20 +284,20 @@ var VideoPlayer = function VideoPlayer(props) {
   };
 
   var menu = /*#__PURE__*/ React.createElement(
-    Menu,
+    _Menu,
     {
       onClick: handleMenuClick,
       selectedKeys: [selectKey],
     },
     /*#__PURE__*/ React.createElement(
-      Menu.Item,
+      _Menu.Item,
       {
         key: '0',
       },
       '\u8D85\u6E05',
     ),
     /*#__PURE__*/ React.createElement(
-      Menu.Item,
+      _Menu.Item,
       {
         key: '1',
       },
@@ -347,18 +355,18 @@ var VideoPlayer = function VideoPlayer(props) {
           : '暂未绑定通道',
       ),
     /*#__PURE__*/ React.createElement(
-      Row,
+      _Row,
       {
         className: styles.videoHeader,
         align: 'middle',
       },
       /*#__PURE__*/ React.createElement(
-        Col,
+        _Col,
         {
           span: 4,
         },
         /*#__PURE__*/ React.createElement(
-          Dropdown,
+          _Dropdown,
           {
             overlay: menu,
             getPopupContainer: function getPopupContainer() {
@@ -381,7 +389,7 @@ var VideoPlayer = function VideoPlayer(props) {
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        Col,
+        _Col,
         {
           span: 16,
           style: {
@@ -398,14 +406,14 @@ var VideoPlayer = function VideoPlayer(props) {
       ),
     ),
     /*#__PURE__*/ React.createElement(
-      Row,
+      _Row,
       {
         className: styles.videoControl,
         justify: 'space-between',
         align: 'middle',
       },
       /*#__PURE__*/ React.createElement(
-        Col,
+        _Col,
         {
           span: showChannel ? 2 : 12,
         },
@@ -428,7 +436,7 @@ var VideoPlayer = function VideoPlayer(props) {
       showChannel &&
         !isFullscreen &&
         /*#__PURE__*/ React.createElement(
-          Col,
+          _Col,
           {
             span: 8,
           },
@@ -451,7 +459,7 @@ var VideoPlayer = function VideoPlayer(props) {
           ),
         ),
       /*#__PURE__*/ React.createElement(
-        Col,
+        _Col,
         {
           span: 12,
           style: {

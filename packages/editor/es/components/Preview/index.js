@@ -1,3 +1,6 @@
+import 'antd/lib/config-provider/style';
+import _ConfigProvider from 'antd/lib/config-provider';
+
 function _createForOfIteratorHelper(o, allowArrayLike) {
   var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
   if (!it) {
@@ -235,7 +238,6 @@ function _classCallCheck(instance, Constructor) {
 }
 
 import React, { useEffect, useState } from 'react';
-import { ConfigProvider } from 'antd';
 import { Lock, Topology } from '@top-datav/core';
 import { isNumber, getFixed } from '../utils/cacl';
 import { formatTimer } from '../utils/Property2NodeProps';
@@ -1241,7 +1243,7 @@ var Preview = function Preview(_ref) {
   };
 
   return /*#__PURE__*/ React.createElement(
-    ConfigProvider,
+    _ConfigProvider,
     {
       prefixCls: 'antdv4',
     },

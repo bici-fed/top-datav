@@ -1,3 +1,6 @@
+import 'antd/lib/button/style';
+import _Button from 'antd/lib/button';
+
 function _slicedToArray(arr, i) {
   return (
     _arrayWithHoles(arr) ||
@@ -65,7 +68,6 @@ function _arrayWithHoles(arr) {
 
 import React, { useState, useEffect } from 'react';
 import reactCSS from 'reactcss';
-import { Button } from 'antd';
 import { SketchPicker } from 'react-color';
 import styleScss from './ColorPicker.module.css';
 
@@ -185,7 +187,7 @@ var ColorPicker = function ColorPicker(props) {
             onChange: handleChange,
           }),
           /*#__PURE__*/ React.createElement(
-            Button,
+            _Button,
             {
               onClick: handleClose,
               style: {
@@ -196,7 +198,7 @@ var ColorPicker = function ColorPicker(props) {
             '\u53D6\u6D88',
           ),
           /*#__PURE__*/ React.createElement(
-            Button,
+            _Button,
             {
               type: 'primary',
               onClick: handleSetColor,
