@@ -1,6 +1,6 @@
 {
   "name": "@top-datav/sequence-diagram",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "> TODO: description",
   "author": "jufeng <jufeng@bicitech.cn>",
   "homepage": "",
@@ -23,7 +23,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@top-datav/core": "^1.0.6"
+    "@top-datav/core": "^1.0.7"
   },
   "gitHead": "d0a383b58b5ea7cf81a38eda4ef3570c6c0ebb97"
 }
