@@ -1,6 +1,6 @@
 {
   "name": "@top-datav/bici-diagram",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "> TODO: description",
   "author": "jufeng <jufeng@bicitech.cn>",
   "homepage": "",
@@ -26,7 +26,7 @@
     "@top-datav/core": "^1.0.0"
   },
   "dependencies": {
-    "@top-datav/core": "^1.0.3"
+    "@top-datav/core": "^1.0.4"
   },
   "gitHead": "0eb4af2a70da38173763bbd831060d823e904540"
 }

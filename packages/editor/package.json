@@ -1,6 +1,6 @@
 {
   "name": "@top-datav/editor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "> TODO: description",
   "author": "jufeng <jufeng@bicitech.cn>",
   "homepage": "",
@@ -27,15 +27,15 @@
     "@types/react-dom": "17.0.14"
   },
   "dependencies": {
-    "@top-datav/activity-diagram": "^1.0.2",
-    "@top-datav/bici-diagram": "^1.0.2",
-    "@top-datav/chart-diagram": "^1.0.2",
-    "@top-datav/class-diagram": "^1.0.2",
-    "@top-datav/core": "^1.0.3",
-    "@top-datav/flow-diagram": "^1.0.2",
-    "@top-datav/layout": "^1.0.2",
-    "@top-datav/sequence-diagram": "^1.0.2",
-    "@top-datav/store-utils": "^1.0.2",
+    "@top-datav/activity-diagram": "^1.0.3",
+    "@top-datav/bici-diagram": "^1.0.3",
+    "@top-datav/chart-diagram": "^1.0.3",
+    "@top-datav/class-diagram": "^1.0.3",
+    "@top-datav/core": "^1.0.4",
+    "@top-datav/flow-diagram": "^1.0.3",
+    "@top-datav/layout": "^1.0.3",
+    "@top-datav/sequence-diagram": "^1.0.3",
+    "@top-datav/store-utils": "^1.0.3",
     "react-color": "^2.19.3"
   },
   "devDependencies": {
