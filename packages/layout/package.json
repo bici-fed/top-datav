@@ -1,6 +1,6 @@
 {
   "name": "@top-datav/layout",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "> TODO: description",
   "author": "jufeng <jufeng@bicitech.cn>",
   "homepage": "",
@@ -23,7 +23,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@top-datav/core": "^1.0.9"
+    "@top-datav/core": "^1.0.10"
   },
   "gitHead": "acd7f882aafb4e47eebdee862ffb8fd427ccebf5"
 }
