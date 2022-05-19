@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var IconquanpingxianshiHover = function IconquanpingxianshiHover(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var IconquanpingxianshiHover = function IconquanpingxianshiHover(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M588.8 98.112v53.376c0 11.776-9.6 21.312-21.312 21.312H172.8v394.688c0 11.776-9.6 21.312-21.312 21.312h-53.376a21.312 21.312 0 0 1-21.312-21.312v-448c0-23.616 19.072-42.688 42.688-42.688h448c11.776 0 21.312 9.6 21.312 21.312zM435.2 925.888v-53.376a21.312 21.312 0 0 1 21.312-21.312H851.2V456.512c0-11.776 9.6-21.312 21.312-21.312h53.376c11.776 0 21.312 9.6 21.312 21.312v448a42.688 42.688 0 0 1-42.688 42.688h-448a21.312 21.312 0 0 1-21.312-21.312z',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var IconquanpingxianshiHover = function IconquanpingxianshiHover(_ref) {
 IconquanpingxianshiHover.defaultProps = {
   size: 18,
 };
-var _default = IconquanpingxianshiHover;
-exports['default'] = _default;
+export default IconquanpingxianshiHover;

@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,66 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _indexModule = _interopRequireDefault(require('./index.module.css'));
-
-var _antd = require('antd');
-
-var _api = require('../data/api');
-
-var _serializing = require('../utils/serializing');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
 }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -157,7 +95,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
     },
     f: function f() {
       try {
-        if (!normalCompletion && it['return'] != null) it['return']();
+        if (!normalCompletion && it.return != null) it.return();
       } finally {
         if (didErr) throw err;
       }
@@ -279,6 +217,13 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+import React, { Component } from 'react';
+import styles from './index.module.css';
+import { Form, Input, Modal, message } from 'antd';
+import { clientParam } from '../data/api';
+import { replacer } from '../utils/serializing';
+import * as _ from 'lodash';
+
 var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
   _inherits(CanvasContextMenu, _Component);
 
@@ -298,7 +243,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
       newComVisible: false,
       componentName: '添加到自定义组件',
     };
-    _this.formRef = /*#__PURE__*/ _react['default'].createRef();
+    _this.formRef = /*#__PURE__*/ React.createRef();
 
     _this.onUncombine = function () {
       if (!_this.props.data.node) {
@@ -398,15 +343,15 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
                   _this
                     .saveNewComponent({
                       componentName: _this.state.componentName,
-                      componentProperty: JSON.stringify(newNode, _serializing.replacer),
+                      componentProperty: JSON.stringify(newNode, replacer),
                     })
                     .then(function (res) {
                       _this.setState({
                         newComVisible: false,
                       });
 
-                      _antd.message.info('添加到自定义组件成功').then(function () {
-                        _antd.message.destroy();
+                      message.info('添加到自定义组件成功').then(function () {
+                        message.destroy();
                       });
 
                       _this.props.getNewComponents();
@@ -457,8 +402,8 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
     };
 
     _this.renderNewComponentModal = function () {
-      return /*#__PURE__*/ _react['default'].createElement(
-        _antd.Modal,
+      return /*#__PURE__*/ React.createElement(
+        Modal,
         {
           title: '\u6DFB\u52A0\u5230\u81EA\u5B9A\u4E49\u7EC4\u4EF6',
           visible: _this.state.newComVisible,
@@ -471,14 +416,14 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
             return document.querySelector('#editLayout');
           },
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form,
+        /*#__PURE__*/ React.createElement(
+          Form,
           {
             ref: _this.formRef,
             preserve: false,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.Item,
+          /*#__PURE__*/ React.createElement(
+            Form.Item,
             {
               rules: [
                 {
@@ -493,7 +438,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
               label: '\u7EC4\u4EF6\u540D\u5B57',
               name: 'componentName',
             },
-            /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+            /*#__PURE__*/ React.createElement(Input, {
               placeholder: '\u8F93\u5165\u7EC4\u4EF6\u540D\u5B57',
               id: 'componentName',
               maxLength: 20,
@@ -510,7 +455,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
     {
       key: 'saveNewComponent',
       value: function saveNewComponent(params) {
-        return (0, _api.clientParam)(this.props.combineCom.apiURL).post(
+        return clientParam(this.props.combineCom.apiURL).post(
           this.props.combineCom.add.url,
           params,
           {
@@ -597,54 +542,45 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
       value: function render() {
         var _this2 = this;
 
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ React.createElement(
           'div',
           {
-            className: _indexModule['default'].menus,
+            className: styles.menus,
             style: {
               display: this.props.show ? 'block' : 'none',
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             null,
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ React.createElement(
               'a',
               {
-                className:
-                  this.props.data.node || this.props.data.nodes
-                    ? ''
-                    : _indexModule['default'].disabled,
+                className: this.props.data.node || this.props.data.nodes ? '' : styles.disabled,
                 onClick: this.onTop.bind(this),
               },
               '\u7F6E\u9876',
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             null,
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ React.createElement(
               'a',
               {
-                className:
-                  this.props.data.node || this.props.data.nodes
-                    ? ''
-                    : _indexModule['default'].disabled,
+                className: this.props.data.node || this.props.data.nodes ? '' : styles.disabled,
                 onClick: this.onBottom.bind(this),
               },
               '\u7F6E\u5E95',
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             null,
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ React.createElement(
               'a',
               {
-                className:
-                  this.props.data.node || this.props.data.nodes
-                    ? ''
-                    : _indexModule['default'].disabled,
+                className: this.props.data.node || this.props.data.nodes ? '' : styles.disabled,
                 onClick: function onClick() {
                   _this2.onNewComponent();
                 },
@@ -652,14 +588,14 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
               '\u6DFB\u52A0\u5230\u81EA\u5B9A\u4E49\u7EC4\u4EF6',
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement('div', {
-            className: _indexModule['default'].line,
+          /*#__PURE__*/ React.createElement('div', {
+            className: styles.line,
           }),
           this.props.data.nodes
-            ? /*#__PURE__*/ _react['default'].createElement(
+            ? /*#__PURE__*/ React.createElement(
                 'div',
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(
                   'a',
                   {
                     onClick: function onClick() {
@@ -671,10 +607,10 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
               )
             : null,
           this.props.data.node && this.props.data.node.name === 'combine'
-            ? /*#__PURE__*/ _react['default'].createElement(
+            ? /*#__PURE__*/ React.createElement(
                 'div',
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(
                   'a',
                   {
                     onClick: this.onUncombine,
@@ -690,6 +626,6 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
   ]);
 
   return CanvasContextMenu;
-})(_react.Component);
+})(Component);
 
-exports['default'] = CanvasContextMenu;
+export { CanvasContextMenu as default };

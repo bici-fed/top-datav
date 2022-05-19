@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,62 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _VideoPlayer = _interopRequireDefault(require('./Player/VideoPlayer'));
-
-var _axios = _interopRequireDefault(require('axios'));
-
-var _Layout = require('../../Layout');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -247,7 +189,11 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
-////sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-720p.fl
+import React, { Component } from 'react';
+import VideoPlayer from './Player/VideoPlayer';
+import axios from 'axios';
+import { canvas } from '../../Layout'; ////sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-720p.fl
+
 var LiveVideo = /*#__PURE__*/ (function (_Component) {
   _inherits(LiveVideo, _Component);
 
@@ -271,8 +217,7 @@ var LiveVideo = /*#__PURE__*/ (function (_Component) {
       var maxTimeout = 600000;
       var maxContentLength = Math.pow(1024, 2);
       var myURL = new URL(_this.state.updateStream);
-
-      var client = _axios['default'].create({
+      var client = axios.create({
         baseURL: ''.concat(myURL.origin),
         timeout: timeout,
         maxContentLength: maxContentLength,
@@ -366,8 +311,7 @@ var LiveVideo = /*#__PURE__*/ (function (_Component) {
         var timeout = 600000;
         var maxContentLength = Math.pow(1024, 2);
         var myURL = new URL(this.state.updateStream);
-
-        var client = _axios['default'].create({
+        var client = axios.create({
           baseURL: ''.concat(myURL.origin),
           timeout: timeout,
           maxContentLength: maxContentLength,
@@ -404,8 +348,8 @@ var LiveVideo = /*#__PURE__*/ (function (_Component) {
         });
         var that = this;
 
-        if (_Layout.canvas) {
-          _Layout.canvas.on('deleteNode', function (nodes) {
+        if (canvas) {
+          canvas.on('deleteNode', function (nodes) {
             (nodes || []).forEach(function (n) {
               if (n.name == 'liveVideo' && n.id === that.props.node.id) {
                 that.removeVideo();
@@ -476,7 +420,7 @@ var LiveVideo = /*#__PURE__*/ (function (_Component) {
           _this$props$node$prop === void 0
             ? void 0
             : _this$props$node$prop.selectedRows[0];
-        return /*#__PURE__*/ _react['default'].createElement(_VideoPlayer['default'], {
+        return /*#__PURE__*/ React.createElement(VideoPlayer, {
           height: 400,
           videoObj: videoObj,
           removeVideo: this.removeVideo,
@@ -488,6 +432,6 @@ var LiveVideo = /*#__PURE__*/ (function (_Component) {
   ]);
 
   return LiveVideo;
-})(_react.Component);
+})(Component);
 
-exports['default'] = LiveVideo;
+export { LiveVideo as default };

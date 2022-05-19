@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,21 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.reactNodesData = exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _reactDom = _interopRequireDefault(require('react-dom'));
-
-var _core = require('@top-datav/core');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -174,21 +157,24 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-// 存放原生dom节点
-var reactNodesData = {};
-exports.reactNodesData = reactNodesData;
+// @ts-nocheck
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { s8, createDiv, rectangle, createLayerDiv } from '@top-datav/core'; // 存放原生dom节点
+
+export var reactNodesData = {};
 
 var drawReactNode = function drawReactNode(ReactComponent) {
   return function (ctx, node) {
     // 绘制一个底图，类似于占位符。
-    (0, _core.rectangle)(ctx, node); // 如果未知组件，直接返回
+    rectangle(ctx, node); // 如果未知组件，直接返回
 
     if (!ReactComponent) {
       return;
     } // 需要设置一个唯一的id，方便绘画引擎识别
 
     if (!node.elementId) {
-      node.elementId = (0, _core.s8)();
+      node.elementId = s8();
     } // 节点的elementLoaded用于判断第三方图形库是否第一次加载，是否需要初始化
     // 这是一个辅助变量，用户自己赋值使用或不用
 
@@ -196,12 +182,12 @@ var drawReactNode = function drawReactNode(ReactComponent) {
       if (!document.getElementById(node.elementId)) {
         // 创建一个div容器
         reactNodesData[node.id] = {
-          div: (0, _core.createDiv)(node),
+          div: createDiv(node),
         };
 
         if (node.isEditable) {
           reactNodesData[node.id + '-layer'] = {
-            div: (0, _core.createLayerDiv)(node),
+            div: createLayerDiv(node),
           };
           document.body.appendChild(reactNodesData[node.id + '-layer'].div);
         }
@@ -212,8 +198,8 @@ var drawReactNode = function drawReactNode(ReactComponent) {
       } // 初始化 react 组件
 
       if (node && node.property) {
-        reactNodesData[node.id].component = _reactDom['default'].render(
-          /*#__PURE__*/ _react['default'].createElement(
+        reactNodesData[node.id].component = ReactDOM.render(
+          /*#__PURE__*/ React.createElement(
             ReactComponent,
             _objectSpread(
               _objectSpread({}, node.property.props),
@@ -260,13 +246,12 @@ var ModalContainer = /*#__PURE__*/ (function (_React$Component) {
     {
       key: 'render',
       value: function render() {
-        return /*#__PURE__*/ _reactDom['default'].createPortal(this.props.children, this.props.el);
+        return /*#__PURE__*/ ReactDOM.createPortal(this.props.children, this.props.el);
       },
     },
   ]);
 
   return ModalContainer;
-})(_react['default'].Component);
+})(React.Component);
 
-var _default = drawReactNode;
-exports['default'] = _default;
+export default drawReactNode;

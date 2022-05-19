@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,64 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _biciTransformers = require('bici-transformers');
-
-var _userSide = require('../common/userSide');
-
-var _lodash = _interopRequireDefault(require('lodash'));
-
-var _api = require('../data/api');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -217,6 +157,14 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+/**
+ * 用户侧：数据点管理 > 列表
+ */
+import React, { Component } from 'react';
+import { ComplexTable } from 'bici-transformers';
+import { DATAPOINT_STATUS, DATA_ORIGIN } from '../common/userSide';
+import _ from 'lodash';
+import { fetchSearchDataPointManageList } from '../data/api';
 var initialQueryParams = {
   dataName: '',
   dataCode: '',
@@ -380,39 +328,35 @@ var DataPointTable = /*#__PURE__*/ (function (_Component) {
               _record$scopeMax = record.scopeMax,
               scopeMax = _record$scopeMax === void 0 ? '' : _record$scopeMax;
             var scope = ''.concat(scopeMin, ' ~ ').concat(scopeMax);
-
-            var scopeText = /*#__PURE__*/ _react['default'].createElement(
+            var scopeText = /*#__PURE__*/ React.createElement(
               'div',
               {
                 style: {
-                  width: _biciTransformers.ComplexTable.columnWidth.nm - 16,
+                  width: ComplexTable.columnWidth.nm - 16,
                 },
               },
               scope,
             );
-
-            return _lodash['default'].isNumber(scopeMin) || _lodash['default'].isNumber(scopeMax)
-              ? scopeText
-              : '';
+            return _.isNumber(scopeMin) || _.isNumber(scopeMax) ? scopeText : '';
           },
         },
         {
           title: '数据来源',
           dataIndex: 'channelList',
           width: 'nm',
-          filters: _userSide.DATA_ORIGIN,
+          filters: DATA_ORIGIN,
           filterMultiple: true,
           render: function render(text, record) {
             var channel =
-              _userSide.DATA_ORIGIN.filter(function (v) {
+              DATA_ORIGIN.filter(function (v) {
                 return v.value === record.channel;
               })[0] || {};
             var channelText = channel.text;
-            return /*#__PURE__*/ _react['default'].createElement(
+            return /*#__PURE__*/ React.createElement(
               'div',
               {
                 style: {
-                  width: _biciTransformers.ComplexTable.columnWidth.nm - 16,
+                  width: ComplexTable.columnWidth.nm - 16,
                 },
               },
               channelText,
@@ -440,7 +384,7 @@ var DataPointTable = /*#__PURE__*/ (function (_Component) {
           title: '状态',
           dataIndex: 'statusList',
           width: 120,
-          filters: _userSide.DATAPOINT_STATUS,
+          filters: DATAPOINT_STATUS,
           filterMultiple: true,
           checkDisabled: true,
           fixed: 'right',
@@ -448,13 +392,13 @@ var DataPointTable = /*#__PURE__*/ (function (_Component) {
             var status = record.status;
 
             var _ref =
-                _userSide.DATAPOINT_STATUS.filter(function (v) {
+                DATAPOINT_STATUS.filter(function (v) {
                   return v.value === status;
                 })[0] || {},
               statusText = _ref.text;
 
             var className = status === 1 ? 'green6' : 'black85';
-            return /*#__PURE__*/ _react['default'].createElement(
+            return /*#__PURE__*/ React.createElement(
               'div',
               {
                 style: {
@@ -570,7 +514,7 @@ var DataPointTable = /*#__PURE__*/ (function (_Component) {
         } // 毒刺,不要csv的数据点
 
         params.isOtherPointList = [0];
-        (0, _api.fetchSearchDataPointManageList)(params).then(function (res) {
+        fetchSearchDataPointManageList(params).then(function (res) {
           if (res['data'].data) {
             var _res$data$data = res['data'].data,
               list = _res$data$data.list,
@@ -616,7 +560,7 @@ var DataPointTable = /*#__PURE__*/ (function (_Component) {
           },
         };
         pagination.total = total;
-        return /*#__PURE__*/ _react['default'].createElement(_biciTransformers.ComplexTable, {
+        return /*#__PURE__*/ React.createElement(ComplexTable, {
           rowKey: 'id',
           minWidth: 800,
           scroll: {
@@ -634,6 +578,6 @@ var DataPointTable = /*#__PURE__*/ (function (_Component) {
   ]);
 
   return DataPointTable;
-})(_react.Component);
+})(Component);
 
-exports['default'] = DataPointTable;
+export { DataPointTable as default };

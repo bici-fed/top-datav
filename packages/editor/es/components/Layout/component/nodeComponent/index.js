@@ -1,117 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
-
-var _icons = require('@ant-design/icons');
-
-var _ColorPicker = _interopRequireDefault(require('../../../common/ColorPicker/ColorPicker'));
-
-var _index = require('../../index');
-
-var _align = require('@top-datav/layout/src/align');
-
-var _iconConfig = _interopRequireDefault(require('../../../config/iconConfig'));
-
-var _FilterDataPoint = _interopRequireDefault(require('../../../FilterDataPoint'));
-
-var _indexModule = _interopRequireDefault(require('./index.module.css'));
-
-var _Property2NodeProps = require('../../../utils/Property2NodeProps');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-var _echarts = require('@top-datav/chart-diagram/src/echarts');
-
-var _serializing = require('../../../utils/serializing');
-
-var _cacl = require('../../../utils/cacl');
-
-var _defines = require('../../../data/defines');
-
-var _timeline = require('../../../config/charts/timeline');
-
-var _CustomizedDynamicForm = _interopRequireDefault(
-  require('../../../common/CustomizedDynamicForm'),
-);
-
-var _api = require('../../../data/api');
-
-var _pie = require('../../../config/charts/pie');
-
-var _bar = require('../../../config/charts/bar');
-
-var _horizontalbar = require('../../../config/charts/horizontalbar');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -220,10 +106,55 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-var Panel = _antd.Collapse.Panel;
-var TabPane = _antd.Tabs.TabPane;
-var TextArea = _antd.Input.TextArea;
-var Option = _antd.Select.Option; // 对齐方式 key 对齐方式 val 图标名称
+import React, {
+  useMemo,
+  useEffect,
+  useState,
+  Fragment,
+  useCallback,
+  useImperativeHandle,
+} from 'react';
+import {
+  Form,
+  InputNumber,
+  Tabs,
+  Collapse,
+  Row,
+  Col,
+  Input,
+  Select,
+  Tag,
+  Checkbox,
+  Button,
+  Space,
+  Tooltip,
+  Radio,
+  message,
+  Popconfirm,
+} from 'antd';
+import { PlusOutlined, MinusCircleOutlined, DeleteOutlined } from '@ant-design/icons';
+import ColorPicker from '../../../common/ColorPicker/ColorPicker';
+import { canvas } from '../../index';
+import { alignNodes } from '@top-datav/layout/src/align';
+import CustomIcon from '../../../config/iconConfig';
+import DataBindModal from '../../../FilterDataPoint';
+import styles from './index.module.css';
+import { getNodeType } from '../../../utils/Property2NodeProps';
+import * as _ from 'lodash';
+import { echartsObjs } from '@top-datav/chart-diagram/src/echarts';
+import { replacer, reviver } from '../../../utils/serializing';
+import { eraseOverlapIntervals } from '../../../utils/cacl';
+import { defaultLineColors } from '../../../data/defines';
+import { getTimeLineOption } from '../../../config/charts/timeline';
+import CustomizedDynamicForm from '../../../common/CustomizedDynamicForm';
+import { fetchDataSourceList } from '../../../data/api';
+import { getPieOptionByChangeProp } from '../../../config/charts/pie';
+import { getBarOption } from '../../../config/charts/bar';
+import { getHorizontalBarOption } from '../../../config/charts/horizontalbar';
+var Panel = Collapse.Panel;
+var TabPane = Tabs.TabPane;
+var TextArea = Input.TextArea;
+var Option = Select.Option; // 对齐方式 key 对齐方式 val 图标名称
 
 var alignObj = {
   left: ['左对齐', 'iconzuoduiqi'],
@@ -241,8 +172,7 @@ var fontStyleNodeList = ['biciPilot', 'circle', 'rectangle', 'text', 'biciVarer'
 var boardStyleNodeList = ['circle', 'rectangle', 'biciVarer', 'combine']; // 不展示旋转
 
 var disabledRotateList = ['biciPilot', 'echarts', 'biciCard', 'QTLiveVideo'];
-
-var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref, ref) {
+var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
   var _data$node, _data$node2, _property$video, _data$node4, _data$node5;
 
   var data = _ref.data,
@@ -255,25 +185,25 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     onCustomizedDynamicFormChange = _ref.onCustomizedDynamicFormChange,
     uploaConfig = _ref.uploaConfig;
 
-  var _Form$useForm = _antd.Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
-  var _Form$useForm3 = _antd.Form.useForm(),
+  var _Form$useForm3 = Form.useForm(),
     _Form$useForm4 = _slicedToArray(_Form$useForm3, 1),
     propertyForm = _Form$useForm4[0];
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     visible = _useState2[0],
     setVisible = _useState2[1];
 
-  var _useState3 = (0, _react.useState)('small'),
+  var _useState3 = useState('small'),
     _useState4 = _slicedToArray(_useState3, 2),
     pilotBtnSize = _useState4[0],
     setPilotBtnSize = _useState4[1];
 
-  var _useState5 = (0, _react.useState)({
+  var _useState5 = useState({
       italicBtn: '#fff',
       boldBtn: '#fff',
       color: '#222',
@@ -316,21 +246,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
   var _data$node3 = data === null || data === void 0 ? void 0 : data.node,
     property = _data$node3.property; // 用户自定义数据片段
 
-  var _useState7 = (0, _react.useState)(
+  var _useState7 = useState(
       (property === null || property === void 0 ? void 0 : property.dataPointSelectedRows) || [],
     ),
     _useState8 = _slicedToArray(_useState7, 2),
     dataPointSelectedRows = _useState8[0],
     setDataPointSelectedRows = _useState8[1];
 
-  var _useState9 = (0, _react.useState)(false),
+  var _useState9 = useState(false),
     _useState10 = _slicedToArray(_useState9, 2),
     showSelectDataPoint = _useState10[0],
     setShowSelectDataPoint = _useState10[1];
 
-  var addLineColorBtnRef = _react['default'].useRef();
-
-  var removeLineColorBtnRef = _react['default'].useRef();
+  var addLineColorBtnRef = React.useRef();
+  var removeLineColorBtnRef = React.useRef();
 
   var _ref5 = property || {},
     dataMethod = _ref5.dataMethod,
@@ -340,12 +269,12 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     reqData = _ref5.reqData,
     dataPointReq = _ref5.dataPointReq;
 
-  var _useState11 = (0, _react.useState)(false),
+  var _useState11 = useState(false),
     _useState12 = _slicedToArray(_useState11, 2),
     refreshProperty = _useState12[0],
     setRefreshProperty = _useState12[1];
 
-  var _useState13 = (0, _react.useState)(
+  var _useState13 = useState(
       (property === null || property === void 0
         ? void 0
         : (_property$video = property.video) === null || _property$video === void 0
@@ -368,7 +297,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
       selectedRowKeys.push(row.id);
       return row;
     });
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       var temp = _objectSpread({}, btnColor);
 
@@ -430,7 +359,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
       property,
     ],
   );
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       var _property$date, _property$date2, _property$time, _property$time2;
 
@@ -536,13 +465,12 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
           _property$dataColors$19,
           _property$dataColors$20;
 
-        var lineRangedefaultColor = _defines.defaultLineColors.map(function (color) {
+        var lineRangedefaultColor = defaultLineColors.map(function (color) {
           return {
             lineGraphRangeColor: color,
             lineGraphRangeCheck: true,
           };
         });
-
         var nodeLineRangeColor = [];
 
         if (property && property.lineGraphRange) {
@@ -710,7 +638,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     [property, refreshProperty],
   ); // 对父组件暴露保存数据的接口
 
-  (0, _react.useImperativeHandle)(
+  useImperativeHandle(
     ref,
     function () {
       return {
@@ -768,16 +696,13 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
   // 设置对齐方式
 
   var handleAlign = function handleAlign(key) {
-    var pens = _index.canvas.activeLayer.pens;
-    var rect = _index.canvas.activeLayer.rect;
+    var pens = canvas.activeLayer.pens;
+    var rect = canvas.activeLayer.rect;
 
     if (pens.length >= 2) {
-      (0, _align.alignNodes)(pens, rect, key);
-
-      _index.canvas.cache();
-
-      _index.canvas.render();
-
+      alignNodes(pens, rect, key);
+      canvas.cache();
+      canvas.render();
       setIsSave(false);
     }
   }; // 设置日期格式
@@ -863,7 +788,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
         },
       );
     });
-    var nodeType = (0, _Property2NodeProps.getNodeType)(data.node);
+    var nodeType = getNodeType(data.node);
 
     if (property && property.dataPointSelectedRows) {
       if (
@@ -949,8 +874,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
       setIsSave(false);
     }
 
-    _index.canvas.dispatch('addDataPoint', {});
-
+    canvas.dispatch('addDataPoint', {});
     setRefreshProperty(!refreshProperty);
   }; // 选择数据点，将数值配置上区
 
@@ -972,24 +896,24 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
 
   var updateChartOption = function updateChartOption() {
     data.node.elementRendered = false;
-    var nodeType = (0, _Property2NodeProps.getNodeType)(data.node);
+    var nodeType = getNodeType(data.node);
     var newOption = {};
 
     switch (nodeType) {
       case 'timeLine':
-        newOption = (0, _timeline.getTimeLineOption)(data.node, undefined, undefined);
+        newOption = getTimeLineOption(data.node, undefined, undefined);
         break;
 
       case 'circleAndPie':
-        newOption = (0, _pie.getPieOptionByChangeProp)(data.node, null);
+        newOption = getPieOptionByChangeProp(data.node, null);
         break;
 
       case 'verticalBar':
-        newOption = (0, _bar.getBarOption)(data.node, null);
+        newOption = getBarOption(data.node, null);
         break;
 
       case 'horizontalBar':
-        newOption = (0, _horizontalbar.getHorizontalBarOption)(data.node, null);
+        newOption = getHorizontalBarOption(data.node, null);
         break;
 
       default:
@@ -997,21 +921,19 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
 
     data.node.data.echarts.option = newOption; // 更新图表数据
 
-    _echarts.echartsObjs[data.node.id].chart.setOption(
-      JSON.parse(JSON.stringify(newOption, _serializing.replacer), _serializing.reviver),
+    echartsObjs[data.node.id].chart.setOption(
+      JSON.parse(JSON.stringify(newOption, replacer), reviver),
       true,
     );
-
-    _echarts.echartsObjs[data.node.id].chart.resize();
-
-    _index.canvas.updateProps(true, [data.node]);
+    echartsObjs[data.node.id].chart.resize();
+    canvas.updateProps(true, [data.node]);
   };
 
-  var renderDataPointModal = (0, _react.useCallback)(
+  var renderDataPointModal = useCallback(
     function () {
       var _data$node$property;
 
-      return /*#__PURE__*/ _react['default'].createElement(_FilterDataPoint['default'], {
+      return /*#__PURE__*/ React.createElement(DataBindModal, {
         visible: true,
         disableSource: disableSource,
         selectedRows:
@@ -1031,36 +953,36 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染位置和大小的表单
    */
 
-  var renderPositionForm = (0, _react.useMemo)(
+  var renderPositionForm = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ React.createElement(
         Panel,
         {
           header: '\u4F4D\u7F6E\u548C\u5927\u5C0F',
           key: 'pos',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form,
+        /*#__PURE__*/ React.createElement(
+          Form,
           {
             form: form,
             onValuesChange: handleValuesChange,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             null,
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 14,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'x',
                   label: '\u4F4D\u7F6E',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
-                  suffix: /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(Input, {
+                  suffix: /*#__PURE__*/ React.createElement(
                     'span',
                     {
                       style: {
@@ -1072,19 +994,19 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 }),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 9,
                 push: 1,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'y',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
-                  suffix: /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(Input, {
+                  suffix: /*#__PURE__*/ React.createElement(
                     'span',
                     {
                       style: {
@@ -1096,19 +1018,19 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 }),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 14,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'width',
                   label: '\u5BBD\u9AD8',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
-                  suffix: /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(Input, {
+                  suffix: /*#__PURE__*/ React.createElement(
                     'span',
                     {
                       style: {
@@ -1120,19 +1042,19 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 }),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 9,
                 push: 1,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'height',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
-                  suffix: /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(Input, {
+                  suffix: /*#__PURE__*/ React.createElement(
                     'span',
                     {
                       style: {
@@ -1147,19 +1069,19 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
             !disabledRotateList.includes(
               data === null || data === void 0 ? void 0 : data.node.name,
             ) &&
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 14,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'rotate',
                     label: '\u65CB\u8F6C',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
-                    suffix: /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(Input, {
+                    suffix: /*#__PURE__*/ React.createElement(
                       'span',
                       {
                         style: {
@@ -1181,32 +1103,32 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染填充样式
    */
 
-  var renderFillStyle = (0, _react.useMemo)(
+  var renderFillStyle = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ React.createElement(
         Panel,
         {
           header: '\u586B\u5145',
           key: 'fill',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form,
+        /*#__PURE__*/ React.createElement(
+          Form,
           {
             form: form,
             onValuesChange: handleValuesChange,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             {
               align: 'middle',
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 8,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'showFillStyle',
                   label: '\u989C\u8272',
@@ -1216,20 +1138,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   labelAlign: 'left',
                   valuePropName: 'checked',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                /*#__PURE__*/ React.createElement(Checkbox, null),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 push: 1,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'fillStyle',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                /*#__PURE__*/ React.createElement(ColorPicker, null),
               ),
             ),
           ),
@@ -1242,32 +1164,32 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染边框样式
    */
 
-  var renderBorderStyle = (0, _react.useMemo)(
+  var renderBorderStyle = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ React.createElement(
         Panel,
         {
           header: '\u8FB9\u6846',
           key: 'border',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form,
+        /*#__PURE__*/ React.createElement(
+          Form,
           {
             form: form,
             onValuesChange: handleValuesChange,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             {
               align: 'middle',
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 8,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'showBoardColor',
                   label: '\u989C\u8272',
@@ -1277,35 +1199,35 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   labelAlign: 'left',
                   valuePropName: 'checked',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                /*#__PURE__*/ React.createElement(Checkbox, null),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 6,
                 push: 1,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'strokeStyle',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                /*#__PURE__*/ React.createElement(ColorPicker, null),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 push: 2,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'lineWidth',
                   initialValue: 1,
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                /*#__PURE__*/ React.createElement(InputNumber, {
                   min: 1,
                 }),
               ),
@@ -1375,37 +1297,36 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     }
 
     setIsSave(false);
-
-    _index.canvas.updateProps(true, [data.node]);
+    canvas.updateProps(true, [data.node]);
   };
   /**
    * 渲染字体的表单
    */
 
-  var renderFontForm = (0, _react.useMemo)(
+  var renderFontForm = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ React.createElement(
         Panel,
         {
           header: '\u5B57\u7B26',
           key: 'font',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form,
+        /*#__PURE__*/ React.createElement(
+          Form,
           {
             form: form,
             onValuesChange: handleValuesChange,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             null,
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 14,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'color',
                   label: '\u989C\u8272\u5B57\u53F7',
@@ -1414,20 +1335,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   },
                   labelAlign: 'left',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                /*#__PURE__*/ React.createElement(ColorPicker, null),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 10,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'fontSize',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                /*#__PURE__*/ React.createElement(InputNumber, {
                   min: 0,
                   style: {
                     width: '100%',
@@ -1436,29 +1357,29 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
               ),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             null,
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 24,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'fontFamily',
                   label: '\u5B57\u4F53',
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Select,
+                /*#__PURE__*/ React.createElement(
+                  Select,
                   {
                     allowClear: true,
                     getPopupContainer: function getPopupContainer() {
                       return document.querySelector('#editLayout');
                     },
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: '"Microsoft YaHei"',
@@ -1468,7 +1389,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u5FAE\u8F6F\u96C5\u9ED1',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'SimSun',
@@ -1478,7 +1399,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u5B8B\u4F53',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'KaiTi',
@@ -1488,7 +1409,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u6977\u4F53',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'SimHei',
@@ -1498,7 +1419,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u9ED1\u4F53',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: '"Hiragino Sans GB"',
@@ -1508,7 +1429,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u51AC\u9752\u9ED1\u4F53',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'Arial',
@@ -1518,7 +1439,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     'Arial',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'Tahoma',
@@ -1528,7 +1449,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     'Tahoma',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'Helvetica',
@@ -1542,49 +1463,49 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
               ),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             null,
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 24,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   wrapperCol: {
                     offset: 4,
                   },
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Button.Group,
+                /*#__PURE__*/ React.createElement(
+                  Button.Group,
                   {
                     style: {
                       width: '100%',
                       justifyContent: 'flex-end',
                     },
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Button, {
+                  /*#__PURE__*/ React.createElement(Button, {
                     size: 'small',
                     style: {
                       width: '50%',
                       background: btnColor.italicBtn,
                     },
-                    icon: /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                    icon: /*#__PURE__*/ React.createElement(CustomIcon, {
                       type: 'iconzu',
                     }),
                     onClick: function onClick() {
                       return fontStyleChange('fontStyle');
                     },
                   }),
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Button, {
+                  /*#__PURE__*/ React.createElement(Button, {
                     size: 'small',
                     style: {
                       width: '50%',
                       background: btnColor.boldBtn,
                     },
-                    icon: /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                    icon: /*#__PURE__*/ React.createElement(CustomIcon, {
                       type: 'iconjiacu',
                     }),
                     onClick: function onClick() {
@@ -1596,35 +1517,35 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
             ),
           ),
           data.node.name !== 'biciPilot' &&
-            /*#__PURE__*/ _react['default'].createElement(
-              _react.Fragment,
+            /*#__PURE__*/ React.createElement(
+              Fragment,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 24,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'textAlign',
                       wrapperCol: {
                         offset: 4,
                       },
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Radio.Group,
+                    /*#__PURE__*/ React.createElement(
+                      Radio.Group,
                       {
                         buttonStyle: 'solid',
                         style: {
                           width: '100%',
                         },
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Radio.Button,
+                      /*#__PURE__*/ React.createElement(
+                        Radio.Button,
                         {
                           value: 'left',
                           style: {
@@ -1632,12 +1553,12 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                             textAlign: 'center',
                           },
                         },
-                        /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                        /*#__PURE__*/ React.createElement(CustomIcon, {
                           type: 'iconleft',
                         }),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Radio.Button,
+                      /*#__PURE__*/ React.createElement(
+                        Radio.Button,
                         {
                           value: 'center',
                           style: {
@@ -1645,12 +1566,12 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                             textAlign: 'center',
                           },
                         },
-                        /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                        /*#__PURE__*/ React.createElement(CustomIcon, {
                           type: 'iconjuzhongduiqi',
                         }),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Radio.Button,
+                      /*#__PURE__*/ React.createElement(
+                        Radio.Button,
                         {
                           value: 'right',
                           style: {
@@ -1658,12 +1579,12 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                             textAlign: 'center',
                           },
                         },
-                        /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                        /*#__PURE__*/ React.createElement(CustomIcon, {
                           type: 'iconyouduiqi2',
                         }),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Radio.Button,
+                      /*#__PURE__*/ React.createElement(
+                        Radio.Button,
                         {
                           value: 'justify',
                           style: {
@@ -1671,7 +1592,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                             textAlign: 'center',
                           },
                         },
-                        /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                        /*#__PURE__*/ React.createElement(CustomIcon, {
                           type: 'iconjustify',
                         }),
                       ),
@@ -1679,21 +1600,21 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   ),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 24,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'text',
                       label: '\u5185\u5BB9',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Input, null),
+                    /*#__PURE__*/ React.createElement(Input, null),
                   ),
                 ),
               ),
@@ -1714,7 +1635,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染元素本身数据
    */
 
-  var renderDataForm = (0, _react.useMemo)(
+  var renderDataForm = useMemo(
     function () {
       var formItemLayout = {
         labelCol: {
@@ -1724,24 +1645,24 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
           span: 20,
         },
       };
-      return /*#__PURE__*/ _react['default'].createElement(
-        _antd.Form,
+      return /*#__PURE__*/ React.createElement(
+        Form,
         _objectSpread({}, formItemLayout),
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Col,
+        /*#__PURE__*/ React.createElement(
+          Col,
           null,
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.Item,
+          /*#__PURE__*/ React.createElement(
+            Form.Item,
             {
               label: 'ID',
             },
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ React.createElement(
               'span',
               {
                 className: 'ant-form-text',
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Tag,
+              /*#__PURE__*/ React.createElement(
+                Tag,
                 {
                   color: '#f50',
                 },
@@ -1758,35 +1679,35 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染时间组件的属性设置
    */
 
-  var renderBiciTimerDataForm = (0, _react.useMemo)(
+  var renderBiciTimerDataForm = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
-        _react['default'].Fragment,
+      return /*#__PURE__*/ React.createElement(
+        React.Fragment,
         null,
         renderFillStyle,
         renderFontForm,
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           Panel,
           {
             header: '\u65F6\u95F4\u683C\u5F0F',
             key: 'biciTimer',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form,
+          /*#__PURE__*/ React.createElement(
+            Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 10,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'date.show',
                     valuePropName: 'checked',
@@ -1796,16 +1717,16 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     labelAlign: 'left',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 14,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'date.format',
                     rules: [
@@ -1815,28 +1736,28 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       },
                     ],
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Select,
+                  /*#__PURE__*/ React.createElement(
+                    Select,
                     {
                       placeholder: '\u8BBE\u7F6E\u65E5\u671F\u683C\u5F0F',
                       onChange: onSetBiciTimerDataFmt,
                       allowClear: false,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'L',
                       },
                       'YYYY-MM-DD',
                     ),
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'LL',
                       },
                       'YYYY/MM/DD',
                     ),
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'l',
@@ -1847,16 +1768,16 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 10,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'time.show',
                     valuePropName: 'checked',
@@ -1866,16 +1787,16 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     labelAlign: 'left',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 14,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'time.format',
                     rules: [
@@ -1885,21 +1806,21 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       },
                     ],
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Select,
+                  /*#__PURE__*/ React.createElement(
+                    Select,
                     {
                       placeholder: '\u8BBE\u7F6E\u65F6\u95F4\u683C\u5F0F',
                       onChange: onSetBiciTimerDataFmt,
                       allowClear: false,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'LTS',
                       },
                       'hh\uFF1Amm\uFF1Ass',
                     ),
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'LT',
@@ -1950,7 +1871,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     if (y) {
       setIsSave(false);
       setRefreshProperty(!refreshProperty);
-      var nodeType = (0, _Property2NodeProps.getNodeType)(data.node);
+      var nodeType = getNodeType(data.node);
 
       if (
         nodeType == 'timeLine' ||
@@ -1989,7 +1910,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
         setDataPointSelectedRows([]);
       }
 
-      _index.canvas.dispatch('addDataPoint', {});
+      canvas.dispatch('addDataPoint', {});
     }
   };
   /**
@@ -1998,7 +1919,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    */
   // 选择接口来源发生变化
 
-  var onDataSourceChange = (0, _react.useCallback)(
+  var onDataSourceChange = useCallback(
     function (value) {
       propertyForm.setFieldsValue({
         dataSourceUrl: null,
@@ -2015,19 +1936,19 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     [data === null || data === void 0 ? void 0 : data.node],
   ); // 外部接口外层list
 
-  var _useState15 = (0, _react.useState)([]),
+  var _useState15 = useState([]),
     _useState16 = _slicedToArray(_useState15, 2),
     dataSource = _useState16[0],
     setDataSource = _useState16[1]; // 外部接口内层list
 
-  var _useState17 = (0, _react.useState)([]),
+  var _useState17 = useState([]),
     _useState18 = _slicedToArray(_useState17, 2),
     remoteInterfaces = _useState18[0],
     setRemoteInterfaces = _useState18[1]; // 加载接口数据
 
   var getDataSourceFocus = function getDataSourceFocus() {
     if (dataSource.length == 0) {
-      (0, _api.fetchDataSourceList)({
+      fetchDataSourceList({
         companyId: uploaConfig.industry.mappingId,
         pagination: {
           current: 1,
@@ -2049,27 +1970,27 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     }
   }; // 获取接口列表数据
 
-  (0, _react.useEffect)(function () {
+  useEffect(function () {
     getDataSourceFocus();
   }, []);
-  var renderExtraDataForm = (0, _react.useMemo)(
+  var renderExtraDataForm = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
-        _antd.Form,
+      return /*#__PURE__*/ React.createElement(
+        Form,
         {
           form: propertyForm,
           onValuesChange: handlePropertyValuesChange,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        /*#__PURE__*/ React.createElement(
+          Row,
           null,
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'dataMethod',
                 label: '\u5173\u8054\u65B9\u5F0F',
@@ -2081,21 +2002,21 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   'horizontalBar' ||
                 (property === null || property === void 0 ? void 0 : property.echartsType) ==
                   'verticalBar'
-                ? /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Select,
+                ? /*#__PURE__*/ React.createElement(
+                    Select,
                     {
                       placeholder: '\u9009\u62E9',
                       onChange: handlePropertyDataMethodChange,
                       allowClear: false,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'point',
                       },
                       '\u6570\u636E\u70B9',
                     ),
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'restful',
@@ -2103,22 +2024,22 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       '\u63A5\u53E3\u4F20\u5165',
                     ),
                   )
-                : /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Select,
+                : /*#__PURE__*/ React.createElement(
+                    Select,
                     {
                       placeholder: '\u9009\u62E9',
                       onChange: handlePropertyDataMethodChange,
                       allowClear: false,
                       disabled: true,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'point',
                       },
                       '\u6570\u636E\u70B9',
                     ),
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       Option,
                       {
                         value: 'restful',
@@ -2129,22 +2050,22 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
             ),
           ),
           (property === null || property === void 0 ? void 0 : property.dataMethod) == 'restful'
-            ? /*#__PURE__*/ _react['default'].createElement(
-                _react['default'].Fragment,
+            ? /*#__PURE__*/ React.createElement(
+                React.Fragment,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 24,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'dataSourceId',
                       label: '\u63A5\u53E3\u6765\u6E90',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Select,
+                    /*#__PURE__*/ React.createElement(
+                      Select,
                       {
                         showSearch: true,
                         style: {
@@ -2155,7 +2076,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                         onChange: onDataSourceChange,
                       },
                       (dataSource || []).map(function (item) {
-                        return /*#__PURE__*/ _react['default'].createElement(
+                        return /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: item.id,
@@ -2167,19 +2088,19 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     ),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 24,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'dataSourceUrl',
                       label: '\u63A5\u53E3\u540D\u79F0',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Select,
+                    /*#__PURE__*/ React.createElement(
+                      Select,
                       {
                         showSearch: true,
                         style: {
@@ -2189,7 +2110,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                         optionFilterProp: 'children',
                       },
                       (remoteInterfaces || []).map(function (item) {
-                        return /*#__PURE__*/ _react['default'].createElement(
+                        return /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: item.url,
@@ -2201,18 +2122,18 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     ),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 24,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'dataFormat',
                       label: '\u62A5\u6587\u683C\u5F0F',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(TextArea, {
+                    /*#__PURE__*/ React.createElement(TextArea, {
                       placeholder: '\u62A5\u6587\u683C\u5F0F',
                       autoSize: {
                         minRows: 2,
@@ -2221,35 +2142,35 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     }),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 15,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'pullRate',
                       label: '\u62C9\u53D6\u9891\u7387',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                    /*#__PURE__*/ React.createElement(InputNumber, {
                       min: 0,
                       max: 1000000,
                     }),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 5,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'pullRateUnit',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Select,
+                    /*#__PURE__*/ React.createElement(
+                      Select,
                       {
                         style: {
                           width: 60,
@@ -2269,7 +2190,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                           n: '时',
                         },
                       ].map(function (item) {
-                        return /*#__PURE__*/ _react['default'].createElement(
+                        return /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             key: item.t,
@@ -2281,41 +2202,34 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     ),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 4,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
-                    null,
-                    '\xA0\xA0\u4E00\u6B21',
-                  ),
+                  /*#__PURE__*/ React.createElement(Form.Item, null, '\xA0\xA0\u4E00\u6B21'),
                 ),
               )
             : '',
           (property === null || property === void 0 ? void 0 : property.dataMethod) == 'point'
-            ? /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+            ? /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 24,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u6570\u636E\u70B9',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Button,
+                  /*#__PURE__*/ React.createElement(
+                    Button,
                     {
                       type: 'dashed',
                       onClick: function onClick() {
                         return addDataPoint();
                       },
-                      icon: /*#__PURE__*/ _react['default'].createElement(
-                        _icons.PlusOutlined,
-                        null,
-                      ),
+                      icon: /*#__PURE__*/ React.createElement(PlusOutlined, null),
                       style: {
                         color: '#096DD9',
                       },
@@ -2331,14 +2245,14 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 ? void 0
                 : property.dataPointSelectedRows) || []
             ).map(function (item, index) {
-              return /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              return /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 24,
                   key: index,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u6570\u636E\u70B9'.concat(index + 1),
                     key: index,
@@ -2348,13 +2262,9 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       },
                     },
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    'span',
-                    null,
-                    item.dataName || item.name,
-                  ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Popconfirm,
+                  /*#__PURE__*/ React.createElement('span', null, item.dataName || item.name),
+                  /*#__PURE__*/ React.createElement(
+                    Popconfirm,
                     {
                       placement: 'left',
                       title: '\u786E\u5B9A\u5220\u9664\u6570\u636E\u70B9\u5417\uFF1F',
@@ -2364,29 +2274,26 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       okText: '\u662F',
                       cancelText: '\u5426',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Button, {
+                    /*#__PURE__*/ React.createElement(Button, {
                       type: 'link',
-                      icon: /*#__PURE__*/ _react['default'].createElement(
-                        _icons.DeleteOutlined,
-                        null,
-                      ),
+                      icon: /*#__PURE__*/ React.createElement(DeleteOutlined, null),
                     }),
                   ),
                 ),
               );
             }),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'dataDot',
                 label: '\u663E\u793A\u7CBE\u5EA6',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+              /*#__PURE__*/ React.createElement(InputNumber, {
                 min: 0,
                 max: 5,
               }),
@@ -2398,34 +2305,34 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
             data.node.name == 'VODCarousel' ||
             data.node.name == 'stationCarousel' ||
             data.node.name == 'emptyCom') &&
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 24,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'reqData',
                   label: '\u8BF7\u6C42\u53C2\u6570',
                 },
-                /*#__PURE__*/ _react['default'].createElement(TextArea, {
+                /*#__PURE__*/ React.createElement(TextArea, {
                   rows: 10,
                 }),
               ),
             ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'dataPointReq',
                 label: '\u7ED1\u5B9A\u8BBE\u5907\u6570\u636E\u70B9',
               },
-              /*#__PURE__*/ _react['default'].createElement(TextArea, null),
+              /*#__PURE__*/ React.createElement(TextArea, null),
             ),
           ),
         ),
@@ -2444,10 +2351,10 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染对齐方式
    */
 
-  var renderAlign = (0, _react.useMemo)(
+  var renderAlign = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
-        _antd.Row,
+      return /*#__PURE__*/ React.createElement(
+        Row,
         {
           justify: 'space-around',
           style: {
@@ -2455,24 +2362,24 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
           },
         },
         Object.keys(alignObj).map(function (key, index) {
-          return /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          return /*#__PURE__*/ React.createElement(
+            Col,
             {
               key: index,
               span: 4,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Tooltip,
+            /*#__PURE__*/ React.createElement(
+              Tooltip,
               {
                 title: alignObj[key][0],
                 getPopupContainer: function getPopupContainer() {
                   return document.querySelector('#editLayout');
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Button, {
+              /*#__PURE__*/ React.createElement(Button, {
                 size: 'large',
                 type: 'text',
-                icon: /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                icon: /*#__PURE__*/ React.createElement(CustomIcon, {
                   type: alignObj[key][1],
                 }),
                 onClick: function onClick() {
@@ -2492,13 +2399,12 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     var top = propertyForm.getFieldValue('limit.top');
 
     if (top < bottom) {
-      _antd.message.config({
+      message.config({
         getContainer: function getContainer() {
           return document.getElementById('editLayout');
         },
       });
-
-      _antd.message.error('下限不能大于上限');
+      message.error('下限不能大于上限');
     }
   };
 
@@ -2540,38 +2446,38 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染数据卡片样式设置  property
    */
 
-  var renderDataCard = (0, _react.useMemo)(
+  var renderDataCard = useMemo(
     function () {
       var statusObj = {
         normal: '正常状态',
         bottomLimit: '低于下限',
         topLimit: '高于上限',
       };
-      return /*#__PURE__*/ _react['default'].createElement(
-        _react.Fragment,
+      return /*#__PURE__*/ React.createElement(
+        Fragment,
         null,
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           Panel,
           {
             header: '\u57FA\u672C\u4FE1\u606F',
             key: 'info',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form,
+          /*#__PURE__*/ React.createElement(
+            Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 10,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u6807\u9898',
                     name: 'showTitle',
@@ -2581,20 +2487,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     labelAlign: 'left',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 14,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'cardTitle',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                  /*#__PURE__*/ React.createElement(Input, {
                     placeholder: '\u6807\u9898\u540D\u79F0',
                     maxLength: 20,
                     style: {
@@ -2604,16 +2510,16 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 24,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'limitType',
                     label: '\u4E0A\u4E0B\u9650',
@@ -2622,7 +2528,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     labelAlign: 'left',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Radio.Group, {
+                  /*#__PURE__*/ React.createElement(Radio.Group, {
                     options: [
                       {
                         label: ' 自定义 ',
@@ -2643,37 +2549,37 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               {
                 justify: 'space-between',
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 4,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'showLimit',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 20,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Input.Group,
+                /*#__PURE__*/ React.createElement(
+                  Input.Group,
                   {
                     compact: true,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'limit.bottom',
                       dependencies: ['limit.top'],
@@ -2692,14 +2598,14 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                         },
                       ],
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                    /*#__PURE__*/ React.createElement(InputNumber, {
                       style: {
                         width: 88,
                       },
                       placeholder: '\u4E0B\u9650',
                     }),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                  /*#__PURE__*/ React.createElement(Input, {
                     style: {
                       width: 30,
                       pointerEvents: 'none',
@@ -2707,8 +2613,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     placeholder: '~',
                     disabled: true,
                   }),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'limit.top',
                       dependencies: ['limit.bottom'],
@@ -2727,7 +2633,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                         },
                       ],
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                    /*#__PURE__*/ React.createElement(InputNumber, {
                       style: {
                         width: 88,
                       },
@@ -2741,20 +2647,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
           ),
         ),
         Object.keys(statusObj).map(function (key) {
-          return /*#__PURE__*/ _react['default'].createElement(
+          return /*#__PURE__*/ React.createElement(
             Panel,
             {
               header: '\u6837\u5F0F-'.concat(statusObj[key]),
               key: key,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form,
+            /*#__PURE__*/ React.createElement(
+              Form,
               {
                 form: propertyForm,
                 onValuesChange: handlePropertyValuesChange,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: ''.concat(key, '.fontFamily'),
                   label: '\u5B57\u4F53',
@@ -2763,15 +2669,15 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   },
                   labelAlign: 'left',
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Select,
+                /*#__PURE__*/ React.createElement(
+                  Select,
                   {
                     allowClear: true,
                     getPopupContainer: function getPopupContainer() {
                       return document.querySelector('#editLayout');
                     },
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: '"Microsoft YaHei"',
@@ -2781,7 +2687,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u5FAE\u8F6F\u96C5\u9ED1',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'SimSun',
@@ -2791,7 +2697,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u5B8B\u4F53',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'KaiTi',
@@ -2801,7 +2707,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u6977\u4F53',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'SimHei',
@@ -2811,7 +2717,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u9ED1\u4F53',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: '"Hiragino Sans GB"',
@@ -2821,7 +2727,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     '\u51AC\u9752\u9ED1\u4F53',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'Arial',
@@ -2831,7 +2737,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     'Arial',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'Tahoma',
@@ -2841,7 +2747,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     'Tahoma',
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     Option,
                     {
                       value: 'Helvetica',
@@ -2853,42 +2759,42 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   ),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 7,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+                  /*#__PURE__*/ React.createElement(Form.Item, {
                     label: '\u989C\u8272\u5B57\u53F7',
                   }),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 6,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: ''.concat(key, '.color'),
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                    /*#__PURE__*/ React.createElement(ColorPicker, null),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 11,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: ''.concat(key, '.fontSize'),
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                    /*#__PURE__*/ React.createElement(InputNumber, {
                       min: 12,
                       style: {
                         width: '100%',
@@ -2897,43 +2803,43 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   ),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 7,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+                  /*#__PURE__*/ React.createElement(Form.Item, {
                     label: '\u80CC\u666F\u989C\u8272',
                   }),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 4,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: ''.concat(key, '.showBkColor'),
                       valuePropName: 'checked',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                    /*#__PURE__*/ React.createElement(Checkbox, null),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 10,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: ''.concat(key, '.bkColor'),
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                    /*#__PURE__*/ React.createElement(ColorPicker, null),
                   ),
                 ),
               ),
@@ -2970,8 +2876,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
       size: size,
     });
     setPilotBtnSize(size === 15 ? 'small' : size === 20 ? 'middle' : 'large');
-
-    _index.canvas.updateProps(false, [node]);
+    canvas.updateProps(false, [node]);
   };
 
   var checkPilotSingleRepeat = function checkPilotSingleRepeat() {
@@ -2981,13 +2886,12 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     var tmpSet = new Set(vals);
 
     if (tmpSet.size !== vals.length) {
-      _antd.message.config({
+      message.config({
         getContainer: function getContainer() {
           return document.getElementById('editLayout');
         },
       });
-
-      _antd.message.error('单点值不能重复');
+      message.error('单点值不能重复');
     }
   };
 
@@ -3001,25 +2905,23 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     var flag = false;
 
     if (!vals.flat().includes(undefined)) {
-      _antd.message.config({
+      message.config({
         getContainer: function getContainer() {
           return document.getElementById('editLayout');
         },
       });
-
       vals.some(function (item) {
         if (item[1] < item[0]) {
-          _antd.message.error('下限不能大于上限');
-
+          message.error('下限不能大于上限');
           flag = true;
           return true;
         }
       });
       if (flag) return;
-      var nums = (0, _cacl.eraseOverlapIntervals)(vals);
+      var nums = eraseOverlapIntervals(vals);
 
       if (nums.length !== 0) {
-        _antd.message.error('范围值出现重叠');
+        message.error('范围值出现重叠');
       }
     }
   };
@@ -3027,20 +2929,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染指示灯样式
    */
 
-  var renderLight = (0, _react.useMemo)(
+  var renderLight = useMemo(
     function () {
       var radioButtonStyle = {
         height: 26,
         lineHeight: '24px',
       };
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ React.createElement(
         Panel,
         {
           header: '\u6837\u5F0F',
           key: 'biciLight',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form,
+        /*#__PURE__*/ React.createElement(
+          Form,
           {
             form: propertyForm,
             onValuesChange: handlePropertyValuesChange,
@@ -3049,32 +2951,32 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
             },
             labelAlign: 'left',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'color',
                 label: '\u989C\u8272',
               },
-              /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+              /*#__PURE__*/ React.createElement(ColorPicker, null),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'size',
                 label: '\u5C3A\u5BF8',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+              /*#__PURE__*/ React.createElement(InputNumber, {
                 placeholder: '\u8BF7\u8F93\u5165\u76F4\u5F84',
                 min: 0,
                 style: {
@@ -3084,27 +2986,27 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
               }),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 wrapperCol: {
                   offset: 6,
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Button.Group,
+              /*#__PURE__*/ React.createElement(
+                Button.Group,
                 {
                   style: {
                     width: '100%',
                   },
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Button,
+                /*#__PURE__*/ React.createElement(
+                  Button,
                   {
                     block: true,
                     size: 'small',
@@ -3118,8 +3020,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   },
                   '\u5C0F',
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Button,
+                /*#__PURE__*/ React.createElement(
+                  Button,
                   {
                     block: true,
                     size: 'small',
@@ -3133,8 +3035,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   },
                   '\u4E2D',
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Button,
+                /*#__PURE__*/ React.createElement(
+                  Button,
                   {
                     block: true,
                     size: 'small',
@@ -3151,16 +3053,16 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
               ),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             null,
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 10,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'showText',
                   label: '\u6587\u5B57\u6807\u7B7E',
@@ -3169,37 +3071,37 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   },
                   valuePropName: 'checked',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                /*#__PURE__*/ React.createElement(Checkbox, null),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 14,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   name: 'text',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                /*#__PURE__*/ React.createElement(Input, {
                   maxLength: 10,
                 }),
               ),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'stateType',
                 label: '\u72B6\u6001\u5B9A\u4E49',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Radio.Group, {
+              /*#__PURE__*/ React.createElement(Radio.Group, {
                 options: [
                   {
                     label: '单点值',
@@ -3225,20 +3127,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
               }),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.List,
+          /*#__PURE__*/ React.createElement(
+            Form.List,
             {
               name: 'lightRange',
             },
             function (fields, _ref8) {
               var add = _ref8.add,
                 remove = _ref8.remove;
-              return /*#__PURE__*/ _react['default'].createElement(
-                _react.Fragment,
+              return /*#__PURE__*/ React.createElement(
+                Fragment,
                 null,
                 fields.map(function (field) {
-                  return /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Space,
+                  return /*#__PURE__*/ React.createElement(
+                    Space,
                     {
                       key: field.key,
                       style: {
@@ -3248,8 +3150,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       align: 'center',
                       size: 'small',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       _objectSpread(
                         _objectSpread({}, field),
                         {},
@@ -3257,14 +3159,14 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                           name: [field.name, 'lightRangeColor'],
                         },
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                     propertyForm.getFieldValue('stateType') === 'single' &&
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _react.Fragment,
+                      /*#__PURE__*/ React.createElement(
+                        Fragment,
                         null,
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Form.Item,
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3278,13 +3180,13 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                               ],
                             },
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                          /*#__PURE__*/ React.createElement(InputNumber, {
                             placeholder: '\u6570\u503C',
                             onBlur: checkPilotSingleRepeat,
                           }),
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Form.Item,
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3292,17 +3194,17 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                               name: [field.name, 'lightRangeText'],
                             },
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                          /*#__PURE__*/ React.createElement(Input, {
                             placeholder: '\u6587\u672C',
                           }),
                         ),
                       ),
                     propertyForm.getFieldValue('stateType') === 'range' &&
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _react.Fragment,
+                      /*#__PURE__*/ React.createElement(
+                        Fragment,
                         null,
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Form.Item,
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3316,15 +3218,15 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                               ],
                             },
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                          /*#__PURE__*/ React.createElement(InputNumber, {
                             style: {
                               width: 60,
                             },
                             placeholder: '\u4E0B\u9650',
                           }),
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Form.Item,
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3338,7 +3240,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                               ],
                             },
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                          /*#__PURE__*/ React.createElement(InputNumber, {
                             style: {
                               width: 60,
                             },
@@ -3346,8 +3248,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                             onBlur: checkPilotRangeRepeat,
                           }),
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Form.Item,
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
                           _objectSpread(
                             _objectSpread({}, field),
                             {},
@@ -3355,7 +3257,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                               name: [field.name, 'lightRangeText'],
                             },
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                          /*#__PURE__*/ React.createElement(Input, {
                             style: {
                               width: 50,
                             },
@@ -3363,10 +3265,10 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                           }),
                         ),
                       ),
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       null,
-                      /*#__PURE__*/ _react['default'].createElement(_icons.MinusCircleOutlined, {
+                      /*#__PURE__*/ React.createElement(MinusCircleOutlined, {
                         onClick: function onClick() {
                           return remove(field.name);
                         },
@@ -3375,21 +3277,18 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   );
                 }),
                 fields.length < 10 &&
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     null,
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Button,
+                    /*#__PURE__*/ React.createElement(
+                      Button,
                       {
                         type: 'dashed',
                         onClick: function onClick() {
                           return add();
                         },
                         block: true,
-                        icon: /*#__PURE__*/ _react['default'].createElement(
-                          _icons.PlusOutlined,
-                          null,
-                        ),
+                        icon: /*#__PURE__*/ React.createElement(PlusOutlined, null),
                       },
                       '\u6DFB\u52A0',
                     ),
@@ -3406,34 +3305,34 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染计量器样式
    */
 
-  var renderMeter = (0, _react.useMemo)(
+  var renderMeter = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ React.createElement(
         Panel,
         {
           header: '\u6837\u5F0F',
           key: 'style',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form,
+        /*#__PURE__*/ React.createElement(
+          Form,
           {
             form: propertyForm,
             onValuesChange: handlePropertyValuesChange,
           },
           (data === null || data === void 0 ? void 0 : data.node.name) === 'biciMeasure' &&
-            /*#__PURE__*/ _react['default'].createElement(
-              _react['default'].Fragment,
+            /*#__PURE__*/ React.createElement(
+              React.Fragment,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 10,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       label: '\u5355\u4F4D',
                       name: 'chartUnitChecked',
@@ -3443,36 +3342,36 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       labelAlign: 'left',
                       valuePropName: 'checked',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                    /*#__PURE__*/ React.createElement(Checkbox, null),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 14,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'chartUnit',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                    /*#__PURE__*/ React.createElement(Input, {
                       placeholder: '\u5355\u4F4D',
                       maxLength: 5,
                     }),
                   ),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 10,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       label: '\u523B\u5EA6',
                       name: 'markChecked',
@@ -3482,20 +3381,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       labelAlign: 'left',
                       valuePropName: 'checked',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                    /*#__PURE__*/ React.createElement(Checkbox, null),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 14,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'marks',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                    /*#__PURE__*/ React.createElement(InputNumber, {
                       placeholder: '\u523B\u5EA6\u4E2A\u6570',
                       min: 1,
                       max: 100,
@@ -3503,16 +3402,16 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   ),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 24,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'chartTitleColor',
                       label: '\u6807\u9898\u989C\u8272',
@@ -3521,31 +3420,31 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       },
                       labelAlign: 'left',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                    /*#__PURE__*/ React.createElement(ColorPicker, null),
                   ),
                 ),
               ),
             ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             null,
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               null,
-              /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+              /*#__PURE__*/ React.createElement(Form.Item, {
                 label: '\u8303\u56F4',
               }),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Input.Group,
+              /*#__PURE__*/ React.createElement(
+                Input.Group,
                 {
                   compact: true,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'dataMin',
                     dependencies: ['dataMax'],
@@ -3564,14 +3463,14 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       },
                     ],
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                  /*#__PURE__*/ React.createElement(InputNumber, {
                     style: {
                       width: 85,
                     },
                     placeholder: '\u4E0B\u9650',
                   }),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                /*#__PURE__*/ React.createElement(Input, {
                   style: {
                     width: 30,
                     pointerEvents: 'none',
@@ -3579,8 +3478,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   placeholder: '~',
                   disabled: true,
                 }),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'dataMax',
                     rules: [
@@ -3602,7 +3501,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       },
                     ],
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                  /*#__PURE__*/ React.createElement(InputNumber, {
                     style: {
                       width: 85,
                     },
@@ -3613,63 +3512,63 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
               ),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ React.createElement(
+            Row,
             null,
-            /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+            /*#__PURE__*/ React.createElement(Form.Item, {
               label: '\u989C\u8272\u5206\u533A',
             }),
           ),
           ((property === null || property === void 0 ? void 0 : property.dataColors) || []).map(
             function (item, index) {
-              return /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              return /*#__PURE__*/ React.createElement(
+                Row,
                 {
                   key: index,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 3,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'checked-'.concat(index),
                       valuePropName: 'checked',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                    /*#__PURE__*/ React.createElement(Checkbox, null),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 6,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'color-'.concat(index),
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                    /*#__PURE__*/ React.createElement(ColorPicker, null),
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 15,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Input.Group,
+                  /*#__PURE__*/ React.createElement(
+                    Input.Group,
                     {
                       compact: true,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'bottom-'.concat(index),
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                      /*#__PURE__*/ React.createElement(InputNumber, {
                         style: {
                           width: 60,
                         },
@@ -3677,7 +3576,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                         disabled: true,
                       }),
                     ),
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                    /*#__PURE__*/ React.createElement(Input, {
                       style: {
                         width: 30,
                         pointerEvents: 'none',
@@ -3685,12 +3584,12 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       placeholder: '~',
                       disabled: true,
                     }),
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'top-'.concat(index),
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                      /*#__PURE__*/ React.createElement(InputNumber, {
                         style: {
                           width: 60,
                         },
@@ -3711,33 +3610,33 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染仪表盘样式
    */
 
-  var renderGauge = (0, _react.useMemo)(
+  var renderGauge = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
-        _react.Fragment,
+      return /*#__PURE__*/ React.createElement(
+        Fragment,
         null,
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           Panel,
           {
             header: '\u57FA\u672C\u4FE1\u606F',
             key: 'info',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form,
+          /*#__PURE__*/ React.createElement(
+            Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 10,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u6807\u9898',
                     name: 'chartTitleChecked',
@@ -3747,36 +3646,36 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     labelAlign: 'left',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 14,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'chartTitle',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                  /*#__PURE__*/ React.createElement(Input, {
                     placeholder: '\u6807\u9898\u540D\u79F0',
                     maxLength: 20,
                   }),
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 10,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u5355\u4F4D',
                     name: 'chartUnitChecked',
@@ -3786,36 +3685,36 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     labelAlign: 'left',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 14,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'chartUnit',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                  /*#__PURE__*/ React.createElement(Input, {
                     placeholder: '\u5355\u4F4D',
                     maxLength: 20,
                   }),
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 10,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u523B\u5EA6',
                     name: 'markChecked',
@@ -3825,20 +3724,20 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     labelAlign: 'left',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 13,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'marks',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                  /*#__PURE__*/ React.createElement(InputNumber, {
                     placeholder: '\u523B\u5EA6\u4E2A\u6570',
                     min: 1,
                     max: 100,
@@ -3846,16 +3745,16 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 24,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'chartTitleColor',
                     label: '\u6807\u9898\u989C\u8272',
@@ -3864,7 +3763,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     },
                     labelAlign: 'left',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                  /*#__PURE__*/ React.createElement(ColorPicker, null),
                 ),
               ),
             ),
@@ -3879,85 +3778,85 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
    * 渲染实时曲线图样式
    */
 
-  var renderLineGraph = (0, _react.useMemo)(
+  var renderLineGraph = useMemo(
     function () {
       var _data$node$property2;
 
-      return /*#__PURE__*/ _react['default'].createElement(
-        _react.Fragment,
+      return /*#__PURE__*/ React.createElement(
+        Fragment,
         null,
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           Panel,
           {
             header: '\u57FA\u672C\u4FE1\u606F',
             key: 'lineInfo',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form,
+          /*#__PURE__*/ React.createElement(
+            Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 6,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u6807\u9898',
                     name: 'chartTitleChecked',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 6,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'chartTitleColor',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                  /*#__PURE__*/ React.createElement(ColorPicker, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 12,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'chartTitle',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                  /*#__PURE__*/ React.createElement(Input, {
                     placeholder: '\u6807\u9898',
                     maxLength: 20,
                   }),
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 24,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   label: '\u4E0A\u4E0B\u9650',
                   name: 'limitType',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Radio.Group, {
+                /*#__PURE__*/ React.createElement(Radio.Group, {
                   options: [
                     {
                       label: '自定义',
@@ -3983,33 +3882,33 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 }),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               {
                 justify: 'space-between',
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'dataTopChecked',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Input.Group,
+                /*#__PURE__*/ React.createElement(
+                  Input.Group,
                   {
                     compact: true,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'dataBottom',
                       dependencies: ['dataTop'],
@@ -4028,7 +3927,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                         },
                       ],
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                    /*#__PURE__*/ React.createElement(InputNumber, {
                       style: {
                         width: 85,
                       },
@@ -4036,7 +3935,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                       readOnly: !showSelectDataPoint,
                     }),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+                  /*#__PURE__*/ React.createElement(Input, {
                     style: {
                       width: 30,
                       pointerEvents: 'none',
@@ -4044,8 +3943,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     placeholder: '~',
                     disabled: true,
                   }),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       name: 'dataTop',
                       dependencies: ['dataBottom'],
@@ -4064,7 +3963,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                         },
                       ],
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                    /*#__PURE__*/ React.createElement(InputNumber, {
                       style: {
                         width: 85,
                       },
@@ -4075,26 +3974,26 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               {
                 style: {
                   display: showSelectDataPoint ? 'none' : 'block',
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   push: 4,
                   span: 20,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'selectDataPoint',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Select,
+                  /*#__PURE__*/ React.createElement(
+                    Select,
                     {
                       style: {
                         width: '100%',
@@ -4108,7 +4007,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                         ? void 0
                         : _data$node$property2.dataPointSelectedRows) || []
                     ).map(function (item, index) {
-                      return /*#__PURE__*/ _react['default'].createElement(
+                      return /*#__PURE__*/ React.createElement(
                         Option,
                         {
                           value: item.scopeMin + '~' + item.scopeMax,
@@ -4123,30 +4022,30 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
             ),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           Panel,
           {
             header: '\u6837\u5F0F',
             key: 'lineStyle',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form,
+          /*#__PURE__*/ React.createElement(
+            Form,
             {
               form: propertyForm,
               onValuesChange: handlePropertyValuesChange,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 24,
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Form.Item,
+              /*#__PURE__*/ React.createElement(
+                Form.Item,
                 {
                   label: '\u7EBF\u578B',
                   name: 'smooth',
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Radio.Group, {
+                /*#__PURE__*/ React.createElement(Radio.Group, {
                   options: [
                     {
                       label: '曲线',
@@ -4165,16 +4064,16 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 }),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 10,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u80CC\u666F\u8272',
                     labelCol: {
@@ -4184,34 +4083,34 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     name: 'chartBackgroundChecked',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 12,
                   push: 2,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'chartBackgroundColor',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                  /*#__PURE__*/ React.createElement(ColorPicker, null),
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 10,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     label: '\u53C2\u8003\u7EBF',
                     labelCol: {
@@ -4221,55 +4120,55 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                     name: 'lineReferenceChecked',
                     valuePropName: 'checked',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                  /*#__PURE__*/ React.createElement(Checkbox, null),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 12,
                   push: 2,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'lineReferenceColor',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                  /*#__PURE__*/ React.createElement(ColorPicker, null),
                 ),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 8,
                 },
-                /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+                /*#__PURE__*/ React.createElement(Form.Item, {
                   label: '\u66F2\u7EBF\u989C\u8272',
                 }),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 16,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.List,
+                /*#__PURE__*/ React.createElement(
+                  Form.List,
                   {
                     name: 'lineGraphRange',
                   },
                   function (fields, _ref13) {
                     var add = _ref13.add,
                       remove = _ref13.remove;
-                    return /*#__PURE__*/ _react['default'].createElement(
-                      _react.Fragment,
+                    return /*#__PURE__*/ React.createElement(
+                      Fragment,
                       null,
                       fields.map(function (field) {
-                        return /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Space,
+                        return /*#__PURE__*/ React.createElement(
+                          Space,
                           {
                             key: field.key,
                             style: {
@@ -4279,8 +4178,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                             align: 'center',
                             size: 20,
                           },
-                          /*#__PURE__*/ _react['default'].createElement(
-                            _antd.Form.Item,
+                          /*#__PURE__*/ React.createElement(
+                            Form.Item,
                             _objectSpread(
                               _objectSpread({}, field),
                               {},
@@ -4292,10 +4191,10 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                                 },
                               },
                             ),
-                            /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                            /*#__PURE__*/ React.createElement(Checkbox, null),
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(
-                            _antd.Form.Item,
+                          /*#__PURE__*/ React.createElement(
+                            Form.Item,
                             _objectSpread(
                               _objectSpread({}, field),
                               {},
@@ -4306,40 +4205,34 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                                 },
                               },
                             ),
-                            /*#__PURE__*/ _react['default'].createElement(
-                              _ColorPicker['default'],
-                              null,
-                            ),
+                            /*#__PURE__*/ React.createElement(ColorPicker, null),
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(
-                            _antd.Form.Item,
+                          /*#__PURE__*/ React.createElement(
+                            Form.Item,
                             {
                               style: {
                                 display: 'none',
                               },
                             },
-                            /*#__PURE__*/ _react['default'].createElement(
-                              _icons.MinusCircleOutlined,
-                              {
-                                ref: removeLineColorBtnRef,
-                                onClick: function onClick() {
-                                  return remove(field.name);
-                                },
+                            /*#__PURE__*/ React.createElement(MinusCircleOutlined, {
+                              ref: removeLineColorBtnRef,
+                              onClick: function onClick() {
+                                return remove(field.name);
                               },
-                            ),
+                            }),
                           ),
                         );
                       }),
                       fields.length < 10
-                        ? /*#__PURE__*/ _react['default'].createElement(
-                            _antd.Form.Item,
+                        ? /*#__PURE__*/ React.createElement(
+                            Form.Item,
                             {
                               style: {
                                 display: 'none',
                               },
                             },
-                            /*#__PURE__*/ _react['default'].createElement(
-                              _antd.Button,
+                            /*#__PURE__*/ React.createElement(
+                              Button,
                               {
                                 type: 'dashed',
                                 ref: addLineColorBtnRef,
@@ -4347,10 +4240,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                                   return add();
                                 },
                                 block: true,
-                                icon: /*#__PURE__*/ _react['default'].createElement(
-                                  _icons.PlusOutlined,
-                                  null,
-                                ),
+                                icon: /*#__PURE__*/ React.createElement(PlusOutlined, null),
                               },
                               '\u6DFB\u52A0',
                             ),
@@ -4373,11 +4263,11 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     ],
   ); // 动态渲染style表单
 
-  var dynamicForm = (0, _react.useMemo)(
+  var dynamicForm = useMemo(
     function () {
       var _data$node$property3, _data$node$property3$;
 
-      return /*#__PURE__*/ _react['default'].createElement(_CustomizedDynamicForm['default'], {
+      return /*#__PURE__*/ React.createElement(CustomizedDynamicForm, {
         formStyle:
           data === null || data === void 0
             ? void 0
@@ -4404,40 +4294,37 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     ],
   ); // 渲染视频直播组件的数据属性
 
-  var renderVideoProp = (0, _react.useMemo)(
+  var renderVideoProp = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
-        _antd.Form,
+      return /*#__PURE__*/ React.createElement(
+        Form,
         {
           form: propertyForm,
           onValuesChange: handlePropertyValuesChange,
         },
         name == 'liveVideo'
-          ? /*#__PURE__*/ _react['default'].createElement(
-              _react['default'].Fragment,
+          ? /*#__PURE__*/ React.createElement(
+              React.Fragment,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                /*#__PURE__*/ React.createElement(
+                  Col,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Form.Item,
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
                     {
                       label: '\u89C6\u9891\u6E90',
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Button,
+                    /*#__PURE__*/ React.createElement(
+                      Button,
                       {
                         type: 'dashed',
                         onClick: function onClick() {
                           return addVedioSource();
                         },
-                        icon: /*#__PURE__*/ _react['default'].createElement(
-                          _icons.PlusOutlined,
-                          null,
-                        ),
+                        icon: /*#__PURE__*/ React.createElement(PlusOutlined, null),
                         style: {
                           color: '#096DD9',
                         },
@@ -4447,18 +4334,18 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                   ),
                 ),
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Row,
+              /*#__PURE__*/ React.createElement(
+                Row,
                 null,
                 (selectedVideoRows || []).map(function (item, index) {
-                  return /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  return /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 24,
                       key: index,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         label: '\u89C6\u9891\u6E90'.concat(index + 1),
                         key: index,
@@ -4468,15 +4355,15 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                           },
                         },
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
+                      /*#__PURE__*/ React.createElement(
                         'span',
                         null,
                         item.deviceName,
                         '\xA0|\xA0',
                         item.name,
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Popconfirm,
+                      /*#__PURE__*/ React.createElement(
+                        Popconfirm,
                         {
                           placement: 'left',
                           title: '\u786E\u5B9A\u5220\u89C6\u9891\u6E90\u5417\uFF1F',
@@ -4486,12 +4373,9 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                           okText: '\u662F',
                           cancelText: '\u5426',
                         },
-                        /*#__PURE__*/ _react['default'].createElement(_antd.Button, {
+                        /*#__PURE__*/ React.createElement(Button, {
                           type: 'link',
-                          icon: /*#__PURE__*/ _react['default'].createElement(
-                            _icons.DeleteOutlined,
-                            null,
-                          ),
+                          icon: /*#__PURE__*/ React.createElement(DeleteOutlined, null),
                         }),
                       ),
                     ),
@@ -4501,21 +4385,21 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
             )
           : '',
         name == 'QTLiveVideo'
-          ? /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+          ? /*#__PURE__*/ React.createElement(
+              Row,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 24,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Form.Item,
+                /*#__PURE__*/ React.createElement(
+                  Form.Item,
                   {
                     name: 'videoURL',
                     label: 'RTSP\u76F4\u64AD\u6E90',
                   },
-                  /*#__PURE__*/ _react['default'].createElement(TextArea, {
+                  /*#__PURE__*/ React.createElement(TextArea, {
                     rows: 4,
                     placeholder: '\u4F8B\u5982\uFF1Artsp://36.156.138.177:554/ceshi1.rtsp',
                   }),
@@ -4536,23 +4420,23 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     ],
   );
   var divHeight = document.body.clientHeight - 200;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'div',
     {
-      className: _indexModule['default'].rightArea,
+      className: styles.rightArea,
       style: {
         overflow: 'hidden',
       },
     },
     renderAlign,
     !data.multi &&
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Tabs,
+      /*#__PURE__*/ React.createElement(
+        Tabs,
         {
           defaultActiveKey: '1',
           centered: true,
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           TabPane,
           {
             tab: '\xA0\xA0\xA0\xA0\u5916\xA0\xA0\u89C2\xA0\xA0\xA0\xA0',
@@ -4561,7 +4445,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
               margin: 0,
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             {
               style: {
@@ -4569,8 +4453,8 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 overflowX: 'hidden',
               },
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Collapse,
+            /*#__PURE__*/ React.createElement(
+              Collapse,
               {
                 defaultActiveKey: ['pos', 'lineInfo', 'lineStyle', 'info', 'style'],
                 expandIconPosition: 'right',
@@ -4607,7 +4491,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
             ),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           TabPane,
           {
             tab: '\xA0\xA0\xA0\xA0\u6570\xA0\xA0\u636E\xA0\xA0\xA0\xA0',
@@ -4616,7 +4500,7 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
               margin: 0,
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             {
               style: {
@@ -4624,15 +4508,15 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
                 overflowX: 'hidden',
               },
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement(
+              Row,
               {
                 style: {
                   margin: '0 15px',
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              /*#__PURE__*/ React.createElement(
+                Col,
                 {
                   span: 24,
                 },
@@ -4664,6 +4548,4 @@ var NodeCanvasProps = /*#__PURE__*/ _react['default'].forwardRef(function (_ref,
     visible && renderDataPointModal(),
   );
 });
-
-var _default = NodeCanvasProps;
-exports['default'] = _default;
+export default NodeCanvasProps;

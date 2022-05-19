@@ -1,87 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _api = require('../../../data/api');
-
-var _antd = require('antd');
-
-var _ahooks = require('ahooks');
-
-var _CompContextMenu = _interopRequireDefault(require('../../../common/CompContextMenu'));
-
-var _indexModule = _interopRequireDefault(require('../../index.module.css'));
-
-var _iconConfig = _interopRequireDefault(require('../../../config/iconConfig'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -222,21 +138,28 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-var Panel = _antd.Collapse.Panel;
-var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { clientParam } from '../../../data/api';
+import { Row, Col, Form, message, Collapse } from 'antd';
+import { useClickAway } from 'ahooks';
+import CompContextMenu from '../../../common/CompContextMenu';
+import styles from '../../index.module.css';
+import CustomIcon from '../../../config/iconConfig';
+var Panel = Collapse.Panel;
+var Layout = /*#__PURE__*/ forwardRef(function (props, ref) {
   var onDrag = props.onDrag,
     combineCom = props.combineCom;
 
-  var _Form$useForm = _antd.Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     formRef = _Form$useForm2[0]; // 是否显示右键菜单
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     showContextmenu = _useState2[0],
     setShowContextmenu = _useState2[1];
 
-  var _useState3 = (0, _react.useState)({
+  var _useState3 = useState({
       position: 'fixed',
       zIndex: '10',
       display: 'none',
@@ -248,16 +171,16 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
     contextmenu = _useState4[0],
     setContextmenu = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(null),
+  var _useState5 = useState(null),
     _useState6 = _slicedToArray(_useState5, 2),
     selectedCom = _useState6[0],
     setSelectedCom = _useState6[1];
 
-  var contextMenuRef = (0, _react.useRef)();
-  (0, _ahooks.useClickAway)(function () {
+  var contextMenuRef = useRef();
+  useClickAway(function () {
     setShowContextmenu(false);
   }, contextMenuRef);
-  (0, _react.useImperativeHandle)(ref, function () {
+  useImperativeHandle(ref, function () {
     return {
       getNewComponents: function getNewComponents() {
         _getNewComponents();
@@ -266,7 +189,7 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
   }); // 获取自定义组件
 
   function _getNewComponents() {
-    (0, _api.clientParam)(combineCom.apiURL)
+    clientParam(combineCom.apiURL)
       .post(combineCom.list.url, combineCom.list.params, {
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
@@ -280,8 +203,8 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
   }
 
   var handleDelete = function handleDelete() {
-    (0, _api.clientParam)(combineCom.apiURL)
-      .post(combineCom['delete'].url, selectedCom, {
+    clientParam(combineCom.apiURL)
+      .post(combineCom.delete.url, selectedCom, {
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
           token: combineCom.token,
@@ -289,9 +212,8 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
         },
       })
       .then(function (res) {
-        _antd.message.success('删除组件成功！', 2, function () {
-          _antd.message.destroy();
-
+        message.success('删除组件成功！', 2, function () {
+          message.destroy();
           return null;
         });
 
@@ -299,12 +221,12 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
       });
   };
 
-  var _useState7 = (0, _react.useState)([]),
+  var _useState7 = useState([]),
     _useState8 = _slicedToArray(_useState7, 2),
     componentList = _useState8[0],
     setComponentList = _useState8[1];
 
-  (0, _react.useEffect)(function () {
+  useEffect(function () {
     _getNewComponents();
   }, []); // 右键菜单
 
@@ -361,7 +283,7 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
                       componentName: values.componentName,
                     },
                   );
-                  (0, _api.clientParam)(combineCom.apiURL)
+                  clientParam(combineCom.apiURL)
                     .post(combineCom.rename.url, newCom, {
                       headers: {
                         'X-Requested-With': 'XMLHttpRequest',
@@ -370,7 +292,7 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
                       },
                     })
                     .then(function (res) {
-                      _antd.message.success('重命名组件成功！');
+                      message.success('重命名组件成功！');
 
                       _getNewComponents();
                     });
@@ -400,32 +322,32 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
     };
   })();
 
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.Collapse,
+  return /*#__PURE__*/ React.createElement(
+    Collapse,
     {
       expandIconPosition: 'right',
       ghost: false,
       bordered: false,
     },
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       Panel,
       {
         header: '\u81EA\u5B9A\u4E49\u7EC4\u4EF6',
         key: 'custom',
       },
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         'div',
         {
-          className: _indexModule['default'].button,
+          className: styles.button,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        /*#__PURE__*/ React.createElement(
+          Row,
           {
             align: 'middle',
           },
           (componentList || []).map(function (item, key) {
-            return /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            return /*#__PURE__*/ React.createElement(
+              Col,
               {
                 key: key,
                 span: 8,
@@ -437,7 +359,7 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
                   return handleContextMenu(event, item);
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 'a',
                 {
                   draggable: true,
@@ -453,7 +375,7 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
                     return onDrag(ev, JSON.parse(item.componentProperty), true);
                   },
                 },
-                /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                /*#__PURE__*/ React.createElement(CustomIcon, {
                   type: 'iconzidingyi',
                   style: {
                     fontSize: 30,
@@ -462,7 +384,7 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
                     lineHeight: '53px',
                   },
                 }),
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(
                   'span',
                   {
                     style: {
@@ -480,7 +402,7 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
         ),
       ),
     ),
-    /*#__PURE__*/ _react['default'].createElement(_CompContextMenu['default'], {
+    /*#__PURE__*/ React.createElement(CompContextMenu, {
       contextMenuRef: contextMenuRef,
       showContextmenu: showContextmenu,
       contextmenu: contextmenu,
@@ -491,5 +413,4 @@ var Layout = /*#__PURE__*/ (0, _react.forwardRef)(function (props, ref) {
     }),
   );
 });
-var _default = Layout;
-exports['default'] = _default;
+export default Layout;

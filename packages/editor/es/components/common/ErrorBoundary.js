@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,19 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _antd = require('antd');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -129,6 +114,9 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+import React from 'react';
+import { Empty } from 'antd';
+
 var ErrorBoundary = /*#__PURE__*/ (function (_React$Component) {
   _inherits(ErrorBoundary, _React$Component);
 
@@ -161,7 +149,7 @@ var ErrorBoundary = /*#__PURE__*/ (function (_React$Component) {
         value: function render() {
           if (this.state.hasError) {
             // 你可以自定义降级后的 UI 并渲染
-            return /*#__PURE__*/ _react['default'].createElement(
+            return /*#__PURE__*/ React.createElement(
               'div',
               {
                 className: 'custui-webpage',
@@ -169,12 +157,12 @@ var ErrorBoundary = /*#__PURE__*/ (function (_React$Component) {
                   height: '100%',
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Empty, {
+              /*#__PURE__*/ React.createElement(Empty, {
                 image: 'https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg',
                 imageStyle: {
                   height: 60,
                 },
-                description: /*#__PURE__*/ _react['default'].createElement(
+                description: /*#__PURE__*/ React.createElement(
                   'span',
                   {
                     style: {
@@ -205,6 +193,6 @@ var ErrorBoundary = /*#__PURE__*/ (function (_React$Component) {
   );
 
   return ErrorBoundary;
-})(_react['default'].Component);
+})(React.Component);
 
-exports['default'] = ErrorBoundary;
+export { ErrorBoundary as default };

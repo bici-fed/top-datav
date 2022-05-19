@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconerweima = function Iconerweima(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconerweima = function Iconerweima(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M0 0h455.104v455.104H0V0z m0 568.896h455.104V1024H0V568.896zM568.896 0H1024v455.104H568.896V0z m0 568.896h113.792V1024H568.896V568.896z m170.688 113.792h113.728V1024h-113.728v-341.312z m170.624-113.792H1024V1024h-113.792V568.896z',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconerweima = function Iconerweima(_ref) {
 Iconerweima.defaultProps = {
   size: 18,
 };
-var _default = Iconerweima;
-exports['default'] = _default;
+export default Iconerweima;

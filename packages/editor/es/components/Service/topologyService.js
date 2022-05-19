@@ -1,17 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.getListByPage = getListByPage;
-exports.getNodeById = getNodeById;
-
-var _Service = _interopRequireDefault(require('../utils/Service'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -44,7 +30,8 @@ function _asyncToGenerator(fn) {
   };
 }
 
-function getListByPage(_x) {
+import Axios from '../utils/Service';
+export function getListByPage(_x) {
   return _getListByPage.apply(this, arguments);
 }
 
@@ -56,7 +43,7 @@ function _getListByPage() {
           switch ((_context.prev = _context.next)) {
             case 0:
               _context.next = 2;
-              return _Service['default'].get(
+              return Axios.get(
                 '/api/topologies?pageIndex='.concat(currentPageIndex, '&pageCount=8'),
               );
 
@@ -74,7 +61,7 @@ function _getListByPage() {
   return _getListByPage.apply(this, arguments);
 }
 
-function getNodeById(_x2) {
+export function getNodeById(_x2) {
   return _getNodeById.apply(this, arguments);
 }
 
@@ -86,7 +73,7 @@ function _getNodeById() {
           switch ((_context2.prev = _context2.next)) {
             case 0:
               _context2.next = 2;
-              return _Service['default'].get('/api/topology/'.concat(id));
+              return Axios.get('/api/topology/'.concat(id));
 
             case 2:
               return _context2.abrupt('return', _context2.sent);

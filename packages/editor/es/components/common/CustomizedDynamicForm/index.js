@@ -1,87 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
-
-var _icons = require('@ant-design/icons');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-var _ColorPicker = _interopRequireDefault(require('../ColorPicker/ColorPicker'));
-
-var _iconConfig = _interopRequireDefault(require('../../config/iconConfig'));
-
-var _CheckboxGroup = _interopRequireDefault(require('../CheckboxGroup'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -125,9 +41,28 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-var Panel = _antd.Collapse.Panel;
-var TextArea = _antd.Input.TextArea;
-var Option = _antd.Select.Option;
+import React, { Fragment } from 'react';
+import {
+  Button,
+  Checkbox,
+  Col,
+  Collapse,
+  Form,
+  Input,
+  InputNumber,
+  Row,
+  Select,
+  Space,
+  Radio,
+} from 'antd';
+import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
+import * as _ from 'lodash';
+import ColorPicker from '../ColorPicker/ColorPicker';
+import CustomIcon from '../../config/iconConfig';
+import CheckboxGroup from '../CheckboxGroup';
+var Panel = Collapse.Panel;
+var TextArea = Input.TextArea;
+var Option = Select.Option;
 var alignObj = {
   left: ['左对齐', 'iconzuoduiqi'],
   right: ['右对齐', 'iconyouduiqi'],
@@ -153,23 +88,23 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
     }
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
-    _react['default'].Fragment,
+  return /*#__PURE__*/ React.createElement(
+    React.Fragment,
     null,
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Collapse,
+    /*#__PURE__*/ React.createElement(
+      Collapse,
       {
         defaultActiveKey: ['0', '1'],
       },
       (formStyle || []).map(function (item, index) {
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ React.createElement(
           Panel,
           {
             header: item.group,
             key: index,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form,
+          /*#__PURE__*/ React.createElement(
+            Form,
             {
               fields: item.formItems,
               onFieldsChange: function onFieldsChange(_, allFields) {
@@ -177,14 +112,14 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
               },
             },
             hasField(item.formItems, 'username')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     null,
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'username',
                         label: 'username',
@@ -195,20 +130,20 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                         ],
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Input, null),
+                      /*#__PURE__*/ React.createElement(Input, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'color')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     null,
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'color',
                         label: 'color',
@@ -219,20 +154,20 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                         ],
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Input, null),
+                      /*#__PURE__*/ React.createElement(Input, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'fontStyle')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     null,
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'fontStyle',
                         label: '\u5B57\u4F53\u989C\u8272',
@@ -240,59 +175,59 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           span: 7,
                         },
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'refreshRate')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'refreshRateCheck',
                         label: '\u5237\u65B0\u9891\u7387',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 9,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'refreshRate',
                         label: '',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                      /*#__PURE__*/ React.createElement(InputNumber, {
                         min: 0,
                         max: 1000000,
                       }),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 4,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'pullRateUnit',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Select,
+                      /*#__PURE__*/ React.createElement(
+                        Select,
                         {
                           style: {
                             width: 40,
@@ -312,7 +247,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                             n: '时',
                           },
                         ].map(function (item) {
-                          return /*#__PURE__*/ _react['default'].createElement(
+                          return /*#__PURE__*/ React.createElement(
                             Option,
                             {
                               key: item.t,
@@ -324,33 +259,29 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                       ),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     null,
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
-                      null,
-                      '\u4E00\u6B21',
-                    ),
+                    /*#__PURE__*/ React.createElement(Form.Item, null, '\u4E00\u6B21'),
                   ),
                 )
               : '',
             hasField(item.formItems, 'iframe')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 24,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'iframe',
                         label: '\u7F51\u9875\u5730\u5740',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(TextArea, {
+                      /*#__PURE__*/ React.createElement(TextArea, {
                         style: {
                           width: '100%',
                         },
@@ -365,50 +296,50 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                 )
               : '',
             hasField(item.formItems, 'title')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 7,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'titleShow',
                         label: '\u6807\u9898',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 17,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'title',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Input, null),
+                      /*#__PURE__*/ React.createElement(Input, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'titleFontFamily')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 24,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'titleFontFamily',
                         label: '\u5B57\u4F53',
@@ -417,15 +348,15 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                         },
                         labelAlign: 'left',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Select,
+                      /*#__PURE__*/ React.createElement(
+                        Select,
                         {
                           allowClear: true,
                           getPopupContainer: function getPopupContainer() {
                             return document.querySelector('#editLayout');
                           },
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: '"Microsoft YaHei"',
@@ -435,7 +366,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                           '\u5FAE\u8F6F\u96C5\u9ED1',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: 'SimSun',
@@ -445,7 +376,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                           '\u5B8B\u4F53',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: 'KaiTi',
@@ -455,7 +386,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                           '\u6977\u4F53',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: 'SimHei',
@@ -465,7 +396,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                           '\u9ED1\u4F53',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: '"Hiragino Sans GB"',
@@ -475,7 +406,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                           '\u51AC\u9752\u9ED1\u4F53',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: 'Arial',
@@ -485,7 +416,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                           'Arial',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: 'Tahoma',
@@ -495,7 +426,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                           },
                           'Tahoma',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: 'Helvetica',
@@ -511,34 +442,34 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                 )
               : '',
             hasField(item.formItems, 'titleFontColor')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'titleFontColor',
                         label: '\u989C\u8272\u5B57\u53F7',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'titleFontSize',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+                      /*#__PURE__*/ React.createElement(InputNumber, {
                         style: {
                           width: '100%',
                         },
@@ -548,20 +479,20 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                 )
               : '',
             hasField(item.formItems, 'titlePosition')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _react['default'].Fragment,
+              ? /*#__PURE__*/ React.createElement(
+                  React.Fragment,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Row,
+                  /*#__PURE__*/ React.createElement(
+                    Row,
                     null,
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Col,
+                    /*#__PURE__*/ React.createElement(
+                      Col,
                       {
                         span: 18,
                         offset: 6,
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Form.Item,
+                      /*#__PURE__*/ React.createElement(
+                        Form.Item,
                         {
                           label: '',
                           name: 'titlePosition',
@@ -569,16 +500,16 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                             span: 6,
                           },
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Radio.Group,
+                        /*#__PURE__*/ React.createElement(
+                          Radio.Group,
                           {
                             style: {
                               width: '100%',
                             },
                             size: 'small',
                           },
-                          /*#__PURE__*/ _react['default'].createElement(
-                            _antd.Radio.Button,
+                          /*#__PURE__*/ React.createElement(
+                            Radio.Button,
                             {
                               style: {
                                 width: '33%',
@@ -586,12 +517,12 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                               },
                               value: 'left',
                             },
-                            /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                            /*#__PURE__*/ React.createElement(CustomIcon, {
                               type: 'iconleft',
                             }),
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(
-                            _antd.Radio.Button,
+                          /*#__PURE__*/ React.createElement(
+                            Radio.Button,
                             {
                               style: {
                                 width: '33%',
@@ -599,12 +530,12 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                               },
                               value: 'center',
                             },
-                            /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                            /*#__PURE__*/ React.createElement(CustomIcon, {
                               type: 'iconjuzhongduiqi',
                             }),
                           ),
-                          /*#__PURE__*/ _react['default'].createElement(
-                            _antd.Radio.Button,
+                          /*#__PURE__*/ React.createElement(
+                            Radio.Button,
                             {
                               style: {
                                 width: '33%',
@@ -612,7 +543,7 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                               },
                               value: 'right',
                             },
-                            /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                            /*#__PURE__*/ React.createElement(CustomIcon, {
                               type: 'iconyouduiqi2',
                             }),
                           ),
@@ -620,203 +551,200 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                       ),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Row,
+                  /*#__PURE__*/ React.createElement(
+                    Row,
                     null,
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Col,
+                    /*#__PURE__*/ React.createElement(
+                      Col,
                       {
                         span: 18,
                         offset: 6,
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Form.Item,
+                      /*#__PURE__*/ React.createElement(
+                        Form.Item,
                         {
                           label: '',
                           name: 'titleFontStyle',
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _CheckboxGroup['default'],
-                          null,
-                        ),
+                        /*#__PURE__*/ React.createElement(CheckboxGroup, null),
                       ),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'headerFontColor')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'headerFontColor',
                         label: '\u8868\u5934\u5B57\u8272',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'headerFontSize',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, null),
+                      /*#__PURE__*/ React.createElement(InputNumber, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'theadBkColorShow')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 10,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'theadBkColorShow',
                         label: '\u8868\u5934\u80CC\u666F',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'theadBkColor',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'tbodyBkColor')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 10,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'tbodyBkColorShow',
                         label: '\u8868\u683C\u80CC\u666F',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'tbodyBkColor',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'tbBorderShow')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 10,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'tbBorderShow',
                         label: '\u8868\u683C\u8FB9\u6846',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 6,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'tbBorderColor',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 5,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'tbBorderSize',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, null),
+                      /*#__PURE__*/ React.createElement(InputNumber, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'chartShape')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     null,
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartShape',
                         label: '\u997C/\u73AF\u56FE',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Radio.Group,
+                      /*#__PURE__*/ React.createElement(
+                        Radio.Group,
                         null,
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Radio,
+                        /*#__PURE__*/ React.createElement(
+                          Radio,
                           {
                             value: 'pie',
                           },
                           '\u997C\u72B6\u56FE',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
-                          _antd.Radio,
+                        /*#__PURE__*/ React.createElement(
+                          Radio,
                           {
                             value: 'circle',
                           },
@@ -828,100 +756,100 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                 )
               : '',
             hasField(item.formItems, 'chartBkColorChecked')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+                    /*#__PURE__*/ React.createElement(Form.Item, {
                       label: '\u80CC\u666F\u989C\u8272',
                     }),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 3,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartBkColorChecked',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartBkColor',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'chartOrder')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+                    /*#__PURE__*/ React.createElement(Form.Item, {
                       label: '\u81EA\u52A8\u6392\u5E8F',
                     }),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 3,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartOrderChecked',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 13,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartOrder',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Select,
+                      /*#__PURE__*/ React.createElement(
+                        Select,
                         {
                           allowClear: true,
                           getPopupContainer: function getPopupContainer() {
                             return document.querySelector('#editLayout');
                           },
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: 'desc',
                           },
                           '\u4ECE\u5927\u5230\u5C0F',
                         ),
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           Option,
                           {
                             value: 'asc',
@@ -934,37 +862,37 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                 )
               : '',
             hasField(item.formItems, 'lineGraphRange')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+                    /*#__PURE__*/ React.createElement(Form.Item, {
                       label: '\u56FE\u5F62\u989C\u8272',
                     }),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 16,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.List,
+                    /*#__PURE__*/ React.createElement(
+                      Form.List,
                       {
                         name: 'lineGraphRange',
                       },
                       function (fields, _ref2) {
                         var add = _ref2.add,
                           remove = _ref2.remove;
-                        return /*#__PURE__*/ _react['default'].createElement(
-                          _react.Fragment,
+                        return /*#__PURE__*/ React.createElement(
+                          Fragment,
                           null,
                           fields.map(function (field) {
-                            return /*#__PURE__*/ _react['default'].createElement(
-                              _antd.Space,
+                            return /*#__PURE__*/ React.createElement(
+                              Space,
                               {
                                 key: field.key,
                                 style: {
@@ -974,8 +902,8 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                                 align: 'center',
                                 size: 20,
                               },
-                              /*#__PURE__*/ _react['default'].createElement(
-                                _antd.Form.Item,
+                              /*#__PURE__*/ React.createElement(
+                                Form.Item,
                                 _objectSpread(
                                   _objectSpread({}, field),
                                   {},
@@ -987,10 +915,10 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                                     },
                                   },
                                 ),
-                                /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                                /*#__PURE__*/ React.createElement(Checkbox, null),
                               ),
-                              /*#__PURE__*/ _react['default'].createElement(
-                                _antd.Form.Item,
+                              /*#__PURE__*/ React.createElement(
+                                Form.Item,
                                 _objectSpread(
                                   _objectSpread({}, field),
                                   {},
@@ -1001,49 +929,40 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                                     },
                                   },
                                 ),
-                                /*#__PURE__*/ _react['default'].createElement(
-                                  _ColorPicker['default'],
-                                  null,
-                                ),
+                                /*#__PURE__*/ React.createElement(ColorPicker, null),
                               ),
-                              /*#__PURE__*/ _react['default'].createElement(
-                                _antd.Form.Item,
+                              /*#__PURE__*/ React.createElement(
+                                Form.Item,
                                 {
                                   style: {
                                     display: 'none',
                                   },
                                 },
-                                /*#__PURE__*/ _react['default'].createElement(
-                                  _icons.MinusCircleOutlined,
-                                  {
-                                    onClick: function onClick() {
-                                      return remove(field.name);
-                                    },
+                                /*#__PURE__*/ React.createElement(MinusCircleOutlined, {
+                                  onClick: function onClick() {
+                                    return remove(field.name);
                                   },
-                                ),
+                                }),
                               ),
                             );
                           }),
                           fields.length < 10
-                            ? /*#__PURE__*/ _react['default'].createElement(
-                                _antd.Form.Item,
+                            ? /*#__PURE__*/ React.createElement(
+                                Form.Item,
                                 {
                                   style: {
                                     display: 'none',
                                   },
                                 },
-                                /*#__PURE__*/ _react['default'].createElement(
-                                  _antd.Button,
+                                /*#__PURE__*/ React.createElement(
+                                  Button,
                                   {
                                     type: 'dashed',
                                     onClick: function onClick() {
                                       return add();
                                     },
                                     block: true,
-                                    icon: /*#__PURE__*/ _react['default'].createElement(
-                                      _icons.PlusOutlined,
-                                      null,
-                                    ),
+                                    icon: /*#__PURE__*/ React.createElement(PlusOutlined, null),
                                   },
                                   '\u6DFB\u52A0',
                                 ),
@@ -1056,85 +975,85 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
                 )
               : '',
             hasField(item.formItems, 'chartBkColorShow')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+                    /*#__PURE__*/ React.createElement(Form.Item, {
                       label: '\u80CC\u666F\u989C\u8272',
                     }),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 3,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartBkColorShow',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartBkColor',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
                 )
               : '',
             hasField(item.formItems, 'chartRefLineShow')
-              ? /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Row,
+              ? /*#__PURE__*/ React.createElement(
+                  Row,
                   null,
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 8,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(_antd.Form.Item, {
+                    /*#__PURE__*/ React.createElement(Form.Item, {
                       label: '\u53C2\u8003\u7EBF',
                     }),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 3,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartRefLineShow',
                         valuePropName: 'checked',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, null),
+                      /*#__PURE__*/ React.createElement(Checkbox, null),
                     ),
                   ),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Col,
+                  /*#__PURE__*/ React.createElement(
+                    Col,
                     {
                       span: 12,
                     },
-                    /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Form.Item,
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
                       {
                         name: 'chartRefLineColor',
                       },
-                      /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
                     ),
                   ),
                 )
@@ -1146,5 +1065,4 @@ var CustomizedDynamicForm = function CustomizedDynamicForm(_ref) {
   );
 };
 
-var _default = CustomizedDynamicForm;
-exports['default'] = _default;
+export default CustomizedDynamicForm;

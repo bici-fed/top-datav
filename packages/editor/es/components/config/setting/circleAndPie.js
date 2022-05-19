@@ -1,17 +1,7 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _common = require('./common');
-
-var _pie = require('../charts/pie');
-
-var _defines = require('../../data/defines');
-
-var _default = {
+import { CHART_DATA, DATA_BASE_API } from './common';
+import { getPieOption } from '../charts/pie';
+import { lineRangedefaultColor } from '../../data/defines';
+export default {
   name: '饼状图',
   icon: 'iconbingzhuangtu1',
   data: {
@@ -27,14 +17,14 @@ var _default = {
     hideInput: true,
     data: {
       echarts: {
-        option: (0, _pie.getPieOption)(),
+        option: getPieOption(),
       },
     },
     property: {
       echartsType: 'circleAndPie',
       dataMethod: 'restful',
-      dataFormat: _common.CHART_DATA,
-      dataUrl: _common.DATA_BASE_API + '/creditBalance/productReceiveMonthQtChart',
+      dataFormat: CHART_DATA,
+      dataUrl: DATA_BASE_API + '/creditBalance/productReceiveMonthQtChart',
       dataSourceId: undefined,
       dataSourceUrl: undefined,
       pullRate: 120,
@@ -124,7 +114,7 @@ var _default = {
               },
               {
                 name: ['lineGraphRange'],
-                value: _defines.lineRangedefaultColor,
+                value: lineRangedefaultColor,
               },
             ],
           },
@@ -144,4 +134,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

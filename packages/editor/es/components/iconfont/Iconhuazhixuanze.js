@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconhuazhixuanze = function Iconhuazhixuanze(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconhuazhixuanze = function Iconhuazhixuanze(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M20.48 198.79253333h980.30933333v98.03093334H20.48V198.79253333z m0 261.46133334h980.30933333v98.03093333H20.48V460.25386667z m0 261.39306666h980.30933333v98.03093334H20.48v-98.03093334z',
-      fill: (0, _helper.getIconColor)(color, 0, '#ffffff'),
+      fill: getIconColor(color, 0, '#ffffff'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconhuazhixuanze = function Iconhuazhixuanze(_ref) {
 Iconhuazhixuanze.defaultProps = {
   size: 18,
 };
-var _default = Iconhuazhixuanze;
-exports['default'] = _default;
+export default Iconhuazhixuanze;

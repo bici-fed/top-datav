@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Icontianjia = function Icontianjia(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Icontianjia = function Icontianjia(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M535.296 488.704v-256h-46.592v256h-256v46.592h256v256h46.592v-256h256v-46.592h-256zM512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m0-46.528A465.472 465.472 0 1 0 512 46.528a465.472 465.472 0 0 0 0 930.944z',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Icontianjia = function Icontianjia(_ref) {
 Icontianjia.defaultProps = {
   size: 18,
 };
-var _default = Icontianjia;
-exports['default'] = _default;
+export default Icontianjia;

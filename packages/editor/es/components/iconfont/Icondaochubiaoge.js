@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Icondaochubiaoge = function Icondaochubiaoge(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Icondaochubiaoge = function Icondaochubiaoge(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M928 160H96a31.9488 31.9488 0 0 0-32 32v640c0 17.7152 14.336 32 32 32h832c17.7152 0 32-14.336 32-32V192a31.9488 31.9488 0 0 0-32-32z m-39.9872 208.0256h-211.968V231.936h211.968v136.0384z m0 224h-211.968V431.9744h211.968v160.0512zM412.0064 431.9744h199.9872v160.0512H412.0064V431.9744z m199.9872-64H412.0064V231.9872h199.9872v136.0384z m-476.0064 64h211.968v160.0512h-211.968V431.9744z m0-199.9872h211.968v136.0384h-211.968V231.936z m0 424.0384h211.968v135.9872h-211.968v-135.9872z m275.968 0h200.0384v135.9872H412.0064v-135.9872z m476.0576 135.9872h-211.968v-135.9872h211.968v135.9872z',
-      fill: (0, _helper.getIconColor)(color, 0, '#333333'),
+      fill: getIconColor(color, 0, '#333333'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Icondaochubiaoge = function Icondaochubiaoge(_ref) {
 Icondaochubiaoge.defaultProps = {
   size: 18,
 };
-var _default = Icondaochubiaoge;
-exports['default'] = _default;
+export default Icondaochubiaoge;

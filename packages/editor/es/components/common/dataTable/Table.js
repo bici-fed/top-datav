@@ -1,87 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
-
-var _reactcss = _interopRequireDefault(require('reactcss'));
-
-require('./style.css');
-
-var _reactTable = require('react-table');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-var _iconConfig = _interopRequireDefault(require('../../config/iconConfig'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -125,7 +41,14 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-// 获取titleFontStyle的
+import React, { useEffect, useRef } from 'react';
+import { Empty } from 'antd';
+import reactCSS from 'reactcss';
+import './style.css';
+import { useTable } from 'react-table';
+import * as _ from 'lodash';
+import CustomIcon from '../../config/iconConfig'; // 获取titleFontStyle的
+
 function getTitleFontStyle(fontStyle, value) {
   var style = _.find(fontStyle, function (item) {
     return item.name == value;
@@ -145,17 +68,17 @@ var Table = function Table(props) {
   var columns = props.columns,
     data = props.data,
     node = props.node;
-  var tableInstance = (0, _reactTable.useTable)({
+  var tableInstance = useTable({
     columns: columns,
     data: data,
   });
-  var scrollRef = (0, _react.useRef)();
+  var scrollRef = useRef();
   var getTableProps = tableInstance.getTableProps,
     getTableBodyProps = tableInstance.getTableBodyProps,
     headerGroups = tableInstance.headerGroups,
     rows = tableInstance.rows,
     prepareRow = tableInstance.prepareRow;
-  (0, _react.useEffect)(function () {
+  useEffect(function () {
     var scDiv = scrollRef.current;
     var h = scDiv.scrollHeight;
     var h1 = scDiv.scrollTop;
@@ -173,7 +96,7 @@ var Table = function Table(props) {
   }, []);
   /* 内敛样式定义 */
 
-  var styles = (0, _reactcss['default'])({
+  var styles = reactCSS({
     default: {
       headerWrapper: {
         textAlign: 'center',
@@ -219,17 +142,17 @@ var Table = function Table(props) {
   });
 
   var renderDataPoint = function renderDataPoint() {
-    return /*#__PURE__*/ _react['default'].createElement(
-      _react['default'].Fragment,
+    return /*#__PURE__*/ React.createElement(
+      React.Fragment,
       null,
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         'div',
         {
           style: {
             background: '#ccc',
           },
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'table',
           _objectSpread(
             _objectSpread({}, getTableProps()),
@@ -238,15 +161,15 @@ var Table = function Table(props) {
               style: styles.theader,
             },
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'thead',
             null,
             headerGroups.map(function (headerGroup) {
-              return /*#__PURE__*/ _react['default'].createElement(
+              return /*#__PURE__*/ React.createElement(
                 'tr',
                 _objectSpread({}, headerGroup.getHeaderGroupProps()),
                 headerGroup.headers.map(function (column) {
-                  return /*#__PURE__*/ _react['default'].createElement(
+                  return /*#__PURE__*/ React.createElement(
                     'th',
                     _objectSpread(
                       _objectSpread({}, column.getHeaderProps()),
@@ -263,35 +186,35 @@ var Table = function Table(props) {
           ),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         'div',
         {
           style: styles.tbodyWrapper,
           className: 'outer-container',
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'div',
           {
             className: 'inner-container',
             ref: scrollRef,
           },
           (data === null || data === void 0 ? void 0 : data.length) > 0
-            ? /*#__PURE__*/ _react['default'].createElement(
+            ? /*#__PURE__*/ React.createElement(
                 'table',
                 {
                   style: styles.table,
                   className: 'element',
                 },
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(
                   'tbody',
                   _objectSpread({}, getTableBodyProps()),
                   rows.map(function (row) {
                     prepareRow(row);
-                    return /*#__PURE__*/ _react['default'].createElement(
+                    return /*#__PURE__*/ React.createElement(
                       'tr',
                       _objectSpread({}, row.getRowProps()),
                       row.cells.map(function (cell) {
-                        return /*#__PURE__*/ _react['default'].createElement(
+                        return /*#__PURE__*/ React.createElement(
                           'td',
                           _objectSpread(
                             _objectSpread({}, cell.getCellProps()),
@@ -307,8 +230,8 @@ var Table = function Table(props) {
                   }),
                 ),
               )
-            : /*#__PURE__*/ _react['default'].createElement(_antd.Empty, {
-                image: /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+            : /*#__PURE__*/ React.createElement(Empty, {
+                image: /*#__PURE__*/ React.createElement(CustomIcon, {
                   type: 'iconwushuju',
                 }),
                 imageStyle: {
@@ -316,7 +239,7 @@ var Table = function Table(props) {
                   margin: 'auto auto',
                   fontSize: 42,
                 },
-                description: /*#__PURE__*/ _react['default'].createElement(
+                description: /*#__PURE__*/ React.createElement(
                   'span',
                   null,
                   '\u8BF7\u5728\u201C\u6570\u636E\u201D\u680F\u4E2D\u7ED1\u5B9A\u6570\u636E\u70B9\u6216\u8005\u7ED1\u5B9A\u6570\u636E\u63A5\u53E3',
@@ -327,8 +250,7 @@ var Table = function Table(props) {
     );
   };
 
-  return /*#__PURE__*/ _react['default'].createElement('div', null, renderDataPoint());
+  return /*#__PURE__*/ React.createElement('div', null, renderDataPoint());
 };
 
-var _default = Table;
-exports['default'] = _default;
+export default Table;

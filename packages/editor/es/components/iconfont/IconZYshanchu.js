@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var IconZYshanchu = function IconZYshanchu(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var IconZYshanchu = function IconZYshanchu(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M512.512 81.009778a428.657778 428.657778 0 0 1 304.753778 126.293333 428.657778 428.657778 0 0 1 126.293333 304.753778 428.657778 428.657778 0 0 1-126.293333 304.753778 428.657778 428.657778 0 0 1-304.753778 126.293333 428.657778 428.657778 0 0 1-304.753778-126.293333A428.657778 428.657778 0 0 1 81.464889 512a428.657778 428.657778 0 0 1 126.293333-304.753778 428.657778 428.657778 0 0 1 304.753778-126.293333m0-66.673778a497.777778 497.777778 0 1 0 0.056889 995.555556 497.777778 497.777778 0 0 0-0.056889-995.555556zM234.723556 478.72h555.52v66.673778H234.723556V478.72z',
-      fill: (0, _helper.getIconColor)(color, 0, '#E02020'),
+      fill: getIconColor(color, 0, '#E02020'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var IconZYshanchu = function IconZYshanchu(_ref) {
 IconZYshanchu.defaultProps = {
   size: 18,
 };
-var _default = IconZYshanchu;
-exports['default'] = _default;
+export default IconZYshanchu;

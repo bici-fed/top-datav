@@ -1,13 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _common = require('./common');
-
-var _default = {
+import { TONGJI_DATA, DATA_BASE_API } from './common';
+export default {
   name: '数据统计',
   icon: 'iconshujukapian',
   data: {
@@ -84,8 +76,8 @@ var _default = {
     ],
     property: {
       dataMethod: 'restful',
-      dataFormat: _common.TONGJI_DATA,
-      dataUrl: _common.DATA_BASE_API + '/creditBalance/productReceiveMonthQtTitleWeight',
+      dataFormat: TONGJI_DATA,
+      dataUrl: DATA_BASE_API + '/creditBalance/productReceiveMonthQtTitleWeight',
       pullRate: 120,
       dataDot: 2,
       props: {
@@ -209,4 +201,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

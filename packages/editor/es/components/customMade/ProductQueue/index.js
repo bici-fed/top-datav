@@ -1,81 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-require('./style.css');
-
-var _axios = _interopRequireDefault(require('axios'));
-
-var _api = require('../../data/api');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function _slicedToArray(arr, i) {
   return (
     _arrayWithHoles(arr) ||
@@ -141,21 +63,25 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
+import React, { useEffect, useState } from 'react';
+import './style.css';
+import axios from 'axios';
+import { handleRequestError, maxContentLength, timeout, withCredentials } from '../../data/api';
+
 var ProductQueue = function ProductQueue(props) {
   var _data$;
 
   var dataUrl = props.dataUrl;
 
-  var _useState = (0, _react.useState)([]),
+  var _useState = useState([]),
     _useState2 = _slicedToArray(_useState, 2),
     data = _useState2[0],
     setData = _useState2[1];
 
-  var scrollRef = _react['default'].useRef();
-
+  var scrollRef = React.useRef();
   var interfaceToken = ''; // 设置滚动
 
-  (0, _react.useEffect)(function () {
+  useEffect(function () {
     var intv = setInterval(function () {
       scrollRef.current.scrollBy(1, 0);
     }, 100);
@@ -163,7 +89,7 @@ var ProductQueue = function ProductQueue(props) {
       clearInterval(intv);
     };
   }, []);
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       // loginSZGC().then((res:string)=>{
       //     interfaceToken=res;
@@ -185,14 +111,12 @@ var ProductQueue = function ProductQueue(props) {
       }
 
       var myURL = new URL(dataUrl);
-
-      var ajax = _axios['default'].create({
+      var ajax = axios.create({
         baseURL: ''.concat(myURL.origin, '/'),
-        timeout: _api.timeout,
-        maxContentLength: _api.maxContentLength,
-        withCredentials: _api.withCredentials,
+        timeout: timeout,
+        maxContentLength: maxContentLength,
+        withCredentials: withCredentials,
       });
-
       ajax
         .request({
           url: myURL.pathname,
@@ -214,27 +138,27 @@ var ProductQueue = function ProductQueue(props) {
             reject('请求错误');
           }
         })
-        ['catch'](function (error) {
-          (0, _api.handleRequestError)(error);
+        .catch(function (error) {
+          handleRequestError(error);
           reject('请求错误');
         });
     });
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'div',
     {
       className: 'product-queue',
     },
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       'div',
       {
         className: 'header',
       },
-      /*#__PURE__*/ _react['default'].createElement('span', {
+      /*#__PURE__*/ React.createElement('span', {
         className: 'left',
       }),
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         'span',
         {
           className: 'right',
@@ -243,40 +167,40 @@ var ProductQueue = function ProductQueue(props) {
         (_data$ = data[0]) === null || _data$ === void 0 ? void 0 : _data$.workshopName,
       ),
     ),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       'div',
       {
         className: 'outer-container',
       },
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         'div',
         {
           className: 'inner-container',
           ref: scrollRef,
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'div',
           {
             className: 'element',
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'ul',
             null,
             (data || []).map(function (item, index) {
-              return /*#__PURE__*/ _react['default'].createElement(
+              return /*#__PURE__*/ React.createElement(
                 'li',
                 {
                   key: index,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(
                   'span',
                   {
                     className: 'title',
                   },
-                  /*#__PURE__*/ _react['default'].createElement('p', null, item.productName),
-                  /*#__PURE__*/ _react['default'].createElement('p', null, item.ticketNo),
+                  /*#__PURE__*/ React.createElement('p', null, item.productName),
+                  /*#__PURE__*/ React.createElement('p', null, item.ticketNo),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(
                   'span',
                   {
                     className: 'order',
@@ -293,5 +217,4 @@ var ProductQueue = function ProductQueue(props) {
   );
 };
 
-var _default = ProductQueue;
-exports['default'] = _default;
+export default ProductQueue;

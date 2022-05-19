@@ -12,6 +12,7 @@
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
+    "build:e": "father-build PACKAGE=@top-datav/editor",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean --yes",
     "deploy": "npm run docs:build && npm run docs:deploy",

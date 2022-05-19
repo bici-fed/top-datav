@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconchakanxiangqing = function Iconchakanxiangqing(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconchakanxiangqing = function Iconchakanxiangqing(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M1010.609231 328.231385a441.974154 441.974154 0 1 0-520.822154 669.538461H144.147692a104.999385 104.999385 0 0 1-104.999384-105.078154V131.308308A104.999385 104.999385 0 0 1 144.147692 26.230154h761.462154a104.999385 104.999385 0 0 1 104.999385 105.078154v196.923077z m-70.892308 461.508923l113.585231 113.58523a59.864615 59.864615 0 0 1-84.598154 84.519385L855.118769 874.338462a350.995692 350.995692 0 1 1 84.598154-84.519385zM718.532923 341.070769c54.114462 6.537846 99.091692 41.196308 135.876923 106.574769a26.230154 26.230154 0 0 0 45.764923-25.678769c-44.425846-79.084308-103.187692-124.297846-175.261538-133.041231a26.230154 26.230154 0 0 0-6.301539 52.145231z',
-      fill: (0, _helper.getIconColor)(color, 0, '#FFFFFF'),
+      fill: getIconColor(color, 0, '#FFFFFF'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconchakanxiangqing = function Iconchakanxiangqing(_ref) {
 Iconchakanxiangqing.defaultProps = {
   size: 18,
 };
-var _default = Iconchakanxiangqing;
-exports['default'] = _default;
+export default Iconchakanxiangqing;

@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconqiyonggaiziduan = function Iconqiyonggaiziduan(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconqiyonggaiziduan = function Iconqiyonggaiziduan(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M804.571429 18.285714a871.716571 871.716571 0 0 1 761.417142 467.382857 54.857143 54.857143 0 0 1 0 54.857143A871.643429 871.643429 0 0 1 804.571429 1005.714286 871.643429 871.643429 0 0 1 43.154286 538.331429a54.857143 54.857143 0 0 1 0-54.857143A871.716571 871.716571 0 0 1 804.571429 18.285714z m0 109.714286A758.125714 758.125714 0 0 0 154.550857 512 758.125714 758.125714 0 0 0 804.571429 896 758.125714 758.125714 0 0 0 1454.592 512 758.125714 758.125714 0 0 0 804.571429 128zM1024 512a219.428571 219.428571 0 1 1-438.857143 0 219.428571 219.428571 0 0 1 438.857143 0',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconqiyonggaiziduan = function Iconqiyonggaiziduan(_ref) {
 Iconqiyonggaiziduan.defaultProps = {
   size: 18,
 };
-var _default = Iconqiyonggaiziduan;
-exports['default'] = _default;
+export default Iconqiyonggaiziduan;

@@ -1,18 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.dynamicWebSocketData = dynamicWebSocketData;
-
-var _Layout = require('../Layout');
-
-var _moment = _interopRequireDefault(require('moment'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -56,8 +41,11 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-// 里面的字符可以根据自己的需要进行调整
-_moment['default'].locale('zh-cn', {
+// @ts-nocheck
+import { canvas } from '../Layout';
+import moment from 'moment'; // 里面的字符可以根据自己的需要进行调整
+
+moment.locale('zh-cn', {
   months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
   monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
   weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
@@ -138,15 +126,14 @@ _moment['default'].locale('zh-cn', {
     doy: 4, // The week that contains Jan 4th is the first week of the year.
   },
 });
+export function dynamicWebSocketData() {
+  canvas.socket.socket.onerror = function () {};
 
-function dynamicWebSocketData() {
-  _Layout.canvas.socket.socket.onerror = function () {};
-
-  _Layout.canvas.socket.socket.onopen = function () {
-    if (_Layout.canvas.data && _Layout.canvas.data.pens.length > 0) {
+  canvas.socket.socket.onopen = function () {
+    if (canvas.data && canvas.data.pens.length > 0) {
       // 有数据，去遍历有websocket的组件，并订阅
-      if (_Layout.canvas.socket != undefined) {
-        (_Layout.canvas.data.pens || []).map(function (node) {
+      if (canvas.socket != undefined) {
+        (canvas.data.pens || []).map(function (node) {
           var _node$property,
             _node$property$dataPo,
             _node$property$dataPo2,
@@ -165,7 +152,7 @@ function dynamicWebSocketData() {
               ? void 0
               : _node$property$dataPo2.length) > 0
           ) {
-            _Layout.canvas.socket.socket.send(
+            canvas.socket.socket.send(
               JSON.stringify(
                 _objectSpread(
                   _objectSpread({}, node.property.dataPointParam),
@@ -190,7 +177,7 @@ function dynamicWebSocketData() {
               ? void 0
               : _node$data$property$d2.length) > 0
           ) {
-            _Layout.canvas.socket.socket.send(
+            canvas.socket.socket.send(
               JSON.stringify(
                 _objectSpread(
                   _objectSpread({}, node.data.property.dataPointParam),
@@ -210,11 +197,11 @@ function dynamicWebSocketData() {
 
   var times = [];
 
-  _Layout.canvas.socket.socket.onmessage = function (data) {
-    if (_Layout.canvas.data && _Layout.canvas.data.pens.length > 0) {
+  canvas.socket.socket.onmessage = function (data) {
+    if (canvas.data && canvas.data.pens.length > 0) {
       // 有数据，去遍历有websocket的组件，并订阅
-      if (_Layout.canvas.socket != undefined) {
-        (_Layout.canvas.data.pens || []).map(function (node) {
+      if (canvas.socket != undefined) {
+        (canvas.data.pens || []).map(function (node) {
           var _node$property2, _node$property2$dataP, _node$property2$dataP2;
 
           if (
@@ -233,8 +220,7 @@ function dynamicWebSocketData() {
             if (node.name == 'biciVarer') {
               if (node.text != r.value) {
                 node.text = r.value;
-
-                _Layout.canvas.updateProps(false);
+                canvas.updateProps(false);
               }
             }
           } else if (node.name == 'echarts') {
@@ -246,9 +232,7 @@ function dynamicWebSocketData() {
             switch (theChart) {
               case 'gauge':
                 node.data.echarts.option.series[0].data[0].value = _r.value;
-
-                _Layout.canvas.updateProps(false);
-
+                canvas.updateProps(false);
                 break;
 
               case 'timeLine':
@@ -271,13 +255,11 @@ function dynamicWebSocketData() {
                   yAxisData.shift();
                 }
 
-                xAxisData.push((0, _moment['default'])(_r.time).format('LTS'));
+                xAxisData.push(moment(_r.time).format('LTS'));
                 yAxisData.push(_r.value);
                 node.data.echarts.option.xAxis.data = xAxisData;
                 node.data.echarts.option.series[0].data = yAxisData;
-
-                _Layout.canvas.updateProps(false);
-
+                canvas.updateProps(false);
                 break;
 
               default:

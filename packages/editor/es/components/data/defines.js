@@ -1,119 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.fullscreenDiffY =
-  exports.defaultTimelineShowData =
-  exports.defaultLineColors =
-  exports.defaultChartColors =
-  exports.colorList =
-  exports.VERTEX_WIDTH =
-  exports.VERTEX_HEIGHT =
-  exports.UploadURIProps =
-  exports.UNLINK =
-  exports.Stroke =
-  exports.SHECHEDULE_RIGHTDRAWER_WIDTH =
-  exports.RIGHTDRAWER_WIDTH =
-  exports.OperateType =
-  exports.NodePanel =
-  exports.Node =
-  exports.NODE_WIDTH =
-  exports.NODE_HEIGHT =
-  exports.MenuPos =
-  exports.MIN_SCALE =
-  exports.MENU_WIDTH =
-  exports.MENU_HEIGHT =
-  exports.MAX_SCALE =
-  exports.LINK_AREA =
-  exports.LINKICON_WIDTH =
-  exports.LINKICON_HEIGHT =
-  exports.LINK =
-  exports.ImageProps =
-  exports.GROUP_PADDING =
-  exports.EChart =
-  exports.DataVEditorProps =
-  exports.DataPointPropsMap =
-  exports.DATA_STATUS =
-  exports.ComponentType =
-  exports.ComponentMap =
-  exports.ComponentKey =
-  exports.CONTEXT_HEIGHT_DIFF =
-  exports.CONNECTOR =
-  exports.COMPONENT_DISTANCE =
-  exports.BgImagesProps =
-  exports.BaseCompStyle =
-  exports.ACTIVE =
-    void 0;
-exports.getContainer = getContainer;
-exports.uploadConfigProps =
-  exports.privateKey =
-  exports.operatorTypeCode =
-  exports.lineRangedefaultColor =
-  exports.keyCodeMap =
-    void 0;
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -151,67 +35,53 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-// 组件卡片宽度高度
-var NODE_WIDTH = 220;
-exports.NODE_WIDTH = NODE_WIDTH;
-var NODE_HEIGHT = 60; // 右边菜单栏宽度
+/**
+ * @file 管道画布常量定义
+ */
+import * as _ from 'lodash'; // 组件卡片宽度高度
 
-exports.NODE_HEIGHT = NODE_HEIGHT;
-var MENU_WIDTH = 120;
-exports.MENU_WIDTH = MENU_WIDTH;
-var MENU_HEIGHT = 196; // 右边抽屉宽度-通用
+export var NODE_WIDTH = 220;
+export var NODE_HEIGHT = 60; // 右边菜单栏宽度
 
-exports.MENU_HEIGHT = MENU_HEIGHT;
-var RIGHTDRAWER_WIDTH = 521; // 右边抽屉宽度-调度配置
+export var MENU_WIDTH = 120;
+export var MENU_HEIGHT = 196; // 右边抽屉宽度-通用
 
-exports.RIGHTDRAWER_WIDTH = RIGHTDRAWER_WIDTH;
-var SHECHEDULE_RIGHTDRAWER_WIDTH = 750; // 支持缩放的最大值跟最小值
+export var RIGHTDRAWER_WIDTH = 521; // 右边抽屉宽度-调度配置
 
-exports.SHECHEDULE_RIGHTDRAWER_WIDTH = SHECHEDULE_RIGHTDRAWER_WIDTH;
-var MAX_SCALE = 400;
-exports.MAX_SCALE = MAX_SCALE;
-var MIN_SCALE = 25; // 组件之间的间距
+export var SHECHEDULE_RIGHTDRAWER_WIDTH = 750; // 支持缩放的最大值跟最小值
 
-exports.MIN_SCALE = MIN_SCALE;
-var COMPONENT_DISTANCE = 30; // 全屏状态的坐标差,顶部导航到画布的距离
+export var MAX_SCALE = 400;
+export var MIN_SCALE = 25; // 组件之间的间距
 
-exports.COMPONENT_DISTANCE = COMPONENT_DISTANCE;
-var fullscreenDiffY = 130; // 顶部导航到画布的固定举例，用于计算Context
+export var COMPONENT_DISTANCE = 30; // 全屏状态的坐标差,顶部导航到画布的距离
 
-exports.fullscreenDiffY = fullscreenDiffY;
-var CONTEXT_HEIGHT_DIFF = 155; // 连接符
+export var fullscreenDiffY = 130; // 顶部导航到画布的固定举例，用于计算Context
 
-exports.CONTEXT_HEIGHT_DIFF = CONTEXT_HEIGHT_DIFF;
-var CONNECTOR = '_'; // 连线可连线的区域
+export var CONTEXT_HEIGHT_DIFF = 155; // 连接符
 
-exports.CONNECTOR = CONNECTOR;
-var LINK_AREA = 30; // 连线不同状态的颜色
+export var CONNECTOR = '_'; // 连线可连线的区域
+
+export var LINK_AREA = 30; // 连线不同状态的颜色
 // 未连接状态
 
-exports.LINK_AREA = LINK_AREA;
-var UNLINK = '#52619b'; // 选中状态
+export var UNLINK = '#52619b'; // 选中状态
 
-exports.UNLINK = UNLINK;
-var ACTIVE = '#92ade3'; // 连接状态
+export var ACTIVE = '#92ade3'; // 连接状态
 
-exports.ACTIVE = ACTIVE;
-var LINK = '#b4bdcf'; // 管道节点code为30，为固定值
+export var LINK = '#b4bdcf'; // 管道节点code为30，为固定值
 
-exports.LINK = LINK;
-var operatorTypeCode = 30; // 组件库类型
+export var operatorTypeCode = 30; // 组件库类型
 
-exports.operatorTypeCode = operatorTypeCode;
-var ComponentType;
-exports.ComponentType = ComponentType;
+export var ComponentType;
 
 (function (ComponentType) {
   /** 通用 */
   ComponentType['common'] = 'common';
   /** 自定义 */
   //self = 'self'
-})(ComponentType || (exports.ComponentType = ComponentType = {})); // 工业图片属性
+})(ComponentType || (ComponentType = {})); // 工业图片属性
 
-var ImageProps = /*#__PURE__*/ _createClass(function ImageProps() {
+export var ImageProps = /*#__PURE__*/ _createClass(function ImageProps() {
   _classCallCheck(this, ImageProps);
 
   this.name = void 0;
@@ -222,14 +92,8 @@ var ImageProps = /*#__PURE__*/ _createClass(function ImageProps() {
   this.rotate = void 0;
   this.key = void 0;
 });
-
-exports.ImageProps = ImageProps;
-
-var ComponentMap = _defineProperty({}, ComponentType.common, '通用');
-
-exports.ComponentMap = ComponentMap;
-
-var Stroke = /*#__PURE__*/ _createClass(function Stroke() {
+export var ComponentMap = _defineProperty({}, ComponentType.common, '通用');
+export var Stroke = /*#__PURE__*/ _createClass(function Stroke() {
   _classCallCheck(this, Stroke);
 
   this.color = void 0;
@@ -244,9 +108,7 @@ var Stroke = /*#__PURE__*/ _createClass(function Stroke() {
   this.transformOrigin = void 0;
 }); // 定义echarts表
 
-exports.Stroke = Stroke;
-
-var EChart = /*#__PURE__*/ _createClass(function EChart() {
+export var EChart = /*#__PURE__*/ _createClass(function EChart() {
   _classCallCheck(this, EChart);
 
   this.type = void 0;
@@ -255,10 +117,7 @@ var EChart = /*#__PURE__*/ _createClass(function EChart() {
   this.format = void 0;
   this.stroke = void 0;
 });
-
-exports.EChart = EChart;
-
-var Node = /*#__PURE__*/ _createClass(function Node() {
+export var Node = /*#__PURE__*/ _createClass(function Node() {
   _classCallCheck(this, Node);
 
   this.type = void 0;
@@ -281,10 +140,7 @@ var Node = /*#__PURE__*/ _createClass(function Node() {
   this.rotate = void 0;
   this.url = void 0;
 });
-
-exports.Node = Node;
-
-var NodePanel = /*#__PURE__*/ _createClass(function NodePanel() {
+export var NodePanel = /*#__PURE__*/ _createClass(function NodePanel() {
   _classCallCheck(this, NodePanel);
 
   this.type = void 0;
@@ -294,16 +150,11 @@ var NodePanel = /*#__PURE__*/ _createClass(function NodePanel() {
   this.disabled = void 0;
 }); // group padding
 
-exports.NodePanel = NodePanel;
-var GROUP_PADDING = 20; // 连线中的icon，宽高
+export var GROUP_PADDING = 20; // 连线中的icon，宽高
 
-exports.GROUP_PADDING = GROUP_PADDING;
-var LINKICON_WIDTH = 18;
-exports.LINKICON_WIDTH = LINKICON_WIDTH;
-var LINKICON_HEIGHT = 18;
-exports.LINKICON_HEIGHT = LINKICON_HEIGHT;
-var ComponentKey;
-exports.ComponentKey = ComponentKey;
+export var LINKICON_WIDTH = 18;
+export var LINKICON_HEIGHT = 18;
+export var ComponentKey;
 
 (function (ComponentKey) {
   ComponentKey['rect'] = 'rect';
@@ -317,9 +168,9 @@ exports.ComponentKey = ComponentKey;
   ComponentKey['line'] = 'line';
   ComponentKey['table'] = 'table';
   ComponentKey['time'] = 'time';
-})(ComponentKey || (exports.ComponentKey = ComponentKey = {})); // 基本组件的基本样式属性
+})(ComponentKey || (ComponentKey = {})); // 基本组件的基本样式属性
 
-var BaseCompStyle = /*#__PURE__*/ _createClass(function BaseCompStyle() {
+export var BaseCompStyle = /*#__PURE__*/ _createClass(function BaseCompStyle() {
   _classCallCheck(this, BaseCompStyle);
 
   this.left = void 0;
@@ -341,15 +192,12 @@ var BaseCompStyle = /*#__PURE__*/ _createClass(function BaseCompStyle() {
   this.borderColor = void 0;
   this.color = void 0;
 });
-
-exports.BaseCompStyle = BaseCompStyle;
-var keyCodeMap = {
+export var keyCodeMap = {
   delete: 8,
   copy: 67,
   paste: 86,
 };
-exports.keyCodeMap = keyCodeMap;
-var colorList = [
+export var colorList = [
   'rgba(156, 25, 25, 1)',
   'rgba(65, 117, 5, 1)',
   'rgba(144, 19, 254, 1)',
@@ -361,8 +209,7 @@ var colorList = [
   'rgba(137, 116, 116, 1)',
   'rgba(97, 147, 39, 1)',
 ];
-exports.colorList = colorList;
-var defaultLineColors = [
+export var defaultLineColors = [
   '#E63C5F',
   '#6236FF',
   '#157EFB',
@@ -374,8 +221,7 @@ var defaultLineColors = [
   '#766863',
   '#FA6400',
 ];
-exports.defaultLineColors = defaultLineColors;
-var defaultChartColors = [
+export var defaultChartColors = [
   '#157EFB',
   '#F7B500',
   '#1EC622',
@@ -387,28 +233,23 @@ var defaultChartColors = [
   '#766863',
   '#FA6400',
 ];
-exports.defaultChartColors = defaultChartColors;
-var DATA_STATUS = {
+export var DATA_STATUS = {
   '-1': '无数据',
   1: '正常',
   2: '超过正常',
   3: '低于下限',
 };
-exports.DATA_STATUS = DATA_STATUS;
-var lineRangedefaultColor = defaultChartColors.map(function (color) {
+export var lineRangedefaultColor = defaultChartColors.map(function (color) {
   return {
     lineGraphRangeColor: color,
     lineGraphRangeCheck: true,
   };
 }); // 实时曲线显示多少个时刻点
 
-exports.lineRangedefaultColor = lineRangedefaultColor;
-var defaultTimelineShowData = 80;
+export var defaultTimelineShowData = 80;
 /** 处理弹窗全屏挂载 */
 
-exports.defaultTimelineShowData = defaultTimelineShowData;
-
-function getContainer() {
+export function getContainer() {
   var pipelineDoms = document.getElementsByClassName('pipeline-canvas');
   return _.find(pipelineDoms, function (dom) {
     return dom.offsetParent;
@@ -426,30 +267,24 @@ var MenuPos = /*#__PURE__*/ _createClass(function MenuPos() {
   this.y = void 0;
 }); // 节点宽高
 
-exports.MenuPos = MenuPos;
-var VERTEX_WIDTH = 180;
-exports.VERTEX_WIDTH = VERTEX_WIDTH;
-var VERTEX_HEIGHT = 32;
-exports.VERTEX_HEIGHT = VERTEX_HEIGHT;
-// 操作类型
-var OperateType;
-exports.OperateType = OperateType;
+export var VERTEX_WIDTH = 180;
+export var VERTEX_HEIGHT = 32;
+export { MenuPos }; // 操作类型
+
+export var OperateType;
 
 (function (OperateType) {
   OperateType['copy'] = 'copy';
   OperateType['delete'] = 'delete';
-})(OperateType || (exports.OperateType = OperateType = {}));
+})(OperateType || (OperateType = {}));
 
-var BgImagesProps = /*#__PURE__*/ _createClass(function BgImagesProps() {
+export var BgImagesProps = /*#__PURE__*/ _createClass(function BgImagesProps() {
   _classCallCheck(this, BgImagesProps);
 
   this.key = void 0;
   this.img = void 0;
 });
-
-exports.BgImagesProps = BgImagesProps;
-
-var DataVEditorProps = /*#__PURE__*/ _createClass(function DataVEditorProps() {
+export var DataVEditorProps = /*#__PURE__*/ _createClass(function DataVEditorProps() {
   _classCallCheck(this, DataVEditorProps);
 
   this.apiURL = void 0;
@@ -473,10 +308,7 @@ var DataVEditorProps = /*#__PURE__*/ _createClass(function DataVEditorProps() {
   this.onAddVedioSource = void 0;
   this.dataPointPropsMap = void 0;
 });
-
-exports.DataVEditorProps = DataVEditorProps;
-
-var DataPointPropsMap = /*#__PURE__*/ _createClass(function DataPointPropsMap() {
+export var DataPointPropsMap = /*#__PURE__*/ _createClass(function DataPointPropsMap() {
   _classCallCheck(this, DataPointPropsMap);
 
   this.id = void 0;
@@ -486,10 +318,7 @@ var DataPointPropsMap = /*#__PURE__*/ _createClass(function DataPointPropsMap() 
   this.scopeMin = void 0;
   this.scopeMax = void 0;
 });
-
-exports.DataPointPropsMap = DataPointPropsMap;
-
-var uploadConfigProps = /*#__PURE__*/ _createClass(function uploadConfigProps() {
+export var uploadConfigProps = /*#__PURE__*/ _createClass(function uploadConfigProps() {
   _classCallCheck(this, uploadConfigProps);
 
   this.baseURL = void 0;
@@ -498,10 +327,7 @@ var uploadConfigProps = /*#__PURE__*/ _createClass(function uploadConfigProps() 
   this.industry = void 0;
   this.combineCom = void 0;
 });
-
-exports.uploadConfigProps = uploadConfigProps;
-
-var UploadURIProps = /*#__PURE__*/ _createClass(function UploadURIProps() {
+export var UploadURIProps = /*#__PURE__*/ _createClass(function UploadURIProps() {
   _classCallCheck(this, UploadURIProps);
 
   this.baseURL = void 0;
@@ -510,7 +336,5 @@ var UploadURIProps = /*#__PURE__*/ _createClass(function UploadURIProps() {
   this.data = void 0;
 }); // 基于 jsencrypt 的 RSA 验证私匙
 
-exports.UploadURIProps = UploadURIProps;
-var privateKey =
+export var privateKey =
   'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvJGaiiS3oLK9QXgm1jpzKe3g4jKRu0zXWqjaazh9NW13vdMcu3ctKT2+GqV9I7FMBgP69p9LX1hOXoSmagYB5Qku1Vrjx03mjnhcYaCleJzv7vksb8Rsx/Dd8pRCVoYvjsgawYB+oxnvlHKvk7d/XuHCOY02Tod21KpsBQ6Z9AwIDAQAB';
-exports.privateKey = privateKey;

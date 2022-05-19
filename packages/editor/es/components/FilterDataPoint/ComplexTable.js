@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,62 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = exports.DEVICE_STATUS = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _biciTransformers = require('bici-transformers');
-
-var _lodash = _interopRequireDefault(require('lodash'));
-
-var _api = require('../data/api');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -215,8 +157,15 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
-// 传感器状态
-var DEVICE_STATUS = [
+/**
+ * 用户侧：复杂感知点 > 列表
+ */
+import React, { PureComponent } from 'react';
+import { ComplexTable } from 'bici-transformers';
+import _ from 'lodash';
+import { fetchPerceptualPointList } from '../data/api'; // 传感器状态
+
+export var DEVICE_STATUS = [
   {
     value: 1,
     text: '正常',
@@ -234,7 +183,6 @@ var DEVICE_STATUS = [
     text: '无数据',
   },
 ];
-exports.DEVICE_STATUS = DEVICE_STATUS;
 var initialQueryParams = {
   calculationCode: '',
   dataName: '',
@@ -322,20 +270,16 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
               _record$scopeMax = record.scopeMax,
               scopeMax = _record$scopeMax === void 0 ? '' : _record$scopeMax;
             var scope = ''.concat(scopeMin, ' ~ ').concat(scopeMax);
-
-            var scopeText = /*#__PURE__*/ _react['default'].createElement(
+            var scopeText = /*#__PURE__*/ React.createElement(
               'div',
               {
                 style: {
-                  width: _biciTransformers.ComplexTable.columnWidth.lg - 16,
+                  width: ComplexTable.columnWidth.lg - 16,
                 },
               },
               scope,
             );
-
-            return _lodash['default'].isNumber(scopeMin) || _lodash['default'].isNumber(scopeMax)
-              ? scopeText
-              : '';
+            return _.isNumber(scopeMin) || _.isNumber(scopeMax) ? scopeText : '';
           },
         },
         {
@@ -359,7 +303,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
             var show;
 
             if (record.status === 1) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ React.createElement(
                 'span',
                 {
                   className: 'green6',
@@ -367,7 +311,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
                 '\u6B63\u5E38',
               );
             } else if (record.status === 2) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ React.createElement(
                 'span',
                 {
                   className: 'red6',
@@ -375,7 +319,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
                 '\u8D85\u8FC7\u4E0A\u9650',
               );
             } else if (record.status === 3) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ React.createElement(
                 'span',
                 {
                   className: 'red6',
@@ -383,7 +327,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
                 '\u4F4E\u4E8E\u4E0B\u9650',
               );
             } else if (record.status === -1) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ React.createElement(
                 'span',
                 {
                   className: 'black85',
@@ -392,7 +336,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
               );
             }
 
-            return /*#__PURE__*/ _react['default'].createElement(
+            return /*#__PURE__*/ React.createElement(
               'div',
               {
                 style: {
@@ -530,7 +474,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
           params.statusList = statusList;
         }
 
-        (0, _api.fetchPerceptualPointList)(params).then(function (res) {
+        fetchPerceptualPointList(params).then(function (res) {
           if (res['data'].data) {
             var _res$data$data = res['data'].data,
               list = _res$data$data.list,
@@ -575,7 +519,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
           },
         };
         pagination.total = total;
-        return /*#__PURE__*/ _react['default'].createElement(_biciTransformers.ComplexTable, {
+        return /*#__PURE__*/ React.createElement(ComplexTable, {
           rowKey: 'id',
           minWidth: 800,
           dataSource: dataList,
@@ -590,6 +534,6 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
   ]);
 
   return ComplexDataPoint;
-})(_react.PureComponent);
+})(PureComponent);
 
-exports['default'] = ComplexDataPoint;
+export { ComplexDataPoint as default };

@@ -1,19 +1,6 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _styleModule = _interopRequireDefault(require('./style.module.css'));
-
-var _iconConfig = _interopRequireDefault(require('../../config/iconConfig'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+import React from 'react';
+import styles from './style.module.css';
+import CustomIcon from '../../config/iconConfig';
 
 var CheckboxGroup = function CheckboxGroup(props) {
   var value = props.value,
@@ -25,13 +12,13 @@ var CheckboxGroup = function CheckboxGroup(props) {
     onChange && onChange(value);
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'div',
     {
-      className: _styleModule['default'].checkboxGroup,
+      className: styles.checkboxGroup,
     },
     (value || []).map(function (item, index) {
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ React.createElement(
         'label',
         {
           key: index,
@@ -39,29 +26,27 @@ var CheckboxGroup = function CheckboxGroup(props) {
             width: 100 / value.length + '%',
           },
           className: item.checked
-            ? ''
-                .concat(_styleModule['default'].buttonWrapper, ' ')
-                .concat(_styleModule['default'].buttonWrapperChecked)
-            : ''.concat(_styleModule['default'].buttonWrapper),
+            ? ''.concat(styles.buttonWrapper, ' ').concat(styles.buttonWrapperChecked)
+            : ''.concat(styles.buttonWrapper),
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'span',
           {
-            className: _styleModule['default'].checkboxButton,
+            className: styles.checkboxButton,
           },
-          /*#__PURE__*/ _react['default'].createElement('input', {
+          /*#__PURE__*/ React.createElement('input', {
             type: 'checkbox',
-            className: _styleModule['default'].checkboxButtonInput,
+            className: styles.checkboxButtonInput,
             onClick: function onClick(e) {
               return handleChange(e, item);
             },
             value: item.value,
           }),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'span',
           null,
-          /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+          /*#__PURE__*/ React.createElement(CustomIcon, {
             type: item.icon,
           }),
         ),
@@ -70,5 +55,4 @@ var CheckboxGroup = function CheckboxGroup(props) {
   );
 };
 
-var _default = CheckboxGroup;
-exports['default'] = _default;
+export default CheckboxGroup;

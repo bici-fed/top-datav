@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var IconcaidanZidingyibiaodan = function IconcaidanZidingyibiaodan(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var IconcaidanZidingyibiaodan = function IconcaidanZidingyibiaodan(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M811.072 85.312a42.24 42.24 0 0 1 42.24 42.24v565.76h-64v-544H234.688v725.376H608v64H212.928a42.24 42.24 0 0 1-42.24-42.24V127.552a42.24 42.24 0 0 1 42.24-42.24h598.144zM714.88 640a21.12 21.12 0 0 1 21.12 21.12v96.128l96.192 0.064a21.12 21.12 0 0 1 21.12 21.12v21.76a21.12 21.12 0 0 1-21.12 21.12H736v96.256a21.12 21.12 0 0 1-21.12 21.12h-21.76a21.12 21.12 0 0 1-21.12-21.12v-96.32l-96.192 0.064a21.12 21.12 0 0 1-21.12-21.12v-21.76a21.12 21.12 0 0 1 21.12-21.12H672V661.12a21.12 21.12 0 0 1 21.12-21.12h21.76z m-138.688-42.688a21.12 21.12 0 0 1 21.12 21.12v21.76a21.12 21.12 0 0 1-21.12 21.12H319.808a21.12 21.12 0 0 1-21.12-21.12v-21.76a21.12 21.12 0 0 1 21.12-21.12h256.384z m128-170.624a21.12 21.12 0 0 1 21.12 21.12v21.76a21.12 21.12 0 0 1-21.12 21.12H319.808a21.12 21.12 0 0 1-21.12-21.12v-21.76a21.12 21.12 0 0 1 21.12-21.12h384.384z m0-170.688a21.12 21.12 0 0 1 21.12 21.12v21.76a21.12 21.12 0 0 1-21.12 21.12H319.808a21.12 21.12 0 0 1-21.12-21.12v-21.76a21.12 21.12 0 0 1 21.12-21.12h384.384z',
-      fill: (0, _helper.getIconColor)(color, 0, '#333333'),
+      fill: getIconColor(color, 0, '#333333'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var IconcaidanZidingyibiaodan = function IconcaidanZidingyibiaodan(_ref) {
 IconcaidanZidingyibiaodan.defaultProps = {
   size: 18,
 };
-var _default = IconcaidanZidingyibiaodan;
-exports['default'] = _default;
+export default IconcaidanZidingyibiaodan;

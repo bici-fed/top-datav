@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,27 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _reactDraggable = require('react-draggable');
-
-var _lodash = _interopRequireDefault(require('lodash.debounce'));
-
-var _cashDom = _interopRequireDefault(require('cash-dom'));
-
-var _bind = _interopRequireDefault(require('classnames/bind'));
-
-var _ResizePanelModule = _interopRequireDefault(require('./ResizePanel.module.css'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -180,7 +157,14 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-var cx = _bind['default'].bind(_ResizePanelModule['default']);
+// @ts-nocheck
+import React from 'react';
+import { DraggableCore } from 'react-draggable';
+import debounce from 'lodash.debounce';
+import $ from 'cash-dom';
+import classNames from 'classnames/bind';
+import style from './ResizePanel.module.css';
+var cx = classNames.bind(style);
 
 var ResizePanelProps = /*#__PURE__*/ _createClass(function ResizePanelProps() {
   _classCallCheck(this, ResizePanelProps);
@@ -237,11 +221,9 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
     _this.state = {
       size: 0,
     };
-    _this.contentRef = /*#__PURE__*/ _react['default'].createRef();
-    _this.wrapperRef = /*#__PURE__*/ _react['default'].createRef();
-    _this.validateSize = (0, _lodash['default'])(_this.validateSize, 100).bind(
-      _assertThisInitialized(_this),
-    );
+    _this.contentRef = /*#__PURE__*/ React.createRef();
+    _this.wrapperRef = /*#__PURE__*/ React.createRef();
+    _this.validateSize = debounce(_this.validateSize, 100).bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -252,8 +234,8 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
         var content = this.contentRef.current;
         var actualContent = content.children[0];
         var initialSize = this.isHorizontal()
-          ? (0, _cashDom['default'])(actualContent).outerWidth(true)
-          : (0, _cashDom['default'])(actualContent).outerHeight(true); // Initialize the size value based on the content's current size
+          ? $(actualContent).outerWidth(true)
+          : $(actualContent).outerHeight(true); // Initialize the size value based on the content's current size
 
         this.setState({
           size: initialSize,
@@ -275,10 +257,8 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
 
         var minSize = isHorizontal ? actualContent.scrollWidth : actualContent.scrollHeight;
         var margins = isHorizontal
-          ? (0, _cashDom['default'])(actualContent).outerWidth(true) -
-            (0, _cashDom['default'])(actualContent).outerWidth()
-          : (0, _cashDom['default'])(actualContent).outerHeight(true) -
-            (0, _cashDom['default'])(actualContent).outerHeight();
+          ? $(actualContent).outerWidth(true) - $(actualContent).outerWidth()
+          : $(actualContent).outerHeight(true) - $(actualContent).outerHeight();
         minSize += margins;
 
         if (this.state.size !== minSize) {
@@ -365,7 +345,7 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
           ResizeContentVertical: !isHorizontal,
         });
         var content = [
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             {
               key: 'content',
@@ -373,7 +353,7 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
               className: contentClassName,
               style: contentStyle,
             },
-            _react['default'].Children.only(this.props.children),
+            React.Children.only(this.props.children),
           ),
         ];
 
@@ -383,8 +363,8 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
           });
         };
 
-        var handle = /*#__PURE__*/ _react['default'].createElement(
-          _reactDraggable.DraggableCore,
+        var handle = /*#__PURE__*/ React.createElement(
+          DraggableCore,
           _objectSpread(
             _objectSpread(
               {
@@ -397,18 +377,18 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
               allowAnyClick: true,
             },
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             {
               className: resizeBarClasses,
             },
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ React.createElement(
               'div',
               {
                 className: handleClasses,
                 onClick: handleClick,
               },
-              /*#__PURE__*/ _react['default'].createElement('span', null),
+              /*#__PURE__*/ React.createElement('span', null),
             ),
           ),
         ); // Insert the handle at the beginning of the content if our directio is west or north
@@ -419,7 +399,7 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
           content.push(handle);
         }
 
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ React.createElement(
           'div',
           {
             ref: this.wrapperRef,
@@ -433,7 +413,6 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
   ]);
 
   return ResizePanel;
-})(_react['default'].Component);
+})(React.Component);
 
-var _default = ResizePanel;
-exports['default'] = _default;
+export default ResizePanel;

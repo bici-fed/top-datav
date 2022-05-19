@@ -1,407 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _Iconfenxi = _interopRequireDefault(require('./Iconfenxi'));
-
-var _Icondianjianqingkuangtongjibeifen = _interopRequireDefault(
-  require('./Icondianjianqingkuangtongjibeifen'),
-);
-
-var _Iconrunhuaqingkuangtongji = _interopRequireDefault(require('./Iconrunhuaqingkuangtongji1'));
-
-var _Iconchakanxiangqing = _interopRequireDefault(require('./Iconchakanxiangqing'));
-
-var _Iconzhengchang = _interopRequireDefault(require('./Iconzhengchang'));
-
-var _Iconyichang = _interopRequireDefault(require('./Iconyichang'));
-
-var _Iconliuhetecaishuzihuagongchang = _interopRequireDefault(
-  require('./Iconliuhetecaishuzihuagongchang'),
-);
-
-var _Iconyidu = _interopRequireDefault(require('./Iconyidu'));
-
-var _Iconshanchu = _interopRequireDefault(require('./Iconshanchu1'));
-
-var _Iconbingzhuangtu = _interopRequireDefault(require('./Iconbingzhuangtu'));
-
-var _Iconzhexiantu = _interopRequireDefault(require('./Iconzhexiantu1'));
-
-var _Iconzhuzhuangtu = _interopRequireDefault(require('./Iconzhuzhuangtu1'));
-
-var _Icontuichu = _interopRequireDefault(require('./Icontuichu'));
-
-var _Iconjiaojieban = _interopRequireDefault(require('./Iconjiaojieban1'));
-
-var _Iconchakan = _interopRequireDefault(require('./Iconchakan'));
-
-var _IconxuanzhonganniuHui = _interopRequireDefault(require('./IconxuanzhonganniuHui'));
-
-var _Iconduoxuan = _interopRequireDefault(require('./Iconduoxuan'));
-
-var _Iconliebiao = _interopRequireDefault(require('./Iconliebiao'));
-
-var _IconnengyuanShui = _interopRequireDefault(require('./IconnengyuanShui'));
-
-var _IconnengyuanDian = _interopRequireDefault(require('./IconnengyuanDian1'));
-
-var _IconnengyuanQi = _interopRequireDefault(require('./IconnengyuanQi'));
-
-var _IconcaidanGongyibianzhi = _interopRequireDefault(require('./IconcaidanGongyibianzhi'));
-
-var _IconcaidanBanciguanli = _interopRequireDefault(require('./IconcaidanBanciguanli'));
-
-var _IconcaidanJichushuju = _interopRequireDefault(require('./IconcaidanJichushuju'));
-
-var _IconcaidanShouye = _interopRequireDefault(require('./IconcaidanShouye'));
-
-var _IconcaidanShebeiku = _interopRequireDefault(require('./IconcaidanShebeiku'));
-
-var _IconcaidanShujutianbaotongji = _interopRequireDefault(
-  require('./IconcaidanShujutianbaotongji'),
-);
-
-var _IconcaidanShebeiguanli = _interopRequireDefault(require('./IconcaidanShebeiguanli'));
-
-var _IconcaidanTongjifenxi = _interopRequireDefault(require('./IconcaidanTongjifenxi'));
-
-var _IconcaidanShujuguanli = _interopRequireDefault(require('./IconcaidanShujuguanli'));
-
-var _IconcaidanGongyizhiliang = _interopRequireDefault(require('./IconcaidanGongyizhiliang'));
-
-var _IconcaidanWangluozhuangtai = _interopRequireDefault(require('./IconcaidanWangluozhuangtai'));
-
-var _IconcaidanZhinengcaiji = _interopRequireDefault(require('./IconcaidanZhinengcaiji'));
-
-var _IconcaidanShengchanrenwu = _interopRequireDefault(require('./IconcaidanShengchanrenwu'));
-
-var _IconcaidanXitongguanli = _interopRequireDefault(require('./IconcaidanXitongguanli'));
-
-var _IconcaidanZidingyibiaodan = _interopRequireDefault(require('./IconcaidanZidingyibiaodan'));
-
-var _IconcaidanShujuyingyong = _interopRequireDefault(require('./IconcaidanShujuyingyong'));
-
-var _Iconbingtu = _interopRequireDefault(require('./Iconbingtu'));
-
-var _Iconbianji = _interopRequireDefault(require('./Iconbianji3'));
-
-var _Icondanqi = _interopRequireDefault(require('./Icondanqi'));
-
-var _Icondaochubaogao = _interopRequireDefault(require('./Icondaochubaogao'));
-
-var _Iconchakangongyiyaoqiu = _interopRequireDefault(require('./Iconchakangongyiyaoqiu'));
-
-var _Icondian = _interopRequireDefault(require('./Icondian1'));
-
-var _Icondaochubiaoge = _interopRequireDefault(require('./Icondaochubiaoge'));
-
-var _Icongerenxinxi = _interopRequireDefault(require('./Icongerenxinxi'));
-
-var _Iconmima = _interopRequireDefault(require('./Iconmima'));
-
-var _Iconkaishianniu = _interopRequireDefault(require('./Iconkaishianniu'));
-
-var _Iconjiaojieban2 = _interopRequireDefault(require('./Iconjiaojieban'));
-
-var _IconmeiqiTianranqi = _interopRequireDefault(require('./IconmeiqiTianranqi'));
-
-var _Iconshanchu2 = _interopRequireDefault(require('./Iconshanchu'));
-
-var _Iconshanchuxiang = _interopRequireDefault(require('./Iconshanchuxiang'));
-
-var _Iconhejinpeiliao = _interopRequireDefault(require('./Iconhejinpeiliao'));
-
-var _IconshanchuHongse = _interopRequireDefault(require('./IconshanchuHongse'));
-
-var _IcontianjiaQueding = _interopRequireDefault(require('./IcontianjiaQueding'));
-
-var _IcontianjiaQing = _interopRequireDefault(require('./IcontianjiaQing'));
-
-var _IconshezhiPeizhi = _interopRequireDefault(require('./IconshezhiPeizhi'));
-
-var _Icontianjiaxiang = _interopRequireDefault(require('./Icontianjiaxiang'));
-
-var _IcontianjiaZhong = _interopRequireDefault(require('./IcontianjiaZhong'));
-
-var _Icontuichudenglu = _interopRequireDefault(require('./Icontuichudenglu'));
-
-var _Icontianjiatuxing = _interopRequireDefault(require('./Icontianjiatuxing'));
-
-var _Iconyaqi = _interopRequireDefault(require('./Iconyaqi'));
-
-var _Iconxiazai = _interopRequireDefault(require('./Iconxiazai1'));
-
-var _Iconyangqi = _interopRequireDefault(require('./Iconyangqi'));
-
-var _Iconxuanze = _interopRequireDefault(require('./Iconxuanze0'));
-
-var _Iconzhankaishouqi = _interopRequireDefault(require('./Iconzhankaishouqi'));
-
-var _Iconzhexiantu2 = _interopRequireDefault(require('./Iconzhexiantu'));
-
-var _Iconzhuzhuangtu2 = _interopRequireDefault(require('./Iconzhuzhuangtu'));
-
-var _Icontongbu = _interopRequireDefault(require('./Icontongbu'));
-
-var _Iconshubiao = _interopRequireDefault(require('./Iconshubiao'));
-
-var _Iconchakanshujudianquxian = _interopRequireDefault(require('./Iconchakanshujudianquxian'));
-
-var _Iconbeijianfenleibianma = _interopRequireDefault(require('./Iconbeijianfenleibianma'));
-
-var _Iconkucundaoru = _interopRequireDefault(require('./Iconkucundaoru'));
-
-var _Iconshuaxin = _interopRequireDefault(require('./Iconshuaxin'));
-
-var _Iconpiliangchuli = _interopRequireDefault(require('./Iconpiliangchuli'));
-
-var _Icontongbubaojingguize = _interopRequireDefault(require('./Icontongbubaojingguize'));
-
-var _Iconzhidutaishiguizepeizhi = _interopRequireDefault(require('./Iconzhidutaishiguizepeizhi'));
-
-var _Iconyuedushebeiqingkuangtianbao = _interopRequireDefault(
-  require('./Iconyuedushebeiqingkuangtianbao'),
-);
-
-var _Iconjuxing = _interopRequireDefault(require('./Iconjuxing'));
-
-var _Iconfenzhijiedian = _interopRequireDefault(require('./Iconfenzhijiedian1'));
-
-var _Iconfenzhijiedian2 = _interopRequireDefault(require('./Iconfenzhijiedian'));
-
-var _Iconhouyitian = _interopRequireDefault(require('./Iconhouyitian'));
-
-var _Iconqianyitian = _interopRequireDefault(require('./Iconqianyitian'));
-
-var _Iconwuzhuangtai = _interopRequireDefault(require('./Iconwuzhuangtai'));
-
-var _Iconretingjiguzhang = _interopRequireDefault(require('./Iconretingjiguzhang'));
-
-var _Iconlinshijianxiu = _interopRequireDefault(require('./Iconlinshijianxiu'));
-
-var _Iconjihuajianxiu = _interopRequireDefault(require('./Iconjihuajianxiu'));
-
-var _Icondailiao = _interopRequireDefault(require('./Icondailiao'));
-
-var _Iconwurenwushebeiwanhao = _interopRequireDefault(require('./Iconwurenwushebeiwanhao'));
-
-var _Iconshengchanrenwuzhengchangyunhang = _interopRequireDefault(
-  require('./Iconshengchanrenwuzhengchangyunhang'),
-);
-
-var _Iconqiyonggaiziduan = _interopRequireDefault(require('./Iconqiyonggaiziduan'));
-
-var _Iconjinyonggaiziduan = _interopRequireDefault(require('./Iconjinyonggaiziduan'));
-
-var _Iconziduanpeizhi = _interopRequireDefault(require('./Iconziduanpeizhi'));
-
-var _Iconxinzengyibiao = _interopRequireDefault(require('./Iconxinzengyibiao'));
-
-var _Iconjianding = _interopRequireDefault(require('./Iconjianding'));
-
-var _Icondaoruyibiao = _interopRequireDefault(require('./Icondaoruyibiao'));
-
-var _Iconzhuangtaibiangeng = _interopRequireDefault(require('./Iconzhuangtaibiangeng'));
-
-var _Iconshijijianding = _interopRequireDefault(require('./Iconshijijianding'));
-
-var _Icondaochu = _interopRequireDefault(require('./Icondaochu'));
-
-var _IconYZshanchuhong = _interopRequireDefault(require('./IconYZshanchuhong1'));
-
-var _IconZYbianjilan = _interopRequireDefault(require('./IconZYbianjilan1'));
-
-var _IconZYbianji = _interopRequireDefault(require('./IconZYbianji'));
-
-var _IconZYshanchubai = _interopRequireDefault(require('./IconZYshanchubai'));
-
-var _IconYZshanchuhong2 = _interopRequireDefault(require('./IconYZshanchuhong'));
-
-var _IconZYbianjilan2 = _interopRequireDefault(require('./IconZYbianjilan'));
-
-var _IconZYtianjia = _interopRequireDefault(require('./IconZYtianjia'));
-
-var _IconZYshanchu = _interopRequireDefault(require('./IconZYshanchu'));
-
-var _Icontianjiafenlei = _interopRequireDefault(require('./Icontianjiafenlei'));
-
-var _IconZYshouqi = _interopRequireDefault(require('./IconZYshouqi'));
-
-var _IconZYzhankai = _interopRequireDefault(require('./IconZYzhankai'));
-
-var _Iconwushuju = _interopRequireDefault(require('./Iconwushuju'));
-
-var _Icontips = _interopRequireDefault(require('./Icontips'));
-
-var _Iconxiangqing = _interopRequireDefault(require('./Iconxiangqing1'));
-
-var _Iconbaojingqushi = _interopRequireDefault(require('./Iconbaojingqushi1'));
-
-var _Iconkeshihuakanban = _interopRequireDefault(require('./Iconkeshihuakanban1'));
-
-var _Icondianjianqingkuangtongji = _interopRequireDefault(
-  require('./Icondianjianqingkuangtongji1'),
-);
-
-var _Iconxinjian = _interopRequireDefault(require('./Iconxinjian1'));
-
-var _Iconbianji2 = _interopRequireDefault(require('./Iconbianji2'));
-
-var _Iconqiehuanguanlian = _interopRequireDefault(require('./Iconqiehuanguanlian1'));
-
-var _Iconbaojingman = _interopRequireDefault(require('./Iconbaojingman1'));
-
-var _Iconerweima = _interopRequireDefault(require('./Iconerweima1'));
-
-var _Iconrili = _interopRequireDefault(require('./Iconrili1'));
-
-var _Icontianjia = _interopRequireDefault(require('./Icontianjia1'));
-
-var _Icondianjiguanzhu = _interopRequireDefault(require('./Icondianjiguanzhu1'));
-
-var _Iconguanlianmoban = _interopRequireDefault(require('./Iconguanlianmoban1'));
-
-var _Iconyiguanzhu = _interopRequireDefault(require('./Iconyiguanzhu1'));
-
-var _Iconkong = _interopRequireDefault(require('./Iconkong1'));
-
-var _Iconjiankangzhi = _interopRequireDefault(require('./Iconjiankangzhi'));
-
-var _Iconweiguanzhu = _interopRequireDefault(require('./Iconweiguanzhu'));
-
-var _Iconshijifankui = _interopRequireDefault(require('./Iconshijifankui'));
-
-var _Iconxiangqing2 = _interopRequireDefault(require('./Iconxiangqing'));
-
-var _Iconmubiaosheding = _interopRequireDefault(require('./Iconmubiaosheding'));
-
-var _Icondaichulibaojing = _interopRequireDefault(require('./Icondaichulibaojing'));
-
-var _Iconjiankangfengxianxiang = _interopRequireDefault(require('./Iconjiankangfengxianxiang'));
-
-var _Iconguzhangqingkuangtongji = _interopRequireDefault(require('./Iconguzhangqingkuangtongji'));
-
-var _Iconbaojingqushi2 = _interopRequireDefault(require('./Iconbaojingqushi'));
-
-var _Iconkeshihuakanban2 = _interopRequireDefault(require('./Iconkeshihuakanban'));
-
-var _Iconrunhuaqingkuangtongji2 = _interopRequireDefault(require('./Iconrunhuaqingkuangtongji'));
-
-var _Iconbeipinbeijianxiaohao = _interopRequireDefault(require('./Iconbeipinbeijianxiaohao'));
-
-var _Iconqiehuanguanlian2 = _interopRequireDefault(require('./Iconqiehuanguanlian'));
-
-var _Icontianjiaguanlian = _interopRequireDefault(require('./Icontianjiaguanlian'));
-
-var _Iconjiechuguanlian = _interopRequireDefault(require('./Iconjiechuguanlian'));
-
-var _Iconchaxun = _interopRequireDefault(require('./Iconchaxun'));
-
-var _Icondianjianqingkuangtongji2 = _interopRequireDefault(
-  require('./Icondianjianqingkuangtongji'),
-);
-
-var _Iconsousuo = _interopRequireDefault(require('./Iconsousuo'));
-
-var _Iconbaojingman2 = _interopRequireDefault(require('./Iconbaojingman'));
-
-var _Iconxinjian2 = _interopRequireDefault(require('./Iconxinjian'));
-
-var _Iconbaocun = _interopRequireDefault(require('./Iconbaocun'));
-
-var _Iconbianji3 = _interopRequireDefault(require('./Iconbianji1'));
-
-var _Iconerweima2 = _interopRequireDefault(require('./Iconerweima'));
-
-var _Icondianjiyichushujudian = _interopRequireDefault(require('./Icondianjiyichushujudian'));
-
-var _Iconbaojingkong = _interopRequireDefault(require('./Iconbaojingkong'));
-
-var _Iconchakansuoyourenwu = _interopRequireDefault(require('./Iconchakansuoyourenwu'));
-
-var _Iconshangchuan = _interopRequireDefault(require('./Iconshangchuan'));
-
-var _Iconrili2 = _interopRequireDefault(require('./Iconrili'));
-
-var _Icontianjia2 = _interopRequireDefault(require('./Icontianjia'));
-
-var _Iconyiguanzhu2 = _interopRequireDefault(require('./Iconyiguanzhu'));
-
-var _Icondianjiguanzhu2 = _interopRequireDefault(require('./Icondianjiguanzhu'));
-
-var _Iconguanlianmoban2 = _interopRequireDefault(require('./Iconguanlianmoban'));
-
-var _Iconkong2 = _interopRequireDefault(require('./Iconkong'));
-
-var _Iconxiayibu = _interopRequireDefault(require('./Iconxiayibu'));
-
-var _Iconyoujiantou = _interopRequireDefault(require('./Iconyoujiantou'));
-
-var _Iconchakancaozuojilu = _interopRequireDefault(require('./Iconchakancaozuojilu'));
-
-var _Iconchakanfanyingjieguo = _interopRequireDefault(require('./Iconchakanfanyingjieguo'));
-
-var _Iconxinkaichuangkou = _interopRequireDefault(require('./Iconxinkaichuangkou'));
-
-var _Icondian2 = _interopRequireDefault(require('./Icondian'));
-
-var _Iconxitongguanli = _interopRequireDefault(require('./Iconxitongguanli'));
-
-var _Icon1Ping = _interopRequireDefault(require('./Icon1Ping'));
-
-var _Icon4Ping = _interopRequireDefault(require('./Icon4Ping'));
-
-var _Icon9Ping = _interopRequireDefault(require('./Icon9Ping'));
-
-var _Iconhuazhixuanze = _interopRequireDefault(require('./Iconhuazhixuanze'));
-
-var _IconhuazhixuanzeHover = _interopRequireDefault(require('./IconhuazhixuanzeHover'));
-
-var _IconjietuHover = _interopRequireDefault(require('./IconjietuHover'));
-
-var _IcontongdaoHover = _interopRequireDefault(require('./IcontongdaoHover'));
-
-var _IconxiazaiHover = _interopRequireDefault(require('./IconxiazaiHover'));
-
-var _IcontuichuquanpingHover = _interopRequireDefault(require('./IcontuichuquanpingHover'));
-
-var _IconquanpingxianshiHover = _interopRequireDefault(require('./IconquanpingxianshiHover'));
-
-var _IconbianjiHover = _interopRequireDefault(require('./IconbianjiHover'));
-
-var _IconshezhiHover = _interopRequireDefault(require('./IconshezhiHover'));
-
-var _Iconbianji4 = _interopRequireDefault(require('./Iconbianji'));
-
-var _Icontuichuquanping = _interopRequireDefault(require('./Icontuichuquanping'));
-
-var _Icontongdao = _interopRequireDefault(require('./Icontongdao0'));
-
-var _Iconxiazai2 = _interopRequireDefault(require('./Iconxiazai'));
-
-var _Iconshipinjiankong = _interopRequireDefault(require('./Iconshipinjiankong'));
-
-var _Iconquanpingxianshi = _interopRequireDefault(require('./Iconquanpingxianshi'));
-
-var _Iconjietu = _interopRequireDefault(require('./Iconjietu'));
-
-var _Iconshezhi = _interopRequireDefault(require('./Iconshezhi'));
-
-var _IconquanpingxianshiCopy = _interopRequireDefault(require('./IconquanpingxianshiCopy'));
-
-var _IcontuichuquanpingCopy = _interopRequireDefault(require('./IcontuichuquanpingCopy'));
-
 var _excluded = ['name'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
@@ -432,677 +29,768 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import Iconfenxi from './Iconfenxi';
+import Icondianjianqingkuangtongjibeifen from './Icondianjianqingkuangtongjibeifen';
+import Iconrunhuaqingkuangtongji1 from './Iconrunhuaqingkuangtongji1';
+import Iconchakanxiangqing from './Iconchakanxiangqing';
+import Iconzhengchang from './Iconzhengchang';
+import Iconyichang from './Iconyichang';
+import Iconliuhetecaishuzihuagongchang from './Iconliuhetecaishuzihuagongchang';
+import Iconyidu from './Iconyidu';
+import Iconshanchu1 from './Iconshanchu1';
+import Iconbingzhuangtu from './Iconbingzhuangtu';
+import Iconzhexiantu1 from './Iconzhexiantu1';
+import Iconzhuzhuangtu1 from './Iconzhuzhuangtu1';
+import Icontuichu from './Icontuichu';
+import Iconjiaojieban1 from './Iconjiaojieban1';
+import Iconchakan from './Iconchakan';
+import IconxuanzhonganniuHui from './IconxuanzhonganniuHui';
+import Iconduoxuan from './Iconduoxuan';
+import Iconliebiao from './Iconliebiao';
+import IconnengyuanShui from './IconnengyuanShui';
+import IconnengyuanDian1 from './IconnengyuanDian1';
+import IconnengyuanQi from './IconnengyuanQi';
+import IconcaidanGongyibianzhi from './IconcaidanGongyibianzhi';
+import IconcaidanBanciguanli from './IconcaidanBanciguanli';
+import IconcaidanJichushuju from './IconcaidanJichushuju';
+import IconcaidanShouye from './IconcaidanShouye';
+import IconcaidanShebeiku from './IconcaidanShebeiku';
+import IconcaidanShujutianbaotongji from './IconcaidanShujutianbaotongji';
+import IconcaidanShebeiguanli from './IconcaidanShebeiguanli';
+import IconcaidanTongjifenxi from './IconcaidanTongjifenxi';
+import IconcaidanShujuguanli from './IconcaidanShujuguanli';
+import IconcaidanGongyizhiliang from './IconcaidanGongyizhiliang';
+import IconcaidanWangluozhuangtai from './IconcaidanWangluozhuangtai';
+import IconcaidanZhinengcaiji from './IconcaidanZhinengcaiji';
+import IconcaidanShengchanrenwu from './IconcaidanShengchanrenwu';
+import IconcaidanXitongguanli from './IconcaidanXitongguanli';
+import IconcaidanZidingyibiaodan from './IconcaidanZidingyibiaodan';
+import IconcaidanShujuyingyong from './IconcaidanShujuyingyong';
+import Iconbingtu from './Iconbingtu';
+import Iconbianji3 from './Iconbianji3';
+import Icondanqi from './Icondanqi';
+import Icondaochubaogao from './Icondaochubaogao';
+import Iconchakangongyiyaoqiu from './Iconchakangongyiyaoqiu';
+import Icondian1 from './Icondian1';
+import Icondaochubiaoge from './Icondaochubiaoge';
+import Icongerenxinxi from './Icongerenxinxi';
+import Iconmima from './Iconmima';
+import Iconkaishianniu from './Iconkaishianniu';
+import Iconjiaojieban from './Iconjiaojieban';
+import IconmeiqiTianranqi from './IconmeiqiTianranqi';
+import Iconshanchu from './Iconshanchu';
+import Iconshanchuxiang from './Iconshanchuxiang';
+import Iconhejinpeiliao from './Iconhejinpeiliao';
+import IconshanchuHongse from './IconshanchuHongse';
+import IcontianjiaQueding from './IcontianjiaQueding';
+import IcontianjiaQing from './IcontianjiaQing';
+import IconshezhiPeizhi from './IconshezhiPeizhi';
+import Icontianjiaxiang from './Icontianjiaxiang';
+import IcontianjiaZhong from './IcontianjiaZhong';
+import Icontuichudenglu from './Icontuichudenglu';
+import Icontianjiatuxing from './Icontianjiatuxing';
+import Iconyaqi from './Iconyaqi';
+import Iconxiazai1 from './Iconxiazai1';
+import Iconyangqi from './Iconyangqi';
+import Iconxuanze0 from './Iconxuanze0';
+import Iconzhankaishouqi from './Iconzhankaishouqi';
+import Iconzhexiantu from './Iconzhexiantu';
+import Iconzhuzhuangtu from './Iconzhuzhuangtu';
+import Icontongbu from './Icontongbu';
+import Iconshubiao from './Iconshubiao';
+import Iconchakanshujudianquxian from './Iconchakanshujudianquxian';
+import Iconbeijianfenleibianma from './Iconbeijianfenleibianma';
+import Iconkucundaoru from './Iconkucundaoru';
+import Iconshuaxin from './Iconshuaxin';
+import Iconpiliangchuli from './Iconpiliangchuli';
+import Icontongbubaojingguize from './Icontongbubaojingguize';
+import Iconzhidutaishiguizepeizhi from './Iconzhidutaishiguizepeizhi';
+import Iconyuedushebeiqingkuangtianbao from './Iconyuedushebeiqingkuangtianbao';
+import Iconjuxing from './Iconjuxing';
+import Iconfenzhijiedian1 from './Iconfenzhijiedian1';
+import Iconfenzhijiedian from './Iconfenzhijiedian';
+import Iconhouyitian from './Iconhouyitian';
+import Iconqianyitian from './Iconqianyitian';
+import Iconwuzhuangtai from './Iconwuzhuangtai';
+import Iconretingjiguzhang from './Iconretingjiguzhang';
+import Iconlinshijianxiu from './Iconlinshijianxiu';
+import Iconjihuajianxiu from './Iconjihuajianxiu';
+import Icondailiao from './Icondailiao';
+import Iconwurenwushebeiwanhao from './Iconwurenwushebeiwanhao';
+import Iconshengchanrenwuzhengchangyunhang from './Iconshengchanrenwuzhengchangyunhang';
+import Iconqiyonggaiziduan from './Iconqiyonggaiziduan';
+import Iconjinyonggaiziduan from './Iconjinyonggaiziduan';
+import Iconziduanpeizhi from './Iconziduanpeizhi';
+import Iconxinzengyibiao from './Iconxinzengyibiao';
+import Iconjianding from './Iconjianding';
+import Icondaoruyibiao from './Icondaoruyibiao';
+import Iconzhuangtaibiangeng from './Iconzhuangtaibiangeng';
+import Iconshijijianding from './Iconshijijianding';
+import Icondaochu from './Icondaochu';
+import IconYZshanchuhong1 from './IconYZshanchuhong1';
+import IconZYbianjilan1 from './IconZYbianjilan1';
+import IconZYbianji from './IconZYbianji';
+import IconZYshanchubai from './IconZYshanchubai';
+import IconYZshanchuhong from './IconYZshanchuhong';
+import IconZYbianjilan from './IconZYbianjilan';
+import IconZYtianjia from './IconZYtianjia';
+import IconZYshanchu from './IconZYshanchu';
+import Icontianjiafenlei from './Icontianjiafenlei';
+import IconZYshouqi from './IconZYshouqi';
+import IconZYzhankai from './IconZYzhankai';
+import Iconwushuju from './Iconwushuju';
+import Icontips from './Icontips';
+import Iconxiangqing1 from './Iconxiangqing1';
+import Iconbaojingqushi1 from './Iconbaojingqushi1';
+import Iconkeshihuakanban1 from './Iconkeshihuakanban1';
+import Icondianjianqingkuangtongji1 from './Icondianjianqingkuangtongji1';
+import Iconxinjian1 from './Iconxinjian1';
+import Iconbianji2 from './Iconbianji2';
+import Iconqiehuanguanlian1 from './Iconqiehuanguanlian1';
+import Iconbaojingman1 from './Iconbaojingman1';
+import Iconerweima1 from './Iconerweima1';
+import Iconrili1 from './Iconrili1';
+import Icontianjia1 from './Icontianjia1';
+import Icondianjiguanzhu1 from './Icondianjiguanzhu1';
+import Iconguanlianmoban1 from './Iconguanlianmoban1';
+import Iconyiguanzhu1 from './Iconyiguanzhu1';
+import Iconkong1 from './Iconkong1';
+import Iconjiankangzhi from './Iconjiankangzhi';
+import Iconweiguanzhu from './Iconweiguanzhu';
+import Iconshijifankui from './Iconshijifankui';
+import Iconxiangqing from './Iconxiangqing';
+import Iconmubiaosheding from './Iconmubiaosheding';
+import Icondaichulibaojing from './Icondaichulibaojing';
+import Iconjiankangfengxianxiang from './Iconjiankangfengxianxiang';
+import Iconguzhangqingkuangtongji from './Iconguzhangqingkuangtongji';
+import Iconbaojingqushi from './Iconbaojingqushi';
+import Iconkeshihuakanban from './Iconkeshihuakanban';
+import Iconrunhuaqingkuangtongji from './Iconrunhuaqingkuangtongji';
+import Iconbeipinbeijianxiaohao from './Iconbeipinbeijianxiaohao';
+import Iconqiehuanguanlian from './Iconqiehuanguanlian';
+import Icontianjiaguanlian from './Icontianjiaguanlian';
+import Iconjiechuguanlian from './Iconjiechuguanlian';
+import Iconchaxun from './Iconchaxun';
+import Icondianjianqingkuangtongji from './Icondianjianqingkuangtongji';
+import Iconsousuo from './Iconsousuo';
+import Iconbaojingman from './Iconbaojingman';
+import Iconxinjian from './Iconxinjian';
+import Iconbaocun from './Iconbaocun';
+import Iconbianji1 from './Iconbianji1';
+import Iconerweima from './Iconerweima';
+import Icondianjiyichushujudian from './Icondianjiyichushujudian';
+import Iconbaojingkong from './Iconbaojingkong';
+import Iconchakansuoyourenwu from './Iconchakansuoyourenwu';
+import Iconshangchuan from './Iconshangchuan';
+import Iconrili from './Iconrili';
+import Icontianjia from './Icontianjia';
+import Iconyiguanzhu from './Iconyiguanzhu';
+import Icondianjiguanzhu from './Icondianjiguanzhu';
+import Iconguanlianmoban from './Iconguanlianmoban';
+import Iconkong from './Iconkong';
+import Iconxiayibu from './Iconxiayibu';
+import Iconyoujiantou from './Iconyoujiantou';
+import Iconchakancaozuojilu from './Iconchakancaozuojilu';
+import Iconchakanfanyingjieguo from './Iconchakanfanyingjieguo';
+import Iconxinkaichuangkou from './Iconxinkaichuangkou';
+import Icondian from './Icondian';
+import Iconxitongguanli from './Iconxitongguanli';
+import Icon1Ping from './Icon1Ping';
+import Icon4Ping from './Icon4Ping';
+import Icon9Ping from './Icon9Ping';
+import Iconhuazhixuanze from './Iconhuazhixuanze';
+import IconhuazhixuanzeHover from './IconhuazhixuanzeHover';
+import IconjietuHover from './IconjietuHover';
+import IcontongdaoHover from './IcontongdaoHover';
+import IconxiazaiHover from './IconxiazaiHover';
+import IcontuichuquanpingHover from './IcontuichuquanpingHover';
+import IconquanpingxianshiHover from './IconquanpingxianshiHover';
+import IconbianjiHover from './IconbianjiHover';
+import IconshezhiHover from './IconshezhiHover';
+import Iconbianji from './Iconbianji';
+import Icontuichuquanping from './Icontuichuquanping';
+import Icontongdao0 from './Icontongdao0';
+import Iconxiazai from './Iconxiazai';
+import Iconshipinjiankong from './Iconshipinjiankong';
+import Iconquanpingxianshi from './Iconquanpingxianshi';
+import Iconjietu from './Iconjietu';
+import Iconshezhi from './Iconshezhi';
+import IconquanpingxianshiCopy from './IconquanpingxianshiCopy';
+import IcontuichuquanpingCopy from './IcontuichuquanpingCopy';
+
 var IconFont = function IconFont(_ref) {
   var name = _ref.name,
     rest = _objectWithoutProperties(_ref, _excluded);
 
   switch (name) {
     case 'fenxi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconfenxi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconfenxi, rest);
 
     case 'dianjianqingkuangtongjibeifen':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icondianjianqingkuangtongjibeifen['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Icondianjianqingkuangtongjibeifen, rest);
 
     case 'runhuaqingkuangtongji1':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconrunhuaqingkuangtongji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconrunhuaqingkuangtongji1, rest);
 
     case 'chakanxiangqing':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchakanxiangqing['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconchakanxiangqing, rest);
 
     case 'zhengchang':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhengchang['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconzhengchang, rest);
 
     case 'yichang':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyichang['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconyichang, rest);
 
     case 'liuhetecaishuzihuagongchang':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconliuhetecaishuzihuagongchang['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconliuhetecaishuzihuagongchang, rest);
 
     case 'yidu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyidu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconyidu, rest);
 
     case 'shanchu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshanchu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshanchu1, rest);
 
     case 'bingzhuangtu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbingzhuangtu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbingzhuangtu, rest);
 
     case 'zhexiantu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhexiantu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconzhexiantu1, rest);
 
     case 'zhuzhuangtu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhuzhuangtu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconzhuzhuangtu1, rest);
 
     case 'tuichu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontuichu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontuichu, rest);
 
     case 'jiaojieban1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjiaojieban['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjiaojieban1, rest);
 
     case 'chakan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchakan['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconchakan, rest);
 
     case 'xuanzhonganniu_hui':
-      return /*#__PURE__*/ _react['default'].createElement(_IconxuanzhonganniuHui['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconxuanzhonganniuHui, rest);
 
     case 'duoxuan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconduoxuan['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconduoxuan, rest);
 
     case 'liebiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconliebiao['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconliebiao, rest);
 
     case 'nengyuan-shui':
-      return /*#__PURE__*/ _react['default'].createElement(_IconnengyuanShui['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconnengyuanShui, rest);
 
     case 'nengyuan-dian1':
-      return /*#__PURE__*/ _react['default'].createElement(_IconnengyuanDian['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconnengyuanDian1, rest);
 
     case 'nengyuan-qi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconnengyuanQi['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconnengyuanQi, rest);
 
     case 'caidan-gongyibianzhi':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanGongyibianzhi['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanGongyibianzhi, rest);
 
     case 'caidan-banciguanli':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanBanciguanli['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconcaidanBanciguanli, rest);
 
     case 'caidan-jichushuju':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanJichushuju['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconcaidanJichushuju, rest);
 
     case 'caidan-shouye':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanShouye['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconcaidanShouye, rest);
 
     case 'caidan-shebeiku':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanShebeiku['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconcaidanShebeiku, rest);
 
     case 'caidan-shujutianbaotongji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanShujutianbaotongji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanShujutianbaotongji, rest);
 
     case 'caidan-shebeiguanli':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanShebeiguanli['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanShebeiguanli, rest);
 
     case 'caidan-tongjifenxi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanTongjifenxi['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconcaidanTongjifenxi, rest);
 
     case 'caidan-shujuguanli':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanShujuguanli['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconcaidanShujuguanli, rest);
 
     case 'caidan-gongyizhiliang':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanGongyizhiliang['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanGongyizhiliang, rest);
 
     case 'caidan-wangluozhuangtai':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanWangluozhuangtai['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanWangluozhuangtai, rest);
 
     case 'caidan-zhinengcaiji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanZhinengcaiji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanZhinengcaiji, rest);
 
     case 'caidan-shengchanrenwu':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanShengchanrenwu['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanShengchanrenwu, rest);
 
     case 'caidan-xitongguanli':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanXitongguanli['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanXitongguanli, rest);
 
     case 'caidan-zidingyibiaodan':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanZidingyibiaodan['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanZidingyibiaodan, rest);
 
     case 'caidan-shujuyingyong':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanShujuyingyong['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconcaidanShujuyingyong, rest);
 
     case 'bingtu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbingtu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbingtu, rest);
 
     case 'bianji3':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbianji['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbianji3, rest);
 
     case 'danqi':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondanqi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondanqi, rest);
 
     case 'daochubaogao':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaochubaogao['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondaochubaogao, rest);
 
     case 'chakangongyiyaoqiu':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconchakangongyiyaoqiu['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconchakangongyiyaoqiu, rest);
 
     case 'dian1':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondian['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondian1, rest);
 
     case 'daochubiaoge':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaochubiaoge['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondaochubiaoge, rest);
 
     case 'gerenxinxi':
-      return /*#__PURE__*/ _react['default'].createElement(_Icongerenxinxi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icongerenxinxi, rest);
 
     case 'mima':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconmima['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconmima, rest);
 
     case 'kaishianniu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkaishianniu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconkaishianniu, rest);
 
     case 'jiaojieban':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjiaojieban2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjiaojieban, rest);
 
     case 'meiqi_tianranqi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconmeiqiTianranqi['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconmeiqiTianranqi, rest);
 
     case 'shanchu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshanchu2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshanchu, rest);
 
     case 'shanchuxiang':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshanchuxiang['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshanchuxiang, rest);
 
     case 'hejinpeiliao':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconhejinpeiliao['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconhejinpeiliao, rest);
 
     case 'shanchu-hongse':
-      return /*#__PURE__*/ _react['default'].createElement(_IconshanchuHongse['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconshanchuHongse, rest);
 
     case 'tianjia-queding':
-      return /*#__PURE__*/ _react['default'].createElement(_IcontianjiaQueding['default'], rest);
+      return /*#__PURE__*/ React.createElement(IcontianjiaQueding, rest);
 
     case 'tianjia-qing':
-      return /*#__PURE__*/ _react['default'].createElement(_IcontianjiaQing['default'], rest);
+      return /*#__PURE__*/ React.createElement(IcontianjiaQing, rest);
 
     case 'shezhi_peizhi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconshezhiPeizhi['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconshezhiPeizhi, rest);
 
     case 'tianjiaxiang':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjiaxiang['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontianjiaxiang, rest);
 
     case 'tianjia-zhong':
-      return /*#__PURE__*/ _react['default'].createElement(_IcontianjiaZhong['default'], rest);
+      return /*#__PURE__*/ React.createElement(IcontianjiaZhong, rest);
 
     case 'tuichudenglu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontuichudenglu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontuichudenglu, rest);
 
     case 'tianjiatuxing':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjiatuxing['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontianjiatuxing, rest);
 
     case 'yaqi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyaqi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconyaqi, rest);
 
     case 'xiazai1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiazai['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxiazai1, rest);
 
     case 'yangqi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyangqi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconyangqi, rest);
 
     case 'xuanze-0':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxuanze['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxuanze0, rest);
 
     case 'zhankaishouqi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhankaishouqi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconzhankaishouqi, rest);
 
     case 'zhexiantu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhexiantu2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconzhexiantu, rest);
 
     case 'zhuzhuangtu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhuzhuangtu2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconzhuzhuangtu, rest);
 
     case 'tongbu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontongbu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontongbu, rest);
 
     case 'shubiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshubiao['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshubiao, rest);
 
     case 'chakanshujudianquxian':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconchakanshujudianquxian['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconchakanshujudianquxian, rest);
 
     case 'beijianfenleibianma':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconbeijianfenleibianma['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconbeijianfenleibianma, rest);
 
     case 'kucundaoru':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkucundaoru['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconkucundaoru, rest);
 
     case 'shuaxin':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshuaxin['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshuaxin, rest);
 
     case 'piliangchuli':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconpiliangchuli['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconpiliangchuli, rest);
 
     case 'tongbubaojingguize':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icontongbubaojingguize['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Icontongbubaojingguize, rest);
 
     case 'zhidutaishiguizepeizhi':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconzhidutaishiguizepeizhi['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconzhidutaishiguizepeizhi, rest);
 
     case 'yuedushebeiqingkuangtianbao':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconyuedushebeiqingkuangtianbao['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconyuedushebeiqingkuangtianbao, rest);
 
     case 'juxing':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjuxing['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjuxing, rest);
 
     case 'fenzhijiedian1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconfenzhijiedian['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconfenzhijiedian1, rest);
 
     case 'fenzhijiedian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconfenzhijiedian2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconfenzhijiedian, rest);
 
     case 'houyitian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconhouyitian['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconhouyitian, rest);
 
     case 'qianyitian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconqianyitian['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconqianyitian, rest);
 
     case 'wuzhuangtai':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconwuzhuangtai['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconwuzhuangtai, rest);
 
     case 'retingjiguzhang':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconretingjiguzhang['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconretingjiguzhang, rest);
 
     case 'linshijianxiu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconlinshijianxiu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconlinshijianxiu, rest);
 
     case 'jihuajianxiu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjihuajianxiu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjihuajianxiu, rest);
 
     case 'dailiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondailiao['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondailiao, rest);
 
     case 'wurenwushebeiwanhao':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconwurenwushebeiwanhao['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconwurenwushebeiwanhao, rest);
 
     case 'shengchanrenwuzhengchangyunhang':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconshengchanrenwuzhengchangyunhang['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconshengchanrenwuzhengchangyunhang, rest);
 
     case 'qiyonggaiziduan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconqiyonggaiziduan['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconqiyonggaiziduan, rest);
 
     case 'jinyonggaiziduan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjinyonggaiziduan['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjinyonggaiziduan, rest);
 
     case 'ziduanpeizhi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconziduanpeizhi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconziduanpeizhi, rest);
 
     case 'xinzengyibiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxinzengyibiao['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxinzengyibiao, rest);
 
     case 'jianding':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjianding['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjianding, rest);
 
     case 'daoruyibiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaoruyibiao['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondaoruyibiao, rest);
 
     case 'zhuangtaibiangeng':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhuangtaibiangeng['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconzhuangtaibiangeng, rest);
 
     case 'shijijianding':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshijijianding['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshijijianding, rest);
 
     case 'daochu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaochu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondaochu, rest);
 
     case 'YZshanchuhong1':
-      return /*#__PURE__*/ _react['default'].createElement(_IconYZshanchuhong['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconYZshanchuhong1, rest);
 
     case 'ZYbianjilan1':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYbianjilan['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconZYbianjilan1, rest);
 
     case 'ZYbianji':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYbianji['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconZYbianji, rest);
 
     case 'ZYshanchubai':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYshanchubai['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconZYshanchubai, rest);
 
     case 'YZshanchuhong':
-      return /*#__PURE__*/ _react['default'].createElement(_IconYZshanchuhong2['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconYZshanchuhong, rest);
 
     case 'ZYbianjilan':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYbianjilan2['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconZYbianjilan, rest);
 
     case 'ZYtianjia':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYtianjia['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconZYtianjia, rest);
 
     case 'ZYshanchu':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYshanchu['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconZYshanchu, rest);
 
     case 'tianjiafenlei':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjiafenlei['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontianjiafenlei, rest);
 
     case 'ZYshouqi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYshouqi['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconZYshouqi, rest);
 
     case 'ZYzhankai':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYzhankai['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconZYzhankai, rest);
 
     case 'wushuju':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconwushuju['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconwushuju, rest);
 
     case 'tips':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontips['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontips, rest);
 
     case 'xiangqing1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiangqing['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxiangqing1, rest);
 
     case 'baojingqushi1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingqushi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbaojingqushi1, rest);
 
     case 'keshihuakanban1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkeshihuakanban['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconkeshihuakanban1, rest);
 
     case 'dianjianqingkuangtongji1':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icondianjianqingkuangtongji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Icondianjianqingkuangtongji1, rest);
 
     case 'xinjian1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxinjian['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxinjian1, rest);
 
     case 'bianji2':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbianji2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbianji2, rest);
 
     case 'qiehuanguanlian1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconqiehuanguanlian['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconqiehuanguanlian1, rest);
 
     case 'baojingman1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingman['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbaojingman1, rest);
 
     case 'erweima1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconerweima['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconerweima1, rest);
 
     case 'rili1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconrili['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconrili1, rest);
 
     case 'tianjia1':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjia['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontianjia1, rest);
 
     case 'dianjiguanzhu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondianjiguanzhu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondianjiguanzhu1, rest);
 
     case 'guanlianmoban1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconguanlianmoban['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconguanlianmoban1, rest);
 
     case 'yiguanzhu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyiguanzhu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconyiguanzhu1, rest);
 
     case 'kong1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkong['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconkong1, rest);
 
     case 'jiankangzhi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjiankangzhi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjiankangzhi, rest);
 
     case 'weiguanzhu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconweiguanzhu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconweiguanzhu, rest);
 
     case 'shijifankui':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshijifankui['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshijifankui, rest);
 
     case 'xiangqing':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiangqing2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxiangqing, rest);
 
     case 'mubiaosheding':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconmubiaosheding['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconmubiaosheding, rest);
 
     case 'daichulibaojing':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaichulibaojing['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondaichulibaojing, rest);
 
     case 'jiankangfengxianxiang':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconjiankangfengxianxiang['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconjiankangfengxianxiang, rest);
 
     case 'guzhangqingkuangtongji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconguzhangqingkuangtongji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconguzhangqingkuangtongji, rest);
 
     case 'baojingqushi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingqushi2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbaojingqushi, rest);
 
     case 'keshihuakanban':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkeshihuakanban2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconkeshihuakanban, rest);
 
     case 'runhuaqingkuangtongji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconrunhuaqingkuangtongji2['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconrunhuaqingkuangtongji, rest);
 
     case 'beipinbeijianxiaohao':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconbeipinbeijianxiaohao['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconbeipinbeijianxiaohao, rest);
 
     case 'qiehuanguanlian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconqiehuanguanlian2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconqiehuanguanlian, rest);
 
     case 'tianjiaguanlian':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjiaguanlian['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontianjiaguanlian, rest);
 
     case 'jiechuguanlian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjiechuguanlian['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjiechuguanlian, rest);
 
     case 'chaxun':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchaxun['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconchaxun, rest);
 
     case 'dianjianqingkuangtongji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icondianjianqingkuangtongji2['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Icondianjianqingkuangtongji, rest);
 
     case 'sousuo':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconsousuo['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconsousuo, rest);
 
     case 'baojingman':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingman2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbaojingman, rest);
 
     case 'xinjian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxinjian2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxinjian, rest);
 
     case 'baocun':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaocun['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbaocun, rest);
 
     case 'bianji1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbianji3['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbianji1, rest);
 
     case 'erweima':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconerweima2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconerweima, rest);
 
     case 'dianjiyichushujudian':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icondianjiyichushujudian['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Icondianjiyichushujudian, rest);
 
     case 'baojingkong':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingkong['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbaojingkong, rest);
 
     case 'chakansuoyourenwu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchakansuoyourenwu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconchakansuoyourenwu, rest);
 
     case 'shangchuan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshangchuan['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshangchuan, rest);
 
     case 'rili':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconrili2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconrili, rest);
 
     case 'tianjia':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjia2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontianjia, rest);
 
     case 'yiguanzhu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyiguanzhu2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconyiguanzhu, rest);
 
     case 'dianjiguanzhu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondianjiguanzhu2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondianjiguanzhu, rest);
 
     case 'guanlianmoban':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconguanlianmoban2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconguanlianmoban, rest);
 
     case 'kong':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkong2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconkong, rest);
 
     case 'xiayibu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiayibu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxiayibu, rest);
 
     case 'youjiantou':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyoujiantou['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconyoujiantou, rest);
 
     case 'chakancaozuojilu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchakancaozuojilu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconchakancaozuojilu, rest);
 
     case 'chakanfanyingjieguo':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconchakanfanyingjieguo['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(Iconchakanfanyingjieguo, rest);
 
     case 'xinkaichuangkou':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxinkaichuangkou['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxinkaichuangkou, rest);
 
     case 'dian':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondian2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icondian, rest);
 
     case 'xitongguanli':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxitongguanli['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxitongguanli, rest);
 
     case '1ping':
-      return /*#__PURE__*/ _react['default'].createElement(_Icon1Ping['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icon1Ping, rest);
 
     case '4ping':
-      return /*#__PURE__*/ _react['default'].createElement(_Icon4Ping['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icon4Ping, rest);
 
     case '9ping':
-      return /*#__PURE__*/ _react['default'].createElement(_Icon9Ping['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icon9Ping, rest);
 
     case 'huazhixuanze':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconhuazhixuanze['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconhuazhixuanze, rest);
 
     case 'huazhixuanze-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconhuazhixuanzeHover['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconhuazhixuanzeHover, rest);
 
     case 'jietu-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconjietuHover['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconjietuHover, rest);
 
     case 'tongdao-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IcontongdaoHover['default'], rest);
+      return /*#__PURE__*/ React.createElement(IcontongdaoHover, rest);
 
     case 'xiazai-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconxiazaiHover['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconxiazaiHover, rest);
 
     case 'tuichuquanping-hover':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IcontuichuquanpingHover['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IcontuichuquanpingHover, rest);
 
     case 'quanpingxianshi-hover':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconquanpingxianshiHover['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconquanpingxianshiHover, rest);
 
     case 'bianji-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconbianjiHover['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconbianjiHover, rest);
 
     case 'shezhi-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconshezhiHover['default'], rest);
+      return /*#__PURE__*/ React.createElement(IconshezhiHover, rest);
 
     case 'bianji':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbianji4['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconbianji, rest);
 
     case 'tuichuquanping':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontuichuquanping['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontuichuquanping, rest);
 
     case 'tongdao-0':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontongdao['default'], rest);
+      return /*#__PURE__*/ React.createElement(Icontongdao0, rest);
 
     case 'xiazai':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiazai2['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconxiazai, rest);
 
     case 'shipinjiankong':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshipinjiankong['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshipinjiankong, rest);
 
     case 'quanpingxianshi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconquanpingxianshi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconquanpingxianshi, rest);
 
     case 'jietu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjietu['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconjietu, rest);
 
     case 'shezhi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshezhi['default'], rest);
+      return /*#__PURE__*/ React.createElement(Iconshezhi, rest);
 
     case 'quanpingxianshi-copy':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconquanpingxianshiCopy['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IconquanpingxianshiCopy, rest);
 
     case 'tuichuquanping-copy':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IcontuichuquanpingCopy['default'],
-        rest,
-      );
+      return /*#__PURE__*/ React.createElement(IcontuichuquanpingCopy, rest);
   }
 
   return null;
 };
 
-var _default = IconFont;
-exports['default'] = _default;
+export default IconFont;

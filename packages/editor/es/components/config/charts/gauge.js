@@ -1,10 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.getGaugeOption = getGaugeOption;
-
 function isNotNaN(value) {
   var r = typeof value === 'number' && !isNaN(value);
   return r;
@@ -15,7 +8,7 @@ function isNotNaN(value) {
  * @param changeValues
  */
 
-function getGaugeOption(opt, changeValues) {
+export function getGaugeOption(opt, changeValues) {
   var _opt;
 
   if (opt) {

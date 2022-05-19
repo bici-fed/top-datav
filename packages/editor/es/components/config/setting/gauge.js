@@ -1,15 +1,6 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _defines = require('../../data/defines');
-
-var _gauge = require('../charts/gauge');
-
-var _default = {
+import { defaultLineColors } from '../../data/defines';
+import { getGaugeOption } from '../charts/gauge';
+export default {
   name: '仪表盘',
   icon: 'iconyibiaopan',
   data: {
@@ -30,7 +21,7 @@ var _default = {
     paddingLeftNum: 0,
     data: {
       echarts: {
-        option: (0, _gauge.getGaugeOption)(),
+        option: getGaugeOption(),
       },
     },
     property: {
@@ -45,31 +36,31 @@ var _default = {
       dataColors: [
         {
           checked: false,
-          color: _defines.defaultLineColors[0],
+          color: defaultLineColors[0],
           top: 20,
           bottom: null,
         },
         {
           checked: false,
-          color: _defines.defaultLineColors[1],
+          color: defaultLineColors[1],
           top: 40,
           bottom: null,
         },
         {
           checked: false,
-          color: _defines.defaultLineColors[2],
+          color: defaultLineColors[2],
           top: 60,
           bottom: null,
         },
         {
           checked: false,
-          color: _defines.defaultLineColors[3],
+          color: defaultLineColors[3],
           top: 80,
           bottom: null,
         },
         {
           checked: false,
-          color: _defines.defaultLineColors[4],
+          color: defaultLineColors[4],
           top: 100,
           bottom: null,
         },
@@ -87,4 +78,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

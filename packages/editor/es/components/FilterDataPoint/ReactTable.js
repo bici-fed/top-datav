@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,56 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _biciTransformers = require('bici-transformers');
-
-var _api = require('../data/api');
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -209,6 +157,12 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+/**
+ * 用户侧：数字机理 > 列表
+ */
+import React, { Component } from 'react';
+import { ComplexTable } from 'bici-transformers';
+import { fetchSearchReactStackList } from '../data/api';
 var initialQueryParams = {
   code: '',
   position: '',
@@ -386,7 +340,7 @@ var ReactTable = /*#__PURE__*/ (function (_Component) {
             var show;
 
             if (record.status === 1) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ React.createElement(
                 'span',
                 {
                   className: 'green6',
@@ -394,7 +348,7 @@ var ReactTable = /*#__PURE__*/ (function (_Component) {
                 '\u7B26\u5408',
               );
             } else if (record.status === -1) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ React.createElement(
                 'span',
                 {
                   className: 'red6',
@@ -402,7 +356,7 @@ var ReactTable = /*#__PURE__*/ (function (_Component) {
                 '\u4E0D\u7B26\u5408',
               );
             } else if (record.status === 2) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ React.createElement(
                 'span',
                 {
                   className: 'black45',
@@ -410,14 +364,10 @@ var ReactTable = /*#__PURE__*/ (function (_Component) {
                 '\u672A\u53CD\u5E94',
               );
             } else if (record.status === 3) {
-              show = /*#__PURE__*/ _react['default'].createElement(
-                'span',
-                null,
-                '\u65E0\u6570\u636E',
-              );
+              show = /*#__PURE__*/ React.createElement('span', null, '\u65E0\u6570\u636E');
             }
 
-            return /*#__PURE__*/ _react['default'].createElement(
+            return /*#__PURE__*/ React.createElement(
               'div',
               {
                 style: {
@@ -485,7 +435,7 @@ var ReactTable = /*#__PURE__*/ (function (_Component) {
           params.statusList = statusList;
         }
 
-        (0, _api.fetchSearchReactStackList)(params).then(function (res) {
+        fetchSearchReactStackList(params).then(function (res) {
           if (res['data'].data) {
             var _res$data$data = res['data'].data,
               list = _res$data$data.list,
@@ -528,7 +478,7 @@ var ReactTable = /*#__PURE__*/ (function (_Component) {
           },
         };
         pagination.total = total;
-        return /*#__PURE__*/ _react['default'].createElement(_biciTransformers.ComplexTable, {
+        return /*#__PURE__*/ React.createElement(ComplexTable, {
           rowKey: 'id',
           minWidth: 800,
           dataSource: dataList,
@@ -543,6 +493,6 @@ var ReactTable = /*#__PURE__*/ (function (_Component) {
   ]);
 
   return ReactTable;
-})(_react.Component);
+})(Component);
 
-exports['default'] = ReactTable;
+export { ReactTable as default };

@@ -1,13 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _common = require('./common');
-
-var _default = {
+import { TONGJI_DATA, DATA_BASE_API } from './common';
+export default {
   name: '数据卡片2',
   icon: 'iconshujukapian',
   data: {
@@ -110,8 +102,8 @@ var _default = {
     property: {
       dataMethod: 'restful',
       dataDot: 2,
-      dataFormat: _common.TONGJI_DATA,
-      dataUrl: _common.DATA_BASE_API + '/creditBalance/currentProduceTicket',
+      dataFormat: TONGJI_DATA,
+      dataUrl: DATA_BASE_API + '/creditBalance/currentProduceTicket',
       pullRate: 120,
       props: {
         iframe: 'abcd',
@@ -119,4 +111,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

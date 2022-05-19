@@ -1,13 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _common = require('./common');
-
-var _default = {
+import { CHART_DATA } from './common';
+export default {
   text: '表格',
   icon: 'iconshujuliebiao1',
   name: '数据列表',
@@ -29,7 +21,7 @@ var _default = {
       pullRate: 120,
       dataDot: 2,
       pullRateUnit: 60,
-      dataFormat: _common.CHART_DATA,
+      dataFormat: CHART_DATA,
       dataPointSelectedRows: [],
       dataPointParam: {
         qtDataList: [],
@@ -146,4 +138,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

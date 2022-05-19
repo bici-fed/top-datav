@@ -1,10 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-var _default = {
+export default {
   name: '直线',
   icon: 'iconzhixian',
   data: {
@@ -32,4 +26,3 @@ var _default = {
     name: 'line',
   },
 };
-exports['default'] = _default;

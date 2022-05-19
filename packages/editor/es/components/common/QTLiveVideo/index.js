@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,66 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _VideoPlayer = _interopRequireDefault(require('./Player/VideoPlayer'));
-
-var _axios = _interopRequireDefault(require('axios'));
-
-var _Layout = require('../../Layout');
-
-var _cacl = require('../../utils/cacl');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -251,6 +189,13 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+import React, { Component } from 'react';
+import VideoPlayer from './Player/VideoPlayer';
+import axios from 'axios';
+import { canvas } from '../../Layout';
+import { isRTSP } from '../../utils/cacl';
+import * as _ from 'lodash';
+
 var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
   _inherits(QTLiveVideo, _Component);
 
@@ -271,8 +216,7 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
       var maxTimeout = 600000;
       var maxContentLength = Math.pow(1024, 2);
       var myURL = new URL(_this.state.updateStream);
-
-      var client = _axios['default'].create({
+      var client = axios.create({
         baseURL: ''.concat(myURL.origin),
         timeout: timeout,
         maxContentLength: maxContentLength,
@@ -372,8 +316,7 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
         var that = this; // 根据输入的视频地址，从后端获取视频流地址，这是针对url视频组件的
 
         var token = window['__CONKPIT_TOKEN'];
-
-        _axios['default']
+        axios
           .request({
             url: ''.concat(this.state.pushStream),
             method: 'post',
@@ -401,8 +344,7 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
         var timeout = 600000;
         var maxContentLength = Math.pow(1024, 2);
         var myURL = new URL(this.state.updateStream);
-
-        var client = _axios['default'].create({
+        var client = axios.create({
           baseURL: ''.concat(myURL.origin),
           timeout: timeout,
           maxContentLength: maxContentLength,
@@ -422,7 +364,7 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
     {
       key: 'removeVideo',
       value: function removeVideo(videoItem) {
-        if ((0, _cacl.isRTSP)(this.props.node.property.videoURL)) {
+        if (isRTSP(this.props.node.property.videoURL)) {
           this.stopStream();
         }
       }, // 修改流地址 （切换画质）
@@ -441,7 +383,7 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
               : _node$property$video5.selectedRows[0],
         });
 
-        if (this.state.onlyURL && (0, _cacl.isRTSP)(this.props.node.property.videoURL)) {
+        if (this.state.onlyURL && isRTSP(this.props.node.property.videoURL)) {
           this.getVideoURL();
         }
 
@@ -451,8 +393,8 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
 
         var that = this;
 
-        if (_Layout.canvas) {
-          _Layout.canvas.on('deleteNode', function (nodes) {
+        if (canvas) {
+          canvas.on('deleteNode', function (nodes) {
             (nodes || []).forEach(function (n) {
               if (n.name == 'QTLiveVideo' && n.id === that.props.node.id) {
                 that.stopStream();
@@ -463,10 +405,10 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
 
         this.visibilitychange(); // 监听rtsp地址变化
 
-        if (_Layout.canvas) {
-          _Layout.canvas._emitter.on('changeVideoUrl', function (param) {
+        if (canvas) {
+          canvas._emitter.on('changeVideoUrl', function (param) {
             var func = _.debounce(function () {
-              if ((0, _cacl.isRTSP)(param.videoURL)) {
+              if (isRTSP(param.videoURL)) {
                 that.getVideoURL();
               }
             }, 2000);
@@ -533,7 +475,7 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
       key: 'render',
       value: function render() {
         var videoObj = this.state.videoObj;
-        return /*#__PURE__*/ _react['default'].createElement(_VideoPlayer['default'], {
+        return /*#__PURE__*/ React.createElement(VideoPlayer, {
           height: 400,
           videoObj: videoObj,
           removeVideo: this.removeVideo.bind(this),
@@ -546,6 +488,6 @@ var QTLiveVideo = /*#__PURE__*/ (function (_Component) {
   ]);
 
   return QTLiveVideo;
-})(_react.Component);
+})(Component);
 
-exports['default'] = QTLiveVideo;
+export { QTLiveVideo as default };

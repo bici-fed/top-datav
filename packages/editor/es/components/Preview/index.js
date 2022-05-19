@@ -1,97 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = exports.canvas = exports.PreviewProps = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
-
-var _core = require('@top-datav/core');
-
-var _cacl = require('../utils/cacl');
-
-var _Property2NodeProps = require('../utils/Property2NodeProps');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-var _chartDiagram = require('@top-datav/chart-diagram');
-
-var _RegCustomUIComp = require('../common/RegCustomUIComp');
-
-var _serializing = require('../utils/serializing');
-
-var _biciDiagram = require('@top-datav/bici-diagram');
-
-var _moment = _interopRequireDefault(require('moment'));
-
-require('antd/dist/antd.css');
-
-var _indexModule = _interopRequireDefault(require('./index.module.css'));
-
-var _timeline = require('../config/charts/timeline');
-
-var _defines = require('../data/defines');
-
-var _api = require('../data/api');
-
-var _axios = _interopRequireDefault(require('axios'));
-
-var _bar = require('../config/charts/bar');
-
-var _groupbar = require('../config/charts/groupbar');
-
-var _stackbar = require('../config/charts/stackbar');
-
-var _horizontalbar = require('../config/charts/horizontalbar');
-
-var _pie = require('../config/charts/pie');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function _createForOfIteratorHelper(o, allowArrayLike) {
   var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
   if (!it) {
@@ -137,7 +43,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
     },
     f: function f() {
       try {
-        if (!normalCompletion && it['return'] != null) it['return']();
+        if (!normalCompletion && it.return != null) it.return();
       } finally {
         if (didErr) throw err;
       }
@@ -328,11 +234,31 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-var canvas;
-exports.canvas = canvas;
+import React, { useEffect, useState } from 'react';
+import { ConfigProvider } from 'antd';
+import { Lock, Topology } from '@top-datav/core';
+import { isNumber, getFixed } from '../utils/cacl';
+import { formatTimer } from '../utils/Property2NodeProps';
+import * as _ from 'lodash';
+import { echartsObjs, register as registerChart } from '@top-datav/chart-diagram';
+import { register as reactNodesData } from '../common/RegCustomUIComp';
+import { replacer, reviver } from '../utils/serializing';
+import { register as registerBiciComp } from '@top-datav/bici-diagram';
+import moment from 'moment';
+import 'antd/dist/antd.css';
+import styles from './index.module.css';
+import { getTimeLineOption } from '../config/charts/timeline';
+import { defaultTimelineShowData } from '../data/defines';
+import { handleRequestError, maxContentLength, timeout, withCredentials } from '../data/api';
+import axios from 'axios';
+import { getBarOption } from '../config/charts/bar';
+import { getGroupBarOption } from '../config/charts/groupbar';
+import { getStackBarOption } from '../config/charts/stackbar';
+import { getHorizontalBarOption } from '../config/charts/horizontalbar';
+import { getPieOptionByChangeProp } from '../config/charts/pie';
+export var canvas;
 var x, y;
-
-var PreviewProps = /*#__PURE__*/ _createClass(function PreviewProps() {
+export var PreviewProps = /*#__PURE__*/ _createClass(function PreviewProps() {
   _classCallCheck(this, PreviewProps);
 
   this.history = void 0;
@@ -342,8 +268,6 @@ var PreviewProps = /*#__PURE__*/ _createClass(function PreviewProps() {
   this.websocketConf = void 0;
   this.isApp = void 0;
 }); // echartsObjs[node.id].chart
-
-exports.PreviewProps = PreviewProps;
 
 var Preview = function Preview(_ref) {
   var data = _ref.data,
@@ -357,7 +281,7 @@ var Preview = function Preview(_ref) {
   var socketDataMap = {};
   var canvasOptions = {
     rotateCursor: '/rotate.cur',
-    locked: _core.Lock.NoMove,
+    locked: Lock.NoMove,
     disableTranslate: !isApp,
     isApp: isApp,
     width: data === null || data === void 0 ? void 0 : data.width,
@@ -365,22 +289,22 @@ var Preview = function Preview(_ref) {
     on: function on(event, data) {},
   };
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     drawerVisible = _useState2[0],
     setDrawerVisible = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(),
+  var _useState3 = useState(),
     _useState4 = _slicedToArray(_useState3, 2),
     deviceType = _useState4[0],
     setDeviceType = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(),
+  var _useState5 = useState(),
     _useState6 = _slicedToArray(_useState5, 2),
     reqData = _useState6[0],
     setReqData = _useState6[1];
 
-  var _useState7 = (0, _react.useState)(),
+  var _useState7 = useState(),
     _useState8 = _slicedToArray(_useState7, 2),
     currentNode = _useState8[0],
     setCurrentNode = _useState8[1];
@@ -397,10 +321,10 @@ var Preview = function Preview(_ref) {
     clearInterval(renderCanvasInterval);
   };
 
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       canvasRegister();
-      exports.canvas = canvas = new _core.Topology('topology-canvas-preview', canvasOptions); // 渲染页面数据
+      canvas = new Topology('topology-canvas-preview', canvasOptions); // 渲染页面数据
 
       if (data != undefined && _typeof(data) == 'object') {
         data.locked = 2;
@@ -478,9 +402,9 @@ var Preview = function Preview(_ref) {
    */
 
   var canvasRegister = function canvasRegister() {
-    (0, _chartDiagram.register)();
-    (0, _biciDiagram.register)();
-    (0, _RegCustomUIComp.register)();
+    registerChart();
+    registerBiciComp();
+    reactNodesData();
   }; // 数据卡片颜色根据数据变化
 
   var setCardStyle = function setCardStyle(node, fontFamily, color, size, bkColor) {
@@ -766,23 +690,23 @@ var Preview = function Preview(_ref) {
 
         switch (_nodeType) {
           case 'groupBar':
-            node.data.echarts.option = (0, _groupbar.getGroupBarOption)(node, res);
+            node.data.echarts.option = getGroupBarOption(node, res);
             break;
 
           case 'verticalBar':
-            node.data.echarts.option = (0, _bar.getBarOption)(node, res);
+            node.data.echarts.option = getBarOption(node, res);
             break;
 
           case 'stackBar':
-            node.data.echarts.option = (0, _stackbar.getStackBarOption)(node, res);
+            node.data.echarts.option = getStackBarOption(node, res);
             break;
 
           case 'horizontalBar':
-            node.data.echarts.option = (0, _horizontalbar.getHorizontalBarOption)(node, res);
+            node.data.echarts.option = getHorizontalBarOption(node, res);
             break;
 
           case 'circleAndPie':
-            node.data.echarts.option = (0, _pie.getPieOptionByChangeProp)(node, res);
+            node.data.echarts.option = getPieOptionByChangeProp(node, res);
             break;
 
           case 'timeLine':
@@ -815,12 +739,11 @@ var Preview = function Preview(_ref) {
   var requestData = function requestData(node) {
     return new Promise(function (resolve, reject) {
       var myURL = new URL(node.property.dataSourceUrl || node.property.dataUrl);
-
-      var ajax = _axios['default'].create({
+      var ajax = axios.create({
         baseURL: ''.concat(myURL.origin, '/'),
-        timeout: _api.timeout,
-        maxContentLength: _api.maxContentLength,
-        withCredentials: _api.withCredentials,
+        timeout: timeout,
+        maxContentLength: maxContentLength,
+        withCredentials: withCredentials,
       }); // const ajax = axios.create({baseURL: `http://qt.test.bicisims.com`, timeout, maxContentLength,withCredentials})
 
       ajax
@@ -841,8 +764,8 @@ var Preview = function Preview(_ref) {
             });
           }
         })
-        ['catch'](function (error) {
-          (0, _api.handleRequestError)(error);
+        .catch(function (error) {
+          handleRequestError(error);
           resolve({
             front_error: 1,
           });
@@ -944,7 +867,7 @@ var Preview = function Preview(_ref) {
     (pens || []).map(function (node) {
       if (node.name == 'biciTimer') {
         setInterval(function () {
-          (0, _Property2NodeProps.formatTimer)(node, canvas);
+          formatTimer(node, canvas);
         }, 1000);
       } else if (node.name == 'combine') {
         updateTimerCom(node.children);
@@ -956,8 +879,8 @@ var Preview = function Preview(_ref) {
 
   for (var i = 0; i < 10; i++) {
     timedata.push({
-      name: (0, _moment['default'])().subtract(1, 'seconds'),
-      value: [(0, _moment['default'])().subtract(1, 'seconds'), null],
+      name: moment().subtract(1, 'seconds'),
+      value: [moment().subtract(1, 'seconds'), null],
     });
   }
 
@@ -992,7 +915,7 @@ var Preview = function Preview(_ref) {
                 value: undefined,
                 name: node.property.chartTitle,
               };
-              cd.value = (0, _cacl.getFixed)(r.value, node.property.dataDot);
+              cd.value = getFixed(r.value, node.property.dataDot);
 
               if (r.value == undefined) {
                 cd.value = node.property.dataMin;
@@ -1012,23 +935,15 @@ var Preview = function Preview(_ref) {
             (selectedRows || []).map(function (row, index) {
               if (row.dataCode == r.id) {
                 if (index == 0) {
-                  timesxAix.push(
-                    (0, _moment['default'])(parseInt(r.time / 1000 + '') * 1000).format('LTS'),
-                  );
+                  timesxAix.push(moment(parseInt(r.time / 1000 + '') * 1000).format('LTS'));
 
-                  if (timesxAix.length > _defines.defaultTimelineShowData) {
+                  if (timesxAix.length > defaultTimelineShowData) {
                     timesxAix.splice(1, 1);
                   }
 
-                  node.data.echarts.option = (0, _timeline.getTimeLineOption)(
-                    node,
-                    null,
-                    r,
-                    timesxAix,
-                    true,
-                  );
+                  node.data.echarts.option = getTimeLineOption(node, null, r, timesxAix, true);
                 } else {
-                  node.data.echarts.option = (0, _timeline.getTimeLineOption)(node, null, r);
+                  node.data.echarts.option = getTimeLineOption(node, null, r);
                 }
               }
             });
@@ -1048,7 +963,7 @@ var Preview = function Preview(_ref) {
                   _objectSpread({}, row),
                   {},
                   {
-                    value: (0, _cacl.getFixed)(r.value, n),
+                    value: getFixed(r.value, n),
                   },
                 );
               } else {
@@ -1058,11 +973,11 @@ var Preview = function Preview(_ref) {
             node.property.dataPointSelectedRows = rows;
 
             if (theChart == 'circleAndPie') {
-              node.data.echarts.option = (0, _pie.getPieOptionByChangeProp)(node, null);
+              node.data.echarts.option = getPieOptionByChangeProp(node, null);
             } else if (theChart == 'verticalBar') {
-              node.data.echarts.option = (0, _bar.getBarOption)(node, null);
+              node.data.echarts.option = getBarOption(node, null);
             } else if (theChart == 'horizontalBar') {
-              node.data.echarts.option = (0, _horizontalbar.getHorizontalBarOption)(node, null);
+              node.data.echarts.option = getHorizontalBarOption(node, null);
             }
 
             updateChartNode(node);
@@ -1092,14 +1007,14 @@ var Preview = function Preview(_ref) {
               return;
             }
 
-            if ((0, _cacl.isNumber)(r.value)) {
+            if (isNumber(r.value)) {
               // 数值型
               var _n2 = node.property.dataDot;
 
               if (r.value < 0.0000000000000000001) {
                 node.text = r.value + '';
               } else {
-                node.text = (0, _cacl.getFixed)(r.value, _n2);
+                node.text = getFixed(r.value, _n2);
               }
             } else {
               node.text = r.value + '';
@@ -1142,7 +1057,7 @@ var Preview = function Preview(_ref) {
         } else if (node.name === 'biciCard') {
           if (node.property.dataPointParam.qtDataList[0].dataCode == r.id) {
             var _n3 = node.property.dataDot;
-            var val = (0, _cacl.getFixed)(r.value, _n3);
+            var val = getFixed(r.value, _n3);
 
             if (r.value == undefined) {
               val = '0.00';
@@ -1270,7 +1185,7 @@ var Preview = function Preview(_ref) {
                 _objectSpread({}, row),
                 {},
                 {
-                  value: (0, _cacl.getFixed)(r.value, _n4),
+                  value: getFixed(r.value, _n4),
                 },
               );
             } else {
@@ -1286,19 +1201,13 @@ var Preview = function Preview(_ref) {
 
   var updateChartNode = function updateChartNode(node) {
     // 更新图表数据
-    if (_chartDiagram.echartsObjs[node.id]) {
+    if (echartsObjs[node.id]) {
       node.elementRendered = false;
-
-      _chartDiagram.echartsObjs[node.id].chart.setOption(
-        JSON.parse(
-          JSON.stringify(node.data.echarts.option, _serializing.replacer),
-          _serializing.reviver,
-        ),
+      echartsObjs[node.id].chart.setOption(
+        JSON.parse(JSON.stringify(node.data.echarts.option, replacer), reviver),
         true,
       );
-
-      _chartDiagram.echartsObjs[node.id].chart.resize();
-
+      echartsObjs[node.id].chart.resize();
       node.elementRendered = true;
     } else {
       node.elementLoaded = false;
@@ -1331,14 +1240,14 @@ var Preview = function Preview(_ref) {
     setDrawerVisible(false);
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.ConfigProvider,
+  return /*#__PURE__*/ React.createElement(
+    ConfigProvider,
     {
       prefixCls: 'antdv4',
     },
-    /*#__PURE__*/ _react['default'].createElement('div', {
+    /*#__PURE__*/ React.createElement('div', {
       id: 'topology-canvas-preview',
-      className: _indexModule['default'].topology_canvas_preview,
+      className: styles.topology_canvas_preview,
       style: {
         margin: 'auto auto',
         height: isApp ? '100%' : data === null || data === void 0 ? void 0 : data.height,
@@ -1350,5 +1259,4 @@ var Preview = function Preview(_ref) {
   );
 }; // @ts-ignore
 
-var _default = Preview;
-exports['default'] = _default;
+export default Preview;

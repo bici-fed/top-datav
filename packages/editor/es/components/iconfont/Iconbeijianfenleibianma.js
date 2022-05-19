@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconbeijianfenleibianma = function Iconbeijianfenleibianma(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconbeijianfenleibianma = function Iconbeijianfenleibianma(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M465.368615 14.808615h160.610462V997.218462h-160.689231V14.808615z m249.462154 0h107.126154V997.218462h-107.126154V14.808615z m458.988308 0h80.187077V997.218462h-80.187077V14.808615z m-891.195077 0h80.187077V997.218462H282.624V14.808615z m614.872615 0h187.313231V997.218462h-187.313231V14.808615zM6.301538 14.808615h187.313231V997.218462H6.301538V14.808615z',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconbeijianfenleibianma = function Iconbeijianfenleibianma(_ref) {
 Iconbeijianfenleibianma.defaultProps = {
   size: 18,
 };
-var _default = Iconbeijianfenleibianma;
-exports['default'] = _default;
+export default Iconbeijianfenleibianma;

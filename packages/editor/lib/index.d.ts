@@ -1,3 +1,5 @@
 /// <reference path="../../../typings.d.ts" />
-export { EditorLayout } from './components/Layout';
-export { default as Preview } from './components/Preview';
+import Preview from './components/Preview';
+import EditorLayout from './components/Layout';
+export default EditorLayout;
+export { Preview };

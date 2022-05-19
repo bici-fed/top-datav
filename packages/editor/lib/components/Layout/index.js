@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports.canvas = exports.EditorLayout = void 0;
+exports['default'] = exports.canvas = void 0;
 
 var _react = _interopRequireWildcard(require('react'));
 
@@ -1609,4 +1609,5 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
   );
 });
 
-exports.EditorLayout = EditorLayout;
+var _default = EditorLayout;
+exports['default'] = _default;

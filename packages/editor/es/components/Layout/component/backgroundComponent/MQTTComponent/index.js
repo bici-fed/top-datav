@@ -1,18 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _antd = require('antd');
-
-var _react = _interopRequireDefault(require('react'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -121,6 +106,8 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
+import { Form, Row, Col, Input, Button } from 'antd';
+import React from 'react';
 var formLayout = {
   labelCol: {
     span: 8,
@@ -131,7 +118,7 @@ var formLayout = {
 };
 
 var MQTTForm = function MQTTForm() {
-  var _Form$useForm = _antd.Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
   /**
@@ -150,8 +137,8 @@ var MQTTForm = function MQTTForm() {
     // });
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.Form,
+  return /*#__PURE__*/ React.createElement(
+    Form,
     _objectSpread(
       _objectSpread({}, formLayout),
       {},
@@ -159,93 +146,93 @@ var MQTTForm = function MQTTForm() {
         form: form,
       },
     ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Row,
+    /*#__PURE__*/ React.createElement(
+      Row,
       null,
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ React.createElement(
+          Form.Item,
           {
             label: 'URL\u5730\u5740',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             placeholder: '\u8BF7\u8F93\u5165URL\u5730\u5740',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ React.createElement(
+          Form.Item,
           {
             label: 'Client ID',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             placeholder:
               '\u8BF7\u8F93\u5165Client ID\uFF08\u4E0D\u80FD\u91CD\u590D\u4F7F\u7528\uFF0C\u53EF\u4E3A\u7A7A)',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ React.createElement(
+          Form.Item,
           {
             label: '\u7528\u6237\u540D',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             placeholder: '\u8BF7\u8F93\u5165\u7528\u6237\u540D',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ React.createElement(
+          Form.Item,
           {
             label: '\u5BC6\u7801',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             type: 'password',
             placeholder: '\u8BF7\u8F93\u5165\u5BC6\u7801',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ React.createElement(
+          Form.Item,
           {
             label: 'Topics *',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             placeholder: '\u8BF7\u8F93\u5165Topics',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Button,
+        /*#__PURE__*/ React.createElement(
+          Button,
           {
             type: 'primary',
             style: {
@@ -263,5 +250,4 @@ var MQTTForm = function MQTTForm() {
   );
 };
 
-var _default = MQTTForm;
-exports['default'] = _default;
+export default MQTTForm;

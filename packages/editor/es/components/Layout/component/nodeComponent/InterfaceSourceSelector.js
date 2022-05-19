@@ -1,22 +1,9 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _antd = require('antd');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
 /**
  * @file 接口来源选择器
  */
-var Option = _antd.Select.Option;
+import React from 'react';
+import { Select } from 'antd';
+var Option = Select.Option;
 
 var InterfaceSourceSelector = function InterfaceSourceSelector(props) {
   function onChange(value) {
@@ -35,8 +22,8 @@ var InterfaceSourceSelector = function InterfaceSourceSelector(props) {
     console.log('search:', val);
   }
 
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.Select,
+  return /*#__PURE__*/ React.createElement(
+    Select,
     {
       showSearch: true,
       placeholder: '\u63A5\u53E3\u6765\u6E90',
@@ -46,21 +33,21 @@ var InterfaceSourceSelector = function InterfaceSourceSelector(props) {
       onBlur: onBlur,
       onSearch: onSearch,
     },
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       Option,
       {
         value: 'jack',
       },
       'Jack',
     ),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       Option,
       {
         value: 'lucy',
       },
       'Lucy',
     ),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       Option,
       {
         value: 'tom',
@@ -70,5 +57,4 @@ var InterfaceSourceSelector = function InterfaceSourceSelector(props) {
   );
 };
 
-var _default = InterfaceSourceSelector;
-exports['default'] = _default;
+export default InterfaceSourceSelector;

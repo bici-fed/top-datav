@@ -1,11 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-// Make sure color props are strings that start with "#" since other ways to write colors are not supported.
+// @ts-nocheck
 var hexColorPropType = function hexColorPropType(props, propName, componentName) {
   var prop = props[propName];
 
@@ -24,5 +17,4 @@ var hexColorPropType = function hexColorPropType(props, propName, componentName)
   return null;
 };
 
-var _default = hexColorPropType;
-exports['default'] = _default;
+export default hexColorPropType;

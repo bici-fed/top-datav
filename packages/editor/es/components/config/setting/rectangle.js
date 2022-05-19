@@ -1,10 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-var _default = {
+export default {
   name: '矩形',
   icon: 'iconjuxing',
   data: {
@@ -26,4 +20,3 @@ var _default = {
     name: 'rectangle',
   },
 };
-exports['default'] = _default;

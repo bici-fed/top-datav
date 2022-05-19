@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var IconcaidanShujutianbaotongji = function IconcaidanShujutianbaotongji(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var IconcaidanShujutianbaotongji = function IconcaidanShujutianbaotongji(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M896.448 170.688a42.24 42.24 0 0 1 42.24 42.24v598.144a42.24 42.24 0 0 1-42.24 42.24H127.552a42.24 42.24 0 0 1-42.24-42.24V212.928a42.24 42.24 0 0 1 42.24-42.24h768.896z m-21.76 64H149.312v554.624h725.376V234.688zM522.88 384a21.12 21.12 0 0 1 21.12 21.12v256.448a21.12 21.12 0 0 1-21.12 21.12h-21.76a21.12 21.12 0 0 1-21.12-21.12V405.12A21.12 21.12 0 0 1 501.12 384h21.76z m181.312 64a21.12 21.12 0 0 1 21.12 21.12v192.448a21.12 21.12 0 0 1-21.12 21.12h-21.76a21.12 21.12 0 0 1-21.12-21.12V469.12a21.12 21.12 0 0 1 21.12-21.12h21.76zM341.568 320a21.12 21.12 0 0 1 21.12 21.12v320.448a21.12 21.12 0 0 1-21.12 21.12h-21.76a21.12 21.12 0 0 1-21.12-21.12V341.12a21.12 21.12 0 0 1 21.12-21.12h21.76z',
-      fill: (0, _helper.getIconColor)(color, 0, '#333333'),
+      fill: getIconColor(color, 0, '#333333'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var IconcaidanShujutianbaotongji = function IconcaidanShujutianbaotongji(_ref) {
 IconcaidanShujutianbaotongji.defaultProps = {
   size: 18,
 };
-var _default = IconcaidanShujutianbaotongji;
-exports['default'] = _default;
+export default IconcaidanShujutianbaotongji;

@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconzhuzhuangtu = function Iconzhuzhuangtu(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconzhuzhuangtu = function Iconzhuzhuangtu(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M888.0128 792.0128H199.9872V167.936a8.0384 8.0384 0 0 0-7.9872-7.9872H135.9872a8.0384 8.0384 0 0 0-7.9872 7.9872V856.064c0 4.4032 3.584 7.9872 7.9872 7.9872h752.0256c4.4032 0 7.9872-3.584 7.9872-7.9872v-56.0128a8.0384 8.0384 0 0 0-7.9872-7.9872zM288 711.9872h56.0128c4.4032 0 7.9872-3.584 7.9872-7.9872v-144.0256a8.0384 8.0384 0 0 0-7.9872-7.9872H288a8.0384 8.0384 0 0 0-7.9872 7.9872v144.0256c0 4.4032 3.584 7.9872 7.9872 7.9872z m152.0128 0h56.0128c4.352 0 7.9872-3.584 7.9872-7.9872V384a8.0384 8.0384 0 0 0-7.9872-7.9872H440.0128a8.0384 8.0384 0 0 0-7.9872 7.9872v320c0 4.4032 3.584 7.9872 7.9872 7.9872z m152.0128 0h55.9616c4.4032 0 7.9872-3.584 7.9872-7.9872V461.9776a8.0384 8.0384 0 0 0-7.9872-7.9872h-56.0128a8.0384 8.0384 0 0 0-7.9872 7.9872v242.0224c0 4.4032 3.584 7.9872 7.9872 7.9872z m151.9616 0h56.0128c4.4032 0 7.9872-3.584 7.9872-7.9872V303.9744a8.0384 8.0384 0 0 0-7.9872-7.9872h-56.0128a8.0384 8.0384 0 0 0-7.9872 8.0384v399.9744c0 4.4032 3.584 7.9872 7.9872 7.9872z',
-      fill: (0, _helper.getIconColor)(color, 0, '#333333'),
+      fill: getIconColor(color, 0, '#333333'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconzhuzhuangtu = function Iconzhuzhuangtu(_ref) {
 Iconzhuzhuangtu.defaultProps = {
   size: 18,
 };
-var _default = Iconzhuzhuangtu;
-exports['default'] = _default;
+export default Iconzhuzhuangtu;

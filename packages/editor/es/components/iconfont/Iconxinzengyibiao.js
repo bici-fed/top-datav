@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconxinzengyibiao = function Iconxinzengyibiao(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconxinzengyibiao = function Iconxinzengyibiao(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M512 0a512.576 512.576 0 0 1 512 512 512 512 0 1 1-512-512z m0 111.424a400.576 400.576 0 0 0 0 801.152A401.152 401.152 0 0 0 912.576 512 400.576 400.576 0 0 0 512 111.424z m11.712 177.728c30.72 0 55.68 24.96 55.68 55.68V456.32h111.424a55.68 55.68 0 1 1 0 111.488h-111.36v111.36a55.68 55.68 0 1 1-111.488 0v-111.36h-111.36a55.68 55.68 0 1 1 0-111.488h111.36V344.96c0-30.784 24.96-55.744 55.68-55.744z',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconxinzengyibiao = function Iconxinzengyibiao(_ref) {
 Iconxinzengyibiao.defaultProps = {
   size: 18,
 };
-var _default = Iconxinzengyibiao;
-exports['default'] = _default;
+export default Iconxinzengyibiao;

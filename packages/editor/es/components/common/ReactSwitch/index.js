@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -20,21 +18,6 @@ function _typeof(obj) {
   );
 }
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _propTypes = _interopRequireDefault(require('prop-types'));
-
-var _icons = require('./icons.jsx');
-
-var _getBackgroundColor = _interopRequireDefault(require('./getBackgroundColor'));
-
-var _hexColorPropType = _interopRequireDefault(require('./hexColorPropType'));
-
 var _excluded = [
   'disabled',
   'className',
@@ -51,64 +34,47 @@ var _excluded = [
   'handleDiameter',
 ];
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly &&
+      (symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      })),
+      keys.push.apply(keys, symbols);
+  }
+  return keys;
 }
 
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2
+      ? ownKeys(Object(source), !0).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        })
+      : Object.getOwnPropertyDescriptors
+      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
+      : ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+  }
+  return target;
 }
 
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
   }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _extends() {
-  _extends =
-    Object.assign ||
-    function (target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
-        for (var key in source) {
-          if (Object.prototype.hasOwnProperty.call(source, key)) {
-            target[key] = source[key];
-          }
-        }
-      }
-      return target;
-    };
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
 function _objectWithoutProperties(source, excluded) {
@@ -235,6 +201,13 @@ function _getPrototypeOf(o) {
       };
   return _getPrototypeOf(o);
 }
+
+// @ts-nocheck
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { checkedIcon as defaultCheckedIcon, uncheckedIcon as defaultUncheckedIcon } from './icons';
+import getBackgroundColor from './getBackgroundColor';
+import hexColorPropType from './hexColorPropType';
 
 var ReactSwitch = /*#__PURE__*/ (function (_Component) {
   _inherits(ReactSwitch, _Component);
@@ -521,7 +494,7 @@ var ReactSwitch = /*#__PURE__*/ (function (_Component) {
           width: width,
           margin: Math.max(0, (this.$handleDiameter - height) / 2),
           position: 'relative',
-          background: (0, _getBackgroundColor['default'])(
+          background: getBackgroundColor(
             $pos,
             this.$checkedPos,
             this.$uncheckedPos,
@@ -562,7 +535,7 @@ var ReactSwitch = /*#__PURE__*/ (function (_Component) {
         var handleStyle = {
           height: this.$handleDiameter,
           width: this.$handleDiameter,
-          background: (0, _getBackgroundColor['default'])(
+          background: getBackgroundColor(
             $pos,
             this.$checkedPos,
             this.$uncheckedPos,
@@ -600,13 +573,13 @@ var ReactSwitch = /*#__PURE__*/ (function (_Component) {
           width: 1,
           outline: 'none',
         };
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ React.createElement(
           'div',
           {
             className: className,
             style: rootStyle,
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             {
               className: 'react-switch-bg',
@@ -617,7 +590,7 @@ var ReactSwitch = /*#__PURE__*/ (function (_Component) {
               },
             },
             checkedIcon &&
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 'div',
                 {
                   style: checkedIconStyle,
@@ -625,7 +598,7 @@ var ReactSwitch = /*#__PURE__*/ (function (_Component) {
                 checkedIcon,
               ),
             uncheckedIcon &&
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 'div',
                 {
                   style: uncheckedIconStyle,
@@ -633,7 +606,7 @@ var ReactSwitch = /*#__PURE__*/ (function (_Component) {
                 uncheckedIcon,
               ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             {
               className: 'react-switch-handle',
@@ -649,16 +622,19 @@ var ReactSwitch = /*#__PURE__*/ (function (_Component) {
             },
             this.props.checked ? this.props.uncheckedIcon : this.props.checkedIcon,
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'input',
-            _extends(
-              {
-                type: 'checkbox',
-                role: 'switch',
-                disabled: disabled,
-                style: inputStyle,
-              },
-              rest,
+            _objectSpread(
+              _objectSpread(
+                {
+                  type: 'checkbox',
+                  role: 'switch',
+                  disabled: disabled,
+                  style: inputStyle,
+                },
+                rest,
+              ),
+              {},
               {
                 /* anything below should NOT get overriden by ...rest */
                 ref: this.$getInputRef,
@@ -675,31 +651,25 @@ var ReactSwitch = /*#__PURE__*/ (function (_Component) {
   ]);
 
   return ReactSwitch;
-})(_react.Component);
+})(Component);
 
 ReactSwitch.propTypes = {
-  checked: _propTypes['default'].bool.isRequired,
-  onChange: _propTypes['default'].func.isRequired,
-  disabled: _propTypes['default'].bool,
-  offColor: _hexColorPropType['default'],
-  onColor: _hexColorPropType['default'],
-  offHandleColor: _hexColorPropType['default'],
-  onHandleColor: _hexColorPropType['default'],
-  handleDiameter: _propTypes['default'].number,
-  uncheckedIcon: _propTypes['default'].oneOfType([
-    _propTypes['default'].bool,
-    _propTypes['default'].element,
-  ]),
-  checkedIcon: _propTypes['default'].oneOfType([
-    _propTypes['default'].bool,
-    _propTypes['default'].element,
-  ]),
-  boxShadow: _propTypes['default'].string,
-  activeBoxShadow: _propTypes['default'].string,
-  height: _propTypes['default'].number,
-  width: _propTypes['default'].number,
-  id: _propTypes['default'].string,
-  className: _propTypes['default'].string,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  offColor: hexColorPropType,
+  onColor: hexColorPropType,
+  offHandleColor: hexColorPropType,
+  onHandleColor: hexColorPropType,
+  handleDiameter: PropTypes.number,
+  uncheckedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
+  checkedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
+  boxShadow: PropTypes.string,
+  activeBoxShadow: PropTypes.string,
+  height: PropTypes.number,
+  width: PropTypes.number,
+  id: PropTypes.string,
+  className: PropTypes.string,
 };
 ReactSwitch.defaultProps = {
   disabled: false,
@@ -707,12 +677,11 @@ ReactSwitch.defaultProps = {
   onColor: '#080',
   offHandleColor: '#fff',
   onHandleColor: '#fff',
-  uncheckedIcon: _icons.uncheckedIcon,
-  checkedIcon: _icons.checkedIcon,
+  uncheckedIcon: defaultUncheckedIcon,
+  checkedIcon: defaultCheckedIcon,
   boxShadow: null,
   activeBoxShadow: '0 0 2px 3px #3bf',
   height: 28,
   width: 56,
 };
-var _default = ReactSwitch;
-exports['default'] = _default;
+export default ReactSwitch;

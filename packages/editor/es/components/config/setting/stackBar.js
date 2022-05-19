@@ -1,17 +1,7 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _common = require('./common');
-
-var _stackbar = require('../charts/stackbar');
-
-var _defines = require('../../data/defines');
-
-var _default = {
+import { CHART_DATA, DATA_BASE_API } from './common';
+import { getStackBarOption } from '../charts/stackbar';
+import { lineRangedefaultColor } from '../../data/defines';
+export default {
   name: '堆叠柱状图',
   icon: 'iconzhuzhuangtu1',
   data: {
@@ -27,14 +17,14 @@ var _default = {
     hideInput: true,
     data: {
       echarts: {
-        option: (0, _stackbar.getStackBarOption)(),
+        option: getStackBarOption(),
       },
     },
     property: {
       echartsType: 'stackBar',
       dataMethod: 'restful',
-      dataFormat: _common.CHART_DATA,
-      dataUrl: _common.DATA_BASE_API + '/creditBalance/storageGoodsReportQtMonth',
+      dataFormat: CHART_DATA,
+      dataUrl: DATA_BASE_API + '/creditBalance/storageGoodsReportQtMonth',
       dataSourceId: undefined,
       dataSourceUrl: undefined,
       pullRate: 120,
@@ -108,7 +98,7 @@ var _default = {
             formItems: [
               {
                 name: ['lineGraphRange'],
-                value: _defines.lineRangedefaultColor,
+                value: lineRangedefaultColor,
               },
               {
                 name: ['chartBkColor'],
@@ -134,4 +124,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

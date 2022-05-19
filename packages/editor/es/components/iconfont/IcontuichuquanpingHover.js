@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var IcontuichuquanpingHover = function IcontuichuquanpingHover(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var IcontuichuquanpingHover = function IcontuichuquanpingHover(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M925.888 537.6c11.776 0 21.312 9.6 21.312 21.312v53.376c0 11.776-9.6 21.312-21.312 21.312H633.6v292.288c0 11.776-9.6 21.312-21.312 21.312h-53.376a21.312 21.312 0 0 1-21.312-21.312v-345.6c0-23.616 19.072-42.688 42.688-42.688h345.6z m-460.8-460.8c11.776 0 21.312 9.6 21.312 21.312v345.6a42.688 42.688 0 0 1-42.688 42.688h-345.6a21.312 21.312 0 0 1-21.312-21.312v-53.376c0-10.24 7.296-18.88 17.024-20.864l4.288-0.448H390.4V98.112c0-11.776 9.6-21.312 21.312-21.312h53.376z',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var IcontuichuquanpingHover = function IcontuichuquanpingHover(_ref) {
 IcontuichuquanpingHover.defaultProps = {
   size: 18,
 };
-var _default = IcontuichuquanpingHover;
-exports['default'] = _default;
+export default IcontuichuquanpingHover;

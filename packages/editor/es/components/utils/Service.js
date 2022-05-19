@@ -1,25 +1,13 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _axios2 = _interopRequireDefault(require('axios'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-_axios2['default'].defaults.headers['Content-Type'] = 'application/json';
-_axios2['default'].defaults.withCredentials = true; //axios.defaults.=true
+import axios from 'axios';
+axios.defaults.headers['Content-Type'] = 'application/json';
+axios.defaults.withCredentials = true; //axios.defaults.=true
 
 var config = {
   baseURL: '/',
   timeout: 60 * 1000, // Timeout
 };
 
-var _axios = _axios2['default'].create(config);
+var _axios = axios.create(config);
 
 _axios.interceptors.request.use(
   function (config) {
@@ -44,5 +32,4 @@ _axios.interceptors.response.use(
   },
 );
 
-var _default = _axios;
-exports['default'] = _default;
+export default _axios;

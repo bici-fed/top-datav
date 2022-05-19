@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,29 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _antd = require('antd');
-
-var _DataPointTable = _interopRequireDefault(require('./DataPointTable'));
-
-var _ComplexTable = _interopRequireDefault(require('./ComplexTable'));
-
-var _ReactTable = _interopRequireDefault(require('./ReactTable'));
-
-var _propTypes = _interopRequireDefault(require('prop-types'));
-
-var _biciTransformers = require('bici-transformers');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _toConsumableArray(arr) {
@@ -227,7 +202,17 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
-var TabPane = _antd.Tabs.TabPane;
+/**
+ * @file 筛选数据点/复杂感知点/复杂反应堆 ，支持多选单选
+ */
+import React from 'react';
+import { Tabs, Modal } from 'antd';
+import DataPointTable from './DataPointTable';
+import ComplexTable from './ComplexTable';
+import ReactTable from './ReactTable';
+import PropsTypes from 'prop-types';
+import { biciNotification } from 'bici-transformers';
+var TabPane = Tabs.TabPane;
 var initialState = {
   selectedRowKeys: [],
   selectedRows: [],
@@ -277,13 +262,12 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
           }
 
           if (maxSelectLength && selectedRowKeys.length > maxSelectLength) {
-            _biciTransformers.biciNotification.info({
+            biciNotification.info({
               message: '\u6700\u591A\u9009\u62E9'.concat(
                 maxSelectLength,
                 '\u4E2A\u6570\u636E\u70B9\u54E6\uFF01',
               ),
             });
-
             return;
           }
         } else {
@@ -304,7 +288,7 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
           } else {
             var idSet = new Set(_this.state.selectedRowKeys);
             indexList.forEach(function (index) {
-              return idSet['delete'](index);
+              return idSet.delete(index);
             });
             selectedRowKeys = Array.from(idSet);
             selectedRows = [];
@@ -318,13 +302,12 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
           }
 
           if (maxSelectLength && selectedRows.length > maxSelectLength) {
-            _biciTransformers.biciNotification.info({
+            biciNotification.info({
               message: '\u6700\u591A\u9009\u62E9'.concat(
                 maxSelectLength,
                 '\u4E2A\u6570\u636E\u70B9\u54E6\uFF01',
               ),
             });
-
             return;
           }
         }
@@ -394,8 +377,8 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
           selectedRows: selectedRows,
           mode: mode,
         };
-        return /*#__PURE__*/ _react['default'].createElement(
-          _antd.Modal,
+        return /*#__PURE__*/ React.createElement(
+          Modal,
           {
             visible: visible,
             width: document.documentElement.clientWidth - 250,
@@ -416,20 +399,20 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
             },
             onCancel: this.props.onCancel,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Tabs,
+          /*#__PURE__*/ React.createElement(
+            Tabs,
             {
               defaultActiveKey: 'dataPoint',
             },
             !disableSource.includes('dataPoint') &&
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 TabPane,
                 {
                   tab: '\u6570\u636E\u70B9',
                   key: 'dataPoint',
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _DataPointTable['default'],
+                /*#__PURE__*/ React.createElement(
+                  DataPointTable,
                   _objectSpread(
                     _objectSpread(
                       {
@@ -445,14 +428,14 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
                 ),
               ),
             !disableSource.includes('complex') &&
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 TabPane,
                 {
                   tab: '\u590D\u6742\u611F\u77E5\u70B9',
                   key: 'complex',
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _ComplexTable['default'],
+                /*#__PURE__*/ React.createElement(
+                  ComplexTable,
                   _objectSpread(
                     _objectSpread({}, childrenProps),
                     {},
@@ -463,14 +446,14 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
                 ),
               ),
             !disableSource.includes('react') &&
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 TabPane,
                 {
                   tab: '\u6570\u5B57\u673A\u7406',
                   key: 'react',
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _ReactTable['default'],
+                /*#__PURE__*/ React.createElement(
+                  ReactTable,
                   _objectSpread(
                     _objectSpread({}, childrenProps),
                     {},
@@ -487,21 +470,20 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
   ]);
 
   return FilterDataPoint;
-})(_react['default'].PureComponent);
+})(React.PureComponent);
 
-exports['default'] = FilterDataPoint;
 FilterDataPoint.propTypes = {
-  mode: _propTypes['default'].string,
-  onCancel: _propTypes['default'].func.isRequired,
-  visible: _propTypes['default'].bool.isRequired,
-  onGetSelectRow: _propTypes['default'].func,
-  disableSource: _propTypes['default'].array,
-  disableDataId: _propTypes['default'].array,
-  maxSelectLength: _propTypes['default'].number,
-  selectedRows: _propTypes['default'].array,
-  selectedRowKeys: _propTypes['default'].array,
-  isOnlyNumber: _propTypes['default'].bool,
-  node: _propTypes['default'].any, // 选择的节点信息
+  mode: PropsTypes.string,
+  onCancel: PropsTypes.func.isRequired,
+  visible: PropsTypes.bool.isRequired,
+  onGetSelectRow: PropsTypes.func,
+  disableSource: PropsTypes.array,
+  disableDataId: PropsTypes.array,
+  maxSelectLength: PropsTypes.number,
+  selectedRows: PropsTypes.array,
+  selectedRowKeys: PropsTypes.array,
+  isOnlyNumber: PropsTypes.bool,
+  node: PropsTypes.any, // 选择的节点信息
 };
 FilterDataPoint.defaultProps = {
   mode: 'radio',
@@ -511,3 +493,4 @@ FilterDataPoint.defaultProps = {
   selectedRowKeys: [],
   isOnlyNumber: true,
 };
+export { FilterDataPoint as default };

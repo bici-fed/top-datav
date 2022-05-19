@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconchakancaozuojilu = function Iconchakancaozuojilu(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconchakancaozuojilu = function Iconchakancaozuojilu(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m56.704-538.88V288.384a39.36 39.36 0 0 0-39.36-39.424H411.2v324.928c0 21.76 17.6 39.36 39.36 39.36h118.144v-0.64h195.84c21.76 0 39.36-17.6 39.36-39.36V455.104H606.976c-18.56 0-34.048 12.8-38.272 30.016z',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconchakancaozuojilu = function Iconchakancaozuojilu(_ref) {
 Iconchakancaozuojilu.defaultProps = {
   size: 18,
 };
-var _default = Iconchakancaozuojilu;
-exports['default'] = _default;
+export default Iconchakancaozuojilu;

@@ -1,10 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-var _default = {
+export default {
   text: '网页',
   icon: 'iconwangye',
   name: '网页',
@@ -54,4 +48,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

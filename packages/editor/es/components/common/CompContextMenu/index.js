@@ -1,81 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
-
-var _icons = require('@ant-design/icons');
-
-var _indexModule = _interopRequireDefault(require('./index.module.css'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function _slicedToArray(arr, i) {
   return (
     _arrayWithHoles(arr) ||
@@ -141,7 +63,11 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-var confirm = _antd.Modal.confirm;
+import React, { useState, Fragment } from 'react';
+import { Modal, Form, Input } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import styles from './index.module.css';
+var confirm = Modal.confirm;
 
 var CompContextMenu = function CompContextMenu(props) {
   var contextMenuRef = props.contextMenuRef,
@@ -152,7 +78,7 @@ var CompContextMenu = function CompContextMenu(props) {
     handleOk = props.handleOk,
     handleDelete = props.handleDelete;
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     visible = _useState2[0],
     setVisible = _useState2[1];
@@ -167,7 +93,7 @@ var CompContextMenu = function CompContextMenu(props) {
   var onDelete = function onDelete() {
     var md = confirm({
       title: '确定删除吗?',
-      icon: /*#__PURE__*/ _react['default'].createElement(_icons.ExclamationCircleOutlined, null),
+      icon: /*#__PURE__*/ React.createElement(ExclamationCircleOutlined, null),
       content: '',
       okText: '确定',
       cancelText: '取消',
@@ -195,8 +121,8 @@ var CompContextMenu = function CompContextMenu(props) {
     setVisible(false);
   };
 
-  var renderNewComponentModal = /*#__PURE__*/ _react['default'].createElement(
-    _antd.Modal,
+  var renderNewComponentModal = /*#__PURE__*/ React.createElement(
+    Modal,
     {
       title: '\u91CD\u547D\u540D',
       visible: visible,
@@ -209,13 +135,13 @@ var CompContextMenu = function CompContextMenu(props) {
         return document.querySelector('#editLayout');
       },
     },
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Form,
+    /*#__PURE__*/ React.createElement(
+      Form,
       {
         form: form,
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Form.Item,
+      /*#__PURE__*/ React.createElement(
+        Form.Item,
         {
           rules: [
             {
@@ -234,7 +160,7 @@ var CompContextMenu = function CompContextMenu(props) {
           label: '\u7EC4\u4EF6\u540D\u5B57',
           name: 'componentName',
         },
-        /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+        /*#__PURE__*/ React.createElement(Input, {
           placeholder: '\u8F93\u5165\u7EC4\u4EF6\u540D\u5B57',
           id: 'componentName',
           maxLength: 20,
@@ -242,28 +168,27 @@ var CompContextMenu = function CompContextMenu(props) {
       ),
     ),
   );
-
-  return /*#__PURE__*/ _react['default'].createElement(
-    _react.Fragment,
+  return /*#__PURE__*/ React.createElement(
+    Fragment,
     null,
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       'div',
       {
         style: contextmenu,
         ref: contextMenuRef,
       },
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         'div',
         {
-          className: _indexModule['default'].menus,
+          className: styles.menus,
           style: {
             display: showContextmenu ? 'block' : 'none',
           },
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'div',
           null,
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'a',
             {
               onClick: onRename,
@@ -271,10 +196,10 @@ var CompContextMenu = function CompContextMenu(props) {
             '\u91CD\u547D\u540D',
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'div',
           null,
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'a',
             {
               onClick: onDelete,
@@ -288,5 +213,4 @@ var CompContextMenu = function CompContextMenu(props) {
   );
 };
 
-var _default = CompContextMenu;
-exports['default'] = _default;
+export default CompContextMenu;

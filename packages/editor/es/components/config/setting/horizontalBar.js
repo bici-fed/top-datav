@@ -1,17 +1,7 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _common = require('./common');
-
-var _horizontalbar = require('../charts/horizontalbar');
-
-var _defines = require('../../data/defines');
-
-var _default = {
+import { CHART_DATA } from './common';
+import { getHorizontalBarOption } from '../charts/horizontalbar';
+import { lineRangedefaultColor } from '../../data/defines';
+export default {
   name: '条形图',
   icon: 'icontiaoxingtu',
   data: {
@@ -27,13 +17,13 @@ var _default = {
     hideInput: true,
     data: {
       echarts: {
-        option: (0, _horizontalbar.getHorizontalBarOption)(),
+        option: getHorizontalBarOption(),
       },
     },
     property: {
       echartsType: 'horizontalBar',
       dataMethod: 'restful',
-      dataFormat: _common.CHART_DATA,
+      dataFormat: CHART_DATA,
       dataUrl: 'http://qt.test.bicisims.com/api/applications/service/remote/customComponent/list',
       dataSourceId: undefined,
       dataSourceUrl: undefined,
@@ -112,7 +102,7 @@ var _default = {
             formItems: [
               {
                 name: ['lineGraphRange'],
-                value: _defines.lineRangedefaultColor,
+                value: lineRangedefaultColor,
               },
               {
                 name: ['chartBkColor'],
@@ -146,4 +136,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

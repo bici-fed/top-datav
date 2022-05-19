@@ -1,110 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.canvas = exports.EditorLayout = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _core = require('@top-datav/core');
-
-var _chartDiagram = require('@top-datav/chart-diagram');
-
-var _biciDiagram = require('@top-datav/bici-diagram');
-
-var _antd = require('antd');
-
-var _config = require('../config/config');
-
-var _ahooks = require('ahooks');
-
-var _serializing = require('../utils/serializing');
-
-var _Header = _interopRequireDefault(require('../Header'));
-
-var _nodeComponent = _interopRequireDefault(require('./component/nodeComponent'));
-
-var _backgroundComponent = _interopRequireDefault(require('./component/backgroundComponent'));
-
-var _lineComponent = _interopRequireDefault(require('./component/lineComponent'));
-
-var _SystemComponent = _interopRequireDefault(require('./LeftAreaComponent/SystemComponent'));
-
-var _CustomComponent = _interopRequireDefault(require('./LeftAreaComponent/CustomComponent'));
-
-var _PicComponent = _interopRequireDefault(require('./LeftAreaComponent/PicComponent'));
-
-var _indexModule = _interopRequireDefault(require('./index.module.css'));
-
-var _canvasContextMenu = _interopRequireDefault(require('../canvasContextMenu'));
-
-var _cacl = require('../utils/cacl');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-var _moment = _interopRequireDefault(require('moment'));
-
-var _gauge = require('../config/charts/gauge');
-
-var _timeline = require('../config/charts/timeline');
-
-var _RegCustomUIComp = require('../common/RegCustomUIComp');
-
-var _pie = require('../config/charts/pie');
-
-var _stackbar = require('../config/charts/stackbar');
-
-var _bar = require('../config/charts/bar');
-
-var _groupbar = require('../config/charts/groupbar');
-
-var _horizontalbar = require('../config/charts/horizontalbar');
-
 var _excluded = ['dash', 'lineWidth', 'strokeStyle', 'name', 'fromArrow', 'toArrow'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
@@ -263,42 +157,75 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-var TabPane = _antd.Tabs.TabPane;
-var canvas;
+import React, {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { Lock, s8, Topology } from '@top-datav/core';
+import { echartsObjs, register as registerChart } from '@top-datav/chart-diagram';
+import { register as registerBiciComp } from '@top-datav/bici-diagram';
+import { Tabs, Tooltip, ConfigProvider } from 'antd';
+import { Tools } from '../config/config';
+import { useClickAway } from 'ahooks';
+import { replacer, reviver } from '../utils/serializing';
+import Header from '../Header';
+import NodeComponent from './component/nodeComponent';
+import BackgroundComponent from './component/backgroundComponent';
+import LineComponent from './component/lineComponent';
+import SystemComponent from './LeftAreaComponent/SystemComponent';
+import CustomComponent from './LeftAreaComponent/CustomComponent';
+import PicComponent from './LeftAreaComponent/PicComponent';
+import styles from './index.module.css';
+import CanvasContextMenu from '../canvasContextMenu';
+import { calcCanvas, eraseOverlapIntervals } from '../utils/cacl';
+import * as _ from 'lodash';
+import moment from 'moment';
+import { getGaugeOption } from '../config/charts/gauge';
+import { getTimeLineOption } from '../config/charts/timeline';
+import { register as registerReactNode } from '../common/RegCustomUIComp';
+import { getPieOptionByChangeProp } from '../config/charts/pie';
+import { getStackBarOption } from '../config/charts/stackbar';
+import { getBarOption } from '../config/charts/bar';
+import { getGroupBarOption } from '../config/charts/groupbar';
+import { getHorizontalBarOption } from '../config/charts/horizontalbar';
+var TabPane = Tabs.TabPane;
+export var canvas;
 /**
  * 编辑器画布
  * @param history
  * @constructor
  */
 
-exports.canvas = canvas;
-
-var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
+var EditorLayout = /*#__PURE__*/ React.forwardRef(function (props, ref) {
   var _props$editorData, _props$editorData2, _customCompRef$curren;
 
   var history = props.history;
-  var layoutRef = (0, _react.useRef)();
-  var contextMenuRef = (0, _react.useRef)();
-  var headerRef = (0, _react.useRef)();
+  var layoutRef = useRef();
+  var contextMenuRef = useRef();
+  var headerRef = useRef();
 
-  var _useState = (0, _react.useState)(true),
+  var _useState = useState(true),
     _useState2 = _slicedToArray(_useState, 2),
     isSave = _useState2[0],
     setIsSave = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(1),
+  var _useState3 = useState(1),
     _useState4 = _slicedToArray(_useState3, 2),
     scaleVal = _useState4[0],
     setScaleVal = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(''),
+  var _useState5 = useState(''),
     _useState6 = _slicedToArray(_useState5, 2),
     bkImageUrl = _useState6[0],
     setBkImageUrl = _useState6[1];
 
-  var nodeRef = (0, _react.useRef)();
+  var nodeRef = useRef();
 
-  var _useState7 = (0, _react.useState)({
+  var _useState7 = useState({
       minWidth: 3199,
       minHeight: 2289,
       left: 1168,
@@ -320,7 +247,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     canvasSizeInfo = _useState8[0],
     setCanvasSizeInfo = _useState8[1];
 
-  var _useState9 = (0, _react.useState)({
+  var _useState9 = useState({
       node: null,
       line: null,
       multi: false,
@@ -330,12 +257,12 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     selected = _useState10[0],
     setSelected = _useState10[1]; // 是否显示右键菜单
 
-  var _useState11 = (0, _react.useState)(false),
+  var _useState11 = useState(false),
     _useState12 = _slicedToArray(_useState11, 2),
     showContextmenu = _useState12[0],
     setShowContextmenu = _useState12[1];
 
-  var _useState13 = (0, _react.useState)({
+  var _useState13 = useState({
       position: 'fixed',
       zIndex: '10',
       display: 'none',
@@ -347,19 +274,19 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     contextmenu = _useState14[0],
     setContextmenu = _useState14[1];
 
-  var _useState15 = (0, _react.useState)(false),
+  var _useState15 = useState(false),
     _useState16 = _slicedToArray(_useState15, 2),
     isLoadCanvas = _useState16[0],
     setIsLoadCanvas = _useState16[1];
 
-  var _useState17 = (0, _react.useState)(false),
+  var _useState17 = useState(false),
     _useState18 = _slicedToArray(_useState17, 2),
     showHeader = _useState18[0],
     setShowHeader = _useState18[1];
 
-  var svgRef = (0, _react.useRef)();
-  var canvasRef = (0, _react.useRef)();
-  var customCompRef = (0, _react.useRef)();
+  var svgRef = useRef();
+  var canvasRef = useRef();
+  var customCompRef = useRef();
   var canvasOptions = {
     rotateCursor: '/rotate.cur',
     autoExpandDistance: 0,
@@ -375,15 +302,15 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     // hoverColor: "#096DD9",
     // activeColor:'#999999',
     rule: false,
-    locked: _core.Lock.None,
+    locked: Lock.None,
     disableTranslate: false,
     isApp: false,
   };
-  (0, _ahooks.useClickAway)(function () {
+  useClickAway(function () {
     setShowContextmenu(false);
   }, contextMenuRef); // 对父组件暴露保存数据的接口
 
-  (0, _react.useImperativeHandle)(
+  useImperativeHandle(
     ref,
     function () {
       return {
@@ -411,13 +338,13 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     },
     [isSave],
   );
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       window['__CONKPIT_API_URL'] = props.apiURL;
       window['__CONKPIT_TOKEN'] = props.token;
       canvasOptions.on = onMessage;
       canvasRegister();
-      exports.canvas = canvas = new _core.Topology('topology-canvas', canvasOptions);
+      canvas = new Topology('topology-canvas', canvasOptions);
 
       if (props.editorData != undefined && _typeof(props.editorData) == 'object') {
         canvas.open(props.editorData);
@@ -426,7 +353,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       if (props.editorData) {
         var w = props.editorData.width;
         var h = props.editorData.height;
-        var r = (0, _cacl.calcCanvas)(w, h);
+        var r = calcCanvas(w, h);
         setCanvasSizeInfo(
           _objectSpread(
             _objectSpread({}, r),
@@ -459,7 +386,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     },
     [props.editorData],
   );
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       handleScaleCanvas(scaleVal);
     },
@@ -481,9 +408,9 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
    */
 
   var canvasRegister = function canvasRegister() {
-    (0, _chartDiagram.register)();
-    (0, _biciDiagram.register)();
-    (0, _RegCustomUIComp.register)();
+    registerChart();
+    registerBiciComp();
+    registerReactNode();
   };
 
   var onDrag = function onDrag(event, node) {
@@ -507,11 +434,11 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     if (custom) {
       var data = node; // 解决拖动新建组件添加到页面会删除相同组件的bug
 
-      data.id = (0, _core.s8)(); // Topology
+      data.id = s8(); // Topology
 
-      event.dataTransfer.setData('text', JSON.stringify(data, _serializing.replacer));
+      event.dataTransfer.setData('text', JSON.stringify(data, replacer));
     } else {
-      event.dataTransfer.setData('text', JSON.stringify(node.data, _serializing.replacer));
+      event.dataTransfer.setData('text', JSON.stringify(node.data, replacer));
     }
   };
 
@@ -547,7 +474,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       lineColors = undefined;
     }
 
-    selected.node.data.echarts.option = (0, _gauge.getGaugeOption)(
+    selected.node.data.echarts.option = getGaugeOption(
       {
         max: selected.node.property.dataMax,
         min: selected.node.property.dataMin,
@@ -577,18 +504,12 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       }
     }
 
-    selected.node.data.echarts.option = (0, _timeline.getTimeLineOption)(
-      selected.node,
-      values,
-      undefined,
-    ); // 更新图表数据
+    selected.node.data.echarts.option = getTimeLineOption(selected.node, values, undefined); // 更新图表数据
 
-    _chartDiagram.echartsObjs[selected.node.id].chart.setOption(
-      JSON.parse(JSON.stringify(selected.node.data.echarts.option), _serializing.reviver),
+    echartsObjs[selected.node.id].chart.setOption(
+      JSON.parse(JSON.stringify(selected.node.data.echarts.option), reviver),
     );
-
-    _chartDiagram.echartsObjs[selected.node.id].chart.resize();
-
+    echartsObjs[selected.node.id].chart.resize();
     selected.node.elementRendered = false;
     canvas.updateProps(true, [selected.node]);
   }; // 计量器
@@ -717,7 +638,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         });
 
         if (!_vals.flat().includes(undefined)) {
-          var nums = (0, _cacl.eraseOverlapIntervals)(_vals);
+          var nums = eraseOverlapIntervals(_vals);
 
           if (nums.length !== 0) {
             var _lightRangeTmp = _.cloneDeep(lightRange);
@@ -740,7 +661,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
    * @params {object} value - 图形的宽度,高度, x, y等等
    */
 
-  var onHandleFormValueChange = (0, _react.useCallback)(
+  var onHandleFormValueChange = useCallback(
     function (value) {
       setIsSave(false);
       var x = value.x,
@@ -796,7 +717,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
   );
   /*当自定义的属性发生变化时*/
 
-  var onHandlePropertyFormValueChange = (0, _react.useCallback)(
+  var onHandlePropertyFormValueChange = useCallback(
     function (value) {
       setIsSave(false);
       canvas.cache(); // 只能两层嵌套，后期需要更改，如果有多层的话
@@ -846,17 +767,17 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
           var node = selected.node;
 
           if (value['date.show']) {
-            y = (0, _moment['default'])().format(value['date.format']);
+            y = moment().format(value['date.format']);
           }
 
           if (value['time.show']) {
-            h = (0, _moment['default'])().format(value['time.format']);
+            h = moment().format(value['time.format']);
           }
 
           node.text = y + ' ' + h;
 
           if (node.text == ' ') {
-            node.text = (0, _moment['default'])().format('LLLL');
+            node.text = moment().format('LLLL');
           }
 
           canvas.updateProps(false);
@@ -880,7 +801,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     },
     [selected],
   );
-  var onEventValueChange = (0, _react.useCallback)(
+  var onEventValueChange = useCallback(
     function (value) {
       setIsSave(false);
       selected.node.events = value;
@@ -892,7 +813,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
    * 切换画布大小
    */
 
-  var handleChangeCanvasSize = (0, _react.useCallback)(function (sizeInfo) {
+  var handleChangeCanvasSize = useCallback(function (sizeInfo) {
     setIsSave(false);
     canvas.cache();
     setCanvasSizeInfo(sizeInfo);
@@ -901,7 +822,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
    * 切换画布背景图片
    */
 
-  var handleChangeBkImage = (0, _react.useCallback)(function (imgUrl) {
+  var handleChangeBkImage = useCallback(function (imgUrl) {
     setIsSave(false);
     canvas.cache();
     setBkImageUrl(imgUrl);
@@ -911,7 +832,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
    * @params {object} value - 图形的宽度,高度, x, y等等
    */
 
-  var onHandleLineFormValueChange = (0, _react.useCallback)(
+  var onHandleLineFormValueChange = useCallback(
     function (value) {
       var dash = value.dash,
         lineWidth = value.lineWidth,
@@ -979,18 +900,15 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     selected.node.elementRendered = false;
 
     if (selected.node.property.echartsType == 'circleAndPie') {
-      selected.node.data.echarts.option = (0, _pie.getPieOptionByChangeProp)(selected.node, null);
+      selected.node.data.echarts.option = getPieOptionByChangeProp(selected.node, null);
     } else if (selected.node.property.echartsType == 'stackBar') {
-      selected.node.data.echarts.option = (0, _stackbar.getStackBarOption)(selected.node, null);
+      selected.node.data.echarts.option = getStackBarOption(selected.node, null);
     } else if (selected.node.property.echartsType == 'verticalBar') {
-      selected.node.data.echarts.option = (0, _bar.getBarOption)(selected.node, null);
+      selected.node.data.echarts.option = getBarOption(selected.node, null);
     } else if (selected.node.property.echartsType == 'groupBar') {
-      selected.node.data.echarts.option = (0, _groupbar.getGroupBarOption)(selected.node, null);
+      selected.node.data.echarts.option = getGroupBarOption(selected.node, null);
     } else if (selected.node.property.echartsType == 'horizontalBar') {
-      selected.node.data.echarts.option = (0, _horizontalbar.getHorizontalBarOption)(
-        selected.node,
-        null,
-      );
+      selected.node.data.echarts.option = getHorizontalBarOption(selected.node, null);
     } else if (selected.node.name == 'biciText') {
       var child = selected.node.children[0];
 
@@ -1066,28 +984,24 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         setIsLoadCanvas(true); //=================解决新建组件添加到画布纵坐标不显示的问题
 
         if (data.name == 'echarts' && data.property.echartsType == 'timeLine') {
-          data.data.echarts.option = (0, _timeline.getTimeLineOption)(data, undefined, undefined); // 更新图表数据
+          data.data.echarts.option = getTimeLineOption(data, undefined, undefined); // 更新图表数据
 
-          _chartDiagram.echartsObjs[data.id].chart.setOption(
-            JSON.parse(JSON.stringify(data.data.echarts.option), _serializing.reviver),
+          echartsObjs[data.id].chart.setOption(
+            JSON.parse(JSON.stringify(data.data.echarts.option), reviver),
           );
         } else if (data.name == 'combine') {
           (data.children || []).map(function (item) {
             if (item.name == 'echarts' && item.property.echartsType == 'timeLine') {
-              item.data.echarts.option = (0, _timeline.getTimeLineOption)(
-                item,
-                undefined,
-                undefined,
-              ); // 更新图表数据
+              item.data.echarts.option = getTimeLineOption(item, undefined, undefined); // 更新图表数据
 
-              _chartDiagram.echartsObjs[item.id].chart.setOption(
-                JSON.parse(JSON.stringify(item.data.echarts.option), _serializing.reviver),
+              echartsObjs[item.id].chart.setOption(
+                JSON.parse(JSON.stringify(item.data.echarts.option), reviver),
               );
             } else if (item.name == 'echarts' && item.property.echartsType == 'gauge') {
               handleGaugeOption(undefined); // 更新图表数据
 
-              _chartDiagram.echartsObjs[item.id].chart.setOption(
-                JSON.parse(JSON.stringify(item.data.echarts.option), _serializing.reviver),
+              echartsObjs[item.id].chart.setOption(
+                JSON.parse(JSON.stringify(item.data.echarts.option), reviver),
               );
             }
           });
@@ -1177,7 +1091,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         ); // 重新绘制图表
 
         if (data.name == 'echarts') {
-          var chart = _chartDiagram.echartsObjs[data.id].chart;
+          var chart = echartsObjs[data.id].chart;
           chart.setOption(data.data.echarts.option, true);
         }
 
@@ -1218,12 +1132,12 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
    * 画布右侧配置区域
    */
 
-  var rightAreaConfig = (0, _react.useMemo)(
+  var rightAreaConfig = useMemo(
     function () {
       return {
         node:
           selected &&
-          /*#__PURE__*/ _react['default'].createElement(_nodeComponent['default'], {
+          /*#__PURE__*/ React.createElement(NodeComponent, {
             data: selected,
             onFormValueChange: onHandleFormValueChange,
             onEventValueChange: onEventValueChange,
@@ -1238,13 +1152,13 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
           }),
         line:
           selected &&
-          /*#__PURE__*/ _react['default'].createElement(_lineComponent['default'], {
+          /*#__PURE__*/ React.createElement(LineComponent, {
             data: selected,
             onFormValueChange: onHandleLineFormValueChange,
           }),
         default:
           canvas &&
-          /*#__PURE__*/ _react['default'].createElement(_backgroundComponent['default'], {
+          /*#__PURE__*/ React.createElement(BackgroundComponent, {
             data: canvas,
             baseUrl: props.apiURL,
             websocketConf: props.websocketConf,
@@ -1282,10 +1196,10 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
    * 渲染画布右侧区域操作栏
    */
 
-  var renderRightArea = (0, _react.useMemo)(
+  var renderRightArea = useMemo(
     function () {
       if (isLoadCanvas) {
-        var _component = rightAreaConfig['default'];
+        var _component = rightAreaConfig.default;
         Object.keys(rightAreaConfig).forEach(function (item) {
           if (selected[item]) {
             _component = rightAreaConfig[item];
@@ -1297,10 +1211,10 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     [selected, rightAreaConfig, isLoadCanvas],
   ); // 渲染头部
 
-  var renderHeader = (0, _react.useMemo)(
+  var renderHeader = useMemo(
     function () {
       if (showHeader) {
-        return /*#__PURE__*/ _react['default'].createElement(_Header['default'], {
+        return /*#__PURE__*/ React.createElement(Header, {
           ref: headerRef,
           canvas: canvas,
           history: history,
@@ -1346,13 +1260,13 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     }
   };
 
-  var renderContextMenu = /*#__PURE__*/ _react['default'].createElement(
+  var renderContextMenu = /*#__PURE__*/ React.createElement(
     'div',
     {
       style: contextmenu,
       ref: contextMenuRef,
     },
-    /*#__PURE__*/ _react['default'].createElement(_canvasContextMenu['default'], {
+    /*#__PURE__*/ React.createElement(CanvasContextMenu, {
       data: selected,
       canvas: canvas,
       show: showContextmenu,
@@ -1368,40 +1282,39 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
           : _customCompRef$curren.getNewComponents,
     }),
   );
-
   var divHeight = document.body.clientHeight - 200;
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.ConfigProvider,
+  return /*#__PURE__*/ React.createElement(
+    ConfigProvider,
     {
       prefixCls: 'antdv4',
     },
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       'div',
       {
         id: 'editLayout',
         ref: layoutRef,
       },
       renderHeader,
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         'div',
         {
-          className: _indexModule['default'].page,
+          className: styles.page,
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'div',
           {
-            className: _indexModule['default'].tool,
+            className: styles.tool,
             style: {
               overflow: 'hidden',
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Tabs,
+          /*#__PURE__*/ React.createElement(
+            Tabs,
             {
               defaultActiveKey: '1',
               centered: true,
             },
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ React.createElement(
               TabPane,
               {
                 tab: '\xA0\xA0\xA0\xA0\u7EC4\xA0\u4EF6\xA0\xA0\xA0\xA0\xA0',
@@ -1410,7 +1323,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                   margin: 0,
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 'div',
                 {
                   style: {
@@ -1418,19 +1331,19 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     overflow: 'auto',
                   },
                 },
-                /*#__PURE__*/ _react['default'].createElement(_SystemComponent['default'], {
+                /*#__PURE__*/ React.createElement(SystemComponent, {
                   onDrag: onDrag,
-                  Tools: _config.Tools,
+                  Tools: Tools,
                   toolConfig: props.websocketConf.toolsConfig,
                 }),
-                /*#__PURE__*/ _react['default'].createElement(_CustomComponent['default'], {
+                /*#__PURE__*/ React.createElement(CustomComponent, {
                   ref: customCompRef,
                   onDrag: onDrag,
                   combineCom: props.uploadConfig.combineCom,
                 }),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ React.createElement(
               TabPane,
               {
                 tab: '\xA0\xA0\xA0\xA0\u56FE\xA0\xA0\u5E93\xA0\xA0\xA0\xA0',
@@ -1439,29 +1352,29 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                   margin: 0,
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(_PicComponent['default'], {
+              /*#__PURE__*/ React.createElement(PicComponent, {
                 uploaConfig: props.uploadConfig,
                 industrialLibrary: props.industrialLibrary,
               }),
             ),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'div',
           {
-            className: _indexModule['default'].full,
+            className: styles.full,
             id: 'full',
             style: {
               background: '#efefef',
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ React.createElement(
             'div',
             {
               id: 'topology-canvas-wrapper',
             },
-            /*#__PURE__*/ _react['default'].createElement('svg', {
-              className: _indexModule['default'].svg,
+            /*#__PURE__*/ React.createElement('svg', {
+              className: styles.svg,
               id: 'topology-canvas-svg',
               ref: svgRef,
               style: {
@@ -1470,32 +1383,32 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
               },
             }),
             props.boardData &&
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 'p',
                 {
-                  className: _indexModule['default'].titleInfo,
+                  className: styles.titleInfo,
                   style: {
                     left: canvasSizeInfo.left,
                     top: canvasSizeInfo.top,
                   },
                 },
                 props.boardData.code
-                  ? /*#__PURE__*/ _react['default'].createElement(
-                      _react['default'].Fragment,
+                  ? /*#__PURE__*/ React.createElement(
+                      React.Fragment,
                       null,
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Tooltip,
+                      /*#__PURE__*/ React.createElement(
+                        Tooltip,
                         {
                           title: props.boardData.code,
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ React.createElement(
                           'span',
                           null,
                           'No.',
                           props.boardData.code,
                         ),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
+                      /*#__PURE__*/ React.createElement(
                         'span',
                         {
                           style: {
@@ -1507,21 +1420,17 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     )
                   : '',
                 props.boardData.name
-                  ? /*#__PURE__*/ _react['default'].createElement(
-                      _react['default'].Fragment,
+                  ? /*#__PURE__*/ React.createElement(
+                      React.Fragment,
                       null,
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Tooltip,
+                      /*#__PURE__*/ React.createElement(
+                        Tooltip,
                         {
                           title: props.boardData.name,
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
-                          'span',
-                          null,
-                          props.boardData.name,
-                        ),
+                        /*#__PURE__*/ React.createElement('span', null, props.boardData.name),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
+                      /*#__PURE__*/ React.createElement(
                         'span',
                         {
                           style: {
@@ -1533,21 +1442,17 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     )
                   : '',
                 props.boardData.typeName
-                  ? /*#__PURE__*/ _react['default'].createElement(
-                      _react['default'].Fragment,
+                  ? /*#__PURE__*/ React.createElement(
+                      React.Fragment,
                       null,
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Tooltip,
+                      /*#__PURE__*/ React.createElement(
+                        Tooltip,
                         {
                           title: props.boardData.typeName,
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
-                          'span',
-                          null,
-                          props.boardData.typeName,
-                        ),
+                        /*#__PURE__*/ React.createElement('span', null, props.boardData.typeName),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
+                      /*#__PURE__*/ React.createElement(
                         'span',
                         {
                           style: {
@@ -1559,21 +1464,17 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     )
                   : '',
                 props.boardData.remark
-                  ? /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Tooltip,
+                  ? /*#__PURE__*/ React.createElement(
+                      Tooltip,
                       {
                         title: props.boardData.remark,
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
-                        'span',
-                        null,
-                        props.boardData.remark,
-                      ),
+                      /*#__PURE__*/ React.createElement('span', null, props.boardData.remark),
                     )
                   : '',
               ),
-            /*#__PURE__*/ _react['default'].createElement('div', {
-              className: _indexModule['default'].topology_canvas,
+            /*#__PURE__*/ React.createElement('div', {
+              className: styles.topology_canvas,
               ref: canvasRef,
               id: 'topology-canvas',
               style: {
@@ -1592,10 +1493,10 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
             }),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ React.createElement(
           'div',
           {
-            className: _indexModule['default'].props,
+            className: styles.props,
             id: 'props',
             style: {
               overflow: 'hidden',
@@ -1608,5 +1509,4 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     ),
   );
 });
-
-exports.EditorLayout = EditorLayout;
+export default EditorLayout;

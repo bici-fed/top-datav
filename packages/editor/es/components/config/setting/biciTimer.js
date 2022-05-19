@@ -1,10 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-var _default = {
+export default {
   name: '时间',
   icon: 'iconshijian',
   data: {
@@ -34,4 +28,3 @@ var _default = {
     iconColor: '#ccc',
   },
 };
-exports['default'] = _default;

@@ -1,19 +1,8 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _common = require('./common');
-
-var _bar = require('../charts/bar');
-
-var _defines = require('../../data/defines');
-
-var barColors = _defines.lineRangedefaultColor.slice(0, 1);
-
-var _default = {
+import { CHART_DATA } from './common';
+import { getBarOption } from '../charts/bar';
+import { lineRangedefaultColor } from '../../data/defines';
+var barColors = lineRangedefaultColor.slice(0, 1);
+export default {
   name: '柱状图',
   icon: 'iconzhuzhuangtu1',
   data: {
@@ -28,13 +17,13 @@ var _default = {
     hideInput: true,
     data: {
       echarts: {
-        option: (0, _bar.getBarOption)(),
+        option: getBarOption(),
       },
     },
     property: {
       echartsType: 'verticalBar',
       dataMethod: 'restful',
-      dataFormat: _common.CHART_DATA,
+      dataFormat: CHART_DATA,
       dataUrl: undefined,
       dataSourceId: undefined,
       dataSourceUrl: undefined,
@@ -139,4 +128,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

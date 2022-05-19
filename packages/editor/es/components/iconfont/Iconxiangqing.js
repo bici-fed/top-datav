@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconxiangqing = function Iconxiangqing(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Iconxiangqing = function Iconxiangqing(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M1310.122667 397.056a759.722667 759.722667 0 0 0-127.744-178.688 720.981333 720.981333 0 0 0-1033.813334 0A759.722667 759.722667 0 0 0 20.821333 397.056a191.146667 191.146667 0 0 0 0 173.568c33.706667 65.450667 76.8 125.696 127.744 178.773333a720.981333 720.981333 0 0 0 1033.813334 0 759.722667 759.722667 0 0 0 127.744-178.773333 191.146667 191.146667 0 0 0 0-173.568zM665.514667 703.317333a219.392 219.392 0 1 1 0-438.869333 219.392 219.392 0 0 1 0 438.869333z',
-      fill: (0, _helper.getIconColor)(color, 0, '#096DD9'),
+      fill: getIconColor(color, 0, '#096DD9'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Iconxiangqing = function Iconxiangqing(_ref) {
 Iconxiangqing.defaultProps = {
   size: 18,
 };
-var _default = Iconxiangqing;
-exports['default'] = _default;
+export default Iconxiangqing;

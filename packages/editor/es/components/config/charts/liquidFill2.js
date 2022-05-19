@@ -1,11 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.getLiquidFillOption2 = getLiquidFillOption2;
-
-function getLiquidFillOption2() {
+export function getLiquidFillOption2() {
   var node = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var resData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var colors = [

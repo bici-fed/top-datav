@@ -1,10 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = getBackgroundColor;
-
 function createBackgroundColor(pos, checkedPos, uncheckedPos, offColor, onColor) {
   var relativePos = (pos - uncheckedPos) / (checkedPos - uncheckedPos);
 
@@ -48,7 +41,7 @@ function convertShorthandColor(color) {
   return sixDigitColor;
 }
 
-function getBackgroundColor(pos, checkedPos, uncheckedPos, offColor, onColor) {
+export default function getBackgroundColor(pos, checkedPos, uncheckedPos, offColor, onColor) {
   var sixDigitOffColor = convertShorthandColor(offColor);
   var sixDigitOnColor = convertShorthandColor(onColor);
   return createBackgroundColor(pos, checkedPos, uncheckedPos, sixDigitOffColor, sixDigitOnColor);

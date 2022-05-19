@@ -1,36 +1,8 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.TASK_STATUS =
-  exports.TASK_RUN_RESULT =
-  exports.SENSOR_TYPE =
-  exports.PARENT_TYPE =
-  exports.OPC_TERMINAL =
-  exports.OPC_PROTOCOL =
-  exports.GATEWAY_STATUS =
-  exports.GAETWAY_PROTOCOL =
-  exports.DIGITAL_MOUNT_WAY =
-  exports.DEVICE_STATUS =
-  exports.DATA_TYPE =
-  exports.DATA_SOURCE =
-  exports.DATA_ORIGIN =
-  exports.DATASOURCE_TYPE =
-  exports.DATAPOINT_STATUS =
-  exports.BOARD_VISIBILITY =
-  exports.BOARD_FILTERS =
-  exports.Aggregation_List =
-  exports.ATTENTION_STATUS =
-  exports.ANOMALY_STATISTICS_DIMENSION =
-  exports.ANALOG_MOUNT_WAY =
-    void 0;
-
 /**
  * 用户侧常量
  */
 // 网关通信协议
-var GAETWAY_PROTOCOL = [
+export var GAETWAY_PROTOCOL = [
   {
     id: -1,
     name: '未使用',
@@ -49,8 +21,7 @@ var GAETWAY_PROTOCOL = [
   },
 ]; // 网关状态
 
-exports.GAETWAY_PROTOCOL = GAETWAY_PROTOCOL;
-var GATEWAY_STATUS = [
+export var GATEWAY_STATUS = [
   {
     id: 1,
     name: '在线',
@@ -61,8 +32,7 @@ var GATEWAY_STATUS = [
   },
 ]; // 传感器状态
 
-exports.GATEWAY_STATUS = GATEWAY_STATUS;
-var DEVICE_STATUS = [
+export var DEVICE_STATUS = [
   {
     value: 1,
     text: '正常',
@@ -81,8 +51,7 @@ var DEVICE_STATUS = [
   },
 ]; // 挂载类型
 
-exports.DEVICE_STATUS = DEVICE_STATUS;
-var PARENT_TYPE = [
+export var PARENT_TYPE = [
   {
     value: -1,
     text: '未挂载',
@@ -100,8 +69,7 @@ var PARENT_TYPE = [
     text: 'PLC',
   },
 ];
-exports.PARENT_TYPE = PARENT_TYPE;
-var OPC_TERMINAL = [
+export var OPC_TERMINAL = [
   {
     id: 1,
     name: '网关',
@@ -115,8 +83,7 @@ var OPC_TERMINAL = [
     name: '未连接',
   },
 ];
-exports.OPC_TERMINAL = OPC_TERMINAL;
-var OPC_PROTOCOL = [
+export var OPC_PROTOCOL = [
   {
     id: 4,
     name: 'OPC DA2.0',
@@ -126,8 +93,7 @@ var OPC_PROTOCOL = [
     name: 'OPC UA',
   },
 ];
-exports.OPC_PROTOCOL = OPC_PROTOCOL;
-var SENSOR_TYPE = [
+export var SENSOR_TYPE = [
   {
     value: 1,
     text: '数字传感器',
@@ -137,8 +103,7 @@ var SENSOR_TYPE = [
     text: '模拟传感器',
   },
 ];
-exports.SENSOR_TYPE = SENSOR_TYPE;
-var DATA_SOURCE = [
+export var DATA_SOURCE = [
   {
     value: 1,
     text: '数字传感器',
@@ -168,8 +133,7 @@ var DATA_SOURCE = [
     text: 'MQTT网关',
   },
 ];
-exports.DATA_SOURCE = DATA_SOURCE;
-var DATASOURCE_TYPE = [
+export var DATASOURCE_TYPE = [
   {
     id: '',
     name: '全部',
@@ -183,8 +147,7 @@ var DATASOURCE_TYPE = [
     name: '未创建数据点',
   },
 ];
-exports.DATASOURCE_TYPE = DATASOURCE_TYPE;
-var ANOMALY_STATISTICS_DIMENSION = [
+export var ANOMALY_STATISTICS_DIMENSION = [
   {
     id: 1,
     name: '日统计',
@@ -202,8 +165,7 @@ var ANOMALY_STATISTICS_DIMENSION = [
     name: '年统计',
   },
 ];
-exports.ANOMALY_STATISTICS_DIMENSION = ANOMALY_STATISTICS_DIMENSION;
-var BOARD_VISIBILITY = [
+export var BOARD_VISIBILITY = [
   {
     id: 1,
     name: '公司可见',
@@ -213,8 +175,7 @@ var BOARD_VISIBILITY = [
     name: '仅我可见',
   },
 ];
-exports.BOARD_VISIBILITY = BOARD_VISIBILITY;
-var BOARD_FILTERS = [
+export var BOARD_FILTERS = [
   {
     id: 'IFNULL(FirstPinyin(a.`name`),substring(a.`name`, 1, 1))',
     name: '按看板名称',
@@ -228,8 +189,7 @@ var BOARD_FILTERS = [
     name: '按更新时间',
   },
 ];
-exports.BOARD_FILTERS = BOARD_FILTERS;
-var DATA_ORIGIN = [
+export var DATA_ORIGIN = [
   {
     value: 1,
     text: '数字传感器',
@@ -259,8 +219,7 @@ var DATA_ORIGIN = [
     text: 'MQTT网关',
   },
 ];
-exports.DATA_ORIGIN = DATA_ORIGIN;
-var DATA_TYPE = [
+export var DATA_TYPE = [
   {
     value: 1,
     text: '数值型',
@@ -278,8 +237,7 @@ var DATA_TYPE = [
     text: '字符串',
   },
 ];
-exports.DATA_TYPE = DATA_TYPE;
-var DATAPOINT_STATUS = [
+export var DATAPOINT_STATUS = [
   {
     value: 1,
     text: '有数据',
@@ -289,8 +247,7 @@ var DATAPOINT_STATUS = [
     text: '无数据',
   },
 ];
-exports.DATAPOINT_STATUS = DATAPOINT_STATUS;
-var ATTENTION_STATUS = [
+export var ATTENTION_STATUS = [
   {
     id: 1,
     name: '已关注',
@@ -300,8 +257,7 @@ var ATTENTION_STATUS = [
     name: '未关注',
   },
 ];
-exports.ATTENTION_STATUS = ATTENTION_STATUS;
-var DIGITAL_MOUNT_WAY = [
+export var DIGITAL_MOUNT_WAY = [
   {
     id: 0,
     name: '未挂载',
@@ -311,8 +267,7 @@ var DIGITAL_MOUNT_WAY = [
     name: '网关',
   },
 ];
-exports.DIGITAL_MOUNT_WAY = DIGITAL_MOUNT_WAY;
-var ANALOG_MOUNT_WAY = [
+export var ANALOG_MOUNT_WAY = [
   {
     id: 0,
     name: '未挂载',
@@ -322,8 +277,7 @@ var ANALOG_MOUNT_WAY = [
     name: 'AD',
   },
 ];
-exports.ANALOG_MOUNT_WAY = ANALOG_MOUNT_WAY;
-var TASK_RUN_RESULT = [
+export var TASK_RUN_RESULT = [
   {
     id: 1,
     name: '成功',
@@ -333,8 +287,7 @@ var TASK_RUN_RESULT = [
     name: '失败',
   },
 ];
-exports.TASK_RUN_RESULT = TASK_RUN_RESULT;
-var TASK_STATUS = [
+export var TASK_STATUS = [
   {
     id: 1,
     name: '启动',
@@ -345,8 +298,7 @@ var TASK_STATUS = [
   },
 ]; // 聚合列表
 
-exports.TASK_STATUS = TASK_STATUS;
-var Aggregation_List = [
+export var Aggregation_List = [
   {
     id: 'MEDIAN',
     name: '中位数值',
@@ -364,4 +316,3 @@ var Aggregation_List = [
     name: '平均值',
   },
 ];
-exports.Aggregation_List = Aggregation_List;

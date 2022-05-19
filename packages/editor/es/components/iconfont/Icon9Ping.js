@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Icon9Ping = function Icon9Ping(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,17 +114,17 @@ var Icon9Ping = function Icon9Ping(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M0 0h439.594667v298.666667H0zM505.536 0h448.384v298.666667H505.536zM1011.072 0H1450.666667v298.666667H1011.072z',
-      fill: (0, _helper.getIconColor)(color, 0, '#C8DEF7'),
+      fill: getIconColor(color, 0, '#C8DEF7'),
     }),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M0 362.666667h439.594667v298.666666H0zM505.536 362.666667h439.594667v298.666666H505.536zM1011.072 362.666667H1450.666667v298.666666H1011.072z',
-      fill: (0, _helper.getIconColor)(color, 1, '#C8DEF7'),
+      fill: getIconColor(color, 1, '#C8DEF7'),
     }),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M0 725.333333h439.594667v298.666667H0zM505.536 725.333333h439.594667v298.666667H505.536zM1011.072 725.333333H1450.666667v298.666667H1011.072z',
-      fill: (0, _helper.getIconColor)(color, 2, '#C8DEF7'),
+      fill: getIconColor(color, 2, '#C8DEF7'),
     }),
   );
 };
@@ -144,5 +132,4 @@ var Icon9Ping = function Icon9Ping(_ref) {
 Icon9Ping.defaultProps = {
   size: 18,
 };
-var _default = Icon9Ping;
-exports['default'] = _default;
+export default Icon9Ping;

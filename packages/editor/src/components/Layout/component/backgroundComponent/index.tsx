@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useMemo, useEffect, useState } from 'react';
 import {
   Form,
@@ -24,7 +25,7 @@ import { dynamicWebSocketData } from '../../../common/DynamicWebSocketData';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import { calcCanvas } from '../../../utils/cacl';
 import * as _ from 'lodash';
-import {_emitter} from '../../../common/WebPage'
+import { _emitter } from '../../../common/WebPage';
 
 const { Panel } = Collapse;
 const panelSizeObj = {
@@ -46,7 +47,7 @@ interface ICanvasProps extends FormProps {
   onChangeBkImage?: (imageUrl: string) => void;
   isSave?: boolean;
   setIsSave?: (value: boolean) => void;
-  uploadConfig?:any;
+  uploadConfig?: any;
 }
 const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
   data,
@@ -58,9 +59,7 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
   ...props
 }) => {
   const [form] = Form.useForm();
-  const [rcSwitchState, setRcSwitchState] = useState(
-    data.canvas.width <= data.canvas.height
-  ); // 页面布局切换
+  const [rcSwitchState, setRcSwitchState] = useState(data.canvas.width <= data.canvas.height); // 页面布局切换
   const [bkUrl, setBkUrl] = useState(''); // 保存背景图片url地址
   // 控制Popover的显示隐藏
   const [popoverVisible, setPopoverVisible] = useState({
@@ -69,9 +68,7 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
   });
   const [wsAddress, setWsAddress] = useState(websocketConf.url);
 
-  const [preBgImageName,setPreBgImageName]=useState("预设背景")
-
-
+  const [preBgImageName, setPreBgImageName] = useState('预设背景');
 
   useEffect(() => {
     // 回显数值
@@ -81,16 +78,17 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
     // const bkImage = data.data.bkImage;
     let isUploadBgImg = false;
     if (data.data.bkImage) {
-      isUploadBgImg = !props.preInstallBgImages
-        .map((item) => item.img)
-        .includes(data.data.bkImage);
-      const index = _.findIndex(props.preInstallBgImages,(item:any)=>item.img==data.data.bkImage);
-      console.log("index==",index,props.preInstallBgImages,data.data.bkImage)
-      if(index>=0){
-        setPreBgImageName("预设背景"+(index+1));
+      isUploadBgImg = !props.preInstallBgImages.map((item) => item.img).includes(data.data.bkImage);
+      const index = _.findIndex(
+        props.preInstallBgImages,
+        (item: any) => item.img == data.data.bkImage,
+      );
+      console.log('index==', index, props.preInstallBgImages, data.data.bkImage);
+      if (index >= 0) {
+        setPreBgImageName('预设背景' + (index + 1));
         form.setFieldsValue({
-          bgVal:"预设背景"+(index+1)
-        })
+          bgVal: '预设背景' + (index + 1),
+        });
       }
     }
     const sizeValText = Object.values(panelSizeObj).flat().includes(`${w}*${h}`)
@@ -149,7 +147,7 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
   };
 
   const beforeUpload = (file) => {
-    const isLt1M = file.size / 1024 / 1024/1024 < 10;
+    const isLt1M = file.size / 1024 / 1024 / 1024 < 10;
     if (!isLt1M) {
       message.error('上传图片不可大于10M');
     }
@@ -167,31 +165,31 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
   };
 
   // 设置背景图片
-  const selectedBgImg = (url: string,item=undefined) => {
+  const selectedBgImg = (url: string, item = undefined) => {
     if (data.data['bkImage'] && data.data['bkImage'] === url) {
       // 再次点击，取消图片
       canvas.clearBkImg();
       data.data['bkImage'] = undefined;
       onChangeBkImage && onChangeBkImage('预设背景');
-      setPreBgImageName("预设背景")
+      setPreBgImageName('预设背景');
       form.setFieldsValue({
-        bgVal:"预设背景"
-      })
+        bgVal: '预设背景',
+      });
     } else {
       // 修改背景图片前，需要先canvas.clearBkImg清空旧图片
       canvas.clearBkImg();
       data.data['bkImage'] = url;
       onChangeBkImage && onChangeBkImage(url);
-      if(item){
-        setPreBgImageName("预设背景"+item.key)
+      if (item) {
+        setPreBgImageName('预设背景' + item.key);
         form.setFieldsValue({
-          bgVal:"预设背景"+item.key
-        })
-      }else{
-        setPreBgImageName("预设背景")
+          bgVal: '预设背景' + item.key,
+        });
+      } else {
+        setPreBgImageName('预设背景');
         form.setFieldsValue({
-          bgVal:"预设背景"
-        })
+          bgVal: '预设背景',
+        });
       }
     }
     setPopoverVisible({ ...popoverVisible, bgSelect: false });
@@ -298,30 +296,25 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
   const bgSeletedContent = (
     <div>
       <h3>预设图片</h3>
-      <div style={{maxHeight: 500,overflowY:'scroll'}}>
+      <div style={{ maxHeight: 500, overflowY: 'scroll' }}>
         {(props.preInstallBgImages || []).map((item) => {
           return (
-              <Row
-                  key={item.key}
-                  style={{
-                    position: 'relative',
-                    cursor: 'pointer',
-                    border: '1px solid #096DD9',
-                    boxShadow: '0px 2px 8px 0px rgba(0, 0, 0, 0.06)',
-                  }}
-                  onClick={() => selectedBgImg(item.img,item)}
-              >
-                <img
-                    src={item.img}
-                    alt={`预设背景${item}`}
-                    width={260}
-                    height={120}
-                />
-                <Checkbox
-                    style={{ position: 'absolute', top: 0, right: '5px' }}
-                    checked={item.img === data.data.bkImage}
-                />
-              </Row>
+            <Row
+              key={item.key}
+              style={{
+                position: 'relative',
+                cursor: 'pointer',
+                border: '1px solid #096DD9',
+                boxShadow: '0px 2px 8px 0px rgba(0, 0, 0, 0.06)',
+              }}
+              onClick={() => selectedBgImg(item.img, item)}
+            >
+              <img src={item.img} alt={`预设背景${item}`} width={260} height={120} />
+              <Checkbox
+                style={{ position: 'absolute', top: 0, right: '5px' }}
+                checked={item.img === data.data.bkImage}
+              />
+            </Row>
           );
         })}
       </div>
@@ -329,9 +322,11 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
   );
 
   const renderDefultOptions = (
-    <Collapse defaultActiveKey={['1','2','3']}
-              expandIconPosition="right"
-              ghost={false} bordered={false}
+    <Collapse
+      defaultActiveKey={['1', '2', '3']}
+      expandIconPosition="right"
+      ghost={false}
+      bordered={false}
     >
       <Panel header="基础属性" key="1">
         <Form form={form}>
@@ -371,12 +366,8 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
                   onHandleColor="#096DD9"
                   offColor="#ccc"
                   onColor="#ccc"
-                  uncheckedIcon={
-                    <CustomIcon style={{ lineHeight: 2.2 }} type="iconshu" />
-                  }
-                  checkedIcon={
-                    <CustomIcon style={{ lineHeight: 2.2 }} type="iconheng" />
-                  }
+                  uncheckedIcon={<CustomIcon style={{ lineHeight: 2.2 }} type="iconshu" />}
+                  checkedIcon={<CustomIcon style={{ lineHeight: 2.2 }} type="iconheng" />}
                 />
               </Form.Item>
             </Col>
@@ -405,11 +396,7 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
 
           <Row style={{ marginTop: 15 }} align="middle">
             <Col push={1}>
-              <Form.Item
-                name="bgColorCheck"
-                label="背景颜色"
-                valuePropName="checked"
-              >
+              <Form.Item name="bgColorCheck" label="背景颜色" valuePropName="checked">
                 <Checkbox onChange={bkColorCheckChange} />
               </Form.Item>
             </Col>
@@ -421,11 +408,7 @@ const BackgroundCanvasProps: React.FC<ICanvasProps> = ({
           </Row>
           <Row>
             <Col push={1}>
-              <Form.Item
-                name="bgImgCheck"
-                label="背景图片"
-                valuePropName="checked"
-              >
+              <Form.Item name="bgImgCheck" label="背景图片" valuePropName="checked">
                 <Checkbox onChange={handleBgImgChange} />
               </Form.Item>
             </Col>

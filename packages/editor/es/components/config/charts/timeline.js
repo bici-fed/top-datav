@@ -1,82 +1,8 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.getTimeLineOption = getTimeLineOption;
-
-var _defines = require('../../data/defines');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
-var _moment = _interopRequireDefault(require('moment'));
-
-var _cacl = require('../../utils/cacl');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-_moment['default'].locale('zh-cn', {
+import { defaultLineColors, defaultTimelineShowData } from '../../data/defines';
+import * as _ from 'lodash';
+import moment from 'moment';
+import { getContrastColor, getFixed } from '../../utils/cacl';
+moment.locale('zh-cn', {
   months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
   monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
   weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
@@ -157,13 +83,12 @@ _moment['default'].locale('zh-cn', {
     doy: 4, // The week that contains Jan 4th is the first week of the year.
   },
 });
-
-function getTimeLineOption(node, changeValues, socketData, timesxAix) {
+export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
   var firstLine = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
   var datasetSource = [];
   var source0 = [null];
 
-  var lineColors = _.cloneDeep(_defines.defaultLineColors);
+  var lineColors = _.cloneDeep(defaultLineColors);
 
   var series = []; // 改变属性
 
@@ -176,7 +101,7 @@ function getTimeLineOption(node, changeValues, socketData, timesxAix) {
       if (colorObj.lineGraphRangeCheck) {
         lineColors[index] = colorObj.lineGraphRangeColor;
       } else {
-        lineColors[index] = _defines.defaultLineColors[index];
+        lineColors[index] = defaultLineColors[index];
       }
     });
   }
@@ -230,7 +155,7 @@ function getTimeLineOption(node, changeValues, socketData, timesxAix) {
     showReference = false;
   }
 
-  var trastColor = (0, _cacl.getContrastColor)(showBackgroundColor);
+  var trastColor = getContrastColor(showBackgroundColor);
 
   if (showBackgroundColor == 'transparent') {
     trastColor = '#4a4a4a';
@@ -257,7 +182,7 @@ function getTimeLineOption(node, changeValues, socketData, timesxAix) {
 
   if (node && node.data.echarts.option) {
     // 添加默认的时间
-    for (var i = _defines.defaultTimelineShowData; i > 0; i--) {
+    for (var i = defaultTimelineShowData; i > 0; i--) {
       // source0.push(moment().subtract(i,'seconds').format("LTS"));
       source0.push(null);
     }
@@ -282,8 +207,8 @@ function getTimeLineOption(node, changeValues, socketData, timesxAix) {
   } // 设置显示时间
 
   datasetSource.map(function (item, index) {
-    if (item.length < _defines.defaultTimelineShowData) {
-      for (var _i = 0; _i < _defines.defaultTimelineShowData; _i++) {
+    if (item.length < defaultTimelineShowData) {
+      for (var _i = 0; _i < defaultTimelineShowData; _i++) {
         item.push('');
       }
 
@@ -308,16 +233,16 @@ function getTimeLineOption(node, changeValues, socketData, timesxAix) {
       }
 
       if (socketData.id == row.dataCode) {
-        datasetSource[index + 1].push((0, _cacl.getFixed)(socketData.value, node.property.dataDot));
+        datasetSource[index + 1].push(getFixed(socketData.value, node.property.dataDot));
 
-        if (datasetSource[index + 1].length > _defines.defaultTimelineShowData) {
+        if (datasetSource[index + 1].length > defaultTimelineShowData) {
           datasetSource[index + 1].splice(1, 1);
         }
       } else if (datasetSource[index + 1] && firstLine) {
         // if(row.intervalTime>1){
         //     datasetSource[index+1].push(datasetSource[index+1][datasetSource[index+1].length-1]);
         // }
-        if (datasetSource[index + 1].length > _defines.defaultTimelineShowData + 1) {
+        if (datasetSource[index + 1].length > defaultTimelineShowData + 1) {
           datasetSource[index + 1].splice(1, 1);
         }
       }

@@ -1,10 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-var _default = {
+export default {
   name: '文本',
   icon: 'iconwenben',
   data: {
@@ -21,4 +15,3 @@ var _default = {
     hideInput: false,
   },
 };
-exports['default'] = _default;

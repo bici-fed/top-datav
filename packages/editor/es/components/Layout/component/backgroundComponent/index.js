@@ -1,50 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
-
-var _icons = require('@ant-design/icons');
-
-var _ColorPicker = _interopRequireDefault(require('../../../common/ColorPicker/ColorPicker'));
-
-var _ReactSwitch = _interopRequireDefault(require('../../../common/ReactSwitch'));
-
-var _index = require('../../index');
-
-var _iconConfig = _interopRequireDefault(require('../../../config/iconConfig'));
-
-var _DynamicWebSocketData = require('../../../common/DynamicWebSocketData');
-
-var _cacl = require('../../../utils/cacl');
-
-var _ = _interopRequireWildcard(require('lodash'));
-
 var _excluded = [
   'data',
   'baseUrl',
@@ -53,49 +6,6 @@ var _excluded = [
   'websocketConf',
   'uploadConfig',
 ];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -234,7 +144,30 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-var Panel = _antd.Collapse.Panel;
+// @ts-nocheck
+import React, { useMemo, useEffect, useState } from 'react';
+import {
+  Form,
+  Row,
+  Col,
+  Input,
+  Collapse,
+  Button,
+  Popover,
+  Upload,
+  Checkbox,
+  message,
+  InputNumber,
+} from 'antd';
+import { DownOutlined, UploadOutlined } from '@ant-design/icons';
+import ColorPicker from '../../../common/ColorPicker/ColorPicker';
+import ReactSwitch from '../../../common/ReactSwitch';
+import { canvas } from '../../index';
+import CustomIcon from '../../../config/iconConfig';
+import { dynamicWebSocketData } from '../../../common/DynamicWebSocketData';
+import { calcCanvas } from '../../../utils/cacl';
+import * as _ from 'lodash';
+var Panel = Collapse.Panel;
 var panelSizeObj = {
   '16:9': ['1920*1080', '1680*1050', '1600*900', '1366*768'],
   '4:3': ['1024*768', '800*600'],
@@ -250,22 +183,22 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     uploadConfig = _ref.uploadConfig,
     props = _objectWithoutProperties(_ref, _excluded);
 
-  var _Form$useForm = _antd.Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
-  var _useState = (0, _react.useState)(data.canvas.width <= data.canvas.height),
+  var _useState = useState(data.canvas.width <= data.canvas.height),
     _useState2 = _slicedToArray(_useState, 2),
     rcSwitchState = _useState2[0],
     setRcSwitchState = _useState2[1]; // 页面布局切换
 
-  var _useState3 = (0, _react.useState)(''),
+  var _useState3 = useState(''),
     _useState4 = _slicedToArray(_useState3, 2),
     bkUrl = _useState4[0],
     setBkUrl = _useState4[1]; // 保存背景图片url地址
   // 控制Popover的显示隐藏
 
-  var _useState5 = (0, _react.useState)({
+  var _useState5 = useState({
       resolution: false,
       bgSelect: false, // 预设背景选择
     }),
@@ -273,17 +206,17 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     popoverVisible = _useState6[0],
     setPopoverVisible = _useState6[1];
 
-  var _useState7 = (0, _react.useState)(websocketConf.url),
+  var _useState7 = useState(websocketConf.url),
     _useState8 = _slicedToArray(_useState7, 2),
     wsAddress = _useState8[0],
     setWsAddress = _useState8[1];
 
-  var _useState9 = (0, _react.useState)('预设背景'),
+  var _useState9 = useState('预设背景'),
     _useState10 = _slicedToArray(_useState9, 2),
     preBgImageName = _useState10[0],
     setPreBgImageName = _useState10[1];
 
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       // 回显数值
       var w = data.canvas.width;
@@ -350,13 +283,13 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
       data.data['gridSize'] = gridSize;
 
       if (data.data.grid) {
-        _index.canvas.render();
+        canvas.render();
       }
     } else if (changeValues.gridColor) {
       data.data['gridColor'] = changeValues.gridColor;
 
       if (data.data.grid) {
-        _index.canvas.render();
+        canvas.render();
       }
     }
 
@@ -367,12 +300,9 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     if (e.target.checked) {
       selectedBgImg(bkUrl);
     } else {
-      _index.canvas.clearBkImg();
-
+      canvas.clearBkImg();
       delete data.data['bkImage'];
-
-      _index.canvas.render();
-
+      canvas.render();
       onChangeBkImage && onChangeBkImage('');
       props.setIsSave(false);
     }
@@ -382,7 +312,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     var isLt1M = file.size / 1024 / 1024 / 1024 < 10;
 
     if (!isLt1M) {
-      _antd.message.error('上传图片不可大于10M');
+      message.error('上传图片不可大于10M');
     }
 
     return isLt1M;
@@ -406,8 +336,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
 
     if (data.data['bkImage'] && data.data['bkImage'] === url) {
       // 再次点击，取消图片
-      _index.canvas.clearBkImg();
-
+      canvas.clearBkImg();
       data.data['bkImage'] = undefined;
       onChangeBkImage && onChangeBkImage('预设背景');
       setPreBgImageName('预设背景');
@@ -416,8 +345,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
       });
     } else {
       // 修改背景图片前，需要先canvas.clearBkImg清空旧图片
-      _index.canvas.clearBkImg();
-
+      canvas.clearBkImg();
       data.data['bkImage'] = url;
       onChangeBkImage && onChangeBkImage(url);
 
@@ -443,9 +371,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
         },
       ),
     );
-
-    _index.canvas.render();
-
+    canvas.render();
     props.setIsSave(false);
   }; // 背景颜色显示隐藏
 
@@ -457,8 +383,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
       delete data.data['bkColor'];
     }
 
-    _index.canvas.render();
-
+    canvas.render();
     props.setIsSave(false);
   }; // 网格选择切换
 
@@ -466,9 +391,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     // canvas.showGrid(e.target.checked);
     data.data.grid = e.target.checked;
     data.data.gridSize = form.getFieldValue('gridSize');
-
-    _index.canvas.render();
-
+    canvas.render();
     props.setIsSave(false);
   }; // 设置宽高
 
@@ -479,14 +402,12 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
 
     var width = parseInt(w);
     var height = parseInt(h);
-    var r = (0, _cacl.calcCanvas)(width, height);
+    var r = calcCanvas(width, height);
     data.resize({
       width: width,
       height: height,
     });
-
-    _index.canvas.render();
-
+    canvas.render();
     onChangeCanvasSize &&
       onChangeCanvasSize(
         _objectSpread(
@@ -508,14 +429,12 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
 
     var width = data.canvas.height;
     var height = data.canvas.width;
-    var r = (0, _cacl.calcCanvas)(width, height);
+    var r = calcCanvas(width, height);
     data.resize({
       width: width,
       height: height,
     });
-
-    _index.canvas.render();
-
+    canvas.render();
     onChangeCanvasSize &&
       onChangeCanvasSize(
         _objectSpread(
@@ -552,13 +471,11 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
         },
       ),
     );
-    var r = (0, _cacl.calcCanvas)(width, height);
-
-    _index.canvas.resize({
+    var r = calcCanvas(width, height);
+    canvas.resize({
       width: width,
       height: height,
     });
-
     onChangeCanvasSize &&
       onChangeCanvasSize(
         _objectSpread(
@@ -572,31 +489,31 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
       );
   }; // 分辨率Popover
 
-  var resolutionContent = (0, _react.useMemo)(
+  var resolutionContent = useMemo(
     function () {
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ React.createElement(
         'div',
         null,
         Object.keys(panelSizeObj).map(function (key, index) {
-          return /*#__PURE__*/ _react['default'].createElement(
+          return /*#__PURE__*/ React.createElement(
             'div',
             {
               key: index,
             },
-            /*#__PURE__*/ _react['default'].createElement('h3', null, key),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Row,
+            /*#__PURE__*/ React.createElement('h3', null, key),
+            /*#__PURE__*/ React.createElement(
+              Row,
               {
                 gutter: [0, 16],
               },
               panelSizeObj[key].map(function (val, index) {
-                return /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                return /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     span: 12,
                     key: index,
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     'a',
                     {
                       href: '#',
@@ -616,12 +533,11 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     },
     [panelSizeObj],
   );
-
-  var bgSeletedContent = /*#__PURE__*/ _react['default'].createElement(
+  var bgSeletedContent = /*#__PURE__*/ React.createElement(
     'div',
     null,
-    /*#__PURE__*/ _react['default'].createElement('h3', null, '\u9884\u8BBE\u56FE\u7247'),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement('h3', null, '\u9884\u8BBE\u56FE\u7247'),
+    /*#__PURE__*/ React.createElement(
       'div',
       {
         style: {
@@ -630,8 +546,8 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
         },
       },
       (props.preInstallBgImages || []).map(function (item) {
-        return /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        return /*#__PURE__*/ React.createElement(
+          Row,
           {
             key: item.key,
             style: {
@@ -644,13 +560,13 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
               return selectedBgImg(item.img, item);
             },
           },
-          /*#__PURE__*/ _react['default'].createElement('img', {
+          /*#__PURE__*/ React.createElement('img', {
             src: item.img,
             alt: '\u9884\u8BBE\u80CC\u666F'.concat(item),
             width: 260,
             height: 120,
           }),
-          /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, {
+          /*#__PURE__*/ React.createElement(Checkbox, {
             style: {
               position: 'absolute',
               top: 0,
@@ -662,28 +578,27 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
       }),
     ),
   );
-
-  var renderDefultOptions = /*#__PURE__*/ _react['default'].createElement(
-    _antd.Collapse,
+  var renderDefultOptions = /*#__PURE__*/ React.createElement(
+    Collapse,
     {
       defaultActiveKey: ['1', '2', '3'],
       expandIconPosition: 'right',
       ghost: false,
       bordered: false,
     },
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       Panel,
       {
         header: '\u57FA\u7840\u5C5E\u6027',
         key: '1',
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Form,
+      /*#__PURE__*/ React.createElement(
+        Form,
         {
           form: form,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Popover,
+        /*#__PURE__*/ React.createElement(
+          Popover,
           {
             placement: 'bottom',
             trigger: 'click',
@@ -705,20 +620,20 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
               return document.querySelector('#editLayout');
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.Item,
+          /*#__PURE__*/ React.createElement(
+            Form.Item,
             {
               name: 'sizeVal',
               initialValue: '\u81EA\u5B9A\u4E49',
             },
-            /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
-              suffix: /*#__PURE__*/ _react['default'].createElement(_icons.DownOutlined, null),
+            /*#__PURE__*/ React.createElement(Input, {
+              suffix: /*#__PURE__*/ React.createElement(DownOutlined, null),
               readOnly: true,
             }),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        /*#__PURE__*/ React.createElement(
+          Row,
           {
             style: {
               marginTop: 15,
@@ -726,63 +641,60 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
             gutter: [9, 0],
             align: 'middle',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 9,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'w',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+              /*#__PURE__*/ React.createElement(Input, {
                 suffix: 'W',
                 onChange: panelSizeChange,
               }),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 9,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'h',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+              /*#__PURE__*/ React.createElement(Input, {
                 suffix: 'H',
                 onChange: panelSizeChange,
               }),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 5,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               null,
-              /*#__PURE__*/ _react['default'].createElement(_ReactSwitch['default'], {
+              /*#__PURE__*/ React.createElement(ReactSwitch, {
                 onChange: handleRCSwitchStateChange,
                 checked: rcSwitchState,
                 offHandleColor: '#096DD9',
                 onHandleColor: '#096DD9',
                 offColor: '#ccc',
                 onColor: '#ccc',
-                uncheckedIcon: /*#__PURE__*/ _react['default'].createElement(
-                  _iconConfig['default'],
-                  {
-                    style: {
-                      lineHeight: 2.2,
-                    },
-                    type: 'iconshu',
+                uncheckedIcon: /*#__PURE__*/ React.createElement(CustomIcon, {
+                  style: {
+                    lineHeight: 2.2,
                   },
-                ),
-                checkedIcon: /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                  type: 'iconshu',
+                }),
+                checkedIcon: /*#__PURE__*/ React.createElement(CustomIcon, {
                   style: {
                     lineHeight: 2.2,
                   },
@@ -794,20 +706,20 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
         ),
       ),
     ),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       Panel,
       {
         header: '\u80CC\u666F',
         key: '2',
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Form,
+      /*#__PURE__*/ React.createElement(
+        Form,
         {
           form: form,
           onValuesChange: handleFormValueChange,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Popover,
+        /*#__PURE__*/ React.createElement(
+          Popover,
           {
             placement: 'bottom',
             trigger: 'click',
@@ -831,87 +743,87 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
               return document.querySelector('#editLayout');
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.Item,
+          /*#__PURE__*/ React.createElement(
+            Form.Item,
             {
               name: 'bgVal',
               initialValue: preBgImageName,
             },
-            /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+            /*#__PURE__*/ React.createElement(Input, {
               readOnly: true,
-              suffix: /*#__PURE__*/ _react['default'].createElement(_icons.DownOutlined, null),
+              suffix: /*#__PURE__*/ React.createElement(DownOutlined, null),
             }),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        /*#__PURE__*/ React.createElement(
+          Row,
           {
             style: {
               marginTop: 15,
             },
             align: 'middle',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               push: 1,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'bgColorCheck',
                 label: '\u80CC\u666F\u989C\u8272',
                 valuePropName: 'checked',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, {
+              /*#__PURE__*/ React.createElement(Checkbox, {
                 onChange: bkColorCheckChange,
               }),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               push: 2,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'bgColor',
               },
-              /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+              /*#__PURE__*/ React.createElement(ColorPicker, null),
             ),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        /*#__PURE__*/ React.createElement(
+          Row,
           null,
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               push: 1,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'bgImgCheck',
                 label: '\u80CC\u666F\u56FE\u7247',
                 valuePropName: 'checked',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, {
+              /*#__PURE__*/ React.createElement(Checkbox, {
                 onChange: handleBgImgChange,
               }),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               push: 2,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               null,
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Upload,
+              /*#__PURE__*/ React.createElement(
+                Upload,
                 {
                   action: ''
                     .concat(uploadConfig.preInstall.baseURL, '/')
@@ -925,13 +837,10 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
                   beforeUpload: beforeUpload,
                   onChange: bgUploadChange,
                 },
-                /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Button,
+                /*#__PURE__*/ React.createElement(
+                  Button,
                   {
-                    icon: /*#__PURE__*/ _react['default'].createElement(
-                      _icons.UploadOutlined,
-                      null,
-                    ),
+                    icon: /*#__PURE__*/ React.createElement(UploadOutlined, null),
                   },
                   '\u4E0A\u4F20',
                 ),
@@ -941,66 +850,66 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
         ),
       ),
     ),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       Panel,
       {
         header: '\u7F51\u683C',
         key: '3',
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Form,
+      /*#__PURE__*/ React.createElement(
+        Form,
         {
           form: form,
           onValuesChange: handleFormValueChange,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        /*#__PURE__*/ React.createElement(
+          Row,
           {
             align: 'middle',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               push: 1,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'gridCheck',
                 label: '\u7F51\u683C',
                 valuePropName: 'checked',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Checkbox, {
+              /*#__PURE__*/ React.createElement(Checkbox, {
                 onChange: gridOnChange,
               }),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               push: 2,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'gridColor',
               },
-              /*#__PURE__*/ _react['default'].createElement(_ColorPicker['default'], null),
+              /*#__PURE__*/ React.createElement(ColorPicker, null),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               push: 3,
               span: 8,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 name: 'gridSize',
                 initialValue: 30,
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.InputNumber, {
+              /*#__PURE__*/ React.createElement(InputNumber, {
                 min: 1,
               }),
             ),
@@ -1014,9 +923,9 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
    */
 
   var onHandleConnectWS = function onHandleConnectWS() {
-    _index.canvas.openSocket(wsAddress); // 将绑定获得wenbsocket数据
+    canvas.openSocket(wsAddress); // 将绑定获得wenbsocket数据
 
-    (0, _DynamicWebSocketData.dynamicWebSocketData)(); // const index = new WebSocket(wsAddress);
+    dynamicWebSocketData(); // const index = new WebSocket(wsAddress);
     // //打开事件
     // index.onopen = function() {
     //
@@ -1039,8 +948,7 @@ var BackgroundCanvasProps = function BackgroundCanvasProps(_ref) {
     // }
   };
 
-  return /*#__PURE__*/ _react['default'].createElement('div', null, renderDefultOptions);
+  return /*#__PURE__*/ React.createElement('div', null, renderDefultOptions);
 };
 
-var _default = BackgroundCanvasProps;
-exports['default'] = _default;
+export default BackgroundCanvasProps;

@@ -1,9 +1,7 @@
+// @ts-nocheck
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  checkedIcon as defaultCheckedIcon,
-  uncheckedIcon as defaultUncheckedIcon,
-} from './icons.jsx';
+import { checkedIcon as defaultCheckedIcon, uncheckedIcon as defaultUncheckedIcon } from './icons';
 import getBackgroundColor from './getBackgroundColor';
 import hexColorPropType from './hexColorPropType';
 
@@ -12,10 +10,7 @@ class ReactSwitch extends Component {
     super(props);
     const { height, width, handleDiameter, checked } = props;
     this.$handleDiameter = handleDiameter || height - 2;
-    this.$checkedPos = Math.max(
-      width - height,
-      width - (height + this.$handleDiameter) / 2
-    );
+    this.$checkedPos = Math.max(width - height, width - (height + this.$handleDiameter) / 2);
     this.$uncheckedPos = Math.max(0, (height - this.$handleDiameter) / 2);
     this.state = {
       $pos: checked ? this.$checkedPos : this.$uncheckedPos,
@@ -66,10 +61,7 @@ class ReactSwitch extends Component {
     if (!$isDragging && clientX !== $startX) {
       this.setState({ $isDragging: true });
     }
-    const newPos = Math.min(
-      this.$checkedPos,
-      Math.max(this.$uncheckedPos, mousePos)
-    );
+    const newPos = Math.min(this.$checkedPos, Math.max(this.$uncheckedPos, mousePos));
     // Prevent unnecessary rerenders
     if (newPos !== $pos) {
       this.setState({ $pos: newPos });
@@ -224,13 +216,7 @@ class ReactSwitch extends Component {
       width,
       margin: Math.max(0, (this.$handleDiameter - height) / 2),
       position: 'relative',
-      background: getBackgroundColor(
-        $pos,
-        this.$checkedPos,
-        this.$uncheckedPos,
-        offColor,
-        onColor
-      ),
+      background: getBackgroundColor($pos, this.$checkedPos, this.$uncheckedPos, offColor, onColor),
       borderRadius: 2,
       border: '1px solid #096DD9',
       cursor: disabled ? 'default' : 'pointer',
@@ -241,14 +227,10 @@ class ReactSwitch extends Component {
 
     const checkedIconStyle = {
       height,
-      width: Math.min(
-        height * 1.5,
-        width - (this.$handleDiameter + height) / 2 + 1
-      ),
+      width: Math.min(height * 1.5, width - (this.$handleDiameter + height) / 2 + 1),
       position: 'relative',
       textAlign: 'center',
-      opacity:
-        ($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos),
+      opacity: ($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos),
       pointerEvents: 'none',
       WebkitTransition: $isDragging ? null : 'opacity 0.25s',
       MozTransition: $isDragging ? null : 'opacity 0.25s',
@@ -257,15 +239,10 @@ class ReactSwitch extends Component {
 
     const uncheckedIconStyle = {
       height,
-      width: Math.min(
-        height * 1.5,
-        width - (this.$handleDiameter + height) / 2 + 1
-      ),
+      width: Math.min(height * 1.5, width - (this.$handleDiameter + height) / 2 + 1),
       position: 'absolute',
       textAlign: 'center',
-      opacity:
-        1 -
-        ($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos),
+      opacity: 1 - ($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos),
       right: 0,
       top: 0,
       pointerEvents: 'none',
@@ -282,7 +259,7 @@ class ReactSwitch extends Component {
         this.$checkedPos,
         this.$uncheckedPos,
         offHandleColor,
-        onHandleColor
+        onHandleColor,
       ),
       display: 'inline-block',
       textAlign: 'center',
@@ -300,9 +277,7 @@ class ReactSwitch extends Component {
       MozTransition: $isDragging
         ? null
         : 'background-color 0.25s, transform 0.25s, box-shadow 0.15s',
-      transition: $isDragging
-        ? null
-        : 'background-color 0.25s, transform 0.25s, box-shadow 0.15s',
+      transition: $isDragging ? null : 'background-color 0.25s, transform 0.25s, box-shadow 0.15s',
     };
 
     const inputStyle = {
@@ -326,9 +301,7 @@ class ReactSwitch extends Component {
           onMouseDown={(e) => e.preventDefault()}
         >
           {checkedIcon && <div style={checkedIconStyle}>{checkedIcon}</div>}
-          {uncheckedIcon && (
-            <div style={uncheckedIconStyle}>{uncheckedIcon}</div>
-          )}
+          {uncheckedIcon && <div style={uncheckedIconStyle}>{uncheckedIcon}</div>}
         </div>
         <div
           className="react-switch-handle"
@@ -340,9 +313,7 @@ class ReactSwitch extends Component {
           onTouchEnd={disabled ? null : this.$onTouchEnd}
           onTouchCancel={disabled ? null : this.$unsetHasOutline}
         >
-          {this.props.checked
-            ? this.props.uncheckedIcon
-            : this.props.checkedIcon}
+          {this.props.checked ? this.props.uncheckedIcon : this.props.checkedIcon}
         </div>
         <input
           type="checkbox"

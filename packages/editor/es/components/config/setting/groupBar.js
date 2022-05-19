@@ -1,17 +1,7 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _common = require('./common');
-
-var _groupbar = require('../charts/groupbar');
-
-var _defines = require('../../data/defines');
-
-var _default = {
+import { CHART_DATA, DATA_BASE_API } from './common';
+import { getGroupBarOption } from '../charts/groupbar';
+import { lineRangedefaultColor } from '../../data/defines';
+export default {
   name: '分组柱状图',
   icon: 'iconfenzuzhuzhuangtu',
   data: {
@@ -27,14 +17,14 @@ var _default = {
     hideInput: true,
     data: {
       echarts: {
-        option: (0, _groupbar.getGroupBarOption)(),
+        option: getGroupBarOption(),
       },
     },
     property: {
       echartsType: 'groupBar',
       dataMethod: 'restful',
-      dataFormat: _common.CHART_DATA,
-      dataUrl: _common.DATA_BASE_API + '/creditBalance/storageGoodsReportQtMonth',
+      dataFormat: CHART_DATA,
+      dataUrl: DATA_BASE_API + '/creditBalance/storageGoodsReportQtMonth',
       dataSourceId: '',
       dataSourceUrl: '',
       pullRate: 120,
@@ -107,7 +97,7 @@ var _default = {
             formItems: [
               {
                 name: ['lineGraphRange'],
-                value: _defines.lineRangedefaultColor,
+                value: lineRangedefaultColor,
               },
               {
                 name: ['chartBkColor'],
@@ -133,4 +123,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

@@ -1,22 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _core = require('@top-datav/core');
-
-var _antd = require('antd');
-
-var _index = require('../../../index');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
 function _createForOfIteratorHelper(o, allowArrayLike) {
   var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
   if (!it) {
@@ -62,7 +43,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
     },
     f: function f() {
       try {
-        if (!normalCompletion && it['return'] != null) it['return']();
+        if (!normalCompletion && it.return != null) it.return();
       } finally {
         if (didErr) throw err;
       }
@@ -135,12 +116,16 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-var Panel = _antd.Collapse.Panel;
+import React from 'react';
+import { Node } from '@top-datav/core';
+import { Form, Col, Collapse, Switch, Select } from 'antd';
+import { canvas } from '../../../index';
+var Panel = Collapse.Panel;
 
 var AnimateComponent = function AnimateComponent(_ref) {
   var canvasData = _ref.canvasData;
 
-  var _Form$useForm = _antd.Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
@@ -159,12 +144,12 @@ var AnimateComponent = function AnimateComponent(_ref) {
         node.animateFrames.push({
           duration: 100,
           linear: true,
-          state: _core.Node.cloneState(node),
+          state: Node.cloneState(node),
         });
         node.animateFrames.push({
           duration: 200,
           linear: true,
-          state: _core.Node.cloneState(node),
+          state: Node.cloneState(node),
         });
         node.animateStart = Date.now();
         break;
@@ -193,52 +178,51 @@ var AnimateComponent = function AnimateComponent(_ref) {
   var onHandleSwitchChange = function onHandleSwitchChange(e) {
     if (e) {
       node.animateStart = node.animateStart ? Date.now() : 0;
-
-      _index.canvas.animate();
+      canvas.animate();
     }
   };
 
   var renderAnimateForm = function renderAnimateForm() {
-    return /*#__PURE__*/ _react['default'].createElement(
-      _antd.Form,
+    return /*#__PURE__*/ React.createElement(
+      Form,
       {
         form: form,
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ React.createElement(
+          Form.Item,
           {
             label: '\u7279\u6548',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Select,
+          /*#__PURE__*/ React.createElement(
+            Select,
             {
               onSelect: function onSelect(e) {
                 return onHandleStyleSelectChange(e);
               },
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Select.Option,
+            /*#__PURE__*/ React.createElement(
+              Select.Option,
               {
                 value: 'upDown',
                 key: 'topDown',
               },
               '\u4E0A\u4E0B\u8DF3\u52A8',
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Select.Option,
+            /*#__PURE__*/ React.createElement(
+              Select.Option,
               {
                 value: 'leftRight',
                 key: 'leftRight',
               },
               '\u5DE6\u53F3\u8DF3\u52A8',
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Select.Option,
+            /*#__PURE__*/ React.createElement(
+              Select.Option,
               {
                 value: 'heart',
                 key: 'heart',
@@ -248,17 +232,17 @@ var AnimateComponent = function AnimateComponent(_ref) {
           ),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ React.createElement(
+          Form.Item,
           {
             label: '\u64AD\u653E',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Switch, {
+          /*#__PURE__*/ React.createElement(Switch, {
             checkedChildren: '\u5F00',
             unCheckedChildren: '\u5173',
             onChange: function onChange(e) {
@@ -270,13 +254,13 @@ var AnimateComponent = function AnimateComponent(_ref) {
     );
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'div',
     null,
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Collapse,
+    /*#__PURE__*/ React.createElement(
+      Collapse,
       null,
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         Panel,
         {
           header: '\u52A8\u753B',
@@ -288,5 +272,4 @@ var AnimateComponent = function AnimateComponent(_ref) {
   );
 };
 
-var _default = AnimateComponent;
-exports['default'] = _default;
+export default AnimateComponent;

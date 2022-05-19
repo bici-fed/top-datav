@@ -1,5 +1,3 @@
-'use strict';
-
 function _typeof(obj) {
   '@babel/helpers - typeof';
   return (
@@ -18,31 +16,6 @@ function _typeof(obj) {
           }),
     _typeof(obj)
   );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = exports._emitter = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _antd = require('antd');
-
-var _index = require('../../Layout/index');
-
-var _mitt = _interopRequireDefault(require('mitt'));
-
-require('./style.css');
-
-var _classnames = _interopRequireDefault(require('classnames'));
-
-var _withCatchable = _interopRequireDefault(require('../withCatchable'));
-
-var _iconConfig = _interopRequireDefault(require('../../config/iconConfig'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -141,9 +114,15 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
-var _emitter;
-
-exports._emitter = _emitter;
+import React from 'react';
+import { Button, Empty } from 'antd';
+import { canvas } from '../../Layout/index';
+import { default as mitt } from 'mitt';
+import './style.css';
+import classNames from 'classnames';
+import withCatchable from '../withCatchable';
+import CustomIcon from '../../config/iconConfig';
+export var _emitter;
 
 var WebPage = /*#__PURE__*/ (function (_React$Component) {
   _inherits(WebPage, _React$Component);
@@ -157,8 +136,8 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
 
     _this = _super.call(this, prop);
     _this.iframeDiv = void 0;
-    exports._emitter = _emitter = (0, _mitt['default'])();
-    _this.iframeDiv = /*#__PURE__*/ _react['default'].createRef();
+    _emitter = mitt();
+    _this.iframeDiv = /*#__PURE__*/ React.createRef();
     _this.state = {
       headerClassNames: 'header',
     };
@@ -207,7 +186,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
         if (e.pageY < 42) {
           that.setState(
             {
-              headerClassNames: (0, _classnames['default'])({
+              headerClassNames: classNames({
                 header: true,
                 headerAnimation: true,
               }),
@@ -219,7 +198,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
         } else {
           that.setState(
             {
-              headerClassNames: (0, _classnames['default'])({
+              headerClassNames: classNames({
                 header: true,
                 headerAnimation: false,
               }),
@@ -255,8 +234,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
       key: 'onClickButton',
       value: function onClickButton(e) {
         console.log(e);
-
-        _index.canvas.dispatch('customUIclickBtn', {
+        canvas.dispatch('customUIclickBtn', {
           name: 'majy',
         });
       },
@@ -277,7 +255,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
       key: 'render',
       value: function render() {
         var isUrl = this.checkURL(this.props.iframe);
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ React.createElement(
           'div',
           {
             className: 'custui-webpage',
@@ -287,17 +265,17 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
             },
           },
           isUrl
-            ? /*#__PURE__*/ _react['default'].createElement(
-                _react['default'].Fragment,
+            ? /*#__PURE__*/ React.createElement(
+                React.Fragment,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(
                   'div',
                   {
                     className: this.state.headerClassNames,
                   },
-                  /*#__PURE__*/ _react['default'].createElement('span', null),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Button,
+                  /*#__PURE__*/ React.createElement('span', null),
+                  /*#__PURE__*/ React.createElement(
+                    Button,
                     {
                       type: 'link',
                       onClick: this.openNewWindow.bind(this),
@@ -305,12 +283,12 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
                     '\u6253\u5F00\u65B0\u9875\u9762',
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(
                   'div',
                   {
                     className: 'page-content',
                   },
-                  /*#__PURE__*/ _react['default'].createElement('iframe', {
+                  /*#__PURE__*/ React.createElement('iframe', {
                     ref: this.iframeDiv,
                     src: this.props.iframe,
                     onError: this.handleError.bind(this),
@@ -320,18 +298,18 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
                   }),
                 ),
               )
-            : /*#__PURE__*/ _react['default'].createElement(_antd.Empty, {
-                image: /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+            : /*#__PURE__*/ React.createElement(Empty, {
+                image: /*#__PURE__*/ React.createElement(CustomIcon, {
                   type: 'iconwushuju',
                 }),
                 imageStyle: {
                   height: 60,
                 },
-                description: /*#__PURE__*/ _react['default'].createElement(
+                description: /*#__PURE__*/ React.createElement(
                   'span',
                   null,
                   '\u6682\u672A\u8FDE\u63A5\u5230\u6B63\u786E\u7684\u7F51\u9875',
-                  /*#__PURE__*/ _react['default'].createElement('br', null),
+                  /*#__PURE__*/ React.createElement('br', null),
                   ' \u8BF7\u5148\u5728\u53F3\u4FA7\u64CD\u4F5C\u680F\u8BBE\u7F6E',
                 ),
               }),
@@ -341,8 +319,6 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
   ]);
 
   return WebPage;
-})(_react['default'].Component);
+})(React.Component);
 
-var _default = (0, _withCatchable['default'])(WebPage);
-
-exports['default'] = _default;
+export default withCatchable(WebPage);

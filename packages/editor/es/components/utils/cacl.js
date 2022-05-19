@@ -1,26 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.base64ToFile = base64ToFile;
-exports.calcCanvas = calcCanvas;
-exports.calcRepeatIndex = calcRepeatIndex;
-exports.calcScroll = calcScroll;
-exports.eraseOverlapIntervals = eraseOverlapIntervals;
-exports.getContrastColor = getContrastColor;
-exports.getFixed = getFixed;
-exports.getHexColor = getHexColor;
-exports.handleDotData = handleDotData;
-exports.hslToRgb = hslToRgb;
-exports.isNumber = isNumber;
-exports.isRTSP = isRTSP;
-exports.rgbToHsl = rgbToHsl;
-exports.rgbaStringToRgb = rgbaStringToRgb;
-exports.roundFun = roundFun;
-
 // @ts-nocheck
-function calcCanvas() {
+export function calcCanvas() {
   var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 826;
   var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1168;
   var minWidth = 3198;
@@ -49,13 +28,11 @@ function calcCanvas() {
     top: top,
   };
 }
-
-function calcScroll() {
+export function calcScroll() {
   var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 826;
   var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1168;
 }
-
-function getHexColor(color) {
+export function getHexColor(color) {
   if (color === 'transparent') return 'transparent';
 
   if (color == undefined) {
@@ -78,7 +55,7 @@ function getHexColor(color) {
  * @param data
  */
 
-function base64ToFile(data) {
+export function base64ToFile(data) {
   // 将base64 的图片转换成file对象上传 atob将ascii码解析成binary数据
   var binary = atob(data.split(',')[1]);
   var mime = data.split(',')[0].match(/:(.*?);/)[1];
@@ -97,7 +74,7 @@ function base64ToFile(data) {
   return file;
 } // 保留n位小数并格式化输出（不足的部分补0）
 
-function roundFun(value, n) {
+export function roundFun(value, n) {
   if (!isNumber(value)) {
     return value;
   }
@@ -112,8 +89,7 @@ function roundFun(value, n) {
 
   return s;
 }
-
-function getFixed(num, fix) {
+export function getFixed(num, fix) {
   if (typeof num !== 'number') {
     return '';
   }
@@ -135,7 +111,7 @@ function getFixed(num, fix) {
  * @param source
  */
 
-function handleDotData(node, source) {
+export function handleDotData(node, source) {
   var dot = node.property.dataDot || 0;
   (source || []).forEach(function (item, i) {
     item.forEach(function (v, index) {
@@ -147,7 +123,7 @@ function handleDotData(node, source) {
   });
 } // 判断区间是否有重叠，返回重叠区
 
-function eraseOverlapIntervals(intervals) {
+export function eraseOverlapIntervals(intervals) {
   intervals.sort(function (a, b) {
     return a[1] - b[1];
   }); //按照区间末位对这些区间排个位，保证结束时间是按序上升的，从前往后取总是能取到当前结束时间的最小值
@@ -170,7 +146,7 @@ function eraseOverlapIntervals(intervals) {
   return res;
 } // 获取数组中重复元素的索引
 
-function calcRepeatIndex(newArr) {
+export function calcRepeatIndex(newArr) {
   var obj = {};
   newArr.forEach(function (newAr, index) {
     // init with array if the key is falsy (undefined in this case)
@@ -190,8 +166,7 @@ function calcRepeatIndex(newArr) {
     return res;
   }
 }
-
-function rgbaStringToRgb(rgba, isFilter) {
+export function rgbaStringToRgb(rgba, isFilter) {
   //用来判断是否把连续的0去掉
   isFilter = isFilter || false;
 
@@ -211,8 +186,7 @@ function rgbaStringToRgb(rgba, isFilter) {
     return [];
   }
 }
-
-function getContrastColor(rgbStr) {
+export function getContrastColor(rgbStr) {
   var rgb = rgbaStringToRgb(rgbStr, true);
   var hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
 
@@ -254,7 +228,7 @@ function getContrastColor(rgbStr) {
 
  */
 
-function hslToRgb(h, s, l) {
+export function hslToRgb(h, s, l) {
   var r, g, b;
 
   if (s == 0) {
@@ -300,7 +274,7 @@ function hue2rgb(p, q, t) {
 
  */
 
-function rgbToHsl(r, g, b) {
+export function rgbToHsl(r, g, b) {
   (r /= 255), (g /= 255), (b /= 255);
   var max = Math.max(r, g, b),
     min = Math.min(r, g, b);
@@ -333,12 +307,10 @@ function rgbToHsl(r, g, b) {
 
   return [h, s, l];
 }
-
-function isNumber(obj) {
+export function isNumber(obj) {
   return Object.prototype.toString.call(obj) === '[object Number]';
 }
-
-function isRTSP(str) {
+export function isRTSP(str) {
   var reg =
     /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
   var reg1 =

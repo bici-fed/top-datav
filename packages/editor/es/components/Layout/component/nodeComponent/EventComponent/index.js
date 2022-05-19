@@ -1,75 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
-
-require('./index.css');
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -205,23 +133,28 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-var TextArea = _antd.Input.TextArea;
-var Panel = _antd.Collapse.Panel;
+import React, { useState, useMemo } from 'react';
+import { Button, Collapse, Select, Col, Form, Input } from 'antd';
+import { useCallback } from 'react';
+import './index.css';
+import { useEffect } from 'react';
+var TextArea = Input.TextArea;
+var Panel = Collapse.Panel;
 
 var Page = function Page(_ref) {
   var onEventValueChange = _ref.onEventValueChange,
     canvasData = _ref.canvasData;
 
-  var _Form$useForm = _antd.Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
-  var _useState = (0, _react.useState)(canvasData.node.events),
+  var _useState = useState(canvasData.node.events),
     _useState2 = _slicedToArray(_useState, 2),
     eventData = _useState2[0],
     setEventData = _useState2[1];
 
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       setEventData(canvasData.node.events);
     },
@@ -262,52 +195,52 @@ var Page = function Page(_ref) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   var renderFontForm = function renderFontForm(item, idx) {
-    return /*#__PURE__*/ _react['default'].createElement(
-      _antd.Form,
+    return /*#__PURE__*/ React.createElement(
+      Form,
       {
         form: form,
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ React.createElement(
+        Col,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ React.createElement(
+          Form.Item,
           {
             label: '\u4E8B\u4EF6\u7C7B\u578B',
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Select,
+          /*#__PURE__*/ React.createElement(
+            Select,
             {
               placeholder: '\u8BF7\u9009\u62E9\u4E8B\u4EF6\u7C7B\u578B',
               onSelect: function onSelect(value) {
                 return onHandleEventTypeChange(value, idx);
               },
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Select.Option,
+            /*#__PURE__*/ React.createElement(
+              Select.Option,
               {
                 value: '0',
               },
               '\u5355\u51FB',
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Select.Option,
+            /*#__PURE__*/ React.createElement(
+              Select.Option,
               {
                 value: '1',
               },
               '\u53CC\u51FB',
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Select.Option,
+            /*#__PURE__*/ React.createElement(
+              Select.Option,
               {
                 value: '2',
               },
               'webSocket\u4E8B\u4EF6',
             ),
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Select.Option,
+            /*#__PURE__*/ React.createElement(
+              Select.Option,
               {
                 value: '3',
               },
@@ -325,57 +258,57 @@ var Page = function Page(_ref) {
 
   var renderFormByEventType = function renderFormByEventType(item, idx) {
     var renderCommonForm = function renderCommonForm() {
-      return /*#__PURE__*/ _react['default'].createElement(
-        _react['default'].Fragment,
+      return /*#__PURE__*/ React.createElement(
+        React.Fragment,
         null,
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Col,
+        /*#__PURE__*/ React.createElement(
+          Col,
           {
             span: 24,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.Item,
+          /*#__PURE__*/ React.createElement(
+            Form.Item,
             {
               label: '\u4E8B\u4EF6\u884C\u4E3A',
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Select,
+            /*#__PURE__*/ React.createElement(
+              Select,
               {
                 placeholder: '\u8BF7\u9009\u62E9\u4E8B\u4EF6\u884C\u4E3A',
                 onSelect: function onSelect(value) {
                   return onHandleSelectEvent(value, idx);
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Select.Option,
+              /*#__PURE__*/ React.createElement(
+                Select.Option,
                 {
                   value: '0',
                 },
                 '\u8DF3\u8F6C\u94FE\u63A5',
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Select.Option,
+              /*#__PURE__*/ React.createElement(
+                Select.Option,
                 {
                   value: '1',
                 },
                 '\u6267\u884C\u52A8\u753B',
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Select.Option,
+              /*#__PURE__*/ React.createElement(
+                Select.Option,
                 {
                   value: '2',
                 },
                 '\u6267\u884C\u51FD\u6570',
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Select.Option,
+              /*#__PURE__*/ React.createElement(
+                Select.Option,
                 {
                   value: '3',
                 },
                 '\u6267\u884Cwindow\u4E0B\u7684\u5168\u5C40\u51FD\u6570',
               ),
-              /*#__PURE__*/ _react['default'].createElement(
-                _antd.Select.Option,
+              /*#__PURE__*/ React.createElement(
+                Select.Option,
                 {
                   value: '4',
                 },
@@ -394,20 +327,20 @@ var Page = function Page(_ref) {
         return renderCommonForm();
 
       case '2':
-        return /*#__PURE__*/ _react['default'].createElement(
-          _react['default'].Fragment,
+        return /*#__PURE__*/ React.createElement(
+          React.Fragment,
           null,
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 label: '\u6D88\u606F\u540D',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+              /*#__PURE__*/ React.createElement(Input, {
                 placeholder: '\u8BF7\u8F93\u5165\u81EA\u5B9A\u4E49\u6D88\u606F\u540D',
               }),
             ),
@@ -416,20 +349,20 @@ var Page = function Page(_ref) {
         );
 
       case '3':
-        return /*#__PURE__*/ _react['default'].createElement(
-          _react['default'].Fragment,
+        return /*#__PURE__*/ React.createElement(
+          React.Fragment,
           null,
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.Item,
+          /*#__PURE__*/ React.createElement(
+            Form.Item,
             {
               label: 'Topic',
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Col,
+            /*#__PURE__*/ React.createElement(
+              Col,
               {
                 span: 24,
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+              /*#__PURE__*/ React.createElement(Input, {
                 placeholder: '\u8BF7\u8F93\u5165Topic/subtopic',
               }),
             ),
@@ -448,20 +381,20 @@ var Page = function Page(_ref) {
   var renderFormByEvent = function renderFormByEvent(item, idx) {
     switch (item.action) {
       case '0':
-        return /*#__PURE__*/ _react['default'].createElement(
-          _react['default'].Fragment,
+        return /*#__PURE__*/ React.createElement(
+          React.Fragment,
           null,
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 label: '\u94FE\u63A5\u5730\u5740',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+              /*#__PURE__*/ React.createElement(Input, {
                 placeholder: '\u8BF7\u8F93\u5165\u94FE\u63A5\u5730\u5740',
                 onChange: function onChange(e) {
                   return onHandleCodeChange(e, idx);
@@ -469,17 +402,17 @@ var Page = function Page(_ref) {
               }),
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               span: 24,
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Form.Item,
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
               {
                 label: '\u53C2\u6570\u503C',
               },
-              /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+              /*#__PURE__*/ React.createElement(Input, {
                 placeholder: '_black',
               }),
             ),
@@ -487,17 +420,17 @@ var Page = function Page(_ref) {
         );
 
       case '2':
-        return /*#__PURE__*/ _react['default'].createElement(
-          _antd.Col,
+        return /*#__PURE__*/ React.createElement(
+          Col,
           {
             span: 24,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.Item,
+          /*#__PURE__*/ React.createElement(
+            Form.Item,
             {
               label: '\u81EA\u5B9A\u4E49\u4EE3\u7801',
             },
-            /*#__PURE__*/ _react['default'].createElement(TextArea, {
+            /*#__PURE__*/ React.createElement(TextArea, {
               placeholder: '\u8BF7\u8F93\u5165\u81EA\u5B9A\u4E49\u4EE3\u7801',
               onChange: function onChange(e) {
                 return onHandleCodeChange(e, idx);
@@ -534,7 +467,7 @@ var Page = function Page(_ref) {
    * 删除自定义事件
    */
 
-  var onHandleDeleteItem = (0, _react.useCallback)(
+  var onHandleDeleteItem = useCallback(
     function (idx) {
       var data = _toConsumableArray(eventData);
 
@@ -548,11 +481,11 @@ var Page = function Page(_ref) {
    * 渲染事件列表
    */
 
-  var renderPanel = (0, _react.useMemo)(
+  var renderPanel = useMemo(
     function () {
       if (eventData.length < 1) return;
-      return /*#__PURE__*/ _react['default'].createElement(
-        _antd.Collapse,
+      return /*#__PURE__*/ React.createElement(
+        Collapse,
         null,
         eventData
           .map(function (item) {
@@ -566,15 +499,15 @@ var Page = function Page(_ref) {
             );
           })
           .map(function (item, index) {
-            return /*#__PURE__*/ _react['default'].createElement(
+            return /*#__PURE__*/ React.createElement(
               Panel,
               {
-                header: /*#__PURE__*/ _react['default'].createElement(
+                header: /*#__PURE__*/ React.createElement(
                   'a',
                   null,
                   '\u81EA\u5B9A\u4E49\u4E8B\u4EF6'.concat(index + 1),
                   ' ',
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     'span',
                     {
                       onClick: function onClick() {
@@ -593,11 +526,11 @@ var Page = function Page(_ref) {
     },
     [eventData, renderFontForm, onHandleDeleteItem],
   );
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'div',
     null,
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Button,
+    /*#__PURE__*/ React.createElement(
+      Button,
       {
         type: 'primary',
         className: 'event-button',
@@ -609,5 +542,4 @@ var Page = function Page(_ref) {
   );
 };
 
-var _default = Page;
-exports['default'] = _default;
+export default Page;

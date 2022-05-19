@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Icontianjiaxiang = function Icontianjiaxiang(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,9 +114,9 @@ var Icontianjiaxiang = function Icontianjiaxiang(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M960 512a448 448 0 1 1-896.0512-0.0512A448 448 0 0 1 960 512z m-256 24.0128V487.936a8.0384 8.0384 0 0 0-7.9872-7.9872h-152.0128V327.9872a8.0384 8.0384 0 0 0-5.4784-7.5776l-2.56-0.4096h-47.9744a8.0384 8.0384 0 0 0-7.9872 7.9872v152.0128H327.9872a8.0384 8.0384 0 0 0-7.5776 5.4784l-0.4096 2.56v47.9744c0 4.4032 3.584 7.9872 7.9872 7.9872h152.0128v152.0128c0 3.5328 2.304 6.5024 5.4784 7.5776l2.56 0.4096h47.9744c4.4032 0 7.9872-3.584 7.9872-7.9872v-152.0128h152.0128a8.0384 8.0384 0 0 0 7.5776-5.4784l0.4096-2.56z',
-      fill: (0, _helper.getIconColor)(color, 0, '#333333'),
+      fill: getIconColor(color, 0, '#333333'),
     }),
   );
 };
@@ -136,5 +124,4 @@ var Icontianjiaxiang = function Icontianjiaxiang(_ref) {
 Icontianjiaxiang.defaultProps = {
   size: 18,
 };
-var _default = Icontianjiaxiang;
-exports['default'] = _default;
+export default Icontianjiaxiang;

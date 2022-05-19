@@ -1,91 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
-
-var _icons = require('@ant-design/icons');
-
-var _api = require('../../../data/api');
-
-var _ahooks = require('ahooks');
-
-var _CompContextMenu = _interopRequireDefault(require('../../../common/CompContextMenu'));
-
-var _indexModule = _interopRequireDefault(require('./index.module.css'));
-
-var _config = require('./config');
-
-var _IndustryList = _interopRequireDefault(require('./IndustryList'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -183,7 +95,16 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-var Panel = _antd.Collapse.Panel;
+import React, { useState, useEffect, useRef } from 'react';
+import { Row, Col, Upload, Form, message, Collapse } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import { clientParam } from '../../../data/api';
+import { useClickAway } from 'ahooks';
+import CompContextMenu from '../../../common/CompContextMenu';
+import styles from './index.module.css';
+import { industry_List, onDrag } from './config';
+import IndustryList from './IndustryList';
+var Panel = Collapse.Panel;
 
 var Layout = function Layout(_ref) {
   var _uploaConfig$industry;
@@ -191,21 +112,21 @@ var Layout = function Layout(_ref) {
   var uploaConfig = _ref.uploaConfig,
     industrialLibrary = _ref.industrialLibrary;
 
-  var _Form$useForm = _antd.Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     formRef = _Form$useForm2[0]; // 是否显示右键菜单
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     showContextmenu = _useState2[0],
     setShowContextmenu = _useState2[1];
 
-  var _useState3 = (0, _react.useState)([]),
+  var _useState3 = useState([]),
     _useState4 = _slicedToArray(_useState3, 2),
     list = _useState4[0],
     setList = _useState4[1];
 
-  var _useState5 = (0, _react.useState)({
+  var _useState5 = useState({
       position: 'fixed',
       zIndex: '10',
       display: 'none',
@@ -217,18 +138,18 @@ var Layout = function Layout(_ref) {
     contextmenu = _useState6[0],
     setContextmenu = _useState6[1];
 
-  var _useState7 = (0, _react.useState)(null),
+  var _useState7 = useState(null),
     _useState8 = _slicedToArray(_useState7, 2),
     selectedItem = _useState8[0],
     setSelectedItem = _useState8[1];
 
-  var contextMenuRef = (0, _react.useRef)();
+  var contextMenuRef = useRef();
   var divHeight = document.body.clientHeight - 170;
-  (0, _react.useEffect)(function () {}, []);
-  (0, _ahooks.useClickAway)(function () {
+  useEffect(function () {}, []);
+  useClickAway(function () {
     setShowContextmenu(false);
   }, contextMenuRef);
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       requstPicList();
     },
@@ -236,7 +157,7 @@ var Layout = function Layout(_ref) {
   ); // 请求获取图片列表
 
   var requstPicList = function requstPicList() {
-    (0, _api.clientParam)(uploaConfig.self.baseURL)
+    clientParam(uploaConfig.self.baseURL)
       .request({
         url: uploaConfig.self.apiUrl.list,
         data: uploaConfig.self.data,
@@ -285,7 +206,7 @@ var Layout = function Layout(_ref) {
     var isLt1M = file.size / 1024 / 1024 < 1;
 
     if (!isLt1M) {
-      _antd.message.error('上传图片不可大于1M');
+      message.error('上传图片不可大于1M');
     }
 
     return isLt1M;
@@ -314,7 +235,7 @@ var Layout = function Layout(_ref) {
 
                 case 3:
                   values = _context.sent;
-                  (0, _api.clientParam)(uploaConfig.baseURL)
+                  clientParam(uploaConfig.baseURL)
                     .post(
                       uploaConfig.self.apiUrl.update,
                       {
@@ -330,8 +251,7 @@ var Layout = function Layout(_ref) {
                       },
                     )
                     .then(function (res) {
-                      _antd.message.success('重命名成功！');
-
+                      message.success('重命名成功！');
                       requstPicList();
                     });
                   _context.next = 10;
@@ -362,15 +282,14 @@ var Layout = function Layout(_ref) {
 
   var handleDelete = function handleDelete() {
     if (selectedItem == null) {
-      _antd.message.error('请选择要删除的组件！').then(function () {
-        _antd.message.destroy();
+      message.error('请选择要删除的组件！').then(function () {
+        message.destroy();
       });
-
       return;
     }
 
-    (0, _api.clientParam)(uploaConfig.baseURL)
-      .get(uploaConfig.self.apiUrl['delete'], {
+    clientParam(uploaConfig.baseURL)
+      .get(uploaConfig.self.apiUrl.delete, {
         headers: {
           token: uploaConfig.self.token,
         },
@@ -379,12 +298,10 @@ var Layout = function Layout(_ref) {
         },
       })
       .then(function (res) {
-        _antd.message.success('删除组件成功！', 2, function () {
-          _antd.message.destroy();
-
+        message.success('删除组件成功！', 2, function () {
+          message.destroy();
           return null;
         });
-
         requstPicList();
       });
   }; // 右键菜单
@@ -416,13 +333,13 @@ var Layout = function Layout(_ref) {
     }
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'div',
     {
-      className: _indexModule['default'].container,
+      className: styles.container,
     },
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Collapse,
+    /*#__PURE__*/ React.createElement(
+      Collapse,
       {
         defaultActiveKey: ['999'],
         expandIconPosition: 'right',
@@ -433,24 +350,24 @@ var Layout = function Layout(_ref) {
           overflow: 'auto',
         },
       },
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ React.createElement(
         Panel,
         {
           header: '\u81EA\u5B9A\u4E49\u4E0A\u4F20',
           key: '998',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        /*#__PURE__*/ React.createElement(
+          Row,
           null,
           list === null || list === void 0
             ? void 0
             : list.map(function (item, index) {
-                return /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                return /*#__PURE__*/ React.createElement(
+                  Col,
                   {
                     key: index,
                     span: 8,
-                    className: _indexModule['default'].colStyle,
+                    className: styles.colStyle,
                     style: {
                       textAlign: 'center',
                     },
@@ -458,7 +375,7 @@ var Layout = function Layout(_ref) {
                       return handleContextMenu(event, item);
                     },
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ React.createElement(
                     'a',
                     {
                       title: item.name,
@@ -468,10 +385,10 @@ var Layout = function Layout(_ref) {
                         return e.preventDefault();
                       },
                       onDragStart: function onDragStart(ev) {
-                        return (0, _config.onDrag)(ev, item);
+                        return onDrag(ev, item);
                       },
                     },
-                    /*#__PURE__*/ _react['default'].createElement('img', {
+                    /*#__PURE__*/ React.createElement('img', {
                       alt: item.name,
                       src: item.url,
                       style: {
@@ -479,7 +396,7 @@ var Layout = function Layout(_ref) {
                         height: 60,
                       },
                     }),
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ React.createElement(
                       'span',
                       {
                         style: {
@@ -496,18 +413,18 @@ var Layout = function Layout(_ref) {
                   ),
                 );
               }),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ React.createElement(
+            Col,
             {
               key: 'upload',
               span: 12,
-              className: _indexModule['default'].colStyle,
+              className: styles.colStyle,
               style: {
                 textAlign: 'center',
               },
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Upload,
+            /*#__PURE__*/ React.createElement(
+              Upload,
               {
                 listType: 'picture-card',
                 showUploadList: false,
@@ -523,11 +440,11 @@ var Layout = function Layout(_ref) {
                 beforeUpload: beforeUpload,
                 onChange: onHandleUpload,
               },
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ React.createElement(
                 'div',
                 null,
-                /*#__PURE__*/ _react['default'].createElement(_icons.PlusOutlined, null),
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ React.createElement(PlusOutlined, null),
+                /*#__PURE__*/ React.createElement(
                   'div',
                   {
                     style: {
@@ -547,22 +464,22 @@ var Layout = function Layout(_ref) {
           : (_uploaConfig$industry = uploaConfig.industry) === null ||
             _uploaConfig$industry === void 0
           ? void 0
-          : _uploaConfig$industry.projectIndustryCats) || _config.industry_List
+          : _uploaConfig$industry.projectIndustryCats) || industry_List
       ).map(function (item, index) {
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ React.createElement(
           Panel,
           {
             key: index,
             header: item[1],
           },
-          /*#__PURE__*/ _react['default'].createElement(_IndustryList['default'], {
+          /*#__PURE__*/ React.createElement(IndustryList, {
             uploaConfig: uploaConfig,
             mappingType: item[0],
           }),
         );
       }),
     ),
-    /*#__PURE__*/ _react['default'].createElement(_CompContextMenu['default'], {
+    /*#__PURE__*/ React.createElement(CompContextMenu, {
       contextMenuRef: contextMenuRef,
       showContextmenu: showContextmenu,
       contextmenu: contextmenu,
@@ -574,5 +491,4 @@ var Layout = function Layout(_ref) {
   );
 };
 
-var _default = Layout;
-exports['default'] = _default;
+export default Layout;

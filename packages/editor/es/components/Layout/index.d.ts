@@ -7,7 +7,7 @@ export declare let canvas: Topology;
  * @param history
  * @constructor
  */
-export declare const EditorLayout: React.ForwardRefExoticComponent<
+declare const EditorLayout: React.ForwardRefExoticComponent<
   Pick<
     DataVEditorProps,
     | 'history'
@@ -21,14 +21,15 @@ export declare const EditorLayout: React.ForwardRefExoticComponent<
     | 'onAddDataPoint'
     | 'onAddVedioSource'
     | 'dataPointPropsMap'
-    | 'websocketConf'
-    | 'preInstallBgImages'
-    | 'uploadConfig'
     | 'industrialLibrary'
+    | 'websocketConf'
     | 'apiURL'
     | 'selfIndustrialLibrary'
+    | 'preInstallBgImages'
     | 'editorData'
     | 'boardData'
+    | 'uploadConfig'
   > &
     React.RefAttributes<unknown>
 >;
+export default EditorLayout;

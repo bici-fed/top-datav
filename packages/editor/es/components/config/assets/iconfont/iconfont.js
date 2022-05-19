@@ -1,5 +1,3 @@
-'use strict';
-
 !(function (a) {
   var l,
     _h,

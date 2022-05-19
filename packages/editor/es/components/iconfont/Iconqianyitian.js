@@ -1,19 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireDefault(require('react'));
-
-var _helper = require('./helper');
-
 var _excluded = ['size', 'color', 'style'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _extends() {
   _extends =
@@ -104,6 +89,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+/* eslint-disable */
+import React from 'react';
+import { getIconColor } from './helper';
 var DEFAULT_STYLE = {
   display: 'block',
 };
@@ -115,7 +103,7 @@ var Iconqianyitian = function Iconqianyitian(_ref) {
     rest = _objectWithoutProperties(_ref, _excluded);
 
   var style = _style ? _objectSpread(_objectSpread({}, DEFAULT_STYLE), _style) : DEFAULT_STYLE;
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'svg',
     _extends(
       {
@@ -126,13 +114,13 @@ var Iconqianyitian = function Iconqianyitian(_ref) {
       },
       rest,
     ),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M0 0m48.761905 0l926.47619 0q48.761905 0 48.761905 48.761905l0 926.47619q0 48.761905-48.761905 48.761905l-926.47619 0q-48.761905 0-48.761905-48.761905l0-926.47619q0-48.761905 48.761905-48.761905Z',
-      fill: (0, _helper.getIconColor)(color, 0, '#E0E7F5'),
+      fill: getIconColor(color, 0, '#E0E7F5'),
     }),
-    /*#__PURE__*/ _react['default'].createElement('path', {
+    /*#__PURE__*/ React.createElement('path', {
       d: 'M364.007619 541.45219l205.482667 156.842667c24.380952 18.627048 59.538286 1.219048 59.538285-29.45219V355.157333c0-30.671238-35.157333-48.079238-59.538285-29.45219l-205.507048 156.818286a37.059048 37.059048 0 0 0 0 58.928761z',
-      fill: (0, _helper.getIconColor)(color, 1, '#096DD9'),
+      fill: getIconColor(color, 1, '#096DD9'),
     }),
   );
 };
@@ -140,5 +128,4 @@ var Iconqianyitian = function Iconqianyitian(_ref) {
 Iconqianyitian.defaultProps = {
   size: 18,
 };
-var _default = Iconqianyitian;
-exports['default'] = _default;
+export default Iconqianyitian;

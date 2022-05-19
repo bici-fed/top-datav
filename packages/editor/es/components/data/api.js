@@ -1,41 +1,11 @@
-'use strict';
+import axios from 'axios';
+import JSEncrypt from 'jsencrypt';
+import { privateKey } from './defines';
+export var timeout = 2000000;
+export var maxContentLength = 200000000;
+export var withCredentials = false; // 添加请求拦截器
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.apiClientParam = apiClientParam;
-exports.clientParam = clientParam;
-exports.fetchDataSourceList = fetchDataSourceList;
-exports.fetchPerceptualPointList = fetchPerceptualPointList;
-exports.fetchSearchDataPointManageList = fetchSearchDataPointManageList;
-exports.fetchSearchReactStackList = fetchSearchReactStackList;
-exports.handleRequestError = handleRequestError;
-exports.withCredentials =
-  exports.tranRSA =
-  exports.timeout =
-  exports.maxContentLength =
-  exports.loginSZGC =
-    void 0;
-
-var _axios = _interopRequireDefault(require('axios'));
-
-var _jsencrypt = _interopRequireDefault(require('jsencrypt'));
-
-var _defines = require('./defines');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var timeout = 2000000;
-exports.timeout = timeout;
-var maxContentLength = 200000000;
-exports.maxContentLength = maxContentLength;
-var withCredentials = false; // 添加请求拦截器
-
-exports.withCredentials = withCredentials;
-
-_axios['default'].interceptors.request.use(
+axios.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
     return config;
@@ -47,7 +17,7 @@ _axios['default'].interceptors.request.use(
   },
 ); // 添加响应拦截器
 
-_axios['default'].interceptors.response.use(
+axios.interceptors.response.use(
   function (response) {
     // 对响应数据做点什么
     return response;
@@ -58,8 +28,7 @@ _axios['default'].interceptors.response.use(
     return Promise.reject(error);
   },
 );
-
-function handleRequestError(error) {
+export function handleRequestError(error) {
   if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
@@ -78,18 +47,16 @@ function handleRequestError(error) {
 
   console.log(error.config);
 }
-
-function clientParam(apiURL) {
-  return _axios['default'].create({
+export function clientParam(apiURL) {
+  return axios.create({
     baseURL: ''.concat(apiURL, '/'),
     timeout: timeout,
     maxContentLength: maxContentLength,
     withCredentials: withCredentials,
   });
 }
-
-function apiClientParam(apiURL) {
-  return _axios['default'].create({
+export function apiClientParam(apiURL) {
+  return axios.create({
     baseURL: ''.concat(apiURL, '/'),
     timeout: timeout,
     maxContentLength: maxContentLength,
@@ -97,7 +64,7 @@ function apiClientParam(apiURL) {
   });
 } // 查询数据点列表
 
-function fetchSearchDataPointManageList(params) {
+export function fetchSearchDataPointManageList(params) {
   return apiClientParam(window['__CONKPIT_API_URL']).post('/datapoint/list', params, {
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
@@ -107,7 +74,7 @@ function fetchSearchDataPointManageList(params) {
   });
 } // 查询反应堆列表
 
-function fetchSearchReactStackList(params) {
+export function fetchSearchReactStackList(params) {
   return clientParam(window['__CONKPIT_API_URL']).post(
     '/applications/service/remote/reactor/list',
     params,
@@ -121,7 +88,7 @@ function fetchSearchReactStackList(params) {
   );
 } // 查询外部接口列表
 
-function fetchDataSourceList(params) {
+export function fetchDataSourceList(params) {
   return clientParam(window['__CONKPIT_API_URL']).post(
     '/applications/service/remote/externalInterface/list',
     params,
@@ -135,7 +102,7 @@ function fetchDataSourceList(params) {
   );
 } // 获取复杂感知点列表
 
-function fetchPerceptualPointList(params) {
+export function fetchPerceptualPointList(params) {
   return clientParam(window['__CONKPIT_API_URL']).post(
     '/applications/service/remote/complexData/list',
     params,
@@ -148,24 +115,20 @@ function fetchPerceptualPointList(params) {
     },
   );
 }
-
-var tranRSA = function tranRSA(params) {
-  var jsencrypt = new _jsencrypt['default']();
-  jsencrypt.setPublicKey(_defines.privateKey);
+export var tranRSA = function tranRSA(params) {
+  var jsencrypt = new JSEncrypt();
+  jsencrypt.setPublicKey(privateKey);
   return jsencrypt.encrypt(params);
 }; // 登陆华夏数字钢厂
 
-exports.tranRSA = tranRSA;
-
-var loginSZGC = function loginSZGC() {
+export var loginSZGC = function loginSZGC() {
   return new Promise(function (resolve, reject) {
-    var ajax = _axios['default'].create({
+    var ajax = axios.create({
       baseURL: 'http://hxszgc.bicisims.com',
       timeout: timeout,
       maxContentLength: maxContentLength,
       withCredentials: withCredentials,
     });
-
     ajax
       .request({
         url: '/api/system/user/login',
@@ -190,7 +153,7 @@ var loginSZGC = function loginSZGC() {
           });
         }
       })
-      ['catch'](function (error) {
+      .catch(function (error) {
         handleRequestError(error);
         resolve({
           front_error: 1,
@@ -198,5 +161,3 @@ var loginSZGC = function loginSZGC() {
       });
   });
 };
-
-exports.loginSZGC = loginSZGC;

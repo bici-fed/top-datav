@@ -1,13 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _timeline = require('../charts/timeline');
-
-var _default = {
+import { getTimeLineOption } from '../charts/timeline';
+export default {
   elementRendered: false,
   name: '实时曲线',
   icon: 'iconquxiantu',
@@ -24,7 +16,7 @@ var _default = {
     hideInput: true,
     data: {
       echarts: {
-        option: (0, _timeline.getTimeLineOption)(),
+        option: getTimeLineOption(),
       },
     },
     property: {
@@ -52,4 +44,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

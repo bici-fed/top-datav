@@ -1,13 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _defines = require('../../data/defines');
-
-var _default = {
+import { defaultLineColors } from '../../data/defines';
+export default {
   name: '计量器',
   icon: 'iconjiliangqi',
   data: {
@@ -39,31 +31,31 @@ var _default = {
       dataColors: [
         {
           checked: true,
-          color: _defines.defaultLineColors[0],
+          color: defaultLineColors[0],
           top: 20,
           bottom: null,
         },
         {
           checked: true,
-          color: _defines.defaultLineColors[1],
+          color: defaultLineColors[1],
           top: 40,
           bottom: null,
         },
         {
           checked: true,
-          color: _defines.defaultLineColors[2],
+          color: defaultLineColors[2],
           top: 60,
           bottom: null,
         },
         {
           checked: true,
-          color: _defines.defaultLineColors[3],
+          color: defaultLineColors[3],
           top: 80,
           bottom: null,
         },
         {
           checked: true,
-          color: _defines.defaultLineColors[4],
+          color: defaultLineColors[4],
           top: 100,
           bottom: null,
         },
@@ -80,4 +72,3 @@ var _default = {
     },
   },
 };
-exports['default'] = _default;

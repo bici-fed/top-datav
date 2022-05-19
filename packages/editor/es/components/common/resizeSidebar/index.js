@@ -1,15 +1,2 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _ResizePanel = _interopRequireDefault(require('./ResizePanel'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var _default = _ResizePanel['default'];
-exports['default'] = _default;
+import ResizePanel from './ResizePanel';
+export default ResizePanel;

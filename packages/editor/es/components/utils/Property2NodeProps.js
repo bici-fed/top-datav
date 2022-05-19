@@ -1,19 +1,6 @@
-'use strict';
+import moment from 'moment'; // 里面的字符可以根据自己的需要进行调整
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports.formatTimer = formatTimer;
-exports.getNodeType = getNodeType;
-
-var _moment = _interopRequireDefault(require('moment'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-// 里面的字符可以根据自己的需要进行调整
-_moment['default'].locale('zh-cn', {
+moment.locale('zh-cn', {
   months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
   monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
   weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
@@ -94,23 +81,22 @@ _moment['default'].locale('zh-cn', {
     doy: 4, // The week that contains Jan 4th is the first week of the year.
   },
 });
-
-function formatTimer(node, canvas) {
+export function formatTimer(node, canvas) {
   var y = '';
   var h = '';
 
   if (node.property.date.show) {
-    y = (0, _moment['default'])().format(node.property.date.format);
+    y = moment().format(node.property.date.format);
   }
 
   if (node.property.time.show) {
-    h = (0, _moment['default'])().format(node.property.time.format);
+    h = moment().format(node.property.time.format);
   }
 
   node.text = y + ' ' + h;
 
   if (node.text == ' ') {
-    node.text = (0, _moment['default'])().format('LLLL');
+    node.text = moment().format('LLLL');
   }
 
   canvas.updateProps(false);
@@ -120,7 +106,7 @@ function formatTimer(node, canvas) {
  * @param node
  */
 
-function getNodeType(node) {
+export function getNodeType(node) {
   if (node.name == 'echarts') {
     return node.property.echartsType;
   } else {

@@ -1,83 +1,3 @@
-'use strict';
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
-});
-exports['default'] = void 0;
-
-var _react = _interopRequireWildcard(require('react'));
-
-var _reactcss = _interopRequireDefault(require('reactcss'));
-
-var _antd = require('antd');
-
-var _reactColor = require('react-color');
-
-var _ColorPickerModule = _interopRequireDefault(require('./ColorPicker.module.css'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
 function _slicedToArray(arr, i) {
   return (
     _arrayWithHoles(arr) ||
@@ -143,17 +63,23 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
+import React, { useState, useEffect } from 'react';
+import reactCSS from 'reactcss';
+import { Button } from 'antd';
+import { SketchPicker } from 'react-color';
+import styleScss from './ColorPicker.module.css';
+
 var ColorPicker = function ColorPicker(props) {
   var value = props.value,
     disabled = props.disabled,
     onChange = props.onChange;
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     visible = _useState2[0],
     setVisible = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(value ? value : 'rgba(222, 222, 222 ,1)'),
+  var _useState3 = useState(value ? value : 'rgba(222, 222, 222 ,1)'),
     _useState4 = _slicedToArray(_useState3, 2),
     color = _useState4[0],
     setColor = _useState4[1];
@@ -164,7 +90,7 @@ var ColorPicker = function ColorPicker(props) {
     }
   };
 
-  (0, _react.useEffect)(
+  useEffect(
     function () {
       setColor(value ? value : 'rgba(222, 222, 222 ,1)');
     },
@@ -196,7 +122,7 @@ var ColorPicker = function ColorPicker(props) {
     setVisible(false);
   };
 
-  var styles = (0, _reactcss['default'])({
+  var styles = reactCSS({
     default: {
       color: {
         width: '36px',
@@ -229,37 +155,37 @@ var ColorPicker = function ColorPicker(props) {
       },
     },
   });
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ React.createElement(
     'div',
     null,
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ React.createElement(
       'div',
       {
         style: styles.swatch,
         onClick: handleClick,
       },
-      /*#__PURE__*/ _react['default'].createElement('div', {
+      /*#__PURE__*/ React.createElement('div', {
         style: styles.color,
       }),
     ),
     visible
-      ? /*#__PURE__*/ _react['default'].createElement(
+      ? /*#__PURE__*/ React.createElement(
           'div',
           {
             style: styles.popover,
-            className: _ColorPickerModule['default'].colorPickerContainer,
+            className: styleScss.colorPickerContainer,
           },
-          /*#__PURE__*/ _react['default'].createElement('div', {
+          /*#__PURE__*/ React.createElement('div', {
             style: styles.cover,
             onClick: handleClose,
           }),
-          /*#__PURE__*/ _react['default'].createElement(_reactColor.SketchPicker, {
-            className: _ColorPickerModule['default'].myColorPicker,
+          /*#__PURE__*/ React.createElement(SketchPicker, {
+            className: styleScss.myColorPicker,
             color: color,
             onChange: handleChange,
           }),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Button,
+          /*#__PURE__*/ React.createElement(
+            Button,
             {
               onClick: handleClose,
               style: {
@@ -269,8 +195,8 @@ var ColorPicker = function ColorPicker(props) {
             },
             '\u53D6\u6D88',
           ),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Button,
+          /*#__PURE__*/ React.createElement(
+            Button,
             {
               type: 'primary',
               onClick: handleSetColor,
@@ -286,5 +212,4 @@ var ColorPicker = function ColorPicker(props) {
   );
 };
 
-var _default = ColorPicker;
-exports['default'] = _default;
+export default ColorPicker;

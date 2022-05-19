@@ -1,6 +1,6 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import { EditorLayout, Preview } from '@top-datav/editor';
+import { Preview, EditorLayout } from '@top-datav/editor';
 import axios from 'axios';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { Modal } from 'antd';
@@ -8,12 +8,11 @@ import preBgImg1 from './bg01.jpg';
 import preBgImg2 from './bg02.jpg';
 import preBgImg3 from './bg03.jpg';
 import preBgImg4 from './bg04.svg';
-import 'antd/dist/antd.css'
-import DataBindModal from "./FilterDataPoint";
-import {industry_List} from "./common/config";
-import VideoMonitoringModal from './VideoMonitoring'
+import 'antd/dist/antd.css';
+import DataBindModal from './FilterDataPoint';
+import { industry_List } from './common/config';
+import VideoMonitoringModal from './VideoMonitoring';
 // import 'antd/dist/antd.less';
-
 
 const { confirm } = Modal;
 const token = 'XBZ9EE68OJ3A9j8YOx3aF';
@@ -22,26 +21,25 @@ const testId = '3169f6dae49e4490bf7decab5c76eb8c';
 
 const apiURL = 'http://zhsd.dev.bicisims.com:31892';
 
-
 const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
   const history = props.history;
   const [editorData, setEditorData] = useState(undefined);
   const [extraVisible, setExtraVisible] = useState(false);
 
-  const [dataPointVisible,setDataPointVisible]=useState(false)
-  const [vedioVisible,setVedioVisible]=useState(false);
-  const [node,setNode]=useState(null)
-  const [disableSource,setDisableSource]=useState([])
-  const [selectedRowKeys,setSelectedRowKeys]=useState([])
-  const [selectedRowKeysVedio,setSelectedRowKeysVedio]=useState([])
-  const [dataPointPropsMap,setDataPointPropsMap]=useState({
-    id:"id",
-    type:"dataType",
-    dataName:"dataName",
-    intervalTime:"intervalTime",
-    scopeMin:"scopeMin",
-    scopeMax:"scopeMax",
-  })
+  const [dataPointVisible, setDataPointVisible] = useState(false);
+  const [vedioVisible, setVedioVisible] = useState(false);
+  const [node, setNode] = useState(null);
+  const [disableSource, setDisableSource] = useState([]);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [selectedRowKeysVedio, setSelectedRowKeysVedio] = useState([]);
+  const [dataPointPropsMap, setDataPointPropsMap] = useState({
+    id: 'id',
+    type: 'dataType',
+    dataName: 'dataName',
+    intervalTime: 'intervalTime',
+    scopeMin: 'scopeMin',
+    scopeMax: 'scopeMax',
+  });
   const preInstallBgImages = [
     { key: 1, img: preBgImg1 },
     { key: 2, img: preBgImg2 },
@@ -51,18 +49,15 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
   const industrialLibrary = [
     {
       name: '灯光',
-      url:
-        'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
     },
     {
       name: '测试1',
-      url:
-        'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
     },
     {
       name: '测试2',
-      url:
-        'https://bici-qt.oss-cn-hangzhou.aliyuncs.com/ooip6ffe388d487db754b885b8aa65b9/自定义组件/2020/12/27d978a2e1c24faf9c14e02d8ca4283b测图片.png',
+      url: 'https://bici-qt.oss-cn-hangzhou.aliyuncs.com/ooip6ffe388d487db754b885b8aa65b9/自定义组件/2020/12/27d978a2e1c24faf9c14e02d8ca4283b测图片.png',
     },
     {
       name: 'svg',
@@ -72,8 +67,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
   const selfIndustrialLibrary = [
     {
       name: '9',
-      url:
-        'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
       width: 100,
       height: 100,
       type: 'image',
@@ -81,8 +75,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     },
     {
       name: '10',
-      url:
-        'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
       width: 100,
       height: 100,
       type: 'image',
@@ -134,15 +127,15 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
         params: {},
       },
     },
-    industry:{
+    industry: {
       baseURL: apiURL,
       mappingId: 'ooip6ffe388d487db754b885b8aa65b9',
       token: token,
-      list:{
-        url:"/file/service/file/getMappingFile"
+      list: {
+        url: '/file/service/file/getMappingFile',
       },
-      projectIndustryCats:industry_List
-    }
+      projectIndustryCats: industry_List,
+    },
   };
 
   const toolsConfig = [
@@ -168,14 +161,15 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     'gauge',
     'biciMeasure',
     'timeLine',
-  ]
+  ];
 
   const websocketConf = {
     url: 'ws://47.96.159.115:51060/ws?token=' + token,
-    video:{
-      updateStream:'http://192.168.1.105:8000/surveillance/channel/updateStream',
-      rePushStream:'http://192.168.1.105:8000/surveillance/channel/rePushStream',
-      pushStream:  'http://192.168.1.69:50010/applications/service/remote/customComponent/pushStream',
+    video: {
+      updateStream: 'http://192.168.1.105:8000/surveillance/channel/updateStream',
+      rePushStream: 'http://192.168.1.105:8000/surveillance/channel/rePushStream',
+      pushStream:
+        'http://192.168.1.69:50010/applications/service/remote/customComponent/pushStream',
     },
     toolsConfig,
   };
@@ -205,10 +199,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
       })
       .then((res) => {
         if (res.data?.data != null) {
-          if (
-            res.data.data.property != null &&
-            res.data.data.property != null
-          ) {
+          if (res.data.data.property != null && res.data.data.property != null) {
             // const getEditorData = JSON.parse(
             //   decodeURIComponent(escape(window.atob(res.data.data.property)))
             // );
@@ -243,10 +234,10 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
             token: token,
             'Content-Type': 'application/json',
           },
-        }
+        },
       )
       .then((res) => {
-        console.log(res)
+        console.log(res);
         // (res.data.data || []).map((image: any) => {
         //   const newImg = {
         //     ...image,
@@ -273,10 +264,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     formData.append('mappingId', 'ooip6ffe388d487db754b885b8aa65b9');
 
     formData.append('mappingType', '107');
-    api.post(
-      `${apiURL}/file/file/uploadReturnPath`,
-      formData
-    );
+    api.post(`${apiURL}/file/file/uploadReturnPath`, formData);
 
     const instance = axios.create({
       baseURL: apiURL,
@@ -362,105 +350,110 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     });
   }
 
-/****添加数据点*******/
-  const addDataPoint=()=>{
-    setDataPointVisible(!dataPointVisible)
-  }
-  const onDataPointBind=(selectedRowKeys, selectedRows)=>{
+  /****添加数据点*******/
+  const addDataPoint = () => {
+    setDataPointVisible(!dataPointVisible);
+  };
+  const onDataPointBind = (selectedRowKeys, selectedRows) => {
     // @ts-ignore
     editorRef?.current.handleDataPointBind(selectedRowKeys, selectedRows);
-  }
-  const handleTabChange=(activeKey)=>{
-    console.log("activeKey==",activeKey);
-    if(activeKey=="dataPoint"){
-      const t={
-        id:"id",
-        type:"dataType",
-        dataName:"dataName",
-        intervalTime:"intervalTime",
-        scopeMin:"scopeMin",
-        scopeMax:"scopeMax",
+  };
+  const handleTabChange = (activeKey) => {
+    console.log('activeKey==', activeKey);
+    if (activeKey == 'dataPoint') {
+      const t = {
+        id: 'id',
+        type: 'dataType',
+        dataName: 'dataName',
+        intervalTime: 'intervalTime',
+        scopeMin: 'scopeMin',
+        scopeMax: 'scopeMax',
       };
-      setDataPointPropsMap(t)
-    }else if(activeKey=="complex"){
-      const t={
-        id:"id",
-        type:"type",
-        dataName:"dataName",
-        intervalTime:"intervalTime",
-        scopeMin:"scopeMin",
-        scopeMax:"scopeMax",
+      setDataPointPropsMap(t);
+    } else if (activeKey == 'complex') {
+      const t = {
+        id: 'id',
+        type: 'type',
+        dataName: 'dataName',
+        intervalTime: 'intervalTime',
+        scopeMin: 'scopeMin',
+        scopeMax: 'scopeMax',
       };
-      setDataPointPropsMap(t)
-    }else if(activeKey=="react"){
-      const t={
-        id:"id",
-        type:"type",
-        dataName:"source",
-        intervalTime:"period",
-        scopeMin:"scopeMin",
-        scopeMax:"scopeMax",
+      setDataPointPropsMap(t);
+    } else if (activeKey == 'react') {
+      const t = {
+        id: 'id',
+        type: 'type',
+        dataName: 'source',
+        intervalTime: 'period',
+        scopeMin: 'scopeMin',
+        scopeMax: 'scopeMax',
       };
-      setDataPointPropsMap(t)
+      setDataPointPropsMap(t);
     }
-  }
-
+  };
 
   const renderDataPointModal = useCallback(() => {
     return (
-        <DataBindModal
-            visible={true}
-            disableSource={disableSource}
-            selectedRows={node?.property?.dataPointSelectedRows}
-            onCancel={addDataPoint}
-            onGetSelectRow={onDataPointBind}
-            selectedRowKeys={selectedRowKeys}
-            node={node}
-            mode={
-              node.property.echartsType == 'timeLine'||
-              node.property.echartsType == 'horizontalBar'||
-              node.property.echartsType == 'circleAndPie'||
-              node.property.echartsType == 'verticalBar'||
-              node.name=='dataTable' ? 'checkbox' : 'radio'
-            }
-            onTabChange={handleTabChange}
-        ></DataBindModal>
+      <DataBindModal
+        visible={true}
+        disableSource={disableSource}
+        selectedRows={node?.property?.dataPointSelectedRows}
+        onCancel={addDataPoint}
+        onGetSelectRow={onDataPointBind}
+        selectedRowKeys={selectedRowKeys}
+        node={node}
+        mode={
+          node.property.echartsType == 'timeLine' ||
+          node.property.echartsType == 'horizontalBar' ||
+          node.property.echartsType == 'circleAndPie' ||
+          node.property.echartsType == 'verticalBar' ||
+          node.name == 'dataTable'
+            ? 'checkbox'
+            : 'radio'
+        }
+        onTabChange={handleTabChange}
+      ></DataBindModal>
     );
   }, [addDataPoint, disableSource, node, selectedRowKeys]);
   // 点击添加数据点按钮的处理方法
-  const handleAddDataPoint=(node:any,disableSource:string[],selectedRowKeys:string[])=>{
+  const handleAddDataPoint = (node: any, disableSource: string[], selectedRowKeys: string[]) => {
     setNode(node);
-    setDisableSource(disableSource)
-    setSelectedRowKeys(selectedRowKeys)
-    setDataPointVisible(true)
-  }
+    setDisableSource(disableSource);
+    setSelectedRowKeys(selectedRowKeys);
+    setDataPointVisible(true);
+  };
   /****添加数据点*******/
   /******************添加视频源********** */
-  const onCancelVedioModal=()=>{
-    setVedioVisible(!vedioVisible)
-  }
-  const onVedioBind=(selectedRowKeys, selectedRows)=>{
+  const onCancelVedioModal = () => {
+    setVedioVisible(!vedioVisible);
+  };
+  const onVedioBind = (selectedRowKeys, selectedRows) => {
     // @ts-ignore
     editorRef?.current.handleVedioBind(selectedRowKeys, selectedRows);
-  }
-  const renderVedioModal=useCallback(()=>{
+  };
+  const renderVedioModal = useCallback(() => {
     return (
-      <VideoMonitoringModal node={node} mode="radio"  visible={true}
-      disableSource={disableSource}
-      selectedRows={node?.property?.dataPointSelectedRows}
-      onCancel={onCancelVedioModal}
-      onGetSelectRow={onVedioBind}
-      selectedRowKeys={selectedRowKeysVedio}/>
-    )
-  },[disableSource, node, onCancelVedioModal, selectedRowKeysVedio]);
+      <VideoMonitoringModal
+        node={node}
+        mode="radio"
+        visible={true}
+        disableSource={disableSource}
+        selectedRows={node?.property?.dataPointSelectedRows}
+        onCancel={onCancelVedioModal}
+        onGetSelectRow={onVedioBind}
+        selectedRowKeys={selectedRowKeysVedio}
+      />
+    );
+  }, [disableSource, node, onCancelVedioModal, selectedRowKeysVedio]);
 
-  const handleAddVedioSource=(node:any,disableSource:string[],selectedRowKeys:string[])=>{
-    console.log("--handleAddVedioSource---");
-    console.log(node)
+  const handleAddVedioSource = (node: any, disableSource: string[], selectedRowKeys: string[]) => {
+    console.log('--handleAddVedioSource---');
+    console.log(node);
     setNode(node);
     setVedioVisible(true);
     setSelectedRowKeysVedio(selectedRowKeys);
-  }
+  };
 
   return (
     <div>
@@ -485,7 +478,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
         onAddDataPoint={handleAddDataPoint}
         onAddVedioSource={handleAddVedioSource}
         dataPointPropsMap={dataPointPropsMap}
-          // onPreview={handlePreview}
+        // onPreview={handlePreview}
       />
     </div>
   );
@@ -495,9 +488,9 @@ const PreviewLayout: React.FC<any> = ({ history }) => {
   const [editorData, setEditorData] = useState<any>();
   const websocketConf = {
     url: 'ws://47.96.159.115:51060/ws?token=' + token,
-    video:{
-      updateStream:'http://192.168.1.105:8000/surveillance/channel/updateStream',
-      rePushStream:'http://192.168.1.105:8000/surveillance/channel/rePushStream',
+    video: {
+      updateStream: 'http://192.168.1.105:8000/surveillance/channel/updateStream',
+      rePushStream: 'http://192.168.1.105:8000/surveillance/channel/rePushStream',
     },
   };
   useEffect(() => {
@@ -522,10 +515,7 @@ const PreviewLayout: React.FC<any> = ({ history }) => {
       .then((res) => {
         console.log('detail', res);
         if (res.data?.data != null) {
-          if (
-            res.data.data.property != null &&
-            res.data.data.property != null
-          ) {
+          if (res.data.data.property != null && res.data.data.property != null) {
             // const getEditorData = JSON.parse(
             //   decodeURIComponent(escape(window.atob(res.data.data.property)))
             // );
@@ -535,13 +525,7 @@ const PreviewLayout: React.FC<any> = ({ history }) => {
         }
       });
   }, []);
-  return (
-    <Preview
-      history={history}
-      data={editorData}
-      websocketConf={websocketConf}
-    ></Preview>
-  );
+  return <Preview history={history} data={editorData} websocketConf={websocketConf}></Preview>;
 };
 
 const App = () => {
