@@ -28,7 +28,7 @@
   "dependencies": {
     "@top-datav/core": "^1.0.6"
   },
-  "gitHead": "0eb4af2a70da38173763bbd831060d823e904540",
+  "gitHead": "d0a383b58b5ea7cf81a38eda4ef3570c6c0ebb97",
   "devDependencies": {
     "webpack-cli": "^4.9.2"
   }

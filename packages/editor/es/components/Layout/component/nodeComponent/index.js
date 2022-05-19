@@ -141,7 +141,7 @@ import DataBindModal from '../../../FilterDataPoint';
 import styles from './index.module.css';
 import { getNodeType } from '../../../utils/Property2NodeProps';
 import * as _ from 'lodash';
-import { echartsObjs } from '@top-datav/chart-diagram/src/echarts';
+import { echartsObjs } from '@top-datav/chart-diagram';
 import { replacer, reviver } from '../../../utils/serializing';
 import { eraseOverlapIntervals } from '../../../utils/cacl';
 import { defaultLineColors } from '../../../data/defines';

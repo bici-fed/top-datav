@@ -34,7 +34,7 @@ import {
 import { FormProps } from 'antd/lib/form/Form';
 import ColorPicker from '../../../common/ColorPicker/ColorPicker';
 import { canvas } from '../../index';
-import { alignNodes } from '@top-datav/layout/src/align';
+import { alignNodes } from '@top-datav/layout';
 import CustomIcon from '../../../config/iconConfig';
 import DataBindModal from '../../../FilterDataPoint';
 
