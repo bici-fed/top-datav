@@ -39,8 +39,8 @@
     "react-color": "^2.19.3"
   },
   "devDependencies": {
-    "ahooks": "^2.9.1",
     "antd": "^4.10.0",
+    "ahooks": "^2.9.1",
     "axios": "^0.21.0",
     "bici-transformers": "^0.19.7",
     "cash-dom": "^8.1.0",
@@ -58,5 +58,5 @@
     "react-table": "^7.6.3",
     "reactcss": "^1.2.3"
   },
-  "gitHead": "acd7f882aafb4e47eebdee862ffb8fd427ccebf5"
+  "gitHead": "0b7fbdfbc4ac43d76f8da0d2ec9344aee566cc0e"
 }
