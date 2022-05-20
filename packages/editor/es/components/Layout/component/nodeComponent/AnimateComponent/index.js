@@ -1,14 +1,3 @@
-import 'antd/lib/switch/style';
-import _Switch from 'antd/lib/switch';
-import 'antd/lib/select/style';
-import _Select from 'antd/lib/select';
-import 'antd/lib/col/style';
-import _Col from 'antd/lib/col';
-import 'antd/lib/form/style';
-import _Form from 'antd/lib/form';
-import 'antd/lib/collapse/style';
-import _Collapse from 'antd/lib/collapse';
-
 function _createForOfIteratorHelper(o, allowArrayLike) {
   var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
   if (!it) {
@@ -129,13 +118,14 @@ function _arrayWithHoles(arr) {
 
 import React from 'react';
 import { Node } from '@top-datav/core';
+import { Form, Col, Collapse, Switch, Select } from 'antd';
 import { canvas } from '../../../index';
-var Panel = _Collapse.Panel;
+var Panel = Collapse.Panel;
 
 var AnimateComponent = function AnimateComponent(_ref) {
   var canvasData = _ref.canvasData;
 
-  var _Form$useForm = _Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
 
@@ -194,29 +184,29 @@ var AnimateComponent = function AnimateComponent(_ref) {
 
   var renderAnimateForm = function renderAnimateForm() {
     return /*#__PURE__*/ React.createElement(
-      _Form,
+      Form,
       {
         form: form,
       },
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u7279\u6548',
           },
           /*#__PURE__*/ React.createElement(
-            _Select,
+            Select,
             {
               onSelect: function onSelect(e) {
                 return onHandleStyleSelectChange(e);
               },
             },
             /*#__PURE__*/ React.createElement(
-              _Select.Option,
+              Select.Option,
               {
                 value: 'upDown',
                 key: 'topDown',
@@ -224,7 +214,7 @@ var AnimateComponent = function AnimateComponent(_ref) {
               '\u4E0A\u4E0B\u8DF3\u52A8',
             ),
             /*#__PURE__*/ React.createElement(
-              _Select.Option,
+              Select.Option,
               {
                 value: 'leftRight',
                 key: 'leftRight',
@@ -232,7 +222,7 @@ var AnimateComponent = function AnimateComponent(_ref) {
               '\u5DE6\u53F3\u8DF3\u52A8',
             ),
             /*#__PURE__*/ React.createElement(
-              _Select.Option,
+              Select.Option,
               {
                 value: 'heart',
                 key: 'heart',
@@ -243,16 +233,16 @@ var AnimateComponent = function AnimateComponent(_ref) {
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u64AD\u653E',
           },
-          /*#__PURE__*/ React.createElement(_Switch, {
+          /*#__PURE__*/ React.createElement(Switch, {
             checkedChildren: '\u5F00',
             unCheckedChildren: '\u5173',
             onChange: function onChange(e) {
@@ -268,7 +258,7 @@ var AnimateComponent = function AnimateComponent(_ref) {
     'div',
     null,
     /*#__PURE__*/ React.createElement(
-      _Collapse,
+      Collapse,
       null,
       /*#__PURE__*/ React.createElement(
         Panel,

@@ -1,29 +1,25 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 exports.images = exports.Node = void 0;
+
+var _createForOfIteratorHelper2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/createForOfIteratorHelper'),
+);
+
+var _classCallCheck2 = _interopRequireDefault(require('@babel/runtime/helpers/classCallCheck'));
+
+var _createClass2 = _interopRequireDefault(require('@babel/runtime/helpers/createClass'));
+
+var _inherits2 = _interopRequireDefault(require('@babel/runtime/helpers/inherits'));
+
+var _createSuper2 = _interopRequireDefault(require('@babel/runtime/helpers/createSuper'));
 
 var _pen = require('./pen');
 
@@ -51,219 +47,13 @@ var _ = _interopRequireWildcard(require('lodash'));
 
 var _utils = require('../utils');
 
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj.default = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-  if (!it) {
-    if (
-      Array.isArray(o) ||
-      (it = _unsupportedIterableToArray(o)) ||
-      (allowArrayLike && o && typeof o.length === 'number')
-    ) {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return { done: true };
-          return { done: false, value: o[i++] };
-        },
-        e: function e(_e) {
-          throw _e;
-        },
-        f: F,
-      };
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    );
-  }
-  var normalCompletion = true,
-    didErr = false,
-    err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e2) {
-      didErr = true;
-      err = _e2;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    },
-  };
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ('value' in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, 'prototype', { writable: false });
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== 'function' && superClass !== null) {
-    throw new TypeError('Super expression must either be null or a function');
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  Object.defineProperty(subClass, 'prototype', { writable: false });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === 'object' || typeof call === 'function')) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined');
-  }
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === 'undefined' || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === 'function') return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
-}
-
 var images = {};
 exports.images = images;
 
 var Node = /*#__PURE__*/ (function (_Pen) {
-  _inherits(Node, _Pen);
+  (0, _inherits2.default)(Node, _Pen);
 
-  var _super = _createSuper(Node);
+  var _super = (0, _createSuper2.default)(Node);
 
   // 0 -1 之间的小数
   // icon
@@ -279,9 +69,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
     var _this;
 
     var noChild = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-    _classCallCheck(this, Node);
-
+    (0, _classCallCheck2.default)(this, Node);
     _this = _super.call(this, json);
     _this.is3D = false;
     _this.z = void 0;
@@ -406,7 +194,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
     if (json.animateFrames) {
       _this.animateFrames = json.animateFrames;
 
-      var _iterator = _createForOfIteratorHelper(_this.animateFrames),
+      var _iterator = (0, _createForOfIteratorHelper2.default)(_this.animateFrames),
         _step;
 
       try {
@@ -453,7 +241,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
     return _this;
   }
 
-  _createClass(
+  (0, _createClass2.default)(
     Node,
     [
       {
@@ -514,7 +302,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
           }
 
           if (this.children) {
-            var _iterator2 = _createForOfIteratorHelper(this.children),
+            var _iterator2 = (0, _createForOfIteratorHelper2.default)(this.children),
               _step2;
 
             try {
@@ -553,7 +341,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
 
           this.children = [];
 
-          var _iterator3 = _createForOfIteratorHelper(children),
+          var _iterator3 = (0, _createForOfIteratorHelper2.default)(children),
             _step3;
 
           try {
@@ -594,7 +382,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
             return;
           }
 
-          var _iterator4 = _createForOfIteratorHelper(this.children),
+          var _iterator4 = (0, _createForOfIteratorHelper2.default)(this.children),
             _step4;
 
           try {
@@ -624,7 +412,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
             return;
           }
 
-          var _iterator5 = _createForOfIteratorHelper(this.children),
+          var _iterator5 = (0, _createForOfIteratorHelper2.default)(this.children),
             _step5;
 
           try {
@@ -883,7 +671,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
 
           this.rotatedAnchors = [];
 
-          var _iterator6 = _createForOfIteratorHelper(this.anchors),
+          var _iterator6 = (0, _createForOfIteratorHelper2.default)(this.anchors),
             _step6;
 
           try {
@@ -973,7 +761,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
             return;
           }
 
-          var _iterator7 = _createForOfIteratorHelper(this.children),
+          var _iterator7 = (0, _createForOfIteratorHelper2.default)(this.children),
             _step7;
 
           try {
@@ -1303,7 +1091,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
           this.rect.calcCenter();
 
           if (this.animateFrames && this.animateFrames.length) {
-            var _iterator8 = _createForOfIteratorHelper(this.animateFrames),
+            var _iterator8 = (0, _createForOfIteratorHelper2.default)(this.animateFrames),
               _step8;
 
             try {
@@ -1339,7 +1127,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
           this.init();
 
           if (this.children) {
-            var _iterator9 = _createForOfIteratorHelper(this.children),
+            var _iterator9 = (0, _createForOfIteratorHelper2.default)(this.children),
               _step9;
 
             try {
@@ -1370,7 +1158,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
           this.rect.calcCenter();
 
           if (this.animateFrames && this.animateFrames.length) {
-            var _iterator10 = _createForOfIteratorHelper(this.animateFrames),
+            var _iterator10 = (0, _createForOfIteratorHelper2.default)(this.animateFrames),
               _step10;
 
             try {
@@ -1397,7 +1185,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
           this.init();
 
           if (this.children) {
-            var _iterator11 = _createForOfIteratorHelper(this.children),
+            var _iterator11 = (0, _createForOfIteratorHelper2.default)(this.children),
               _step11;
 
             try {
@@ -1425,7 +1213,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
           if (this.children) {
             this.calcChildrenRect();
 
-            var _iterator12 = _createForOfIteratorHelper(this.children),
+            var _iterator12 = (0, _createForOfIteratorHelper2.default)(this.children),
               _step12;
 
             try {
@@ -1476,7 +1264,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
 
           var pts = this.rect.toPoints();
 
-          var _iterator13 = _createForOfIteratorHelper(pts),
+          var _iterator13 = (0, _createForOfIteratorHelper2.default)(pts),
             _step13;
 
           try {
@@ -1526,7 +1314,7 @@ var Node = /*#__PURE__*/ (function (_Pen) {
           this.rect.round();
 
           if (this.children) {
-            var _iterator14 = _createForOfIteratorHelper(this.children),
+            var _iterator14 = (0, _createForOfIteratorHelper2.default)(this.children),
               _step14;
 
             try {
@@ -1566,7 +1354,6 @@ var Node = /*#__PURE__*/ (function (_Pen) {
       },
     ],
   );
-
   return Node;
 })(_pen.Pen);
 

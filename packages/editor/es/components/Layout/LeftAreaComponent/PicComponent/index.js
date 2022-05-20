@@ -1,16 +1,3 @@
-import 'antd/lib/upload/style';
-import _Upload from 'antd/lib/upload';
-import 'antd/lib/col/style';
-import _Col from 'antd/lib/col';
-import 'antd/lib/row/style';
-import _Row from 'antd/lib/row';
-import 'antd/lib/message/style';
-import _message from 'antd/lib/message';
-import 'antd/lib/form/style';
-import _Form from 'antd/lib/form';
-import 'antd/lib/collapse/style';
-import _Collapse from 'antd/lib/collapse';
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -109,6 +96,7 @@ function _arrayWithHoles(arr) {
 }
 
 import React, { useState, useEffect, useRef } from 'react';
+import { Row, Col, Upload, Form, message, Collapse } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { clientParam } from '../../../data/api';
 import { useClickAway } from 'ahooks';
@@ -116,7 +104,7 @@ import CompContextMenu from '../../../common/CompContextMenu';
 import styles from './index.module.css';
 import { industry_List, onDrag } from './config';
 import IndustryList from './IndustryList';
-var Panel = _Collapse.Panel;
+var Panel = Collapse.Panel;
 
 var Layout = function Layout(_ref) {
   var _uploaConfig$industry;
@@ -124,7 +112,7 @@ var Layout = function Layout(_ref) {
   var uploaConfig = _ref.uploaConfig,
     industrialLibrary = _ref.industrialLibrary;
 
-  var _Form$useForm = _Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     formRef = _Form$useForm2[0]; // 是否显示右键菜单
 
@@ -218,7 +206,7 @@ var Layout = function Layout(_ref) {
     var isLt1M = file.size / 1024 / 1024 < 1;
 
     if (!isLt1M) {
-      _message.error('上传图片不可大于1M');
+      message.error('上传图片不可大于1M');
     }
 
     return isLt1M;
@@ -263,8 +251,7 @@ var Layout = function Layout(_ref) {
                       },
                     )
                     .then(function (res) {
-                      _message.success('重命名成功！');
-
+                      message.success('重命名成功！');
                       requstPicList();
                     });
                   _context.next = 10;
@@ -295,10 +282,9 @@ var Layout = function Layout(_ref) {
 
   var handleDelete = function handleDelete() {
     if (selectedItem == null) {
-      _message.error('请选择要删除的组件！').then(function () {
-        _message.destroy();
+      message.error('请选择要删除的组件！').then(function () {
+        message.destroy();
       });
-
       return;
     }
 
@@ -312,12 +298,10 @@ var Layout = function Layout(_ref) {
         },
       })
       .then(function (res) {
-        _message.success('删除组件成功！', 2, function () {
-          _message.destroy();
-
+        message.success('删除组件成功！', 2, function () {
+          message.destroy();
           return null;
         });
-
         requstPicList();
       });
   }; // 右键菜单
@@ -355,7 +339,7 @@ var Layout = function Layout(_ref) {
       className: styles.container,
     },
     /*#__PURE__*/ React.createElement(
-      _Collapse,
+      Collapse,
       {
         defaultActiveKey: ['999'],
         expandIconPosition: 'right',
@@ -373,13 +357,13 @@ var Layout = function Layout(_ref) {
           key: '998',
         },
         /*#__PURE__*/ React.createElement(
-          _Row,
+          Row,
           null,
           list === null || list === void 0
             ? void 0
             : list.map(function (item, index) {
                 return /*#__PURE__*/ React.createElement(
-                  _Col,
+                  Col,
                   {
                     key: index,
                     span: 8,
@@ -430,7 +414,7 @@ var Layout = function Layout(_ref) {
                 );
               }),
           /*#__PURE__*/ React.createElement(
-            _Col,
+            Col,
             {
               key: 'upload',
               span: 12,
@@ -440,7 +424,7 @@ var Layout = function Layout(_ref) {
               },
             },
             /*#__PURE__*/ React.createElement(
-              _Upload,
+              Upload,
               {
                 listType: 'picture-card',
                 showUploadList: false,

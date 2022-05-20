@@ -1,5 +1,6 @@
 import React from 'react';
 import { Topology } from '@top-datav/core';
+import 'antd/dist/antd.less';
 import { DataVEditorProps } from '../data/defines';
 export declare let canvas: Topology;
 /**

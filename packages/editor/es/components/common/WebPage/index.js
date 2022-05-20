@@ -18,11 +18,6 @@ function _typeof(obj) {
   );
 }
 
-import 'antd/lib/empty/style';
-import _Empty from 'antd/lib/empty';
-import 'antd/lib/button/style';
-import _Button from 'antd/lib/button';
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError('Cannot call a class as a function');
@@ -120,6 +115,7 @@ function _getPrototypeOf(o) {
 }
 
 import React from 'react';
+import { Button, Empty } from 'antd';
 import { canvas } from '../../Layout/index';
 import { default as mitt } from 'mitt';
 import './style.css';
@@ -279,7 +275,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
                   },
                   /*#__PURE__*/ React.createElement('span', null),
                   /*#__PURE__*/ React.createElement(
-                    _Button,
+                    Button,
                     {
                       type: 'link',
                       onClick: this.openNewWindow.bind(this),
@@ -302,7 +298,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
                   }),
                 ),
               )
-            : /*#__PURE__*/ React.createElement(_Empty, {
+            : /*#__PURE__*/ React.createElement(Empty, {
                 image: /*#__PURE__*/ React.createElement(CustomIcon, {
                   type: 'iconwushuju',
                 }),

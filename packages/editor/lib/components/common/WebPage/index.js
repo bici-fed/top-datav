@@ -1,33 +1,33 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = exports._emitter = void 0;
+exports.default = exports._emitter = void 0;
+
+require('antd/es/empty/style');
+
+var _empty = _interopRequireDefault(require('antd/es/empty'));
+
+require('antd/es/button/style');
+
+var _button = _interopRequireDefault(require('antd/es/button'));
+
+var _classCallCheck2 = _interopRequireDefault(require('@babel/runtime/helpers/classCallCheck'));
+
+var _createClass2 = _interopRequireDefault(require('@babel/runtime/helpers/createClass'));
+
+var _assertThisInitialized2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/assertThisInitialized'),
+);
+
+var _inherits2 = _interopRequireDefault(require('@babel/runtime/helpers/inherits'));
+
+var _createSuper2 = _interopRequireDefault(require('@babel/runtime/helpers/createSuper'));
 
 var _react = _interopRequireDefault(require('react'));
-
-var _antd = require('antd');
 
 var _index = require('../../Layout/index');
 
@@ -41,132 +41,33 @@ var _withCatchable = _interopRequireDefault(require('../withCatchable'));
 
 var _iconConfig = _interopRequireDefault(require('../../config/iconConfig'));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ('value' in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, 'prototype', { writable: false });
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== 'function' && superClass !== null) {
-    throw new TypeError('Super expression must either be null or a function');
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  Object.defineProperty(subClass, 'prototype', { writable: false });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === 'object' || typeof call === 'function')) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined');
-  }
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === 'undefined' || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === 'function') return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
-}
-
 var _emitter;
 
 exports._emitter = _emitter;
 
 var WebPage = /*#__PURE__*/ (function (_React$Component) {
-  _inherits(WebPage, _React$Component);
+  (0, _inherits2.default)(WebPage, _React$Component);
 
-  var _super = _createSuper(WebPage);
+  var _super = (0, _createSuper2.default)(WebPage);
 
   function WebPage(prop) {
     var _this;
 
-    _classCallCheck(this, WebPage);
-
+    (0, _classCallCheck2.default)(this, WebPage);
     _this = _super.call(this, prop);
     _this.iframeDiv = void 0;
-    exports._emitter = _emitter = (0, _mitt['default'])();
-    _this.iframeDiv = /*#__PURE__*/ _react['default'].createRef();
+    exports._emitter = _emitter = (0, _mitt.default)();
+    _this.iframeDiv = /*#__PURE__*/ _react.default.createRef();
     _this.state = {
       headerClassNames: 'header',
     };
-    _this.handleMouseMoveTop = _this.handleMouseMoveTop.bind(_assertThisInitialized(_this));
+    _this.handleMouseMoveTop = _this.handleMouseMoveTop.bind(
+      (0, _assertThisInitialized2.default)(_this),
+    );
     return _this;
   }
 
-  _createClass(WebPage, [
+  (0, _createClass2.default)(WebPage, [
     {
       key: 'componentDidMount',
       value: function componentDidMount() {
@@ -207,7 +108,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
         if (e.pageY < 42) {
           that.setState(
             {
-              headerClassNames: (0, _classnames['default'])({
+              headerClassNames: (0, _classnames.default)({
                 header: true,
                 headerAnimation: true,
               }),
@@ -219,7 +120,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
         } else {
           that.setState(
             {
-              headerClassNames: (0, _classnames['default'])({
+              headerClassNames: (0, _classnames.default)({
                 header: true,
                 headerAnimation: false,
               }),
@@ -277,7 +178,7 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
       key: 'render',
       value: function render() {
         var isUrl = this.checkURL(this.props.iframe);
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ _react.default.createElement(
           'div',
           {
             className: 'custui-webpage',
@@ -287,17 +188,17 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
             },
           },
           isUrl
-            ? /*#__PURE__*/ _react['default'].createElement(
-                _react['default'].Fragment,
+            ? /*#__PURE__*/ _react.default.createElement(
+                _react.default.Fragment,
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ _react.default.createElement(
                   'div',
                   {
                     className: this.state.headerClassNames,
                   },
-                  /*#__PURE__*/ _react['default'].createElement('span', null),
-                  /*#__PURE__*/ _react['default'].createElement(
-                    _antd.Button,
+                  /*#__PURE__*/ _react.default.createElement('span', null),
+                  /*#__PURE__*/ _react.default.createElement(
+                    _button.default,
                     {
                       type: 'link',
                       onClick: this.openNewWindow.bind(this),
@@ -305,12 +206,12 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
                     '\u6253\u5F00\u65B0\u9875\u9762',
                   ),
                 ),
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ _react.default.createElement(
                   'div',
                   {
                     className: 'page-content',
                   },
-                  /*#__PURE__*/ _react['default'].createElement('iframe', {
+                  /*#__PURE__*/ _react.default.createElement('iframe', {
                     ref: this.iframeDiv,
                     src: this.props.iframe,
                     onError: this.handleError.bind(this),
@@ -320,18 +221,18 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
                   }),
                 ),
               )
-            : /*#__PURE__*/ _react['default'].createElement(_antd.Empty, {
-                image: /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+            : /*#__PURE__*/ _react.default.createElement(_empty.default, {
+                image: /*#__PURE__*/ _react.default.createElement(_iconConfig.default, {
                   type: 'iconwushuju',
                 }),
                 imageStyle: {
                   height: 60,
                 },
-                description: /*#__PURE__*/ _react['default'].createElement(
+                description: /*#__PURE__*/ _react.default.createElement(
                   'span',
                   null,
                   '\u6682\u672A\u8FDE\u63A5\u5230\u6B63\u786E\u7684\u7F51\u9875',
-                  /*#__PURE__*/ _react['default'].createElement('br', null),
+                  /*#__PURE__*/ _react.default.createElement('br', null),
                   ' \u8BF7\u5148\u5728\u53F3\u4FA7\u64CD\u4F5C\u680F\u8BBE\u7F6E',
                 ),
               }),
@@ -339,10 +240,9 @@ var WebPage = /*#__PURE__*/ (function (_React$Component) {
       },
     },
   ]);
-
   return WebPage;
-})(_react['default'].Component);
+})(_react.default.Component);
 
-var _default = (0, _withCatchable['default'])(WebPage);
+var _default = (0, _withCatchable.default)(WebPage);
 
-exports['default'] = _default;
+exports.default = _default;

@@ -1,5 +1,7 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
@@ -47,10 +49,6 @@ var _video = _interopRequireDefault(require('./setting/video'));
 
 var _dateFormat = _interopRequireDefault(require('./setting/dateFormat'));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
 // biciText=数据统计
 // biciCard2=数据卡片2 华夏演示专用
 var defaultToolsConfig = [
@@ -86,32 +84,32 @@ var Tools = [
   {
     group: '通用组件',
     children: {
-      rectangle: _rectangle['default'],
-      circle: _circle['default'],
-      text: _text['default'],
-      biciTimer: _biciTimer['default'],
-      dateFormat: _dateFormat['default'],
-      biciVarer: _biciVarer['default'],
-      biciCard: _biciCard['default'],
-      biciPilot: _biciPilot['default'],
-      line: _line['default'],
-      dataTable: _dataTable['default'],
-      webPage: _webPage['default'],
-      liveVideo: _liveVideo['default'],
-      video: _video['default'],
+      rectangle: _rectangle.default,
+      circle: _circle.default,
+      text: _text.default,
+      biciTimer: _biciTimer.default,
+      dateFormat: _dateFormat.default,
+      biciVarer: _biciVarer.default,
+      biciCard: _biciCard.default,
+      biciPilot: _biciPilot.default,
+      line: _line.default,
+      dataTable: _dataTable.default,
+      webPage: _webPage.default,
+      liveVideo: _liveVideo.default,
+      video: _video.default,
     },
   },
   {
     group: '图表控件',
     children: {
-      groupBar: _groupBar['default'],
-      verticalBar: _verticalBar['default'],
-      stackBar: _stackBar['default'],
-      horizontalBar: _horizontalBar['default'],
-      circleAndPie: _circleAndPie['default'],
-      gauge: _gauge['default'],
-      biciMeasure: _biciMeasure['default'],
-      timeLine: _timeLine['default'],
+      groupBar: _groupBar.default,
+      verticalBar: _verticalBar.default,
+      stackBar: _stackBar.default,
+      horizontalBar: _horizontalBar.default,
+      circleAndPie: _circleAndPie.default,
+      gauge: _gauge.default,
+      biciMeasure: _biciMeasure.default,
+      timeLine: _timeLine.default,
     },
   },
 ];

@@ -3,6 +3,7 @@
   "name": "top-datav",
   "version": "1.0.0",
   "license": "MIT",
+  "sideEffect": false,
   "workspaces": [
     "packages/*",
     "examples/*"
@@ -36,7 +37,8 @@
   },
   "dependencies": {
     "react": "^16.12.0 || ^17.0.0",
-    "react-dom": "^16.12.0 || ^17.0.0"
+    "react-dom": "^16.12.0 || ^17.0.0",
+    "@babel/runtime": "^7.18.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.1",

@@ -1,9 +1,35 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = exports.canvas = void 0;
+exports.default = exports.canvas = void 0;
+
+require('antd/es/tooltip/style');
+
+var _tooltip = _interopRequireDefault(require('antd/es/tooltip'));
+
+require('antd/es/config-provider/style');
+
+var _configProvider = _interopRequireDefault(require('antd/es/config-provider'));
+
+var _objectWithoutProperties2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/objectWithoutProperties'),
+);
+
+var _objectSpread2 = _interopRequireDefault(require('@babel/runtime/helpers/objectSpread2'));
+
+var _typeof2 = _interopRequireDefault(require('@babel/runtime/helpers/typeof'));
+
+var _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/slicedToArray'));
+
+require('antd/es/tabs/style');
+
+var _tabs = _interopRequireDefault(require('antd/es/tabs'));
 
 var _react = _interopRequireWildcard(require('react'));
 
@@ -12,8 +38,6 @@ var _core = require('@top-datav/core');
 var _chartDiagram = require('@top-datav/chart-diagram');
 
 var _biciDiagram = require('@top-datav/bici-diagram');
-
-var _antd = require('antd');
 
 var _config = require('../config/config');
 
@@ -62,208 +86,7 @@ var _groupbar = require('../config/charts/groupbar');
 var _horizontalbar = require('../config/charts/horizontalbar');
 
 var _excluded = ['dash', 'lineWidth', 'strokeStyle', 'name', 'fromArrow', 'toArrow'];
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-  return target;
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-function _slicedToArray(arr, i) {
-  return (
-    _arrayWithHoles(arr) ||
-    _iterableToArrayLimit(arr, i) ||
-    _unsupportedIterableToArray(arr, i) ||
-    _nonIterableRest()
-  );
-}
-
-function _nonIterableRest() {
-  throw new TypeError(
-    'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-  );
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i =
-    arr == null
-      ? null
-      : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i['return'] != null) _i['return']();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-var TabPane = _antd.Tabs.TabPane;
+var TabPane = _tabs.default.TabPane;
 var canvas;
 /**
  * 编辑器画布
@@ -273,7 +96,7 @@ var canvas;
 
 exports.canvas = canvas;
 
-var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
+var EditorLayout = /*#__PURE__*/ _react.default.forwardRef(function (props, ref) {
   var _props$editorData, _props$editorData2, _customCompRef$curren;
 
   var history = props.history;
@@ -282,17 +105,17 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
   var headerRef = (0, _react.useRef)();
 
   var _useState = (0, _react.useState)(true),
-    _useState2 = _slicedToArray(_useState, 2),
+    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     isSave = _useState2[0],
     setIsSave = _useState2[1];
 
   var _useState3 = (0, _react.useState)(1),
-    _useState4 = _slicedToArray(_useState3, 2),
+    _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     scaleVal = _useState4[0],
     setScaleVal = _useState4[1];
 
   var _useState5 = (0, _react.useState)(''),
-    _useState6 = _slicedToArray(_useState5, 2),
+    _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
     bkImageUrl = _useState6[0],
     setBkImageUrl = _useState6[1];
 
@@ -316,7 +139,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
           ? void 0
           : _props$editorData2.height) || 1168,
     }),
-    _useState8 = _slicedToArray(_useState7, 2),
+    _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
     canvasSizeInfo = _useState8[0],
     setCanvasSizeInfo = _useState8[1];
 
@@ -326,12 +149,12 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       multi: false,
       nodes: null, // locked: Lock.None
     }),
-    _useState10 = _slicedToArray(_useState9, 2),
+    _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
     selected = _useState10[0],
     setSelected = _useState10[1]; // 是否显示右键菜单
 
   var _useState11 = (0, _react.useState)(false),
-    _useState12 = _slicedToArray(_useState11, 2),
+    _useState12 = (0, _slicedToArray2.default)(_useState11, 2),
     showContextmenu = _useState12[0],
     setShowContextmenu = _useState12[1];
 
@@ -343,17 +166,17 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       top: '',
       bottom: '',
     }),
-    _useState14 = _slicedToArray(_useState13, 2),
+    _useState14 = (0, _slicedToArray2.default)(_useState13, 2),
     contextmenu = _useState14[0],
     setContextmenu = _useState14[1];
 
   var _useState15 = (0, _react.useState)(false),
-    _useState16 = _slicedToArray(_useState15, 2),
+    _useState16 = (0, _slicedToArray2.default)(_useState15, 2),
     isLoadCanvas = _useState16[0],
     setIsLoadCanvas = _useState16[1];
 
   var _useState17 = (0, _react.useState)(false),
-    _useState18 = _slicedToArray(_useState17, 2),
+    _useState18 = (0, _slicedToArray2.default)(_useState17, 2),
     showHeader = _useState18[0],
     setShowHeader = _useState18[1];
 
@@ -419,7 +242,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       canvasRegister();
       exports.canvas = canvas = new _core.Topology('topology-canvas', canvasOptions);
 
-      if (props.editorData != undefined && _typeof(props.editorData) == 'object') {
+      if (props.editorData != undefined && (0, _typeof2.default)(props.editorData) == 'object') {
         canvas.open(props.editorData);
       }
 
@@ -428,8 +251,8 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         var h = props.editorData.height;
         var r = (0, _cacl.calcCanvas)(w, h);
         setCanvasSizeInfo(
-          _objectSpread(
-            _objectSpread({}, r),
+          (0, _objectSpread2.default)(
+            (0, _objectSpread2.default)({}, r),
             {},
             {
               width: w,
@@ -493,8 +316,8 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       (node.data.name == 'liveVideo' && props.websocketConf.video) ||
       (node.data.name == 'QTLiveVideo' && props.websocketConf.video)
     ) {
-      node.data.property.video = _objectSpread(
-        _objectSpread({}, node.data.property.video),
+      node.data.property.video = (0, _objectSpread2.default)(
+        (0, _objectSpread2.default)({}, node.data.property.video),
         {},
         {
           updateStream: props.websocketConf.video.updateStream,
@@ -568,7 +391,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     var changedProps = values;
 
     for (var key in changedProps) {
-      if (_typeof(changedProps[key]) === 'object') {
+      if ((0, _typeof2.default)(changedProps[key]) === 'object') {
         selected.node.property[key] = changedProps[key];
       } else {
         if (changedProps[key] !== undefined) {
@@ -777,7 +600,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       };
 
       for (var key in changedProps) {
-        if (_typeof(changedProps[key]) === 'object') {
+        if ((0, _typeof2.default)(changedProps[key]) === 'object') {
           for (var k in changedProps[key]) {
             if (changedProps[key][k] !== undefined) {
               selected.node[key][k] = changedProps[key][k];
@@ -846,17 +669,17 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
           var node = selected.node;
 
           if (value['date.show']) {
-            y = (0, _moment['default'])().format(value['date.format']);
+            y = (0, _moment.default)().format(value['date.format']);
           }
 
           if (value['time.show']) {
-            h = (0, _moment['default'])().format(value['time.format']);
+            h = (0, _moment.default)().format(value['time.format']);
           }
 
           node.text = y + ' ' + h;
 
           if (node.text == ' ') {
-            node.text = (0, _moment['default'])().format('LLLL');
+            node.text = (0, _moment.default)().format('LLLL');
           }
 
           canvas.updateProps(false);
@@ -919,8 +742,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         name = value.name,
         fromArrow = value.fromArrow,
         toArrow = value.toArrow,
-        other = _objectWithoutProperties(value, _excluded);
-
+        other = (0, _objectWithoutProperties2.default)(value, _excluded);
       var changedValues = {
         line: {
           rect: other,
@@ -937,7 +759,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         // 遍历查找修改的属性，赋值给原始line
         for (var key in changedValues.line) {
           if (Array.isArray(changedValues.line[key])) {
-          } else if (_typeof(changedValues.line[key]) === 'object') {
+          } else if ((0, _typeof2.default)(changedValues.line[key]) === 'object') {
             for (var k in changedValues.line[key]) {
               selected.line[key][k] = changedValues.line[key][k];
             }
@@ -1135,8 +957,8 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         temp.rotate += temp.offsetRotate;
         setIsSave(false);
         setSelected(
-          _objectSpread(
-            _objectSpread({}, selected),
+          (0, _objectSpread2.default)(
+            (0, _objectSpread2.default)({}, selected),
             {},
             {
               node: temp,
@@ -1150,8 +972,8 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         setSelected(
           Object.assign(
             {},
-            _objectSpread(
-              _objectSpread({}, selected),
+            (0, _objectSpread2.default)(
+              (0, _objectSpread2.default)({}, selected),
               {},
               {
                 node: data[0],
@@ -1166,8 +988,8 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
         setSelected(
           Object.assign(
             {},
-            _objectSpread(
-              _objectSpread({}, selected),
+            (0, _objectSpread2.default)(
+              (0, _objectSpread2.default)({}, selected),
               {},
               {
                 node: data[0],
@@ -1223,7 +1045,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
       return {
         node:
           selected &&
-          /*#__PURE__*/ _react['default'].createElement(_nodeComponent['default'], {
+          /*#__PURE__*/ _react.default.createElement(_nodeComponent.default, {
             data: selected,
             onFormValueChange: onHandleFormValueChange,
             onEventValueChange: onEventValueChange,
@@ -1238,13 +1060,13 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
           }),
         line:
           selected &&
-          /*#__PURE__*/ _react['default'].createElement(_lineComponent['default'], {
+          /*#__PURE__*/ _react.default.createElement(_lineComponent.default, {
             data: selected,
             onFormValueChange: onHandleLineFormValueChange,
           }),
         default:
           canvas &&
-          /*#__PURE__*/ _react['default'].createElement(_backgroundComponent['default'], {
+          /*#__PURE__*/ _react.default.createElement(_backgroundComponent.default, {
             data: canvas,
             baseUrl: props.apiURL,
             websocketConf: props.websocketConf,
@@ -1285,7 +1107,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
   var renderRightArea = (0, _react.useMemo)(
     function () {
       if (isLoadCanvas) {
-        var _component = rightAreaConfig['default'];
+        var _component = rightAreaConfig.default;
         Object.keys(rightAreaConfig).forEach(function (item) {
           if (selected[item]) {
             _component = rightAreaConfig[item];
@@ -1300,7 +1122,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
   var renderHeader = (0, _react.useMemo)(
     function () {
       if (showHeader) {
-        return /*#__PURE__*/ _react['default'].createElement(_Header['default'], {
+        return /*#__PURE__*/ _react.default.createElement(_Header.default, {
           ref: headerRef,
           canvas: canvas,
           history: history,
@@ -1346,13 +1168,13 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
     }
   };
 
-  var renderContextMenu = /*#__PURE__*/ _react['default'].createElement(
+  var renderContextMenu = /*#__PURE__*/ _react.default.createElement(
     'div',
     {
       style: contextmenu,
       ref: contextMenuRef,
     },
-    /*#__PURE__*/ _react['default'].createElement(_canvasContextMenu['default'], {
+    /*#__PURE__*/ _react.default.createElement(_canvasContextMenu.default, {
       data: selected,
       canvas: canvas,
       show: showContextmenu,
@@ -1370,38 +1192,38 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
   );
 
   var divHeight = document.body.clientHeight - 200;
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.ConfigProvider,
+  return /*#__PURE__*/ _react.default.createElement(
+    _configProvider.default,
     {
       prefixCls: 'antdv4',
     },
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ _react.default.createElement(
       'div',
       {
         id: 'editLayout',
         ref: layoutRef,
       },
       renderHeader,
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ _react.default.createElement(
         'div',
         {
-          className: _indexModule['default'].page,
+          className: _indexModule.default.page,
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'div',
           {
-            className: _indexModule['default'].tool,
+            className: _indexModule.default.tool,
             style: {
               overflow: 'hidden',
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Tabs,
+          /*#__PURE__*/ _react.default.createElement(
+            _tabs.default,
             {
               defaultActiveKey: '1',
               centered: true,
             },
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ _react.default.createElement(
               TabPane,
               {
                 tab: '\xA0\xA0\xA0\xA0\u7EC4\xA0\u4EF6\xA0\xA0\xA0\xA0\xA0',
@@ -1410,7 +1232,7 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                   margin: 0,
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ _react.default.createElement(
                 'div',
                 {
                   style: {
@@ -1418,19 +1240,19 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     overflow: 'auto',
                   },
                 },
-                /*#__PURE__*/ _react['default'].createElement(_SystemComponent['default'], {
+                /*#__PURE__*/ _react.default.createElement(_SystemComponent.default, {
                   onDrag: onDrag,
                   Tools: _config.Tools,
                   toolConfig: props.websocketConf.toolsConfig,
                 }),
-                /*#__PURE__*/ _react['default'].createElement(_CustomComponent['default'], {
+                /*#__PURE__*/ _react.default.createElement(_CustomComponent.default, {
                   ref: customCompRef,
                   onDrag: onDrag,
                   combineCom: props.uploadConfig.combineCom,
                 }),
               ),
             ),
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ _react.default.createElement(
               TabPane,
               {
                 tab: '\xA0\xA0\xA0\xA0\u56FE\xA0\xA0\u5E93\xA0\xA0\xA0\xA0',
@@ -1439,29 +1261,29 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                   margin: 0,
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(_PicComponent['default'], {
+              /*#__PURE__*/ _react.default.createElement(_PicComponent.default, {
                 uploaConfig: props.uploadConfig,
                 industrialLibrary: props.industrialLibrary,
               }),
             ),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'div',
           {
-            className: _indexModule['default'].full,
+            className: _indexModule.default.full,
             id: 'full',
             style: {
               background: '#efefef',
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'div',
             {
               id: 'topology-canvas-wrapper',
             },
-            /*#__PURE__*/ _react['default'].createElement('svg', {
-              className: _indexModule['default'].svg,
+            /*#__PURE__*/ _react.default.createElement('svg', {
+              className: _indexModule.default.svg,
               id: 'topology-canvas-svg',
               ref: svgRef,
               style: {
@@ -1470,32 +1292,32 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
               },
             }),
             props.boardData &&
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ _react.default.createElement(
                 'p',
                 {
-                  className: _indexModule['default'].titleInfo,
+                  className: _indexModule.default.titleInfo,
                   style: {
                     left: canvasSizeInfo.left,
                     top: canvasSizeInfo.top,
                   },
                 },
                 props.boardData.code
-                  ? /*#__PURE__*/ _react['default'].createElement(
-                      _react['default'].Fragment,
+                  ? /*#__PURE__*/ _react.default.createElement(
+                      _react.default.Fragment,
                       null,
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Tooltip,
+                      /*#__PURE__*/ _react.default.createElement(
+                        _tooltip.default,
                         {
                           title: props.boardData.code,
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ _react.default.createElement(
                           'span',
                           null,
                           'No.',
                           props.boardData.code,
                         ),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
+                      /*#__PURE__*/ _react.default.createElement(
                         'span',
                         {
                           style: {
@@ -1507,21 +1329,21 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     )
                   : '',
                 props.boardData.name
-                  ? /*#__PURE__*/ _react['default'].createElement(
-                      _react['default'].Fragment,
+                  ? /*#__PURE__*/ _react.default.createElement(
+                      _react.default.Fragment,
                       null,
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Tooltip,
+                      /*#__PURE__*/ _react.default.createElement(
+                        _tooltip.default,
                         {
                           title: props.boardData.name,
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ _react.default.createElement(
                           'span',
                           null,
                           props.boardData.name,
                         ),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
+                      /*#__PURE__*/ _react.default.createElement(
                         'span',
                         {
                           style: {
@@ -1533,21 +1355,21 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     )
                   : '',
                 props.boardData.typeName
-                  ? /*#__PURE__*/ _react['default'].createElement(
-                      _react['default'].Fragment,
+                  ? /*#__PURE__*/ _react.default.createElement(
+                      _react.default.Fragment,
                       null,
-                      /*#__PURE__*/ _react['default'].createElement(
-                        _antd.Tooltip,
+                      /*#__PURE__*/ _react.default.createElement(
+                        _tooltip.default,
                         {
                           title: props.boardData.typeName,
                         },
-                        /*#__PURE__*/ _react['default'].createElement(
+                        /*#__PURE__*/ _react.default.createElement(
                           'span',
                           null,
                           props.boardData.typeName,
                         ),
                       ),
-                      /*#__PURE__*/ _react['default'].createElement(
+                      /*#__PURE__*/ _react.default.createElement(
                         'span',
                         {
                           style: {
@@ -1559,12 +1381,12 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     )
                   : '',
                 props.boardData.remark
-                  ? /*#__PURE__*/ _react['default'].createElement(
-                      _antd.Tooltip,
+                  ? /*#__PURE__*/ _react.default.createElement(
+                      _tooltip.default,
                       {
                         title: props.boardData.remark,
                       },
-                      /*#__PURE__*/ _react['default'].createElement(
+                      /*#__PURE__*/ _react.default.createElement(
                         'span',
                         null,
                         props.boardData.remark,
@@ -1572,8 +1394,8 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
                     )
                   : '',
               ),
-            /*#__PURE__*/ _react['default'].createElement('div', {
-              className: _indexModule['default'].topology_canvas,
+            /*#__PURE__*/ _react.default.createElement('div', {
+              className: _indexModule.default.topology_canvas,
               ref: canvasRef,
               id: 'topology-canvas',
               style: {
@@ -1592,10 +1414,10 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
             }),
           ),
         ),
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'div',
           {
-            className: _indexModule['default'].props,
+            className: _indexModule.default.props,
             id: 'props',
             style: {
               overflow: 'hidden',
@@ -1610,4 +1432,4 @@ var EditorLayout = /*#__PURE__*/ _react['default'].forwardRef(function (props, r
 });
 
 var _default = EditorLayout;
-exports['default'] = _default;
+exports.default = _default;

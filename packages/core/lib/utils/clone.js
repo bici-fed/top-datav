@@ -1,29 +1,13 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 exports.deepClone = deepClone;
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _typeof2 = _interopRequireDefault(require('@babel/runtime/helpers/typeof'));
 
 function deepClone(o) {
   if (Array.isArray(o)) {
@@ -32,7 +16,7 @@ function deepClone(o) {
       arr.push(deepClone(item));
     });
     return arr;
-  } else if (_typeof(o) === 'object') {
+  } else if ((0, _typeof2.default)(o) === 'object') {
     if (o === null) {
       return null;
     } else if (o.constructor === RegExp) {

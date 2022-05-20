@@ -1,13 +1,37 @@
 'use strict';
 
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = exports.canvas = exports.PreviewProps = void 0;
+exports.default = exports.canvas = exports.PreviewProps = void 0;
+
+require('antd/es/config-provider/style');
+
+var _configProvider = _interopRequireDefault(require('antd/es/config-provider'));
+
+var _createForOfIteratorHelper2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/createForOfIteratorHelper'),
+);
+
+var _objectSpread2 = _interopRequireDefault(require('@babel/runtime/helpers/objectSpread2'));
+
+var _regenerator = _interopRequireDefault(require('@babel/runtime/regenerator'));
+
+var _asyncToGenerator2 = _interopRequireDefault(require('@babel/runtime/helpers/asyncToGenerator'));
+
+var _typeof2 = _interopRequireDefault(require('@babel/runtime/helpers/typeof'));
+
+var _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/slicedToArray'));
+
+var _createClass2 = _interopRequireDefault(require('@babel/runtime/helpers/createClass'));
+
+var _classCallCheck2 = _interopRequireDefault(require('@babel/runtime/helpers/classCallCheck'));
 
 var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
 
 var _core = require('@top-datav/core');
 
@@ -49,292 +73,11 @@ var _horizontalbar = require('../config/charts/horizontalbar');
 
 var _pie = require('../config/charts/pie');
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-  if (!it) {
-    if (
-      Array.isArray(o) ||
-      (it = _unsupportedIterableToArray(o)) ||
-      (allowArrayLike && o && typeof o.length === 'number')
-    ) {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return { done: true };
-          return { done: false, value: o[i++] };
-        },
-        e: function e(_e2) {
-          throw _e2;
-        },
-        f: F,
-      };
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    );
-  }
-  var normalCompletion = true,
-    didErr = false,
-    err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e3) {
-      didErr = true;
-      err = _e3;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it['return'] != null) it['return']();
-      } finally {
-        if (didErr) throw err;
-      }
-    },
-  };
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-      args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'next', value);
-      }
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'throw', err);
-      }
-      _next(undefined);
-    });
-  };
-}
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-function _slicedToArray(arr, i) {
-  return (
-    _arrayWithHoles(arr) ||
-    _iterableToArrayLimit(arr, i) ||
-    _unsupportedIterableToArray(arr, i) ||
-    _nonIterableRest()
-  );
-}
-
-function _nonIterableRest() {
-  throw new TypeError(
-    'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-  );
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i =
-    arr == null
-      ? null
-      : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i['return'] != null) _i['return']();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ('value' in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, 'prototype', { writable: false });
-  return Constructor;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
-  }
-}
-
 var canvas;
 exports.canvas = canvas;
 var x, y;
-
-var PreviewProps = /*#__PURE__*/ _createClass(function PreviewProps() {
-  _classCallCheck(this, PreviewProps);
-
+var PreviewProps = /*#__PURE__*/ (0, _createClass2.default)(function PreviewProps() {
+  (0, _classCallCheck2.default)(this, PreviewProps);
   this.history = void 0;
   this.key = void 0;
   this.ref = void 0;
@@ -366,22 +109,22 @@ var Preview = function Preview(_ref) {
   };
 
   var _useState = (0, _react.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
+    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     drawerVisible = _useState2[0],
     setDrawerVisible = _useState2[1];
 
   var _useState3 = (0, _react.useState)(),
-    _useState4 = _slicedToArray(_useState3, 2),
+    _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     deviceType = _useState4[0],
     setDeviceType = _useState4[1];
 
   var _useState5 = (0, _react.useState)(),
-    _useState6 = _slicedToArray(_useState5, 2),
+    _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
     reqData = _useState6[0],
     setReqData = _useState6[1];
 
   var _useState7 = (0, _react.useState)(),
-    _useState8 = _slicedToArray(_useState7, 2),
+    _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
     currentNode = _useState8[0],
     setCurrentNode = _useState8[1];
 
@@ -402,7 +145,7 @@ var Preview = function Preview(_ref) {
       canvasRegister();
       exports.canvas = canvas = new _core.Topology('topology-canvas-preview', canvasOptions); // 渲染页面数据
 
-      if (data != undefined && _typeof(data) == 'object') {
+      if (data != undefined && (0, _typeof2.default)(data) == 'object') {
         data.locked = 2;
         canvas.open(data);
         canvas.resize({
@@ -604,10 +347,10 @@ var Preview = function Preview(_ref) {
       // 有数据，去遍历所有数据为接口类型的组件
       pens.forEach(
         /*#__PURE__*/ (function () {
-          var _ref2 = _asyncToGenerator(
-            /*#__PURE__*/ regeneratorRuntime.mark(function _callee2(node) {
+          var _ref2 = (0, _asyncToGenerator2.default)(
+            /*#__PURE__*/ _regenerator.default.mark(function _callee2(node) {
               var interval;
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              return _regenerator.default.wrap(function _callee2$(_context2) {
                 while (1) {
                   switch ((_context2.prev = _context2.next)) {
                     case 0:
@@ -621,9 +364,9 @@ var Preview = function Preview(_ref) {
 
                           if (node.property.pullRate) {
                             interval = setInterval(
-                              /*#__PURE__*/ _asyncToGenerator(
-                                /*#__PURE__*/ regeneratorRuntime.mark(function _callee() {
-                                  return regeneratorRuntime.wrap(function _callee$(_context) {
+                              /*#__PURE__*/ (0, _asyncToGenerator2.default)(
+                                /*#__PURE__*/ _regenerator.default.mark(function _callee() {
+                                  return _regenerator.default.wrap(function _callee$(_context) {
                                     while (1) {
                                       switch ((_context.prev = _context.next)) {
                                         case 0:
@@ -816,7 +559,7 @@ var Preview = function Preview(_ref) {
     return new Promise(function (resolve, reject) {
       var myURL = new URL(node.property.dataSourceUrl || node.property.dataUrl);
 
-      var ajax = _axios['default'].create({
+      var ajax = _axios.default.create({
         baseURL: ''.concat(myURL.origin, '/'),
         timeout: _api.timeout,
         maxContentLength: _api.maxContentLength,
@@ -841,7 +584,7 @@ var Preview = function Preview(_ref) {
             });
           }
         })
-        ['catch'](function (error) {
+        .catch(function (error) {
           (0, _api.handleRequestError)(error);
           resolve({
             front_error: 1,
@@ -956,8 +699,8 @@ var Preview = function Preview(_ref) {
 
   for (var i = 0; i < 10; i++) {
     timedata.push({
-      name: (0, _moment['default'])().subtract(1, 'seconds'),
-      value: [(0, _moment['default'])().subtract(1, 'seconds'), null],
+      name: (0, _moment.default)().subtract(1, 'seconds'),
+      value: [(0, _moment.default)().subtract(1, 'seconds'), null],
     });
   }
 
@@ -1013,7 +756,7 @@ var Preview = function Preview(_ref) {
               if (row.dataCode == r.id) {
                 if (index == 0) {
                   timesxAix.push(
-                    (0, _moment['default'])(parseInt(r.time / 1000 + '') * 1000).format('LTS'),
+                    (0, _moment.default)(parseInt(r.time / 1000 + '') * 1000).format('LTS'),
                   );
 
                   if (timesxAix.length > _defines.defaultTimelineShowData) {
@@ -1044,8 +787,8 @@ var Preview = function Preview(_ref) {
             var n = node.property.dataDot;
             var rows = (node.property.dataPointSelectedRows || []).map(function (row) {
               if (row.dataCode == r.id) {
-                return _objectSpread(
-                  _objectSpread({}, row),
+                return (0, _objectSpread2.default)(
+                  (0, _objectSpread2.default)({}, row),
                   {},
                   {
                     value: (0, _cacl.getFixed)(r.value, n),
@@ -1094,12 +837,12 @@ var Preview = function Preview(_ref) {
 
             if ((0, _cacl.isNumber)(r.value)) {
               // 数值型
-              var _n2 = node.property.dataDot;
+              var _n = node.property.dataDot;
 
               if (r.value < 0.0000000000000000001) {
                 node.text = r.value + '';
               } else {
-                node.text = (0, _cacl.getFixed)(r.value, _n2);
+                node.text = (0, _cacl.getFixed)(r.value, _n);
               }
             } else {
               node.text = r.value + '';
@@ -1141,8 +884,8 @@ var Preview = function Preview(_ref) {
           }
         } else if (node.name === 'biciCard') {
           if (node.property.dataPointParam.qtDataList[0].dataCode == r.id) {
-            var _n3 = node.property.dataDot;
-            var val = (0, _cacl.getFixed)(r.value, _n3);
+            var _n2 = node.property.dataDot;
+            var val = (0, _cacl.getFixed)(r.value, _n2);
 
             if (r.value == undefined) {
               val = '0.00';
@@ -1197,7 +940,7 @@ var Preview = function Preview(_ref) {
             }
 
             if (node.property.lightRange) {
-              var _iterator = _createForOfIteratorHelper(node.property.lightRange),
+              var _iterator = (0, _createForOfIteratorHelper2.default)(node.property.lightRange),
                 _step;
 
               try {
@@ -1262,15 +1005,15 @@ var Preview = function Preview(_ref) {
             node.text = '暂无数据';
           } // canvas.updateProps(false);
         } else if (node.name == 'dataTable') {
-          var _n4 = node.property.dataDot;
+          var _n3 = node.property.dataDot;
 
           var _rows = (node.property.dataPointSelectedRows || []).map(function (row) {
             if (row.dataCode == r.id) {
-              return _objectSpread(
-                _objectSpread({}, row),
+              return (0, _objectSpread2.default)(
+                (0, _objectSpread2.default)({}, row),
                 {},
                 {
-                  value: (0, _cacl.getFixed)(r.value, _n4),
+                  value: (0, _cacl.getFixed)(r.value, _n3),
                 },
               );
             } else {
@@ -1331,14 +1074,14 @@ var Preview = function Preview(_ref) {
     setDrawerVisible(false);
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.ConfigProvider,
+  return /*#__PURE__*/ _react.default.createElement(
+    _configProvider.default,
     {
       prefixCls: 'antdv4',
     },
-    /*#__PURE__*/ _react['default'].createElement('div', {
+    /*#__PURE__*/ _react.default.createElement('div', {
       id: 'topology-canvas-preview',
-      className: _indexModule['default'].topology_canvas_preview,
+      className: _indexModule.default.topology_canvas_preview,
       style: {
         margin: 'auto auto',
         height: isApp ? '100%' : data === null || data === void 0 ? void 0 : data.height,
@@ -1351,4 +1094,4 @@ var Preview = function Preview(_ref) {
 }; // @ts-ignore
 
 var _default = Preview;
-exports['default'] = _default;
+exports.default = _default;

@@ -1,33 +1,27 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
+
+require('antd/es/col/style');
+
+var _col = _interopRequireDefault(require('antd/es/col'));
+
+require('antd/es/row/style');
+
+var _row = _interopRequireDefault(require('antd/es/row'));
+
+require('antd/es/collapse/style');
+
+var _collapse = _interopRequireDefault(require('antd/es/collapse'));
 
 var _react = _interopRequireDefault(require('react'));
-
-var _antd = require('antd');
 
 var _indexModule = _interopRequireDefault(require('../../index.module.css'));
 
@@ -37,57 +31,14 @@ var _config = require('../../../config/config');
 
 var _ = _interopRequireWildcard(require('lodash'));
 
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var Panel = _antd.Collapse.Panel;
+var Panel = _collapse.default.Panel;
 
 var Layout = function Layout(_ref) {
   var Tools = _ref.Tools,
     onDrag = _ref.onDrag,
     toolConfig = _ref.toolConfig;
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.Collapse,
+  return /*#__PURE__*/ _react.default.createElement(
+    _collapse.default,
     {
       defaultActiveKey: ['0'],
       expandIconPosition: 'right',
@@ -95,19 +46,19 @@ var Layout = function Layout(_ref) {
       bordered: false,
     },
     Tools.map(function (item, index) {
-      return /*#__PURE__*/ _react['default'].createElement(
+      return /*#__PURE__*/ _react.default.createElement(
         Panel,
         {
           header: item.group,
           key: index,
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'div',
           {
-            className: _indexModule['default'].button,
+            className: _indexModule.default.button,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Row,
+          /*#__PURE__*/ _react.default.createElement(
+            _row.default,
             {
               align: 'middle',
             },
@@ -121,8 +72,8 @@ var Layout = function Layout(_ref) {
               }
 
               var it = item.children[itm];
-              return /*#__PURE__*/ _react['default'].createElement(
-                _antd.Col,
+              return /*#__PURE__*/ _react.default.createElement(
+                _col.default,
                 {
                   span: 8,
                   key: idx,
@@ -131,7 +82,7 @@ var Layout = function Layout(_ref) {
                     textAlign: 'center',
                   },
                 },
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ _react.default.createElement(
                   'a',
                   {
                     title: it.name,
@@ -144,7 +95,7 @@ var Layout = function Layout(_ref) {
                       return onDrag(ev, it);
                     },
                   },
-                  /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+                  /*#__PURE__*/ _react.default.createElement(_iconConfig.default, {
                     type: it.icon,
                     style: {
                       fontSize: 30,
@@ -153,7 +104,7 @@ var Layout = function Layout(_ref) {
                       lineHeight: '53px',
                     },
                   }),
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ _react.default.createElement(
                     'span',
                     {
                       style: {
@@ -176,4 +127,4 @@ var Layout = function Layout(_ref) {
 };
 
 var _default = Layout;
-exports['default'] = _default;
+exports.default = _default;

@@ -1,33 +1,41 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
+
+require('antd/es/space/style');
+
+var _space = _interopRequireDefault(require('antd/es/space'));
+
+require('antd/es/tag/style');
+
+var _tag = _interopRequireDefault(require('antd/es/tag'));
+
+require('antd/es/popover/style');
+
+var _popover = _interopRequireDefault(require('antd/es/popover'));
+
+require('antd/es/tooltip/style');
+
+var _tooltip = _interopRequireDefault(require('antd/es/tooltip'));
+
+require('antd/es/menu/style');
+
+var _menu = _interopRequireDefault(require('antd/es/menu'));
+
+var _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/slicedToArray'));
+
+require('antd/es/button/style');
+
+var _button = _interopRequireDefault(require('antd/es/button'));
 
 var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
 
 var _icons = require('@ant-design/icons');
 
@@ -38,114 +46,6 @@ var _iconConfig = _interopRequireDefault(require('../config/iconConfig'));
 var _indexModule = _interopRequireDefault(require('./index.module.css'));
 
 var _serializing = require('../utils/serializing');
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _slicedToArray(arr, i) {
-  return (
-    _arrayWithHoles(arr) ||
-    _iterableToArrayLimit(arr, i) ||
-    _unsupportedIterableToArray(arr, i) ||
-    _nonIterableRest()
-  );
-}
-
-function _nonIterableRest() {
-  throw new TypeError(
-    'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-  );
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i =
-    arr == null
-      ? null
-      : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i['return'] != null) _i['return']();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
 
 var headTools = [
   {
@@ -218,9 +118,9 @@ var headTools = [
     title: 'Ctrl+U',
   },
 ];
-var ButtonGroup = _antd.Button.Group;
+var ButtonGroup = _button.default.Group;
 
-var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
+var Header = /*#__PURE__*/ _react.default.forwardRef(function (props, ref) {
   var canvas = props.canvas,
     scaleVal = props.scaleVal,
     history = props.history,
@@ -230,17 +130,17 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
     onScaleCanvas = props.onScaleCanvas;
 
   var _useState = (0, _react.useState)(1),
-    _useState2 = _slicedToArray(_useState, 2),
+    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     scaleNumber = _useState2[0],
     setScaleNumber = _useState2[1]; // 缩放的基数
 
   var _useState3 = (0, _react.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
+    _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     scaleVisible = _useState4[0],
     setScaleVisible = _useState4[1]; // 缩放Popover的可见
 
   var _useFullscreen = (0, _ahooks.useFullscreen)(rootRef),
-    _useFullscreen2 = _slicedToArray(_useFullscreen, 2),
+    _useFullscreen2 = (0, _slicedToArray2.default)(_useFullscreen, 2),
     isFullscreen = _useFullscreen2[0],
     toggleFull = _useFullscreen2[1].toggleFull;
 
@@ -491,8 +391,8 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
    * 缩放比例菜单
    */
 
-  var scaleMenu = /*#__PURE__*/ _react['default'].createElement(
-    _antd.Menu,
+  var scaleMenu = /*#__PURE__*/ _react.default.createElement(
+    _menu.default,
     {
       onClick: function onClick(data) {
         return handleSelectScaleMenu(data);
@@ -501,29 +401,29 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
         border: 0,
       },
     },
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Menu.Item,
+    /*#__PURE__*/ _react.default.createElement(
+      _menu.default.Item,
       {
         key: '50',
       },
       '50%',
     ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Menu.Item,
+    /*#__PURE__*/ _react.default.createElement(
+      _menu.default.Item,
       {
         key: '100',
       },
       '100%',
     ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Menu.Item,
+    /*#__PURE__*/ _react.default.createElement(
+      _menu.default.Item,
       {
         key: '150',
       },
       '150%',
     ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Menu.Item,
+    /*#__PURE__*/ _react.default.createElement(
+      _menu.default.Item,
       {
         key: '200',
       },
@@ -531,29 +431,29 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
     ),
   );
 
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ _react.default.createElement(
     'div',
     {
-      className: _indexModule['default'].toolsHeader,
+      className: _indexModule.default.toolsHeader,
     },
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ _react.default.createElement(
       'a',
       {
-        className: _indexModule['default'].toolItem,
+        className: _indexModule.default.toolItem,
         onClick: handleExitEditor,
       },
-      /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+      /*#__PURE__*/ _react.default.createElement(_iconConfig.default, {
         type: 'icontuichu',
       }),
-      /*#__PURE__*/ _react['default'].createElement('span', null, '\u9000\u51FA'),
+      /*#__PURE__*/ _react.default.createElement('span', null, '\u9000\u51FA'),
     ),
-    /*#__PURE__*/ _react['default'].createElement('span', {
-      className: _indexModule['default'].toolSplit,
+    /*#__PURE__*/ _react.default.createElement('span', {
+      className: _indexModule.default.toolSplit,
     }),
     headTools.map(function (item, index) {
       return item
-        ? /*#__PURE__*/ _react['default'].createElement(
-            _antd.Tooltip,
+        ? /*#__PURE__*/ _react.default.createElement(
+            _tooltip.default,
             {
               placement: 'bottom',
               title: item.title,
@@ -562,33 +462,33 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
                 return document.querySelector('#editLayout');
               },
             },
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ _react.default.createElement(
               'a',
               {
-                className: _indexModule['default'].toolItem,
+                className: _indexModule.default.toolItem,
                 onClick: function onClick() {
                   return handleHeaderClick(item.key);
                 },
               },
-              /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+              /*#__PURE__*/ _react.default.createElement(_iconConfig.default, {
                 type: item.icon,
                 style: {
                   width: 18,
                   height: 18,
                 },
               }),
-              /*#__PURE__*/ _react['default'].createElement('span', null, item.name),
+              /*#__PURE__*/ _react.default.createElement('span', null, item.name),
             ),
           )
-        : /*#__PURE__*/ _react['default'].createElement('span', {
-            className: _indexModule['default'].toolSplit,
+        : /*#__PURE__*/ _react.default.createElement('span', {
+            className: _indexModule.default.toolSplit,
             key: index,
           });
     }),
-    /*#__PURE__*/ _react['default'].createElement('span', {
-      className: _indexModule['default'].toolSplit,
+    /*#__PURE__*/ _react.default.createElement('span', {
+      className: _indexModule.default.toolSplit,
     }),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ _react.default.createElement(
       'a',
       {
         style: {
@@ -600,10 +500,10 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
           lineHeight: '36px',
         },
       },
-      /*#__PURE__*/ _react['default'].createElement(_antd.Button, {
+      /*#__PURE__*/ _react.default.createElement(_button.default, {
         size: 'small',
         shape: 'circle',
-        icon: /*#__PURE__*/ _react['default'].createElement(_icons.MinusOutlined, {
+        icon: /*#__PURE__*/ _react.default.createElement(_icons.MinusOutlined, {
           style: {
             color: '#666666',
           },
@@ -612,15 +512,15 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
           return scaleZoomIn();
         },
       }),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Popover,
+      /*#__PURE__*/ _react.default.createElement(
+        _popover.default,
         {
           content: scaleMenu,
           trigger: 'click',
           visible: scaleVisible,
           onVisibleChange: handleScalePopClick,
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'span',
           {
             style: {
@@ -632,10 +532,10 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
           '%',
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(_antd.Button, {
+      /*#__PURE__*/ _react.default.createElement(_button.default, {
         size: 'small',
         shape: 'circle',
-        icon: /*#__PURE__*/ _react['default'].createElement(_icons.PlusOutlined, {
+        icon: /*#__PURE__*/ _react.default.createElement(_icons.PlusOutlined, {
           style: {
             color: '#666666',
           },
@@ -645,25 +545,21 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
         },
       }),
     ),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ _react.default.createElement(
       'a',
       {
-        className: _indexModule['default'].toolItem,
+        className: _indexModule.default.toolItem,
         style: {
           margin: '0 30px',
         },
         onClick: toggleFull,
       },
-      /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+      /*#__PURE__*/ _react.default.createElement(_iconConfig.default, {
         type: 'iconquanping1',
       }),
-      /*#__PURE__*/ _react['default'].createElement(
-        'span',
-        null,
-        isFullscreen ? '退出全屏' : '全屏',
-      ),
+      /*#__PURE__*/ _react.default.createElement('span', null, isFullscreen ? '退出全屏' : '全屏'),
     ),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ _react.default.createElement(
       'a',
       {
         style: {
@@ -672,10 +568,10 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
         },
         onClick: handleExtraSetting,
       },
-      /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+      /*#__PURE__*/ _react.default.createElement(_iconConfig.default, {
         type: 'iconpeizhikanban',
       }),
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ _react.default.createElement(
         'span',
         {
           style: {
@@ -685,8 +581,8 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
         '\u914D\u7F6E\u770B\u677F',
       ),
     ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Tag,
+    /*#__PURE__*/ _react.default.createElement(
+      _tag.default,
       {
         color: '#F0DCCE',
         visible: !isSave,
@@ -699,7 +595,7 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
       },
       '\u4FEE\u6539\u672A\u4FDD\u5B58',
     ),
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ _react.default.createElement(
       ButtonGroup,
       {
         style: {
@@ -708,20 +604,20 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
           right: 20,
         },
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Space,
+      /*#__PURE__*/ _react.default.createElement(
+        _space.default,
         {
           size: 'large',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Button,
+        /*#__PURE__*/ _react.default.createElement(
+          _button.default,
           {
             onClick: handlePreview,
           },
           '\u9884\u89C8',
         ),
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Button,
+        /*#__PURE__*/ _react.default.createElement(
+          _button.default,
           {
             type: 'primary',
             onClick: handleSave,
@@ -734,4 +630,4 @@ var Header = /*#__PURE__*/ _react['default'].forwardRef(function (props, ref) {
 });
 
 var _default = Header;
-exports['default'] = _default;
+exports.default = _default;

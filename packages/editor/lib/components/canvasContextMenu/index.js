@@ -1,35 +1,49 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
+
+require('antd/es/input/style');
+
+var _input = _interopRequireDefault(require('antd/es/input'));
+
+require('antd/es/form/style');
+
+var _form = _interopRequireDefault(require('antd/es/form'));
+
+require('antd/es/modal/style');
+
+var _modal = _interopRequireDefault(require('antd/es/modal'));
+
+var _regenerator = _interopRequireDefault(require('@babel/runtime/regenerator'));
+
+require('antd/es/message/style');
+
+var _message2 = _interopRequireDefault(require('antd/es/message'));
+
+var _asyncToGenerator2 = _interopRequireDefault(require('@babel/runtime/helpers/asyncToGenerator'));
+
+var _createForOfIteratorHelper2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/createForOfIteratorHelper'),
+);
+
+var _classCallCheck2 = _interopRequireDefault(require('@babel/runtime/helpers/classCallCheck'));
+
+var _createClass2 = _interopRequireDefault(require('@babel/runtime/helpers/createClass'));
+
+var _inherits2 = _interopRequireDefault(require('@babel/runtime/helpers/inherits'));
+
+var _createSuper2 = _interopRequireDefault(require('@babel/runtime/helpers/createSuper'));
 
 var _react = _interopRequireWildcard(require('react'));
 
 var _indexModule = _interopRequireDefault(require('./index.module.css'));
-
-var _antd = require('antd');
 
 var _api = require('../data/api');
 
@@ -37,257 +51,15 @@ var _serializing = require('../utils/serializing');
 
 var _ = _interopRequireWildcard(require('lodash'));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-      args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'next', value);
-      }
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'throw', err);
-      }
-      _next(undefined);
-    });
-  };
-}
-
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-  if (!it) {
-    if (
-      Array.isArray(o) ||
-      (it = _unsupportedIterableToArray(o)) ||
-      (allowArrayLike && o && typeof o.length === 'number')
-    ) {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return { done: true };
-          return { done: false, value: o[i++] };
-        },
-        e: function e(_e) {
-          throw _e;
-        },
-        f: F,
-      };
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    );
-  }
-  var normalCompletion = true,
-    didErr = false,
-    err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e2) {
-      didErr = true;
-      err = _e2;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it['return'] != null) it['return']();
-      } finally {
-        if (didErr) throw err;
-      }
-    },
-  };
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ('value' in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, 'prototype', { writable: false });
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== 'function' && superClass !== null) {
-    throw new TypeError('Super expression must either be null or a function');
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  Object.defineProperty(subClass, 'prototype', { writable: false });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === 'object' || typeof call === 'function')) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined');
-  }
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === 'undefined' || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === 'function') return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
-}
-
 var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
-  _inherits(CanvasContextMenu, _Component);
+  (0, _inherits2.default)(CanvasContextMenu, _Component);
 
-  var _super = _createSuper(CanvasContextMenu);
+  var _super = (0, _createSuper2.default)(CanvasContextMenu);
 
   function CanvasContextMenu() {
     var _this;
 
-    _classCallCheck(this, CanvasContextMenu);
+    (0, _classCallCheck2.default)(this, CanvasContextMenu);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -298,7 +70,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
       newComVisible: false,
       componentName: '添加到自定义组件',
     };
-    _this.formRef = /*#__PURE__*/ _react['default'].createRef();
+    _this.formRef = /*#__PURE__*/ _react.default.createRef();
 
     _this.onUncombine = function () {
       if (!_this.props.data.node) {
@@ -322,7 +94,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
       }
 
       if (_this.props.data.nodes) {
-        var _iterator = _createForOfIteratorHelper(_this.props.data.nodes),
+        var _iterator = (0, _createForOfIteratorHelper2.default)(_this.props.data.nodes),
           _step;
 
         try {
@@ -358,10 +130,10 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
       });
     };
 
-    _this.onCheck = /*#__PURE__*/ _asyncToGenerator(
-      /*#__PURE__*/ regeneratorRuntime.mark(function _callee() {
+    _this.onCheck = /*#__PURE__*/ (0, _asyncToGenerator2.default)(
+      /*#__PURE__*/ _regenerator.default.mark(function _callee() {
         var values, cloneNodes, cloneNode, result, newNode;
-        return regeneratorRuntime.wrap(
+        return _regenerator.default.wrap(
           function _callee$(_context) {
             while (1) {
               switch ((_context.prev = _context.next)) {
@@ -405,8 +177,8 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
                         newComVisible: false,
                       });
 
-                      _antd.message.info('添加到自定义组件成功').then(function () {
-                        _antd.message.destroy();
+                      _message2.default.info('添加到自定义组件成功').then(function () {
+                        _message2.default.destroy();
                       });
 
                       _this.props.getNewComponents();
@@ -457,8 +229,8 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
     };
 
     _this.renderNewComponentModal = function () {
-      return /*#__PURE__*/ _react['default'].createElement(
-        _antd.Modal,
+      return /*#__PURE__*/ _react.default.createElement(
+        _modal.default,
         {
           title: '\u6DFB\u52A0\u5230\u81EA\u5B9A\u4E49\u7EC4\u4EF6',
           visible: _this.state.newComVisible,
@@ -471,14 +243,14 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
             return document.querySelector('#editLayout');
           },
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form,
+        /*#__PURE__*/ _react.default.createElement(
+          _form.default,
           {
             ref: _this.formRef,
             preserve: false,
           },
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Form.Item,
+          /*#__PURE__*/ _react.default.createElement(
+            _form.default.Item,
             {
               rules: [
                 {
@@ -493,7 +265,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
               label: '\u7EC4\u4EF6\u540D\u5B57',
               name: 'componentName',
             },
-            /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+            /*#__PURE__*/ _react.default.createElement(_input.default, {
               placeholder: '\u8F93\u5165\u7EC4\u4EF6\u540D\u5B57',
               id: 'componentName',
               maxLength: 20,
@@ -506,7 +278,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
     return _this;
   }
 
-  _createClass(CanvasContextMenu, [
+  (0, _createClass2.default)(CanvasContextMenu, [
     {
       key: 'saveNewComponent',
       value: function saveNewComponent(params) {
@@ -531,7 +303,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
         }
 
         if (this.props.data.nodes) {
-          var _iterator2 = _createForOfIteratorHelper(this.props.data.nodes),
+          var _iterator2 = (0, _createForOfIteratorHelper2.default)(this.props.data.nodes),
             _step2;
 
           try {
@@ -559,7 +331,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
         }
 
         if (this.props.data.nodes) {
-          var _iterator3 = _createForOfIteratorHelper(this.props.data.nodes),
+          var _iterator3 = (0, _createForOfIteratorHelper2.default)(this.props.data.nodes),
             _step3;
 
           try {
@@ -597,54 +369,54 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
       value: function render() {
         var _this2 = this;
 
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ _react.default.createElement(
           'div',
           {
-            className: _indexModule['default'].menus,
+            className: _indexModule.default.menus,
             style: {
               display: this.props.show ? 'block' : 'none',
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'div',
             null,
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ _react.default.createElement(
               'a',
               {
                 className:
                   this.props.data.node || this.props.data.nodes
                     ? ''
-                    : _indexModule['default'].disabled,
+                    : _indexModule.default.disabled,
                 onClick: this.onTop.bind(this),
               },
               '\u7F6E\u9876',
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'div',
             null,
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ _react.default.createElement(
               'a',
               {
                 className:
                   this.props.data.node || this.props.data.nodes
                     ? ''
-                    : _indexModule['default'].disabled,
+                    : _indexModule.default.disabled,
                 onClick: this.onBottom.bind(this),
               },
               '\u7F6E\u5E95',
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'div',
             null,
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ _react.default.createElement(
               'a',
               {
                 className:
                   this.props.data.node || this.props.data.nodes
                     ? ''
-                    : _indexModule['default'].disabled,
+                    : _indexModule.default.disabled,
                 onClick: function onClick() {
                   _this2.onNewComponent();
                 },
@@ -652,14 +424,14 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
               '\u6DFB\u52A0\u5230\u81EA\u5B9A\u4E49\u7EC4\u4EF6',
             ),
           ),
-          /*#__PURE__*/ _react['default'].createElement('div', {
-            className: _indexModule['default'].line,
+          /*#__PURE__*/ _react.default.createElement('div', {
+            className: _indexModule.default.line,
           }),
           this.props.data.nodes
-            ? /*#__PURE__*/ _react['default'].createElement(
+            ? /*#__PURE__*/ _react.default.createElement(
                 'div',
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ _react.default.createElement(
                   'a',
                   {
                     onClick: function onClick() {
@@ -671,10 +443,10 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
               )
             : null,
           this.props.data.node && this.props.data.node.name === 'combine'
-            ? /*#__PURE__*/ _react['default'].createElement(
+            ? /*#__PURE__*/ _react.default.createElement(
                 'div',
                 null,
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ _react.default.createElement(
                   'a',
                   {
                     onClick: this.onUncombine,
@@ -688,8 +460,7 @@ var CanvasContextMenu = /*#__PURE__*/ (function (_Component) {
       },
     },
   ]);
-
   return CanvasContextMenu;
 })(_react.Component);
 
-exports['default'] = CanvasContextMenu;
+exports.default = CanvasContextMenu;

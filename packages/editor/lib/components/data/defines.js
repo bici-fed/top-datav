@@ -1,24 +1,8 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
@@ -73,84 +57,17 @@ exports.uploadConfigProps =
   exports.keyCodeMap =
     void 0;
 
+var _defineProperty2 = _interopRequireDefault(require('@babel/runtime/helpers/defineProperty'));
+
+var _createClass2 = _interopRequireDefault(require('@babel/runtime/helpers/createClass'));
+
+var _classCallCheck2 = _interopRequireDefault(require('@babel/runtime/helpers/classCallCheck'));
+
 var _ = _interopRequireWildcard(require('lodash'));
 
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ('value' in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, 'prototype', { writable: false });
-  return Constructor;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
-  }
-}
-
+/**
+ * @file 管道画布常量定义
+ */
 // 组件卡片宽度高度
 var NODE_WIDTH = 220;
 exports.NODE_WIDTH = NODE_WIDTH;
@@ -211,9 +128,8 @@ exports.ComponentType = ComponentType;
   //self = 'self'
 })(ComponentType || (exports.ComponentType = ComponentType = {})); // 工业图片属性
 
-var ImageProps = /*#__PURE__*/ _createClass(function ImageProps() {
-  _classCallCheck(this, ImageProps);
-
+var ImageProps = /*#__PURE__*/ (0, _createClass2.default)(function ImageProps() {
+  (0, _classCallCheck2.default)(this, ImageProps);
   this.name = void 0;
   this.url = void 0;
   this.width = void 0;
@@ -222,16 +138,11 @@ var ImageProps = /*#__PURE__*/ _createClass(function ImageProps() {
   this.rotate = void 0;
   this.key = void 0;
 });
-
 exports.ImageProps = ImageProps;
-
-var ComponentMap = _defineProperty({}, ComponentType.common, '通用');
-
+var ComponentMap = (0, _defineProperty2.default)({}, ComponentType.common, '通用');
 exports.ComponentMap = ComponentMap;
-
-var Stroke = /*#__PURE__*/ _createClass(function Stroke() {
-  _classCallCheck(this, Stroke);
-
+var Stroke = /*#__PURE__*/ (0, _createClass2.default)(function Stroke() {
+  (0, _classCallCheck2.default)(this, Stroke);
   this.color = void 0;
   this.width = void 0;
   this.dashArray = void 0;
@@ -245,22 +156,17 @@ var Stroke = /*#__PURE__*/ _createClass(function Stroke() {
 }); // 定义echarts表
 
 exports.Stroke = Stroke;
-
-var EChart = /*#__PURE__*/ _createClass(function EChart() {
-  _classCallCheck(this, EChart);
-
+var EChart = /*#__PURE__*/ (0, _createClass2.default)(function EChart() {
+  (0, _classCallCheck2.default)(this, EChart);
   this.type = void 0;
   this.component = void 0;
   this.options = void 0;
   this.format = void 0;
   this.stroke = void 0;
 });
-
 exports.EChart = EChart;
-
-var Node = /*#__PURE__*/ _createClass(function Node() {
-  _classCallCheck(this, Node);
-
+var Node = /*#__PURE__*/ (0, _createClass2.default)(function Node() {
+  (0, _classCallCheck2.default)(this, Node);
   this.type = void 0;
   this.key = void 0;
   this.name = void 0;
@@ -281,12 +187,9 @@ var Node = /*#__PURE__*/ _createClass(function Node() {
   this.rotate = void 0;
   this.url = void 0;
 });
-
 exports.Node = Node;
-
-var NodePanel = /*#__PURE__*/ _createClass(function NodePanel() {
-  _classCallCheck(this, NodePanel);
-
+var NodePanel = /*#__PURE__*/ (0, _createClass2.default)(function NodePanel() {
+  (0, _classCallCheck2.default)(this, NodePanel);
   this.type = void 0;
   this.key = void 0;
   this.name = void 0;
@@ -319,9 +222,8 @@ exports.ComponentKey = ComponentKey;
   ComponentKey['time'] = 'time';
 })(ComponentKey || (exports.ComponentKey = ComponentKey = {})); // 基本组件的基本样式属性
 
-var BaseCompStyle = /*#__PURE__*/ _createClass(function BaseCompStyle() {
-  _classCallCheck(this, BaseCompStyle);
-
+var BaseCompStyle = /*#__PURE__*/ (0, _createClass2.default)(function BaseCompStyle() {
+  (0, _classCallCheck2.default)(this, BaseCompStyle);
   this.left = void 0;
   this.top = void 0;
   this.width = void 0;
@@ -341,7 +243,6 @@ var BaseCompStyle = /*#__PURE__*/ _createClass(function BaseCompStyle() {
   this.borderColor = void 0;
   this.color = void 0;
 });
-
 exports.BaseCompStyle = BaseCompStyle;
 var keyCodeMap = {
   delete: 8,
@@ -418,9 +319,8 @@ function getContainer() {
  * @file 类型定义文件
  */
 
-var MenuPos = /*#__PURE__*/ _createClass(function MenuPos() {
-  _classCallCheck(this, MenuPos);
-
+var MenuPos = /*#__PURE__*/ (0, _createClass2.default)(function MenuPos() {
+  (0, _classCallCheck2.default)(this, MenuPos);
   this.id = void 0;
   this.x = void 0;
   this.y = void 0;
@@ -440,18 +340,14 @@ exports.OperateType = OperateType;
   OperateType['delete'] = 'delete';
 })(OperateType || (exports.OperateType = OperateType = {}));
 
-var BgImagesProps = /*#__PURE__*/ _createClass(function BgImagesProps() {
-  _classCallCheck(this, BgImagesProps);
-
+var BgImagesProps = /*#__PURE__*/ (0, _createClass2.default)(function BgImagesProps() {
+  (0, _classCallCheck2.default)(this, BgImagesProps);
   this.key = void 0;
   this.img = void 0;
 });
-
 exports.BgImagesProps = BgImagesProps;
-
-var DataVEditorProps = /*#__PURE__*/ _createClass(function DataVEditorProps() {
-  _classCallCheck(this, DataVEditorProps);
-
+var DataVEditorProps = /*#__PURE__*/ (0, _createClass2.default)(function DataVEditorProps() {
+  (0, _classCallCheck2.default)(this, DataVEditorProps);
   this.apiURL = void 0;
   this.token = void 0;
   this.onEditorSaveCb = void 0;
@@ -473,12 +369,9 @@ var DataVEditorProps = /*#__PURE__*/ _createClass(function DataVEditorProps() {
   this.onAddVedioSource = void 0;
   this.dataPointPropsMap = void 0;
 });
-
 exports.DataVEditorProps = DataVEditorProps;
-
-var DataPointPropsMap = /*#__PURE__*/ _createClass(function DataPointPropsMap() {
-  _classCallCheck(this, DataPointPropsMap);
-
+var DataPointPropsMap = /*#__PURE__*/ (0, _createClass2.default)(function DataPointPropsMap() {
+  (0, _classCallCheck2.default)(this, DataPointPropsMap);
   this.id = void 0;
   this.type = void 0;
   this.dataName = void 0;
@@ -486,24 +379,18 @@ var DataPointPropsMap = /*#__PURE__*/ _createClass(function DataPointPropsMap() 
   this.scopeMin = void 0;
   this.scopeMax = void 0;
 });
-
 exports.DataPointPropsMap = DataPointPropsMap;
-
-var uploadConfigProps = /*#__PURE__*/ _createClass(function uploadConfigProps() {
-  _classCallCheck(this, uploadConfigProps);
-
+var uploadConfigProps = /*#__PURE__*/ (0, _createClass2.default)(function uploadConfigProps() {
+  (0, _classCallCheck2.default)(this, uploadConfigProps);
   this.baseURL = void 0;
   this.self = void 0;
   this.preInstall = void 0;
   this.industry = void 0;
   this.combineCom = void 0;
 });
-
 exports.uploadConfigProps = uploadConfigProps;
-
-var UploadURIProps = /*#__PURE__*/ _createClass(function UploadURIProps() {
-  _classCallCheck(this, UploadURIProps);
-
+var UploadURIProps = /*#__PURE__*/ (0, _createClass2.default)(function UploadURIProps() {
+  (0, _classCallCheck2.default)(this, UploadURIProps);
   this.baseURL = void 0;
   this.url = void 0;
   this.token = void 0;

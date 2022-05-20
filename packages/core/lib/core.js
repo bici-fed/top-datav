@@ -1,9 +1,23 @@
 'use strict';
 
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 exports.Topology = void 0;
+
+var _typeof2 = _interopRequireDefault(require('@babel/runtime/helpers/typeof'));
+
+var _createForOfIteratorHelper2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/createForOfIteratorHelper'),
+);
+
+var _classCallCheck2 = _interopRequireDefault(require('@babel/runtime/helpers/classCallCheck'));
+
+var _createClass2 = _interopRequireDefault(require('@babel/runtime/helpers/createClass'));
 
 var _storeUtils = require('@top-datav/store-utils');
 
@@ -57,163 +71,7 @@ var _utils = require('./utils');
 
 var _ = _interopRequireWildcard(require('lodash'));
 
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj.default = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-  if (!it) {
-    if (
-      Array.isArray(o) ||
-      (it = _unsupportedIterableToArray(o)) ||
-      (allowArrayLike && o && typeof o.length === 'number')
-    ) {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return { done: true };
-          return { done: false, value: o[i++] };
-        },
-        e: function e(_e) {
-          throw _e;
-        },
-        f: F,
-      };
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    );
-  }
-  var normalCompletion = true,
-    didErr = false,
-    err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e2) {
-      didErr = true;
-      err = _e2;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    },
-  };
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ('value' in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, 'prototype', { writable: false });
-  return Constructor;
-}
-
+// https://github.com/developit/mitt
 var resizeCursors = ['nw-resize', 'ne-resize', 'se-resize', 'sw-resize'];
 var MoveInType;
 
@@ -237,8 +95,7 @@ var Topology = /*#__PURE__*/ (function () {
   function Topology(parent, options) {
     var _this = this;
 
-    _classCallCheck(this, Topology);
-
+    (0, _classCallCheck2.default)(this, Topology);
     this.id = void 0;
     this.data = new _data.TopologyData();
     this.clipboard = void 0;
@@ -1146,7 +1003,7 @@ var Topology = /*#__PURE__*/ (function () {
     window.topology = this;
   }
 
-  _createClass(Topology, [
+  (0, _createClass2.default)(Topology, [
     {
       key: 'setupDom',
       value: function setupDom(parent) {
@@ -1809,7 +1666,7 @@ var Topology = /*#__PURE__*/ (function () {
         this.data.pens = []; // for old data.
 
         if (data.nodes) {
-          var _iterator = _createForOfIteratorHelper(data.nodes),
+          var _iterator = (0, _createForOfIteratorHelper2.default)(data.nodes),
             _step;
 
           try {
@@ -1824,7 +1681,7 @@ var Topology = /*#__PURE__*/ (function () {
             _iterator.f();
           }
 
-          var _iterator2 = _createForOfIteratorHelper(data.lines),
+          var _iterator2 = (0, _createForOfIteratorHelper2.default)(data.lines),
             _step2;
 
           try {
@@ -1842,7 +1699,7 @@ var Topology = /*#__PURE__*/ (function () {
         if (data.pens) {
           var hasChart = false;
 
-          var _iterator3 = _createForOfIteratorHelper(data.pens),
+          var _iterator3 = (0, _createForOfIteratorHelper2.default)(data.pens),
             _step3;
 
           try {
@@ -1853,7 +1710,7 @@ var Topology = /*#__PURE__*/ (function () {
                 _item2.TID = this.id; // this.data.pens.push(new Node(item));
 
                 if (_item2.name == 'combine') {
-                  var _iterator4 = _createForOfIteratorHelper(_item2.children),
+                  var _iterator4 = (0, _createForOfIteratorHelper2.default)(_item2.children),
                     _step4;
 
                   try {
@@ -1872,7 +1729,7 @@ var Topology = /*#__PURE__*/ (function () {
 
                   if (hasChart) {
                     // 如果是图表组件，解组
-                    var _iterator5 = _createForOfIteratorHelper(_item2.children),
+                    var _iterator5 = (0, _createForOfIteratorHelper2.default)(_item2.children),
                       _step5;
 
                     try {
@@ -1915,7 +1772,7 @@ var Topology = /*#__PURE__*/ (function () {
         this.data.rule = data.rule;
         this.data.ruleColor = data.ruleColor;
 
-        if (_typeof(data.data) === 'object') {
+        if ((0, _typeof2.default)(data.data) === 'object') {
           this.data.data = JSON.parse(JSON.stringify(data.data));
         } else {
           this.data.data = data.data || '';
@@ -2069,7 +1926,7 @@ var Topology = /*#__PURE__*/ (function () {
         } // In active pen.
 
         if (!this.data.locked) {
-          var _iterator6 = _createForOfIteratorHelper(this.activeLayer.pens),
+          var _iterator6 = (0, _createForOfIteratorHelper2.default)(this.activeLayer.pens),
             _step6;
 
           try {
@@ -2330,7 +2187,7 @@ var Topology = /*#__PURE__*/ (function () {
             : _status.AnchorMode.Default;
         this.hoverLayer.dockAnchor = null;
 
-        var _iterator7 = _createForOfIteratorHelper(this.data.pens),
+        var _iterator7 = (0, _createForOfIteratorHelper2.default)(this.data.pens),
           _step7;
 
         try {
@@ -2408,7 +2265,7 @@ var Topology = /*#__PURE__*/ (function () {
               }
 
               if (item.controlPoints) {
-                var _iterator8 = _createForOfIteratorHelper(item.controlPoints),
+                var _iterator8 = (0, _createForOfIteratorHelper2.default)(item.controlPoints),
                   _step8;
 
                 try {
@@ -2460,7 +2317,7 @@ var Topology = /*#__PURE__*/ (function () {
 
         this.activeLayer.pens = [];
 
-        var _iterator9 = _createForOfIteratorHelper(this.data.pens),
+        var _iterator9 = (0, _createForOfIteratorHelper2.default)(this.data.pens),
           _step9;
 
         try {
@@ -2577,14 +2434,14 @@ var Topology = /*#__PURE__*/ (function () {
         var disX = dockOffset;
         var disY = dockOffset;
 
-        var _iterator10 = _createForOfIteratorHelper(this.activeLayer.dockWatchers),
+        var _iterator10 = (0, _createForOfIteratorHelper2.default)(this.activeLayer.dockWatchers),
           _step10;
 
         try {
           for (_iterator10.s(); !(_step10 = _iterator10.n()).done; ) {
             var activePt = _step10.value;
 
-            var _iterator11 = _createForOfIteratorHelper(this.data.pens),
+            var _iterator11 = (0, _createForOfIteratorHelper2.default)(this.data.pens),
               _step11;
 
             try {
@@ -2603,7 +2460,7 @@ var Topology = /*#__PURE__*/ (function () {
                   item.getDockWatchers();
                 }
 
-                var _iterator12 = _createForOfIteratorHelper(item.dockWatchers),
+                var _iterator12 = (0, _createForOfIteratorHelper2.default)(item.dockWatchers),
                   _step12;
 
                 try {
@@ -2777,7 +2634,7 @@ var Topology = /*#__PURE__*/ (function () {
           ctx.drawImage(this.canvas.bkImg, 0, 0, canvas.width, canvas.height);
         }
 
-        var _iterator13 = _createForOfIteratorHelper(this.data.pens),
+        var _iterator13 = (0, _createForOfIteratorHelper2.default)(this.data.pens),
           _step13;
 
         try {
@@ -2929,7 +2786,7 @@ var Topology = /*#__PURE__*/ (function () {
           pens: [],
         });
 
-        var _iterator14 = _createForOfIteratorHelper(this.activeLayer.pens),
+        var _iterator14 = (0, _createForOfIteratorHelper2.default)(this.activeLayer.pens),
           _step14;
 
         try {
@@ -2958,7 +2815,7 @@ var Topology = /*#__PURE__*/ (function () {
         this.activeLayer.pens = [];
         var idMaps = {};
 
-        var _iterator15 = _createForOfIteratorHelper(this.clipboard.pens),
+        var _iterator15 = (0, _createForOfIteratorHelper2.default)(this.clipboard.pens),
           _step15;
 
         try {
@@ -2992,7 +2849,7 @@ var Topology = /*#__PURE__*/ (function () {
               );
               var controlPoints = [];
 
-              var _iterator16 = _createForOfIteratorHelper(pen.controlPoints),
+              var _iterator16 = (0, _createForOfIteratorHelper2.default)(pen.controlPoints),
                 _step16;
 
               try {
@@ -3044,7 +2901,7 @@ var Topology = /*#__PURE__*/ (function () {
         idMaps[old] = node.id;
 
         if (node.children) {
-          var _iterator17 = _createForOfIteratorHelper(node.children),
+          var _iterator17 = (0, _createForOfIteratorHelper2.default)(node.children),
             _step17;
 
           try {
@@ -3078,7 +2935,7 @@ var Topology = /*#__PURE__*/ (function () {
           pens = this.activeLayer.pens;
         }
 
-        var _iterator18 = _createForOfIteratorHelper(pens),
+        var _iterator18 = (0, _createForOfIteratorHelper2.default)(pens),
           _step18;
 
         try {
@@ -3116,7 +2973,7 @@ var Topology = /*#__PURE__*/ (function () {
       value: function lock(_lock) {
         this.data.locked = _lock;
 
-        var _iterator19 = _createForOfIteratorHelper(this.data.pens),
+        var _iterator19 = (0, _createForOfIteratorHelper2.default)(this.data.pens),
           _step19;
 
         try {
@@ -3136,14 +2993,14 @@ var Topology = /*#__PURE__*/ (function () {
     {
       key: 'lockPens',
       value: function lockPens(pens, lock) {
-        var _iterator20 = _createForOfIteratorHelper(this.data.pens),
+        var _iterator20 = (0, _createForOfIteratorHelper2.default)(this.data.pens),
           _step20;
 
         try {
           for (_iterator20.s(); !(_step20 = _iterator20.n()).done; ) {
             var item = _step20.value;
 
-            var _iterator21 = _createForOfIteratorHelper(pens),
+            var _iterator21 = (0, _createForOfIteratorHelper2.default)(pens),
               _step21;
 
             try {
@@ -3283,7 +3140,7 @@ var Topology = /*#__PURE__*/ (function () {
 
         var rect = this.getRect(pens);
 
-        var _iterator22 = _createForOfIteratorHelper(pens),
+        var _iterator22 = (0, _createForOfIteratorHelper2.default)(pens),
           _step22;
 
         try {
@@ -3322,7 +3179,7 @@ var Topology = /*#__PURE__*/ (function () {
         //     }
         // }
 
-        var _iterator23 = _createForOfIteratorHelper(pens),
+        var _iterator23 = (0, _createForOfIteratorHelper2.default)(pens),
           _step23;
 
         try {
@@ -3358,7 +3215,7 @@ var Topology = /*#__PURE__*/ (function () {
           return;
         }
 
-        var _iterator24 = _createForOfIteratorHelper(node.children),
+        var _iterator24 = (0, _createForOfIteratorHelper2.default)(node.children),
           _step24;
 
         try {
@@ -3425,7 +3282,7 @@ var Topology = /*#__PURE__*/ (function () {
         this.lastTranlated.y = y;
 
         if (this.options.isApp) {
-          var _iterator25 = _createForOfIteratorHelper(this.data.pens),
+          var _iterator25 = (0, _createForOfIteratorHelper2.default)(this.data.pens),
             _step25;
 
           try {
@@ -3521,7 +3378,7 @@ var Topology = /*#__PURE__*/ (function () {
     {
       key: 'round',
       value: function round() {
-        var _iterator26 = _createForOfIteratorHelper(this.data.pens),
+        var _iterator26 = (0, _createForOfIteratorHelper2.default)(this.data.pens),
           _step26;
 
         try {
@@ -3764,7 +3621,7 @@ var Topology = /*#__PURE__*/ (function () {
           children: [],
         });
 
-        var _iterator27 = _createForOfIteratorHelper(pens),
+        var _iterator27 = (0, _createForOfIteratorHelper2.default)(pens),
           _step27;
 
         try {
@@ -3791,7 +3648,7 @@ var Topology = /*#__PURE__*/ (function () {
           _iterator27.f();
         }
 
-        var _iterator28 = _createForOfIteratorHelper(pens),
+        var _iterator28 = (0, _createForOfIteratorHelper2.default)(pens),
           _step28;
 
         try {
@@ -4029,7 +3886,6 @@ var Topology = /*#__PURE__*/ (function () {
       },
     },
   ]);
-
   return Topology;
 })();
 

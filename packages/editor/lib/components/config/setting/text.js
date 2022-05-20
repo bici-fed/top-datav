@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
 var _default = {
   name: '文本',
   icon: 'iconwenben',
@@ -21,4 +21,4 @@ var _default = {
     hideInput: false,
   },
 };
-exports['default'] = _default;
+exports.default = _default;

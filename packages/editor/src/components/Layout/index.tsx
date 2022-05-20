@@ -11,6 +11,7 @@ import { Line, Lock, Options, s8, Topology } from '@top-datav/core';
 import { echartsObjs, register as registerChart } from '@top-datav/chart-diagram';
 import { register as registerBiciComp } from '@top-datav/bici-diagram';
 import { Tabs, Tooltip, ConfigProvider } from 'antd';
+import 'antd/dist/antd.less';
 import { Tools } from '../config/config';
 import { useClickAway } from 'ahooks';
 import { replacer, reviver } from '../utils/serializing';

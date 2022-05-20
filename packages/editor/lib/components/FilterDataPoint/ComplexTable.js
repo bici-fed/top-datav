@@ -1,29 +1,25 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = exports.DEVICE_STATUS = void 0;
+exports.default = exports.DEVICE_STATUS = void 0;
+
+var _defineProperty2 = _interopRequireDefault(require('@babel/runtime/helpers/defineProperty'));
+
+var _objectSpread2 = _interopRequireDefault(require('@babel/runtime/helpers/objectSpread2'));
+
+var _classCallCheck2 = _interopRequireDefault(require('@babel/runtime/helpers/classCallCheck'));
+
+var _createClass2 = _interopRequireDefault(require('@babel/runtime/helpers/createClass'));
+
+var _inherits2 = _interopRequireDefault(require('@babel/runtime/helpers/inherits'));
+
+var _createSuper2 = _interopRequireDefault(require('@babel/runtime/helpers/createSuper'));
 
 var _react = _interopRequireWildcard(require('react'));
 
@@ -33,188 +29,9 @@ var _lodash = _interopRequireDefault(require('lodash'));
 
 var _api = require('../data/api');
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ('value' in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, 'prototype', { writable: false });
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== 'function' && superClass !== null) {
-    throw new TypeError('Super expression must either be null or a function');
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  Object.defineProperty(subClass, 'prototype', { writable: false });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === 'object' || typeof call === 'function')) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined');
-  }
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === 'undefined' || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === 'function') return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
-}
-
+/**
+ * 用户侧：复杂感知点 > 列表
+ */
 // 传感器状态
 var DEVICE_STATUS = [
   {
@@ -253,21 +70,21 @@ var initialQueryParams = {
 };
 
 var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
-  _inherits(ComplexDataPoint, _PureComponent);
+  (0, _inherits2.default)(ComplexDataPoint, _PureComponent);
 
-  var _super = _createSuper(ComplexDataPoint);
+  var _super = (0, _createSuper2.default)(ComplexDataPoint);
 
   function ComplexDataPoint() {
     var _this;
 
-    _classCallCheck(this, ComplexDataPoint);
+    (0, _classCallCheck2.default)(this, ComplexDataPoint);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
     _this = _super.call.apply(_super, [this].concat(args));
-    _this.state = _objectSpread(
+    _this.state = (0, _objectSpread2.default)(
       {
         dataList: [],
         sorterList: [],
@@ -323,7 +140,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
               scopeMax = _record$scopeMax === void 0 ? '' : _record$scopeMax;
             var scope = ''.concat(scopeMin, ' ~ ').concat(scopeMax);
 
-            var scopeText = /*#__PURE__*/ _react['default'].createElement(
+            var scopeText = /*#__PURE__*/ _react.default.createElement(
               'div',
               {
                 style: {
@@ -333,7 +150,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
               scope,
             );
 
-            return _lodash['default'].isNumber(scopeMin) || _lodash['default'].isNumber(scopeMax)
+            return _lodash.default.isNumber(scopeMin) || _lodash.default.isNumber(scopeMax)
               ? scopeText
               : '';
           },
@@ -359,7 +176,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
             var show;
 
             if (record.status === 1) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ _react.default.createElement(
                 'span',
                 {
                   className: 'green6',
@@ -367,7 +184,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
                 '\u6B63\u5E38',
               );
             } else if (record.status === 2) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ _react.default.createElement(
                 'span',
                 {
                   className: 'red6',
@@ -375,7 +192,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
                 '\u8D85\u8FC7\u4E0A\u9650',
               );
             } else if (record.status === 3) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ _react.default.createElement(
                 'span',
                 {
                   className: 'red6',
@@ -383,7 +200,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
                 '\u4F4E\u4E8E\u4E0B\u9650',
               );
             } else if (record.status === -1) {
-              show = /*#__PURE__*/ _react['default'].createElement(
+              show = /*#__PURE__*/ _react.default.createElement(
                 'span',
                 {
                   className: 'black85',
@@ -392,7 +209,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
               );
             }
 
-            return /*#__PURE__*/ _react['default'].createElement(
+            return /*#__PURE__*/ _react.default.createElement(
               'div',
               {
                 style: {
@@ -408,7 +225,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
 
     _this.handleSearch = function (key, value) {
       _this.setState(
-        _defineProperty(
+        (0, _defineProperty2.default)(
           {
             pagination: initialQueryParams.pagination,
           },
@@ -435,8 +252,8 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
         : [];
 
       _this.setState(
-        _objectSpread(
-          _objectSpread(
+        (0, _objectSpread2.default)(
+          (0, _objectSpread2.default)(
             {
               pagination: pagination,
             },
@@ -455,13 +272,13 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
 
     _this.handleFilterTagsChange = function (tagsArr) {
       if (tagsArr === null) {
-        _this.setState(_objectSpread({}, initialQueryParams), function () {
+        _this.setState((0, _objectSpread2.default)({}, initialQueryParams), function () {
           return _this.requestList();
         });
       } else {
         var val = tagsArr.val instanceof Array ? [] : '';
 
-        _this.setState(_defineProperty({}, tagsArr.dataIndex, val), function () {
+        _this.setState((0, _defineProperty2.default)({}, tagsArr.dataIndex, val), function () {
           return _this.requestList();
         });
       }
@@ -484,7 +301,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
     return _this;
   }
 
-  _createClass(ComplexDataPoint, [
+  (0, _createClass2.default)(ComplexDataPoint, [
     {
       key: 'componentDidMount',
       value: function componentDidMount() {
@@ -575,7 +392,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
           },
         };
         pagination.total = total;
-        return /*#__PURE__*/ _react['default'].createElement(_biciTransformers.ComplexTable, {
+        return /*#__PURE__*/ _react.default.createElement(_biciTransformers.ComplexTable, {
           rowKey: 'id',
           minWidth: 800,
           dataSource: dataList,
@@ -588,8 +405,7 @@ var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
       },
     },
   ]);
-
   return ComplexDataPoint;
 })(_react.PureComponent);
 
-exports['default'] = ComplexDataPoint;
+exports.default = ComplexDataPoint;

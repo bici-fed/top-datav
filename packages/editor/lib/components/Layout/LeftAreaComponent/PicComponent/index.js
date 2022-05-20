@@ -1,33 +1,45 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
+
+require('antd/es/upload/style');
+
+var _upload = _interopRequireDefault(require('antd/es/upload'));
+
+require('antd/es/col/style');
+
+var _col = _interopRequireDefault(require('antd/es/col'));
+
+require('antd/es/row/style');
+
+var _row = _interopRequireDefault(require('antd/es/row'));
+
+var _regenerator = _interopRequireDefault(require('@babel/runtime/regenerator'));
+
+var _asyncToGenerator2 = _interopRequireDefault(require('@babel/runtime/helpers/asyncToGenerator'));
+
+require('antd/es/message/style');
+
+var _message2 = _interopRequireDefault(require('antd/es/message'));
+
+require('antd/es/form/style');
+
+var _form = _interopRequireDefault(require('antd/es/form'));
+
+var _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/slicedToArray'));
+
+require('antd/es/collapse/style');
+
+var _collapse = _interopRequireDefault(require('antd/es/collapse'));
 
 var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
 
 var _icons = require('@ant-design/icons');
 
@@ -43,147 +55,7 @@ var _config = require('./config');
 
 var _IndustryList = _interopRequireDefault(require('./IndustryList'));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-      args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'next', value);
-      }
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'throw', err);
-      }
-      _next(undefined);
-    });
-  };
-}
-
-function _slicedToArray(arr, i) {
-  return (
-    _arrayWithHoles(arr) ||
-    _iterableToArrayLimit(arr, i) ||
-    _unsupportedIterableToArray(arr, i) ||
-    _nonIterableRest()
-  );
-}
-
-function _nonIterableRest() {
-  throw new TypeError(
-    'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-  );
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i =
-    arr == null
-      ? null
-      : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i['return'] != null) _i['return']();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-var Panel = _antd.Collapse.Panel;
+var Panel = _collapse.default.Panel;
 
 var Layout = function Layout(_ref) {
   var _uploaConfig$industry;
@@ -191,17 +63,17 @@ var Layout = function Layout(_ref) {
   var uploaConfig = _ref.uploaConfig,
     industrialLibrary = _ref.industrialLibrary;
 
-  var _Form$useForm = _antd.Form.useForm(),
-    _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
+  var _Form$useForm = _form.default.useForm(),
+    _Form$useForm2 = (0, _slicedToArray2.default)(_Form$useForm, 1),
     formRef = _Form$useForm2[0]; // 是否显示右键菜单
 
   var _useState = (0, _react.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
+    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     showContextmenu = _useState2[0],
     setShowContextmenu = _useState2[1];
 
   var _useState3 = (0, _react.useState)([]),
-    _useState4 = _slicedToArray(_useState3, 2),
+    _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     list = _useState4[0],
     setList = _useState4[1];
 
@@ -213,12 +85,12 @@ var Layout = function Layout(_ref) {
       top: '',
       bottom: '',
     }),
-    _useState6 = _slicedToArray(_useState5, 2),
+    _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
     contextmenu = _useState6[0],
     setContextmenu = _useState6[1];
 
   var _useState7 = (0, _react.useState)(null),
-    _useState8 = _slicedToArray(_useState7, 2),
+    _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
     selectedItem = _useState8[0],
     setSelectedItem = _useState8[1];
 
@@ -285,7 +157,7 @@ var Layout = function Layout(_ref) {
     var isLt1M = file.size / 1024 / 1024 < 1;
 
     if (!isLt1M) {
-      _antd.message.error('上传图片不可大于1M');
+      _message2.default.error('上传图片不可大于1M');
     }
 
     return isLt1M;
@@ -300,10 +172,10 @@ var Layout = function Layout(_ref) {
   }; // 确定重命名
 
   var handleOk = /*#__PURE__*/ (function () {
-    var _ref3 = _asyncToGenerator(
-      /*#__PURE__*/ regeneratorRuntime.mark(function _callee() {
+    var _ref3 = (0, _asyncToGenerator2.default)(
+      /*#__PURE__*/ _regenerator.default.mark(function _callee() {
         var values;
-        return regeneratorRuntime.wrap(
+        return _regenerator.default.wrap(
           function _callee$(_context) {
             while (1) {
               switch ((_context.prev = _context.next)) {
@@ -330,7 +202,7 @@ var Layout = function Layout(_ref) {
                       },
                     )
                     .then(function (res) {
-                      _antd.message.success('重命名成功！');
+                      _message2.default.success('重命名成功！');
 
                       requstPicList();
                     });
@@ -362,15 +234,15 @@ var Layout = function Layout(_ref) {
 
   var handleDelete = function handleDelete() {
     if (selectedItem == null) {
-      _antd.message.error('请选择要删除的组件！').then(function () {
-        _antd.message.destroy();
+      _message2.default.error('请选择要删除的组件！').then(function () {
+        _message2.default.destroy();
       });
 
       return;
     }
 
     (0, _api.clientParam)(uploaConfig.baseURL)
-      .get(uploaConfig.self.apiUrl['delete'], {
+      .get(uploaConfig.self.apiUrl.delete, {
         headers: {
           token: uploaConfig.self.token,
         },
@@ -379,8 +251,8 @@ var Layout = function Layout(_ref) {
         },
       })
       .then(function (res) {
-        _antd.message.success('删除组件成功！', 2, function () {
-          _antd.message.destroy();
+        _message2.default.success('删除组件成功！', 2, function () {
+          _message2.default.destroy();
 
           return null;
         });
@@ -416,13 +288,13 @@ var Layout = function Layout(_ref) {
     }
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ _react.default.createElement(
     'div',
     {
-      className: _indexModule['default'].container,
+      className: _indexModule.default.container,
     },
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Collapse,
+    /*#__PURE__*/ _react.default.createElement(
+      _collapse.default,
       {
         defaultActiveKey: ['999'],
         expandIconPosition: 'right',
@@ -433,24 +305,24 @@ var Layout = function Layout(_ref) {
           overflow: 'auto',
         },
       },
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ _react.default.createElement(
         Panel,
         {
           header: '\u81EA\u5B9A\u4E49\u4E0A\u4F20',
           key: '998',
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Row,
+        /*#__PURE__*/ _react.default.createElement(
+          _row.default,
           null,
           list === null || list === void 0
             ? void 0
             : list.map(function (item, index) {
-                return /*#__PURE__*/ _react['default'].createElement(
-                  _antd.Col,
+                return /*#__PURE__*/ _react.default.createElement(
+                  _col.default,
                   {
                     key: index,
                     span: 8,
-                    className: _indexModule['default'].colStyle,
+                    className: _indexModule.default.colStyle,
                     style: {
                       textAlign: 'center',
                     },
@@ -458,7 +330,7 @@ var Layout = function Layout(_ref) {
                       return handleContextMenu(event, item);
                     },
                   },
-                  /*#__PURE__*/ _react['default'].createElement(
+                  /*#__PURE__*/ _react.default.createElement(
                     'a',
                     {
                       title: item.name,
@@ -471,7 +343,7 @@ var Layout = function Layout(_ref) {
                         return (0, _config.onDrag)(ev, item);
                       },
                     },
-                    /*#__PURE__*/ _react['default'].createElement('img', {
+                    /*#__PURE__*/ _react.default.createElement('img', {
                       alt: item.name,
                       src: item.url,
                       style: {
@@ -479,7 +351,7 @@ var Layout = function Layout(_ref) {
                         height: 60,
                       },
                     }),
-                    /*#__PURE__*/ _react['default'].createElement(
+                    /*#__PURE__*/ _react.default.createElement(
                       'span',
                       {
                         style: {
@@ -496,18 +368,18 @@ var Layout = function Layout(_ref) {
                   ),
                 );
               }),
-          /*#__PURE__*/ _react['default'].createElement(
-            _antd.Col,
+          /*#__PURE__*/ _react.default.createElement(
+            _col.default,
             {
               key: 'upload',
               span: 12,
-              className: _indexModule['default'].colStyle,
+              className: _indexModule.default.colStyle,
               style: {
                 textAlign: 'center',
               },
             },
-            /*#__PURE__*/ _react['default'].createElement(
-              _antd.Upload,
+            /*#__PURE__*/ _react.default.createElement(
+              _upload.default,
               {
                 listType: 'picture-card',
                 showUploadList: false,
@@ -523,11 +395,11 @@ var Layout = function Layout(_ref) {
                 beforeUpload: beforeUpload,
                 onChange: onHandleUpload,
               },
-              /*#__PURE__*/ _react['default'].createElement(
+              /*#__PURE__*/ _react.default.createElement(
                 'div',
                 null,
-                /*#__PURE__*/ _react['default'].createElement(_icons.PlusOutlined, null),
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ _react.default.createElement(_icons.PlusOutlined, null),
+                /*#__PURE__*/ _react.default.createElement(
                   'div',
                   {
                     style: {
@@ -549,20 +421,20 @@ var Layout = function Layout(_ref) {
           ? void 0
           : _uploaConfig$industry.projectIndustryCats) || _config.industry_List
       ).map(function (item, index) {
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ _react.default.createElement(
           Panel,
           {
             key: index,
             header: item[1],
           },
-          /*#__PURE__*/ _react['default'].createElement(_IndustryList['default'], {
+          /*#__PURE__*/ _react.default.createElement(_IndustryList.default, {
             uploaConfig: uploaConfig,
             mappingType: item[0],
           }),
         );
       }),
     ),
-    /*#__PURE__*/ _react['default'].createElement(_CompContextMenu['default'], {
+    /*#__PURE__*/ _react.default.createElement(_CompContextMenu.default, {
       contextMenuRef: contextMenuRef,
       showContextmenu: showContextmenu,
       contextmenu: contextmenu,
@@ -575,4 +447,4 @@ var Layout = function Layout(_ref) {
 };
 
 var _default = Layout;
-exports['default'] = _default;
+exports.default = _default;

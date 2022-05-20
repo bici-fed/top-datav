@@ -1,5 +1,7 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
@@ -8,12 +10,8 @@ exports.getNodeType = getNodeType;
 
 var _moment = _interopRequireDefault(require('moment'));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
 // 里面的字符可以根据自己的需要进行调整
-_moment['default'].locale('zh-cn', {
+_moment.default.locale('zh-cn', {
   months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
   monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
   weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
@@ -100,17 +98,17 @@ function formatTimer(node, canvas) {
   var h = '';
 
   if (node.property.date.show) {
-    y = (0, _moment['default'])().format(node.property.date.format);
+    y = (0, _moment.default)().format(node.property.date.format);
   }
 
   if (node.property.time.show) {
-    h = (0, _moment['default'])().format(node.property.time.format);
+    h = (0, _moment.default)().format(node.property.time.format);
   }
 
   node.text = y + ' ' + h;
 
   if (node.text == ' ') {
-    node.text = (0, _moment['default'])().format('LLLL');
+    node.text = (0, _moment.default)().format('LLLL');
   }
 
   canvas.updateProps(false);

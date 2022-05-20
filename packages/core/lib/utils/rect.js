@@ -1,10 +1,16 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 exports.getBboxOfPoints = getBboxOfPoints;
 exports.getRect = getRect;
+
+var _createForOfIteratorHelper2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/createForOfIteratorHelper'),
+);
 
 var _node = require('../models/node');
 
@@ -14,81 +20,10 @@ var _curve = require('../middles/lines/curve');
 
 var _rect = require('../models/rect');
 
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-  if (!it) {
-    if (
-      Array.isArray(o) ||
-      (it = _unsupportedIterableToArray(o)) ||
-      (allowArrayLike && o && typeof o.length === 'number')
-    ) {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return { done: true };
-          return { done: false, value: o[i++] };
-        },
-        e: function e(_e) {
-          throw _e;
-        },
-        f: F,
-      };
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    );
-  }
-  var normalCompletion = true,
-    didErr = false,
-    err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e2) {
-      didErr = true;
-      err = _e2;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    },
-  };
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
 function getRect(pens) {
   var points = [];
 
-  var _iterator = _createForOfIteratorHelper(pens),
+  var _iterator = (0, _createForOfIteratorHelper2.default)(pens),
     _step;
 
   try {
@@ -99,7 +34,7 @@ function getRect(pens) {
         var pts = item.rect.toPoints();
 
         if (item.rotate) {
-          var _iterator2 = _createForOfIteratorHelper(pts),
+          var _iterator2 = (0, _createForOfIteratorHelper2.default)(pts),
             _step2;
 
           try {
@@ -154,7 +89,7 @@ function getBboxOfPoints(points) {
   var x2 = -Infinity;
   var y2 = -Infinity;
 
-  var _iterator3 = _createForOfIteratorHelper(points),
+  var _iterator3 = (0, _createForOfIteratorHelper2.default)(points),
     _step3;
 
   try {

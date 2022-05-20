@@ -18,11 +18,6 @@ function _typeof(obj) {
   );
 }
 
-import 'antd/lib/modal/style';
-import _Modal from 'antd/lib/modal';
-import 'antd/lib/tabs/style';
-import _Tabs from 'antd/lib/tabs';
-
 function _toConsumableArray(arr) {
   return (
     _arrayWithoutHoles(arr) ||
@@ -211,12 +206,13 @@ function _getPrototypeOf(o) {
  * @file 筛选数据点/复杂感知点/复杂反应堆 ，支持多选单选
  */
 import React from 'react';
+import { Tabs, Modal } from 'antd';
 import DataPointTable from './DataPointTable';
 import ComplexTable from './ComplexTable';
 import ReactTable from './ReactTable';
 import PropsTypes from 'prop-types';
 import { biciNotification } from 'bici-transformers';
-var TabPane = _Tabs.TabPane;
+var TabPane = Tabs.TabPane;
 var initialState = {
   selectedRowKeys: [],
   selectedRows: [],
@@ -382,7 +378,7 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
           mode: mode,
         };
         return /*#__PURE__*/ React.createElement(
-          _Modal,
+          Modal,
           {
             visible: visible,
             width: document.documentElement.clientWidth - 250,
@@ -404,7 +400,7 @@ var FilterDataPoint = /*#__PURE__*/ (function (_React$PureComponent) {
             onCancel: this.props.onCancel,
           },
           /*#__PURE__*/ React.createElement(
-            _Tabs,
+            Tabs,
             {
               defaultActiveKey: 'dataPoint',
             },

@@ -1,14 +1,3 @@
-import 'antd/lib/col/style';
-import _Col from 'antd/lib/col';
-import 'antd/lib/row/style';
-import _Row from 'antd/lib/row';
-import 'antd/lib/message/style';
-import _message from 'antd/lib/message';
-import 'antd/lib/form/style';
-import _Form from 'antd/lib/form';
-import 'antd/lib/collapse/style';
-import _Collapse from 'antd/lib/collapse';
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -151,16 +140,17 @@ function _arrayWithHoles(arr) {
 
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { clientParam } from '../../../data/api';
+import { Row, Col, Form, message, Collapse } from 'antd';
 import { useClickAway } from 'ahooks';
 import CompContextMenu from '../../../common/CompContextMenu';
 import styles from '../../index.module.css';
 import CustomIcon from '../../../config/iconConfig';
-var Panel = _Collapse.Panel;
+var Panel = Collapse.Panel;
 var Layout = /*#__PURE__*/ forwardRef(function (props, ref) {
   var onDrag = props.onDrag,
     combineCom = props.combineCom;
 
-  var _Form$useForm = _Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     formRef = _Form$useForm2[0]; // 是否显示右键菜单
 
@@ -222,9 +212,8 @@ var Layout = /*#__PURE__*/ forwardRef(function (props, ref) {
         },
       })
       .then(function (res) {
-        _message.success('删除组件成功！', 2, function () {
-          _message.destroy();
-
+        message.success('删除组件成功！', 2, function () {
+          message.destroy();
           return null;
         });
 
@@ -303,7 +292,7 @@ var Layout = /*#__PURE__*/ forwardRef(function (props, ref) {
                       },
                     })
                     .then(function (res) {
-                      _message.success('重命名组件成功！');
+                      message.success('重命名组件成功！');
 
                       _getNewComponents();
                     });
@@ -334,7 +323,7 @@ var Layout = /*#__PURE__*/ forwardRef(function (props, ref) {
   })();
 
   return /*#__PURE__*/ React.createElement(
-    _Collapse,
+    Collapse,
     {
       expandIconPosition: 'right',
       ghost: false,
@@ -352,13 +341,13 @@ var Layout = /*#__PURE__*/ forwardRef(function (props, ref) {
           className: styles.button,
         },
         /*#__PURE__*/ React.createElement(
-          _Row,
+          Row,
           {
             align: 'middle',
           },
           (componentList || []).map(function (item, key) {
             return /*#__PURE__*/ React.createElement(
-              _Col,
+              Col,
               {
                 key: key,
                 span: 8,

@@ -22,13 +22,13 @@ declare const EditorLayout: React.ForwardRefExoticComponent<
     | 'onAddVedioSource'
     | 'dataPointPropsMap'
     | 'industrialLibrary'
+    | 'websocketConf'
     | 'apiURL'
     | 'selfIndustrialLibrary'
     | 'preInstallBgImages'
     | 'editorData'
     | 'boardData'
     | 'uploadConfig'
-    | 'websocketConf'
   > &
     React.RefAttributes<unknown>
 >;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
 var _default = {
   name: '矩形',
   icon: 'iconjuxing',
@@ -26,4 +26,4 @@ var _default = {
     name: 'rectangle',
   },
 };
-exports['default'] = _default;
+exports.default = _default;

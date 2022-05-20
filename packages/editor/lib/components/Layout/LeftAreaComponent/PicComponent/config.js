@@ -1,5 +1,9 @@
 'use strict';
 
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
@@ -26,110 +30,28 @@ exports.scaleWidthHeight =
   exports.NEW_BOARD_INDUSTRY_BOILER =
     void 0;
 
+var _typeof2 = _interopRequireDefault(require('@babel/runtime/helpers/typeof'));
+
+var _objectSpread2 = _interopRequireDefault(require('@babel/runtime/helpers/objectSpread2'));
+
 var _ = _interopRequireWildcard(require('lodash'));
 
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
+// NEW_BOARD_INDUSTRY_CONVEYOR(121,"传送带"),
+//     NEW_BOARD_INDUSTRY_STORAGE_SILO(122,"储料罐"),
+//     NEW_BOARD_INDUSTRY_CHEMICAL_INDUSTRY(123,"化工"),
+//     NEW_BOARD_INDUSTRY_MATERIAL_HANDLING(124,"原料处理"),
+//     NEW_BOARD_INDUSTRY_REACTOR(125,"反应器"),
+//     NEW_BOARD_INDUSTRY_DIRECTOR(126,"控制器"),
+//     NEW_BOARD_INDUSTRY_MACHINE_WORK(127,"机械加工"),
+//     NEW_BOARD_INDUSTRY_PUMP(128,"泵"),
+//     NEW_BOARD_INDUSTRY_ELECTRIC_MACHINERY(129,"电机"),
+//     NEW_BOARD_INDUSTRY_CIRCUITRY(130,"电路图"),
+//     NEW_BOARD_INDUSTRY_PIPELINE(131,"管道"),
+//     NEW_BOARD_INDUSTRY_VENT_LINE(132,"通风管道"),
+//     NEW_BOARD_INDUSTRY_MINE(133,"采矿"),
+//     NEW_BOARD_INDUSTRY_STEEL_INDUSTRY(134,"钢铁行业"),
+//     NEW_BOARD_INDUSTRY_BOILER(135,"锅炉"),
+//     NEW_BOARD_INDUSTRY_KLEP(136,"阀门"),
 var NEW_BOARD_INDUSTRY_CONVEYOR = [121, '传送带'];
 exports.NEW_BOARD_INDUSTRY_CONVEYOR = NEW_BOARD_INDUSTRY_CONVEYOR;
 var NEW_BOARD_INDUSTRY_STORAGE_SILO = [122, '储料罐'];
@@ -244,8 +166,8 @@ var rtnImg = function rtnImg(nImg, resolve, maxSize, img) {
   var height = nImg.height;
   var r = scaleWidthHeight(width, height, maxSize);
   resolve(
-    _objectSpread(
-      _objectSpread({}, img),
+    (0, _objectSpread2.default)(
+      (0, _objectSpread2.default)({}, img),
       {},
       {
         url: img.url + '?_t=' + new Date().getTime(),
@@ -278,16 +200,16 @@ var fitImageSize = function fitImageSize(img) {
           rtnImg(nImg, resolve, maxSize, img);
         };
       }
-    } else if (_typeof(img) === 'object') {
+    } else if ((0, _typeof2.default)(img) === 'object') {
       // 包含图片大小的对象
       if (img.width <= maxSize && img.height <= maxSize) {
-        resolve(_objectSpread({}, img));
+        resolve((0, _objectSpread2.default)({}, img));
       } else if (img.width > maxSize && img.width > img.height) {
         var width = maxSize;
         var height = (width * img.height) / img.width;
         resolve(
-          _objectSpread(
-            _objectSpread({}, img),
+          (0, _objectSpread2.default)(
+            (0, _objectSpread2.default)({}, img),
             {},
             {
               width: width,
@@ -301,8 +223,8 @@ var fitImageSize = function fitImageSize(img) {
         var _width = (_height * img.width) / img.height;
 
         resolve(
-          _objectSpread(
-            _objectSpread({}, img),
+          (0, _objectSpread2.default)(
+            (0, _objectSpread2.default)({}, img),
             {},
             {
               width: _width,

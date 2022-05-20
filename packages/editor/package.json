@@ -36,11 +36,10 @@
     "@top-datav/layout": "^1.0.10",
     "@top-datav/sequence-diagram": "^1.0.10",
     "@top-datav/store-utils": "^1.0.3",
-    "react-color": "^2.19.3"
-  },
-  "devDependencies": {
-    "ahooks": "^2.9.1",
     "antd": "^4.10.0",
+    "react-color": "^2.19.3",
+    "react-table": "^7.6.3",
+    "ahooks": "^2.9.1",
     "axios": "^0.21.0",
     "bici-transformers": "^0.19.7",
     "cash-dom": "^8.1.0",
@@ -58,5 +57,6 @@
     "react-table": "^7.6.3",
     "reactcss": "^1.2.3"
   },
-  "gitHead": "f7037403917f2452ae294e66ae2609b223e8c1fa"
+  "devDependencies": {},
+  "gitHead": "e0027b056a477aa08b813beec5692a7af3434c7c"
 }

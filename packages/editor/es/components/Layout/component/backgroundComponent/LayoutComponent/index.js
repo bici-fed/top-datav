@@ -1,14 +1,3 @@
-import 'antd/lib/button/style';
-import _Button from 'antd/lib/button';
-import 'antd/lib/input-number/style';
-import _InputNumber from 'antd/lib/input-number';
-import 'antd/lib/col/style';
-import _Col from 'antd/lib/col';
-import 'antd/lib/row/style';
-import _Row from 'antd/lib/row';
-import 'antd/lib/form/style';
-import _Form from 'antd/lib/form';
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -53,6 +42,7 @@ function _defineProperty(obj, key, value) {
 }
 
 import React from 'react';
+import { Form, Row, Col, InputNumber, Button } from 'antd';
 var formLayout = {
   labelCol: {
     span: 8,
@@ -66,7 +56,7 @@ var Layout = function Layout() {
   var startLayout = function startLayout() {};
 
   return /*#__PURE__*/ React.createElement(
-    _Form,
+    Form,
     _objectSpread(
       _objectSpread({}, formLayout),
       {},
@@ -77,19 +67,19 @@ var Layout = function Layout() {
       },
     ),
     /*#__PURE__*/ React.createElement(
-      _Row,
+      Row,
       null,
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u6700\u5927\u5BBD\u5EA6',
           },
-          /*#__PURE__*/ React.createElement(_InputNumber, {
+          /*#__PURE__*/ React.createElement(InputNumber, {
             style: {
               width: '100%',
             },
@@ -99,16 +89,16 @@ var Layout = function Layout() {
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u8282\u70B9\u5BBD\u5EA6',
           },
-          /*#__PURE__*/ React.createElement(_InputNumber, {
+          /*#__PURE__*/ React.createElement(InputNumber, {
             style: {
               width: '100%',
             },
@@ -118,16 +108,16 @@ var Layout = function Layout() {
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u8282\u70B9\u9AD8\u5EA6',
           },
-          /*#__PURE__*/ React.createElement(_InputNumber, {
+          /*#__PURE__*/ React.createElement(InputNumber, {
             style: {
               width: '100%',
             },
@@ -137,16 +127,16 @@ var Layout = function Layout() {
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u6C34\u5E73\u4E2A\u6570',
           },
-          /*#__PURE__*/ React.createElement(_InputNumber, {
+          /*#__PURE__*/ React.createElement(InputNumber, {
             style: {
               width: '100%',
             },
@@ -156,16 +146,16 @@ var Layout = function Layout() {
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u6C34\u5E73\u95F4\u8DDD',
           },
-          /*#__PURE__*/ React.createElement(_InputNumber, {
+          /*#__PURE__*/ React.createElement(InputNumber, {
             style: {
               width: '100%',
             },
@@ -175,16 +165,16 @@ var Layout = function Layout() {
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u5782\u76F4\u95F4\u8DDD',
           },
-          /*#__PURE__*/ React.createElement(_InputNumber, {
+          /*#__PURE__*/ React.createElement(InputNumber, {
             style: {
               width: '100%',
             },
@@ -194,12 +184,12 @@ var Layout = function Layout() {
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Button,
+          Button,
           {
             type: 'primary',
             style: {

@@ -1,8 +1,3 @@
-import 'antd/lib/col/style';
-import _Col from 'antd/lib/col';
-import 'antd/lib/row/style';
-import _Row from 'antd/lib/row';
-
 function _slicedToArray(arr, i) {
   return (
     _arrayWithHoles(arr) ||
@@ -69,6 +64,7 @@ function _arrayWithHoles(arr) {
 }
 
 import React, { useEffect, useState } from 'react';
+import { Col, Row } from 'antd';
 import styles from './index.module.css';
 import { onDrag } from './config';
 import { clientParam } from '../../../data/api';
@@ -120,11 +116,11 @@ var IndustryList = function IndustryList(props) {
     React.Fragment,
     null,
     /*#__PURE__*/ React.createElement(
-      _Row,
+      Row,
       null,
       (list || []).map(function (item, index) {
         return /*#__PURE__*/ React.createElement(
-          _Col,
+          Col,
           {
             key: index,
             span: 8,

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = getBackgroundColor;
+exports.default = getBackgroundColor;
 
 function createBackgroundColor(pos, checkedPos, uncheckedPos, offColor, onColor) {
   var relativePos = (pos - uncheckedPos) / (checkedPos - uncheckedPos);

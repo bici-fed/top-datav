@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
 
 // @ts-nocheck
 var hexColorPropType = function hexColorPropType(props, propName, componentName) {
@@ -25,4 +25,4 @@ var hexColorPropType = function hexColorPropType(props, propName, componentName)
 };
 
 var _default = hexColorPropType;
-exports['default'] = _default;
+exports.default = _default;

@@ -1,14 +1,3 @@
-import 'antd/lib/button/style';
-import _Button from 'antd/lib/button';
-import 'antd/lib/input/style';
-import _Input from 'antd/lib/input';
-import 'antd/lib/col/style';
-import _Col from 'antd/lib/col';
-import 'antd/lib/row/style';
-import _Row from 'antd/lib/row';
-import 'antd/lib/form/style';
-import _Form from 'antd/lib/form';
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -117,6 +106,7 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
+import { Form, Row, Col, Input, Button } from 'antd';
 import React from 'react';
 var formLayout = {
   labelCol: {
@@ -128,7 +118,7 @@ var formLayout = {
 };
 
 var MQTTForm = function MQTTForm() {
-  var _Form$useForm = _Form.useForm(),
+  var _Form$useForm = Form.useForm(),
     _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
     form = _Form$useForm2[0];
   /**
@@ -148,7 +138,7 @@ var MQTTForm = function MQTTForm() {
   };
 
   return /*#__PURE__*/ React.createElement(
-    _Form,
+    Form,
     _objectSpread(
       _objectSpread({}, formLayout),
       {},
@@ -157,92 +147,92 @@ var MQTTForm = function MQTTForm() {
       },
     ),
     /*#__PURE__*/ React.createElement(
-      _Row,
+      Row,
       null,
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: 'URL\u5730\u5740',
           },
-          /*#__PURE__*/ React.createElement(_Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             placeholder: '\u8BF7\u8F93\u5165URL\u5730\u5740',
           }),
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: 'Client ID',
           },
-          /*#__PURE__*/ React.createElement(_Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             placeholder:
               '\u8BF7\u8F93\u5165Client ID\uFF08\u4E0D\u80FD\u91CD\u590D\u4F7F\u7528\uFF0C\u53EF\u4E3A\u7A7A)',
           }),
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u7528\u6237\u540D',
           },
-          /*#__PURE__*/ React.createElement(_Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             placeholder: '\u8BF7\u8F93\u5165\u7528\u6237\u540D',
           }),
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: '\u5BC6\u7801',
           },
-          /*#__PURE__*/ React.createElement(_Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             type: 'password',
             placeholder: '\u8BF7\u8F93\u5165\u5BC6\u7801',
           }),
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Form.Item,
+          Form.Item,
           {
             label: 'Topics *',
           },
-          /*#__PURE__*/ React.createElement(_Input, {
+          /*#__PURE__*/ React.createElement(Input, {
             placeholder: '\u8BF7\u8F93\u5165Topics',
           }),
         ),
       ),
       /*#__PURE__*/ React.createElement(
-        _Col,
+        Col,
         {
           span: 24,
         },
         /*#__PURE__*/ React.createElement(
-          _Button,
+          Button,
           {
             type: 'primary',
             style: {

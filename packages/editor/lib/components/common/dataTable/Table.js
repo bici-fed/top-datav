@@ -1,33 +1,21 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
+
+require('antd/es/empty/style');
+
+var _empty = _interopRequireDefault(require('antd/es/empty'));
+
+var _objectSpread2 = _interopRequireDefault(require('@babel/runtime/helpers/objectSpread2'));
 
 var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
 
 var _reactcss = _interopRequireDefault(require('reactcss'));
 
@@ -38,92 +26,6 @@ var _reactTable = require('react-table');
 var _ = _interopRequireWildcard(require('lodash'));
 
 var _iconConfig = _interopRequireDefault(require('../../config/iconConfig'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
 
 // 获取titleFontStyle的
 function getTitleFontStyle(fontStyle, value) {
@@ -173,7 +75,7 @@ var Table = function Table(props) {
   }, []);
   /* 内敛样式定义 */
 
-  var styles = (0, _reactcss['default'])({
+  var styles = (0, _reactcss.default)({
     default: {
       headerWrapper: {
         textAlign: 'center',
@@ -219,37 +121,37 @@ var Table = function Table(props) {
   });
 
   var renderDataPoint = function renderDataPoint() {
-    return /*#__PURE__*/ _react['default'].createElement(
-      _react['default'].Fragment,
+    return /*#__PURE__*/ _react.default.createElement(
+      _react.default.Fragment,
       null,
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ _react.default.createElement(
         'div',
         {
           style: {
             background: '#ccc',
           },
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'table',
-          _objectSpread(
-            _objectSpread({}, getTableProps()),
+          (0, _objectSpread2.default)(
+            (0, _objectSpread2.default)({}, getTableProps()),
             {},
             {
               style: styles.theader,
             },
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'thead',
             null,
             headerGroups.map(function (headerGroup) {
-              return /*#__PURE__*/ _react['default'].createElement(
+              return /*#__PURE__*/ _react.default.createElement(
                 'tr',
-                _objectSpread({}, headerGroup.getHeaderGroupProps()),
+                (0, _objectSpread2.default)({}, headerGroup.getHeaderGroupProps()),
                 headerGroup.headers.map(function (column) {
-                  return /*#__PURE__*/ _react['default'].createElement(
+                  return /*#__PURE__*/ _react.default.createElement(
                     'th',
-                    _objectSpread(
-                      _objectSpread({}, column.getHeaderProps()),
+                    (0, _objectSpread2.default)(
+                      (0, _objectSpread2.default)({}, column.getHeaderProps()),
                       {},
                       {
                         style: styles.theaderTH,
@@ -263,38 +165,38 @@ var Table = function Table(props) {
           ),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ _react.default.createElement(
         'div',
         {
           style: styles.tbodyWrapper,
           className: 'outer-container',
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'div',
           {
             className: 'inner-container',
             ref: scrollRef,
           },
           (data === null || data === void 0 ? void 0 : data.length) > 0
-            ? /*#__PURE__*/ _react['default'].createElement(
+            ? /*#__PURE__*/ _react.default.createElement(
                 'table',
                 {
                   style: styles.table,
                   className: 'element',
                 },
-                /*#__PURE__*/ _react['default'].createElement(
+                /*#__PURE__*/ _react.default.createElement(
                   'tbody',
-                  _objectSpread({}, getTableBodyProps()),
+                  (0, _objectSpread2.default)({}, getTableBodyProps()),
                   rows.map(function (row) {
                     prepareRow(row);
-                    return /*#__PURE__*/ _react['default'].createElement(
+                    return /*#__PURE__*/ _react.default.createElement(
                       'tr',
-                      _objectSpread({}, row.getRowProps()),
+                      (0, _objectSpread2.default)({}, row.getRowProps()),
                       row.cells.map(function (cell) {
-                        return /*#__PURE__*/ _react['default'].createElement(
+                        return /*#__PURE__*/ _react.default.createElement(
                           'td',
-                          _objectSpread(
-                            _objectSpread({}, cell.getCellProps()),
+                          (0, _objectSpread2.default)(
+                            (0, _objectSpread2.default)({}, cell.getCellProps()),
                             {},
                             {
                               style: styles.tbodyTD,
@@ -307,8 +209,8 @@ var Table = function Table(props) {
                   }),
                 ),
               )
-            : /*#__PURE__*/ _react['default'].createElement(_antd.Empty, {
-                image: /*#__PURE__*/ _react['default'].createElement(_iconConfig['default'], {
+            : /*#__PURE__*/ _react.default.createElement(_empty.default, {
+                image: /*#__PURE__*/ _react.default.createElement(_iconConfig.default, {
                   type: 'iconwushuju',
                 }),
                 imageStyle: {
@@ -316,7 +218,7 @@ var Table = function Table(props) {
                   margin: 'auto auto',
                   fontSize: 42,
                 },
-                description: /*#__PURE__*/ _react['default'].createElement(
+                description: /*#__PURE__*/ _react.default.createElement(
                   'span',
                   null,
                   '\u8BF7\u5728\u201C\u6570\u636E\u201D\u680F\u4E2D\u7ED1\u5B9A\u6570\u636E\u70B9\u6216\u8005\u7ED1\u5B9A\u6570\u636E\u63A5\u53E3',
@@ -327,8 +229,8 @@ var Table = function Table(props) {
     );
   };
 
-  return /*#__PURE__*/ _react['default'].createElement('div', null, renderDataPoint());
+  return /*#__PURE__*/ _react.default.createElement('div', null, renderDataPoint());
 };
 
 var _default = Table;
-exports['default'] = _default;
+exports.default = _default;

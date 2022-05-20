@@ -1,5 +1,7 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
@@ -23,10 +25,6 @@ var _jsencrypt = _interopRequireDefault(require('jsencrypt'));
 
 var _defines = require('./defines');
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
 var timeout = 2000000;
 exports.timeout = timeout;
 var maxContentLength = 200000000;
@@ -35,7 +33,7 @@ var withCredentials = false; // 添加请求拦截器
 
 exports.withCredentials = withCredentials;
 
-_axios['default'].interceptors.request.use(
+_axios.default.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
     return config;
@@ -47,7 +45,7 @@ _axios['default'].interceptors.request.use(
   },
 ); // 添加响应拦截器
 
-_axios['default'].interceptors.response.use(
+_axios.default.interceptors.response.use(
   function (response) {
     // 对响应数据做点什么
     return response;
@@ -80,7 +78,7 @@ function handleRequestError(error) {
 }
 
 function clientParam(apiURL) {
-  return _axios['default'].create({
+  return _axios.default.create({
     baseURL: ''.concat(apiURL, '/'),
     timeout: timeout,
     maxContentLength: maxContentLength,
@@ -89,7 +87,7 @@ function clientParam(apiURL) {
 }
 
 function apiClientParam(apiURL) {
-  return _axios['default'].create({
+  return _axios.default.create({
     baseURL: ''.concat(apiURL, '/'),
     timeout: timeout,
     maxContentLength: maxContentLength,
@@ -150,7 +148,7 @@ function fetchPerceptualPointList(params) {
 }
 
 var tranRSA = function tranRSA(params) {
-  var jsencrypt = new _jsencrypt['default']();
+  var jsencrypt = new _jsencrypt.default();
   jsencrypt.setPublicKey(_defines.privateKey);
   return jsencrypt.encrypt(params);
 }; // 登陆华夏数字钢厂
@@ -159,7 +157,7 @@ exports.tranRSA = tranRSA;
 
 var loginSZGC = function loginSZGC() {
   return new Promise(function (resolve, reject) {
-    var ajax = _axios['default'].create({
+    var ajax = _axios.default.create({
       baseURL: 'http://hxszgc.bicisims.com',
       timeout: timeout,
       maxContentLength: maxContentLength,
@@ -190,7 +188,7 @@ var loginSZGC = function loginSZGC() {
           });
         }
       })
-      ['catch'](function (error) {
+      .catch(function (error) {
         handleRequestError(error);
         resolve({
           front_error: 1,

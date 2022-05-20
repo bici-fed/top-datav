@@ -1,9 +1,15 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
+
+var _objectWithoutProperties2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/objectWithoutProperties'),
+);
 
 var _react = _interopRequireDefault(require('react'));
 
@@ -399,710 +405,596 @@ var _IcontuichuquanpingCopy = _interopRequireDefault(require('./Icontuichuquanpi
 
 var _excluded = ['name'];
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-  return target;
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-
 var IconFont = function IconFont(_ref) {
   var name = _ref.name,
-    rest = _objectWithoutProperties(_ref, _excluded);
+    rest = (0, _objectWithoutProperties2.default)(_ref, _excluded);
 
   switch (name) {
     case 'fenxi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconfenxi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconfenxi.default, rest);
 
     case 'dianjianqingkuangtongjibeifen':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icondianjianqingkuangtongjibeifen['default'],
+      return /*#__PURE__*/ _react.default.createElement(
+        _Icondianjianqingkuangtongjibeifen.default,
         rest,
       );
 
     case 'runhuaqingkuangtongji1':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconrunhuaqingkuangtongji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconrunhuaqingkuangtongji.default, rest);
 
     case 'chakanxiangqing':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchakanxiangqing['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconchakanxiangqing.default, rest);
 
     case 'zhengchang':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhengchang['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconzhengchang.default, rest);
 
     case 'yichang':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyichang['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconyichang.default, rest);
 
     case 'liuhetecaishuzihuagongchang':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconliuhetecaishuzihuagongchang['default'],
+      return /*#__PURE__*/ _react.default.createElement(
+        _Iconliuhetecaishuzihuagongchang.default,
         rest,
       );
 
     case 'yidu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyidu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconyidu.default, rest);
 
     case 'shanchu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshanchu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshanchu.default, rest);
 
     case 'bingzhuangtu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbingzhuangtu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbingzhuangtu.default, rest);
 
     case 'zhexiantu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhexiantu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconzhexiantu.default, rest);
 
     case 'zhuzhuangtu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhuzhuangtu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconzhuzhuangtu.default, rest);
 
     case 'tuichu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontuichu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontuichu.default, rest);
 
     case 'jiaojieban1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjiaojieban['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjiaojieban.default, rest);
 
     case 'chakan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchakan['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconchakan.default, rest);
 
     case 'xuanzhonganniu_hui':
-      return /*#__PURE__*/ _react['default'].createElement(_IconxuanzhonganniuHui['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconxuanzhonganniuHui.default, rest);
 
     case 'duoxuan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconduoxuan['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconduoxuan.default, rest);
 
     case 'liebiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconliebiao['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconliebiao.default, rest);
 
     case 'nengyuan-shui':
-      return /*#__PURE__*/ _react['default'].createElement(_IconnengyuanShui['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconnengyuanShui.default, rest);
 
     case 'nengyuan-dian1':
-      return /*#__PURE__*/ _react['default'].createElement(_IconnengyuanDian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconnengyuanDian.default, rest);
 
     case 'nengyuan-qi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconnengyuanQi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconnengyuanQi.default, rest);
 
     case 'caidan-gongyibianzhi':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanGongyibianzhi['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanGongyibianzhi.default, rest);
 
     case 'caidan-banciguanli':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanBanciguanli['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanBanciguanli.default, rest);
 
     case 'caidan-jichushuju':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanJichushuju['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanJichushuju.default, rest);
 
     case 'caidan-shouye':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanShouye['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanShouye.default, rest);
 
     case 'caidan-shebeiku':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanShebeiku['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanShebeiku.default, rest);
 
     case 'caidan-shujutianbaotongji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanShujutianbaotongji['default'],
+      return /*#__PURE__*/ _react.default.createElement(
+        _IconcaidanShujutianbaotongji.default,
         rest,
       );
 
     case 'caidan-shebeiguanli':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanShebeiguanli['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanShebeiguanli.default, rest);
 
     case 'caidan-tongjifenxi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanTongjifenxi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanTongjifenxi.default, rest);
 
     case 'caidan-shujuguanli':
-      return /*#__PURE__*/ _react['default'].createElement(_IconcaidanShujuguanli['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanShujuguanli.default, rest);
 
     case 'caidan-gongyizhiliang':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanGongyizhiliang['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanGongyizhiliang.default, rest);
 
     case 'caidan-wangluozhuangtai':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanWangluozhuangtai['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanWangluozhuangtai.default, rest);
 
     case 'caidan-zhinengcaiji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanZhinengcaiji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanZhinengcaiji.default, rest);
 
     case 'caidan-shengchanrenwu':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanShengchanrenwu['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanShengchanrenwu.default, rest);
 
     case 'caidan-xitongguanli':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanXitongguanli['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanXitongguanli.default, rest);
 
     case 'caidan-zidingyibiaodan':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanZidingyibiaodan['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanZidingyibiaodan.default, rest);
 
     case 'caidan-shujuyingyong':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconcaidanShujuyingyong['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconcaidanShujuyingyong.default, rest);
 
     case 'bingtu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbingtu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbingtu.default, rest);
 
     case 'bianji3':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbianji['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbianji.default, rest);
 
     case 'danqi':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondanqi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondanqi.default, rest);
 
     case 'daochubaogao':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaochubaogao['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondaochubaogao.default, rest);
 
     case 'chakangongyiyaoqiu':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconchakangongyiyaoqiu['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconchakangongyiyaoqiu.default, rest);
 
     case 'dian1':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondian.default, rest);
 
     case 'daochubiaoge':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaochubiaoge['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondaochubiaoge.default, rest);
 
     case 'gerenxinxi':
-      return /*#__PURE__*/ _react['default'].createElement(_Icongerenxinxi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icongerenxinxi.default, rest);
 
     case 'mima':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconmima['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconmima.default, rest);
 
     case 'kaishianniu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkaishianniu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconkaishianniu.default, rest);
 
     case 'jiaojieban':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjiaojieban2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjiaojieban2.default, rest);
 
     case 'meiqi_tianranqi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconmeiqiTianranqi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconmeiqiTianranqi.default, rest);
 
     case 'shanchu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshanchu2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshanchu2.default, rest);
 
     case 'shanchuxiang':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshanchuxiang['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshanchuxiang.default, rest);
 
     case 'hejinpeiliao':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconhejinpeiliao['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconhejinpeiliao.default, rest);
 
     case 'shanchu-hongse':
-      return /*#__PURE__*/ _react['default'].createElement(_IconshanchuHongse['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconshanchuHongse.default, rest);
 
     case 'tianjia-queding':
-      return /*#__PURE__*/ _react['default'].createElement(_IcontianjiaQueding['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IcontianjiaQueding.default, rest);
 
     case 'tianjia-qing':
-      return /*#__PURE__*/ _react['default'].createElement(_IcontianjiaQing['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IcontianjiaQing.default, rest);
 
     case 'shezhi_peizhi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconshezhiPeizhi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconshezhiPeizhi.default, rest);
 
     case 'tianjiaxiang':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjiaxiang['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontianjiaxiang.default, rest);
 
     case 'tianjia-zhong':
-      return /*#__PURE__*/ _react['default'].createElement(_IcontianjiaZhong['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IcontianjiaZhong.default, rest);
 
     case 'tuichudenglu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontuichudenglu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontuichudenglu.default, rest);
 
     case 'tianjiatuxing':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjiatuxing['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontianjiatuxing.default, rest);
 
     case 'yaqi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyaqi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconyaqi.default, rest);
 
     case 'xiazai1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiazai['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxiazai.default, rest);
 
     case 'yangqi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyangqi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconyangqi.default, rest);
 
     case 'xuanze-0':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxuanze['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxuanze.default, rest);
 
     case 'zhankaishouqi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhankaishouqi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconzhankaishouqi.default, rest);
 
     case 'zhexiantu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhexiantu2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconzhexiantu2.default, rest);
 
     case 'zhuzhuangtu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhuzhuangtu2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconzhuzhuangtu2.default, rest);
 
     case 'tongbu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontongbu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontongbu.default, rest);
 
     case 'shubiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshubiao['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshubiao.default, rest);
 
     case 'chakanshujudianquxian':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconchakanshujudianquxian['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconchakanshujudianquxian.default, rest);
 
     case 'beijianfenleibianma':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconbeijianfenleibianma['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconbeijianfenleibianma.default, rest);
 
     case 'kucundaoru':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkucundaoru['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconkucundaoru.default, rest);
 
     case 'shuaxin':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshuaxin['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshuaxin.default, rest);
 
     case 'piliangchuli':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconpiliangchuli['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconpiliangchuli.default, rest);
 
     case 'tongbubaojingguize':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icontongbubaojingguize['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Icontongbubaojingguize.default, rest);
 
     case 'zhidutaishiguizepeizhi':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconzhidutaishiguizepeizhi['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconzhidutaishiguizepeizhi.default, rest);
 
     case 'yuedushebeiqingkuangtianbao':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconyuedushebeiqingkuangtianbao['default'],
+      return /*#__PURE__*/ _react.default.createElement(
+        _Iconyuedushebeiqingkuangtianbao.default,
         rest,
       );
 
     case 'juxing':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjuxing['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjuxing.default, rest);
 
     case 'fenzhijiedian1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconfenzhijiedian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconfenzhijiedian.default, rest);
 
     case 'fenzhijiedian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconfenzhijiedian2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconfenzhijiedian2.default, rest);
 
     case 'houyitian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconhouyitian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconhouyitian.default, rest);
 
     case 'qianyitian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconqianyitian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconqianyitian.default, rest);
 
     case 'wuzhuangtai':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconwuzhuangtai['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconwuzhuangtai.default, rest);
 
     case 'retingjiguzhang':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconretingjiguzhang['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconretingjiguzhang.default, rest);
 
     case 'linshijianxiu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconlinshijianxiu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconlinshijianxiu.default, rest);
 
     case 'jihuajianxiu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjihuajianxiu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjihuajianxiu.default, rest);
 
     case 'dailiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondailiao['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondailiao.default, rest);
 
     case 'wurenwushebeiwanhao':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconwurenwushebeiwanhao['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconwurenwushebeiwanhao.default, rest);
 
     case 'shengchanrenwuzhengchangyunhang':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconshengchanrenwuzhengchangyunhang['default'],
+      return /*#__PURE__*/ _react.default.createElement(
+        _Iconshengchanrenwuzhengchangyunhang.default,
         rest,
       );
 
     case 'qiyonggaiziduan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconqiyonggaiziduan['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconqiyonggaiziduan.default, rest);
 
     case 'jinyonggaiziduan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjinyonggaiziduan['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjinyonggaiziduan.default, rest);
 
     case 'ziduanpeizhi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconziduanpeizhi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconziduanpeizhi.default, rest);
 
     case 'xinzengyibiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxinzengyibiao['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxinzengyibiao.default, rest);
 
     case 'jianding':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjianding['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjianding.default, rest);
 
     case 'daoruyibiao':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaoruyibiao['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondaoruyibiao.default, rest);
 
     case 'zhuangtaibiangeng':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconzhuangtaibiangeng['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconzhuangtaibiangeng.default, rest);
 
     case 'shijijianding':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshijijianding['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshijijianding.default, rest);
 
     case 'daochu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaochu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondaochu.default, rest);
 
     case 'YZshanchuhong1':
-      return /*#__PURE__*/ _react['default'].createElement(_IconYZshanchuhong['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconYZshanchuhong.default, rest);
 
     case 'ZYbianjilan1':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYbianjilan['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconZYbianjilan.default, rest);
 
     case 'ZYbianji':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYbianji['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconZYbianji.default, rest);
 
     case 'ZYshanchubai':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYshanchubai['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconZYshanchubai.default, rest);
 
     case 'YZshanchuhong':
-      return /*#__PURE__*/ _react['default'].createElement(_IconYZshanchuhong2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconYZshanchuhong2.default, rest);
 
     case 'ZYbianjilan':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYbianjilan2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconZYbianjilan2.default, rest);
 
     case 'ZYtianjia':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYtianjia['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconZYtianjia.default, rest);
 
     case 'ZYshanchu':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYshanchu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconZYshanchu.default, rest);
 
     case 'tianjiafenlei':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjiafenlei['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontianjiafenlei.default, rest);
 
     case 'ZYshouqi':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYshouqi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconZYshouqi.default, rest);
 
     case 'ZYzhankai':
-      return /*#__PURE__*/ _react['default'].createElement(_IconZYzhankai['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconZYzhankai.default, rest);
 
     case 'wushuju':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconwushuju['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconwushuju.default, rest);
 
     case 'tips':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontips['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontips.default, rest);
 
     case 'xiangqing1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiangqing['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxiangqing.default, rest);
 
     case 'baojingqushi1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingqushi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbaojingqushi.default, rest);
 
     case 'keshihuakanban1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkeshihuakanban['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconkeshihuakanban.default, rest);
 
     case 'dianjianqingkuangtongji1':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icondianjianqingkuangtongji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Icondianjianqingkuangtongji.default, rest);
 
     case 'xinjian1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxinjian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxinjian.default, rest);
 
     case 'bianji2':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbianji2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbianji2.default, rest);
 
     case 'qiehuanguanlian1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconqiehuanguanlian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconqiehuanguanlian.default, rest);
 
     case 'baojingman1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingman['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbaojingman.default, rest);
 
     case 'erweima1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconerweima['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconerweima.default, rest);
 
     case 'rili1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconrili['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconrili.default, rest);
 
     case 'tianjia1':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjia['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontianjia.default, rest);
 
     case 'dianjiguanzhu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondianjiguanzhu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondianjiguanzhu.default, rest);
 
     case 'guanlianmoban1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconguanlianmoban['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconguanlianmoban.default, rest);
 
     case 'yiguanzhu1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyiguanzhu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconyiguanzhu.default, rest);
 
     case 'kong1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkong['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconkong.default, rest);
 
     case 'jiankangzhi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjiankangzhi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjiankangzhi.default, rest);
 
     case 'weiguanzhu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconweiguanzhu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconweiguanzhu.default, rest);
 
     case 'shijifankui':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshijifankui['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshijifankui.default, rest);
 
     case 'xiangqing':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiangqing2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxiangqing2.default, rest);
 
     case 'mubiaosheding':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconmubiaosheding['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconmubiaosheding.default, rest);
 
     case 'daichulibaojing':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondaichulibaojing['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondaichulibaojing.default, rest);
 
     case 'jiankangfengxianxiang':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconjiankangfengxianxiang['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconjiankangfengxianxiang.default, rest);
 
     case 'guzhangqingkuangtongji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconguzhangqingkuangtongji['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconguzhangqingkuangtongji.default, rest);
 
     case 'baojingqushi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingqushi2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbaojingqushi2.default, rest);
 
     case 'keshihuakanban':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkeshihuakanban2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconkeshihuakanban2.default, rest);
 
     case 'runhuaqingkuangtongji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconrunhuaqingkuangtongji2['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconrunhuaqingkuangtongji2.default, rest);
 
     case 'beipinbeijianxiaohao':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconbeipinbeijianxiaohao['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconbeipinbeijianxiaohao.default, rest);
 
     case 'qiehuanguanlian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconqiehuanguanlian2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconqiehuanguanlian2.default, rest);
 
     case 'tianjiaguanlian':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjiaguanlian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontianjiaguanlian.default, rest);
 
     case 'jiechuguanlian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjiechuguanlian['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjiechuguanlian.default, rest);
 
     case 'chaxun':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchaxun['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconchaxun.default, rest);
 
     case 'dianjianqingkuangtongji':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icondianjianqingkuangtongji2['default'],
+      return /*#__PURE__*/ _react.default.createElement(
+        _Icondianjianqingkuangtongji2.default,
         rest,
       );
 
     case 'sousuo':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconsousuo['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconsousuo.default, rest);
 
     case 'baojingman':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingman2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbaojingman2.default, rest);
 
     case 'xinjian':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxinjian2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxinjian2.default, rest);
 
     case 'baocun':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaocun['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbaocun.default, rest);
 
     case 'bianji1':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbianji3['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbianji3.default, rest);
 
     case 'erweima':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconerweima2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconerweima2.default, rest);
 
     case 'dianjiyichushujudian':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Icondianjiyichushujudian['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Icondianjiyichushujudian.default, rest);
 
     case 'baojingkong':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbaojingkong['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbaojingkong.default, rest);
 
     case 'chakansuoyourenwu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchakansuoyourenwu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconchakansuoyourenwu.default, rest);
 
     case 'shangchuan':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshangchuan['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshangchuan.default, rest);
 
     case 'rili':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconrili2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconrili2.default, rest);
 
     case 'tianjia':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontianjia2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontianjia2.default, rest);
 
     case 'yiguanzhu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyiguanzhu2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconyiguanzhu2.default, rest);
 
     case 'dianjiguanzhu':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondianjiguanzhu2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondianjiguanzhu2.default, rest);
 
     case 'guanlianmoban':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconguanlianmoban2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconguanlianmoban2.default, rest);
 
     case 'kong':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconkong2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconkong2.default, rest);
 
     case 'xiayibu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiayibu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxiayibu.default, rest);
 
     case 'youjiantou':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconyoujiantou['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconyoujiantou.default, rest);
 
     case 'chakancaozuojilu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconchakancaozuojilu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconchakancaozuojilu.default, rest);
 
     case 'chakanfanyingjieguo':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _Iconchakanfanyingjieguo['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_Iconchakanfanyingjieguo.default, rest);
 
     case 'xinkaichuangkou':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxinkaichuangkou['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxinkaichuangkou.default, rest);
 
     case 'dian':
-      return /*#__PURE__*/ _react['default'].createElement(_Icondian2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icondian2.default, rest);
 
     case 'xitongguanli':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxitongguanli['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxitongguanli.default, rest);
 
     case '1ping':
-      return /*#__PURE__*/ _react['default'].createElement(_Icon1Ping['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icon1Ping.default, rest);
 
     case '4ping':
-      return /*#__PURE__*/ _react['default'].createElement(_Icon4Ping['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icon4Ping.default, rest);
 
     case '9ping':
-      return /*#__PURE__*/ _react['default'].createElement(_Icon9Ping['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icon9Ping.default, rest);
 
     case 'huazhixuanze':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconhuazhixuanze['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconhuazhixuanze.default, rest);
 
     case 'huazhixuanze-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconhuazhixuanzeHover['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconhuazhixuanzeHover.default, rest);
 
     case 'jietu-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconjietuHover['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconjietuHover.default, rest);
 
     case 'tongdao-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IcontongdaoHover['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IcontongdaoHover.default, rest);
 
     case 'xiazai-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconxiazaiHover['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconxiazaiHover.default, rest);
 
     case 'tuichuquanping-hover':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IcontuichuquanpingHover['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IcontuichuquanpingHover.default, rest);
 
     case 'quanpingxianshi-hover':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconquanpingxianshiHover['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconquanpingxianshiHover.default, rest);
 
     case 'bianji-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconbianjiHover['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconbianjiHover.default, rest);
 
     case 'shezhi-hover':
-      return /*#__PURE__*/ _react['default'].createElement(_IconshezhiHover['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_IconshezhiHover.default, rest);
 
     case 'bianji':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconbianji4['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconbianji4.default, rest);
 
     case 'tuichuquanping':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontuichuquanping['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontuichuquanping.default, rest);
 
     case 'tongdao-0':
-      return /*#__PURE__*/ _react['default'].createElement(_Icontongdao['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Icontongdao.default, rest);
 
     case 'xiazai':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconxiazai2['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconxiazai2.default, rest);
 
     case 'shipinjiankong':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshipinjiankong['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshipinjiankong.default, rest);
 
     case 'quanpingxianshi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconquanpingxianshi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconquanpingxianshi.default, rest);
 
     case 'jietu':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconjietu['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconjietu.default, rest);
 
     case 'shezhi':
-      return /*#__PURE__*/ _react['default'].createElement(_Iconshezhi['default'], rest);
+      return /*#__PURE__*/ _react.default.createElement(_Iconshezhi.default, rest);
 
     case 'quanpingxianshi-copy':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IconquanpingxianshiCopy['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IconquanpingxianshiCopy.default, rest);
 
     case 'tuichuquanping-copy':
-      return /*#__PURE__*/ _react['default'].createElement(
-        _IcontuichuquanpingCopy['default'],
-        rest,
-      );
+      return /*#__PURE__*/ _react.default.createElement(_IcontuichuquanpingCopy.default, rest);
   }
 
   return null;
 };
 
 var _default = IconFont;
-exports['default'] = _default;
+exports.default = _default;

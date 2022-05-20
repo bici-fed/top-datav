@@ -1,33 +1,37 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
+
+require('antd/es/row/style');
+
+var _row = _interopRequireDefault(require('antd/es/row'));
+
+require('antd/es/col/style');
+
+var _col = _interopRequireDefault(require('antd/es/col'));
+
+require('antd/es/dropdown/style');
+
+var _dropdown = _interopRequireDefault(require('antd/es/dropdown'));
+
+require('antd/es/menu/style');
+
+var _menu = _interopRequireDefault(require('antd/es/menu'));
+
+var _regenerator = _interopRequireDefault(require('@babel/runtime/regenerator'));
+
+var _asyncToGenerator2 = _interopRequireDefault(require('@babel/runtime/helpers/asyncToGenerator'));
+
+var _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/slicedToArray'));
 
 var _react = _interopRequireWildcard(require('react'));
-
-var _antd = require('antd');
 
 var _icons = require('@ant-design/icons');
 
@@ -39,154 +43,14 @@ var _videoModule = _interopRequireDefault(require('./video.module.css'));
 
 var _axios = _interopRequireDefault(require('axios'));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== 'function') return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-  if (obj === null || (_typeof(obj) !== 'object' && typeof obj !== 'function')) {
-    return { default: obj };
-  }
-  var cache = _getRequireWildcardCache(nodeInterop);
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-  for (var key in obj) {
-    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-  newObj['default'] = obj;
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-  return newObj;
-}
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-      args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'next', value);
-      }
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'throw', err);
-      }
-      _next(undefined);
-    });
-  };
-}
-
-function _slicedToArray(arr, i) {
-  return (
-    _arrayWithHoles(arr) ||
-    _iterableToArrayLimit(arr, i) ||
-    _unsupportedIterableToArray(arr, i) ||
-    _nonIterableRest()
-  );
-}
-
-function _nonIterableRest() {
-  throw new TypeError(
-    'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-  );
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i =
-    arr == null
-      ? null
-      : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i['return'] != null) _i['return']();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
 var VideoPlayer = function VideoPlayer(props) {
   var _useState = (0, _react.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
+    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     hasVideo = _useState2[0],
     setHasVideo = _useState2[1];
 
   var _useState3 = (0, _react.useState)('1'),
-    _useState4 = _slicedToArray(_useState3, 2),
+    _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
     selectKey = _useState4[0],
     setSelectKey = _useState4[1];
 
@@ -195,7 +59,7 @@ var VideoPlayer = function VideoPlayer(props) {
   var videoPlayer = (0, _react.useRef)();
 
   var _useFullscreen = (0, _ahooks.useFullscreen)(wrapperRef),
-    _useFullscreen2 = _slicedToArray(_useFullscreen, 2),
+    _useFullscreen2 = (0, _slicedToArray2.default)(_useFullscreen, 2),
     isFullscreen = _useFullscreen2[0],
     toggleFull = _useFullscreen2[1].toggleFull;
 
@@ -227,8 +91,8 @@ var VideoPlayer = function VideoPlayer(props) {
   );
 
   var createPlayer = function createPlayer(url) {
-    if (_flv['default'].isSupported()) {
-      videoPlayer.current = _flv['default'].createPlayer({
+    if (_flv.default.isSupported()) {
+      videoPlayer.current = _flv.default.createPlayer({
         type: 'flv',
         hasAudio: false,
         isLive: true,
@@ -240,10 +104,10 @@ var VideoPlayer = function VideoPlayer(props) {
           stashInitialSize: 128,
         },
       });
-      videoPlayer.current.on(_flv['default'].Events.LOADING_COMPLETE, function () {
+      videoPlayer.current.on(_flv.default.Events.LOADING_COMPLETE, function () {
         console.log('--== video  LOADING_COMPLETE ==--');
       });
-      videoPlayer.current.on(_flv['default'].Events.ERROR, function (errType, errDetail) {
+      videoPlayer.current.on(_flv.default.Events.ERROR, function (errType, errDetail) {
         console.log('on error: ', errType, errDetail);
       });
       videoPlayer.current.attachMediaElement(videoRef.current);
@@ -256,7 +120,7 @@ var VideoPlayer = function VideoPlayer(props) {
             console.log('视频加载成功', videoPlayer.current);
             setHasVideo(true);
           })
-          ['catch'](function (e) {
+          .catch(function (e) {
             console.log('视频加载失败');
           });
       }
@@ -288,7 +152,7 @@ var VideoPlayer = function VideoPlayer(props) {
     var maxContentLength = Math.pow(1024, 2);
     var myURL = new URL(props.rePushStream);
 
-    var client = _axios['default'].create({
+    var client = _axios.default.create({
       baseURL: ''.concat(myURL.origin),
       timeout: timeout,
       maxContentLength: maxContentLength,
@@ -298,10 +162,10 @@ var VideoPlayer = function VideoPlayer(props) {
   }; // 刷新，重新推流
 
   var redoVideoStream = /*#__PURE__*/ (function () {
-    var _ref = _asyncToGenerator(
-      /*#__PURE__*/ regeneratorRuntime.mark(function _callee() {
+    var _ref = (0, _asyncToGenerator2.default)(
+      /*#__PURE__*/ _regenerator.default.mark(function _callee() {
         var res;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
+        return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch ((_context.prev = _context.next)) {
               case 0:
@@ -352,21 +216,21 @@ var VideoPlayer = function VideoPlayer(props) {
     }
   };
 
-  var menu = /*#__PURE__*/ _react['default'].createElement(
-    _antd.Menu,
+  var menu = /*#__PURE__*/ _react.default.createElement(
+    _menu.default,
     {
       onClick: handleMenuClick,
       selectedKeys: [selectKey],
     },
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Menu.Item,
+    /*#__PURE__*/ _react.default.createElement(
+      _menu.default.Item,
       {
         key: '0',
       },
       '\u8D85\u6E05',
     ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Menu.Item,
+    /*#__PURE__*/ _react.default.createElement(
+      _menu.default.Item,
       {
         key: '1',
       },
@@ -374,17 +238,17 @@ var VideoPlayer = function VideoPlayer(props) {
     ),
   );
 
-  return /*#__PURE__*/ _react['default'].createElement(
+  return /*#__PURE__*/ _react.default.createElement(
     'div',
     {
-      className: _videoModule['default'].videoContainer,
+      className: _videoModule.default.videoContainer,
       ref: wrapperRef,
     },
-    /*#__PURE__*/ _react['default'].createElement(
+    /*#__PURE__*/ _react.default.createElement(
       'video',
       {
         ref: videoRef,
-        className: _videoModule['default'].video,
+        className: _videoModule.default.video,
         autoPlay: true,
         muted: true,
         height: '100%',
@@ -394,10 +258,10 @@ var VideoPlayer = function VideoPlayer(props) {
     ),
     !showChannel &&
       !hasVideo &&
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ _react.default.createElement(
         'span',
         {
-          className: _videoModule['default'].channelIcon,
+          className: _videoModule.default.channelIcon,
           style: {
             color: 'white',
           },
@@ -406,10 +270,10 @@ var VideoPlayer = function VideoPlayer(props) {
       ),
     showChannel &&
       !hasVideo &&
-      /*#__PURE__*/ _react['default'].createElement(
+      /*#__PURE__*/ _react.default.createElement(
         'span',
         {
-          className: _videoModule['default'].channelIcon,
+          className: _videoModule.default.channelIcon,
           style: {
             color:
               (videoObj === null || videoObj === void 0 ? void 0 : videoObj.id) &&
@@ -424,26 +288,26 @@ var VideoPlayer = function VideoPlayer(props) {
             : '请选择通道重新登录'
           : '暂未绑定通道',
       ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Row,
+    /*#__PURE__*/ _react.default.createElement(
+      _row.default,
       {
-        className: _videoModule['default'].videoHeader,
+        className: _videoModule.default.videoHeader,
         align: 'middle',
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 4,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Dropdown,
+        /*#__PURE__*/ _react.default.createElement(
+          _dropdown.default,
           {
             overlay: menu,
             getPopupContainer: function getPopupContainer() {
               return wrapperRef.current;
             },
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'a',
             {
               className: 'ant-dropdown-link',
@@ -458,8 +322,8 @@ var VideoPlayer = function VideoPlayer(props) {
           ),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 16,
           style: {
@@ -468,26 +332,26 @@ var VideoPlayer = function VideoPlayer(props) {
             fontWeight: 500,
           },
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'span',
           null,
           (videoObj === null || videoObj === void 0 ? void 0 : videoObj.name) || '',
         ),
       ),
     ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Row,
+    /*#__PURE__*/ _react.default.createElement(
+      _row.default,
       {
-        className: _videoModule['default'].videoControl,
+        className: _videoModule.default.videoControl,
         justify: 'space-between',
         align: 'middle',
       },
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: showChannel ? 2 : 12,
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'a',
           {
             style: {
@@ -495,7 +359,7 @@ var VideoPlayer = function VideoPlayer(props) {
             },
             onClick: redoVideoStream,
           },
-          /*#__PURE__*/ _react['default'].createElement(_icons.RedoOutlined, {
+          /*#__PURE__*/ _react.default.createElement(_icons.RedoOutlined, {
             style: {
               marginRight: 5,
             },
@@ -505,12 +369,12 @@ var VideoPlayer = function VideoPlayer(props) {
       ),
       showChannel &&
         !isFullscreen &&
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Col,
+        /*#__PURE__*/ _react.default.createElement(
+          _col.default,
           {
             span: 8,
           },
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'a',
             {
               style: {
@@ -520,7 +384,7 @@ var VideoPlayer = function VideoPlayer(props) {
                 return showChannelSelect(videoObj);
               },
             },
-            /*#__PURE__*/ _react['default'].createElement(_icons.VideoCameraAddOutlined, {
+            /*#__PURE__*/ _react.default.createElement(_icons.VideoCameraAddOutlined, {
               style: {
                 marginRight: 5,
               },
@@ -528,15 +392,15 @@ var VideoPlayer = function VideoPlayer(props) {
             '\u9009\u62E9\u901A\u9053',
           ),
         ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 12,
           style: {
             textAlign: 'right',
           },
         },
-        /*#__PURE__*/ _react['default'].createElement(
+        /*#__PURE__*/ _react.default.createElement(
           'a',
           {
             style: {
@@ -545,13 +409,13 @@ var VideoPlayer = function VideoPlayer(props) {
             onClick: toggleFull,
           },
           isFullscreen
-            ? /*#__PURE__*/ _react['default'].createElement(
-                _react['default'].Fragment,
+            ? /*#__PURE__*/ _react.default.createElement(
+                _react.default.Fragment,
                 null,
                 '\u9000\u51FA\u5168\u5C4F',
               )
-            : /*#__PURE__*/ _react['default'].createElement(
-                _react['default'].Fragment,
+            : /*#__PURE__*/ _react.default.createElement(
+                _react.default.Fragment,
                 null,
                 '\u663E\u793A\u5168\u5C4F',
               ),
@@ -573,4 +437,4 @@ VideoPlayer.defaultProps = {
   idx: undefined,
 };
 var _default = VideoPlayer;
-exports['default'] = _default;
+exports.default = _default;

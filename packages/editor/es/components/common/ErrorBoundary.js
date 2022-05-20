@@ -18,9 +18,6 @@ function _typeof(obj) {
   );
 }
 
-import 'antd/lib/empty/style';
-import _Empty from 'antd/lib/empty';
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError('Cannot call a class as a function');
@@ -118,6 +115,7 @@ function _getPrototypeOf(o) {
 }
 
 import React from 'react';
+import { Empty } from 'antd';
 
 var ErrorBoundary = /*#__PURE__*/ (function (_React$Component) {
   _inherits(ErrorBoundary, _React$Component);
@@ -159,7 +157,7 @@ var ErrorBoundary = /*#__PURE__*/ (function (_React$Component) {
                   height: '100%',
                 },
               },
-              /*#__PURE__*/ React.createElement(_Empty, {
+              /*#__PURE__*/ React.createElement(Empty, {
                 image: 'https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg',
                 imageStyle: {
                   height: 60,

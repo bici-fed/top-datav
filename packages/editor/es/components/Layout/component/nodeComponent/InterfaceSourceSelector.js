@@ -1,11 +1,9 @@
-import 'antd/lib/select/style';
-import _Select from 'antd/lib/select';
-
 /**
  * @file 接口来源选择器
  */
 import React from 'react';
-var Option = _Select.Option;
+import { Select } from 'antd';
+var Option = Select.Option;
 
 var InterfaceSourceSelector = function InterfaceSourceSelector(props) {
   function onChange(value) {
@@ -25,7 +23,7 @@ var InterfaceSourceSelector = function InterfaceSourceSelector(props) {
   }
 
   return /*#__PURE__*/ React.createElement(
-    _Select,
+    Select,
     {
       showSearch: true,
       placeholder: '\u63A5\u53E3\u6765\u6E90',

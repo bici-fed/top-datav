@@ -1,125 +1,37 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
 
-var _antd = require('antd');
+require('antd/es/button/style');
+
+var _button = _interopRequireDefault(require('antd/es/button'));
+
+require('antd/es/input/style');
+
+var _input = _interopRequireDefault(require('antd/es/input'));
+
+require('antd/es/col/style');
+
+var _col = _interopRequireDefault(require('antd/es/col'));
+
+require('antd/es/row/style');
+
+var _row = _interopRequireDefault(require('antd/es/row'));
+
+var _objectSpread2 = _interopRequireDefault(require('@babel/runtime/helpers/objectSpread2'));
+
+require('antd/es/form/style');
+
+var _form = _interopRequireDefault(require('antd/es/form'));
+
+var _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/slicedToArray'));
 
 var _react = _interopRequireDefault(require('react'));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
-function _slicedToArray(arr, i) {
-  return (
-    _arrayWithHoles(arr) ||
-    _iterableToArrayLimit(arr, i) ||
-    _unsupportedIterableToArray(arr, i) ||
-    _nonIterableRest()
-  );
-}
-
-function _nonIterableRest() {
-  throw new TypeError(
-    'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-  );
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i =
-    arr == null
-      ? null
-      : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) || arr['@@iterator'];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i['return'] != null) _i['return']();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
 
 var formLayout = {
   labelCol: {
@@ -131,8 +43,8 @@ var formLayout = {
 };
 
 var MQTTForm = function MQTTForm() {
-  var _Form$useForm = _antd.Form.useForm(),
-    _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
+  var _Form$useForm = _form.default.useForm(),
+    _Form$useForm2 = (0, _slicedToArray2.default)(_Form$useForm, 1),
     form = _Form$useForm2[0];
   /**
    * 连接mqtt
@@ -150,102 +62,102 @@ var MQTTForm = function MQTTForm() {
     // });
   };
 
-  return /*#__PURE__*/ _react['default'].createElement(
-    _antd.Form,
-    _objectSpread(
-      _objectSpread({}, formLayout),
+  return /*#__PURE__*/ _react.default.createElement(
+    _form.default,
+    (0, _objectSpread2.default)(
+      (0, _objectSpread2.default)({}, formLayout),
       {},
       {
         form: form,
       },
     ),
-    /*#__PURE__*/ _react['default'].createElement(
-      _antd.Row,
+    /*#__PURE__*/ _react.default.createElement(
+      _row.default,
       null,
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ _react.default.createElement(
+          _form.default.Item,
           {
             label: 'URL\u5730\u5740',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ _react.default.createElement(_input.default, {
             placeholder: '\u8BF7\u8F93\u5165URL\u5730\u5740',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ _react.default.createElement(
+          _form.default.Item,
           {
             label: 'Client ID',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ _react.default.createElement(_input.default, {
             placeholder:
               '\u8BF7\u8F93\u5165Client ID\uFF08\u4E0D\u80FD\u91CD\u590D\u4F7F\u7528\uFF0C\u53EF\u4E3A\u7A7A)',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ _react.default.createElement(
+          _form.default.Item,
           {
             label: '\u7528\u6237\u540D',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ _react.default.createElement(_input.default, {
             placeholder: '\u8BF7\u8F93\u5165\u7528\u6237\u540D',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ _react.default.createElement(
+          _form.default.Item,
           {
             label: '\u5BC6\u7801',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ _react.default.createElement(_input.default, {
             type: 'password',
             placeholder: '\u8BF7\u8F93\u5165\u5BC6\u7801',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Form.Item,
+        /*#__PURE__*/ _react.default.createElement(
+          _form.default.Item,
           {
             label: 'Topics *',
           },
-          /*#__PURE__*/ _react['default'].createElement(_antd.Input, {
+          /*#__PURE__*/ _react.default.createElement(_input.default, {
             placeholder: '\u8BF7\u8F93\u5165Topics',
           }),
         ),
       ),
-      /*#__PURE__*/ _react['default'].createElement(
-        _antd.Col,
+      /*#__PURE__*/ _react.default.createElement(
+        _col.default,
         {
           span: 24,
         },
-        /*#__PURE__*/ _react['default'].createElement(
-          _antd.Button,
+        /*#__PURE__*/ _react.default.createElement(
+          _button.default,
           {
             type: 'primary',
             style: {
@@ -264,4 +176,4 @@ var MQTTForm = function MQTTForm() {
 };
 
 var _default = MQTTForm;
-exports['default'] = _default;
+exports.default = _default;

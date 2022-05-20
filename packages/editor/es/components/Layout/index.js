@@ -1,9 +1,3 @@
-import 'antd/lib/tooltip/style';
-import _Tooltip from 'antd/lib/tooltip';
-import 'antd/lib/config-provider/style';
-import _ConfigProvider from 'antd/lib/config-provider';
-import 'antd/lib/tabs/style';
-import _Tabs from 'antd/lib/tabs';
 var _excluded = ['dash', 'lineWidth', 'strokeStyle', 'name', 'fromArrow', 'toArrow'];
 
 function _objectWithoutProperties(source, excluded) {
@@ -174,6 +168,8 @@ import React, {
 import { Lock, s8, Topology } from '@top-datav/core';
 import { echartsObjs, register as registerChart } from '@top-datav/chart-diagram';
 import { register as registerBiciComp } from '@top-datav/bici-diagram';
+import { Tabs, Tooltip, ConfigProvider } from 'antd';
+import 'antd/dist/antd.css';
 import { Tools } from '../config/config';
 import { useClickAway } from 'ahooks';
 import { replacer, reviver } from '../utils/serializing';
@@ -197,7 +193,7 @@ import { getStackBarOption } from '../config/charts/stackbar';
 import { getBarOption } from '../config/charts/bar';
 import { getGroupBarOption } from '../config/charts/groupbar';
 import { getHorizontalBarOption } from '../config/charts/horizontalbar';
-var TabPane = _Tabs.TabPane;
+var TabPane = Tabs.TabPane;
 export var canvas;
 /**
  * 编辑器画布
@@ -1289,7 +1285,7 @@ var EditorLayout = /*#__PURE__*/ React.forwardRef(function (props, ref) {
   );
   var divHeight = document.body.clientHeight - 200;
   return /*#__PURE__*/ React.createElement(
-    _ConfigProvider,
+    ConfigProvider,
     {
       prefixCls: 'antdv4',
     },
@@ -1314,7 +1310,7 @@ var EditorLayout = /*#__PURE__*/ React.forwardRef(function (props, ref) {
             },
           },
           /*#__PURE__*/ React.createElement(
-            _Tabs,
+            Tabs,
             {
               defaultActiveKey: '1',
               centered: true,
@@ -1402,7 +1398,7 @@ var EditorLayout = /*#__PURE__*/ React.forwardRef(function (props, ref) {
                       React.Fragment,
                       null,
                       /*#__PURE__*/ React.createElement(
-                        _Tooltip,
+                        Tooltip,
                         {
                           title: props.boardData.code,
                         },
@@ -1429,7 +1425,7 @@ var EditorLayout = /*#__PURE__*/ React.forwardRef(function (props, ref) {
                       React.Fragment,
                       null,
                       /*#__PURE__*/ React.createElement(
-                        _Tooltip,
+                        Tooltip,
                         {
                           title: props.boardData.name,
                         },
@@ -1451,7 +1447,7 @@ var EditorLayout = /*#__PURE__*/ React.forwardRef(function (props, ref) {
                       React.Fragment,
                       null,
                       /*#__PURE__*/ React.createElement(
-                        _Tooltip,
+                        Tooltip,
                         {
                           title: props.boardData.typeName,
                         },
@@ -1470,7 +1466,7 @@ var EditorLayout = /*#__PURE__*/ React.forwardRef(function (props, ref) {
                   : '',
                 props.boardData.remark
                   ? /*#__PURE__*/ React.createElement(
-                      _Tooltip,
+                      Tooltip,
                       {
                         title: props.boardData.remark,
                       },

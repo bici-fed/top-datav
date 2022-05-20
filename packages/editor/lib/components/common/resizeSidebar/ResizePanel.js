@@ -1,29 +1,25 @@
 'use strict';
 
-function _typeof(obj) {
-  '@babel/helpers - typeof';
-  return (
-    (_typeof =
-      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
-        ? function (obj) {
-            return typeof obj;
-          }
-        : function (obj) {
-            return obj &&
-              'function' == typeof Symbol &&
-              obj.constructor === Symbol &&
-              obj !== Symbol.prototype
-              ? 'symbol'
-              : typeof obj;
-          }),
-    _typeof(obj)
-  );
-}
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
 
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
-exports['default'] = void 0;
+exports.default = void 0;
+
+var _objectSpread2 = _interopRequireDefault(require('@babel/runtime/helpers/objectSpread2'));
+
+var _assertThisInitialized2 = _interopRequireDefault(
+  require('@babel/runtime/helpers/assertThisInitialized'),
+);
+
+var _inherits2 = _interopRequireDefault(require('@babel/runtime/helpers/inherits'));
+
+var _createSuper2 = _interopRequireDefault(require('@babel/runtime/helpers/createSuper'));
+
+var _createClass2 = _interopRequireDefault(require('@babel/runtime/helpers/createClass'));
+
+var _classCallCheck2 = _interopRequireDefault(require('@babel/runtime/helpers/classCallCheck'));
 
 var _react = _interopRequireDefault(require('react'));
 
@@ -37,154 +33,11 @@ var _bind = _interopRequireDefault(require('classnames/bind'));
 
 var _ResizePanelModule = _interopRequireDefault(require('./ResizePanel.module.css'));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+// @ts-nocheck
+var cx = _bind.default.bind(_ResizePanelModule.default);
 
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== 'function' && superClass !== null) {
-    throw new TypeError('Super expression must either be null or a function');
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  Object.defineProperty(subClass, 'prototype', { writable: false });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === 'object' || typeof call === 'function')) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined');
-  }
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === 'undefined' || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === 'function') return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ('value' in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, 'prototype', { writable: false });
-  return Constructor;
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function');
-  }
-}
-
-var cx = _bind['default'].bind(_ResizePanelModule['default']);
-
-var ResizePanelProps = /*#__PURE__*/ _createClass(function ResizePanelProps() {
-  _classCallCheck(this, ResizePanelProps);
-
+var ResizePanelProps = /*#__PURE__*/ (0, _createClass2.default)(function ResizePanelProps() {
+  (0, _classCallCheck2.default)(this, ResizePanelProps);
   this.direction = void 0;
   this.containerClass = void 0;
   this.style = void 0;
@@ -192,23 +45,20 @@ var ResizePanelProps = /*#__PURE__*/ _createClass(function ResizePanelProps() {
   this.borderClass = void 0;
   this.children = void 0;
 });
-
-var ResizePanelState = /*#__PURE__*/ _createClass(function ResizePanelState() {
-  _classCallCheck(this, ResizePanelState);
-
+var ResizePanelState = /*#__PURE__*/ (0, _createClass2.default)(function ResizePanelState() {
+  (0, _classCallCheck2.default)(this, ResizePanelState);
   this.size = void 0;
 });
 
 var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
-  _inherits(ResizePanel, _React$Component);
+  (0, _inherits2.default)(ResizePanel, _React$Component);
 
-  var _super = _createSuper(ResizePanel);
+  var _super = (0, _createSuper2.default)(ResizePanel);
 
   function ResizePanel(props) {
     var _this;
 
-    _classCallCheck(this, ResizePanel);
-
+    (0, _classCallCheck2.default)(this, ResizePanel);
     _this = _super.call(this, props);
     _this.contentRef = void 0;
     _this.wrapperRef = void 0;
@@ -237,23 +87,23 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
     _this.state = {
       size: 0,
     };
-    _this.contentRef = /*#__PURE__*/ _react['default'].createRef();
-    _this.wrapperRef = /*#__PURE__*/ _react['default'].createRef();
-    _this.validateSize = (0, _lodash['default'])(_this.validateSize, 100).bind(
-      _assertThisInitialized(_this),
+    _this.contentRef = /*#__PURE__*/ _react.default.createRef();
+    _this.wrapperRef = /*#__PURE__*/ _react.default.createRef();
+    _this.validateSize = (0, _lodash.default)(_this.validateSize, 100).bind(
+      (0, _assertThisInitialized2.default)(_this),
     );
     return _this;
   }
 
-  _createClass(ResizePanel, [
+  (0, _createClass2.default)(ResizePanel, [
     {
       key: 'componentDidMount',
       value: function componentDidMount() {
         var content = this.contentRef.current;
         var actualContent = content.children[0];
         var initialSize = this.isHorizontal()
-          ? (0, _cashDom['default'])(actualContent).outerWidth(true)
-          : (0, _cashDom['default'])(actualContent).outerHeight(true); // Initialize the size value based on the content's current size
+          ? (0, _cashDom.default)(actualContent).outerWidth(true)
+          : (0, _cashDom.default)(actualContent).outerHeight(true); // Initialize the size value based on the content's current size
 
         this.setState({
           size: initialSize,
@@ -275,16 +125,16 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
 
         var minSize = isHorizontal ? actualContent.scrollWidth : actualContent.scrollHeight;
         var margins = isHorizontal
-          ? (0, _cashDom['default'])(actualContent).outerWidth(true) -
-            (0, _cashDom['default'])(actualContent).outerWidth()
-          : (0, _cashDom['default'])(actualContent).outerHeight(true) -
-            (0, _cashDom['default'])(actualContent).outerHeight();
+          ? (0, _cashDom.default)(actualContent).outerWidth(true) -
+            (0, _cashDom.default)(actualContent).outerWidth()
+          : (0, _cashDom.default)(actualContent).outerHeight(true) -
+            (0, _cashDom.default)(actualContent).outerHeight();
         minSize += margins;
 
         if (this.state.size !== minSize) {
           this.setState(
-            _objectSpread(
-              _objectSpread({}, this.state),
+            (0, _objectSpread2.default)(
+              (0, _objectSpread2.default)({}, this.state),
               {},
               {
                 size: minSize,
@@ -300,8 +150,8 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
 
           if (overflow) {
             this.setState(
-              _objectSpread(
-                _objectSpread({}, this.state),
+              (0, _objectSpread2.default)(
+                (0, _objectSpread2.default)({}, this.state),
                 {},
                 {
                   size: isHorizontal
@@ -334,7 +184,7 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
           containerClass += ' '.concat(this.props.containerClass);
         }
 
-        var containerStyle = _objectSpread({}, this.props.style) || {};
+        var containerStyle = (0, _objectSpread2.default)({}, this.props.style) || {};
 
         if (this.state.size !== 0) {
           containerStyle.flexGrow = 0;
@@ -365,7 +215,7 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
           ResizeContentVertical: !isHorizontal,
         });
         var content = [
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'div',
             {
               key: 'content',
@@ -373,7 +223,7 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
               className: contentClassName,
               style: contentStyle,
             },
-            _react['default'].Children.only(this.props.children),
+            _react.default.Children.only(this.props.children),
           ),
         ];
 
@@ -383,10 +233,10 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
           });
         };
 
-        var handle = /*#__PURE__*/ _react['default'].createElement(
+        var handle = /*#__PURE__*/ _react.default.createElement(
           _reactDraggable.DraggableCore,
-          _objectSpread(
-            _objectSpread(
+          (0, _objectSpread2.default)(
+            (0, _objectSpread2.default)(
               {
                 key: 'handle',
               },
@@ -397,18 +247,18 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
               allowAnyClick: true,
             },
           ),
-          /*#__PURE__*/ _react['default'].createElement(
+          /*#__PURE__*/ _react.default.createElement(
             'div',
             {
               className: resizeBarClasses,
             },
-            /*#__PURE__*/ _react['default'].createElement(
+            /*#__PURE__*/ _react.default.createElement(
               'div',
               {
                 className: handleClasses,
                 onClick: handleClick,
               },
-              /*#__PURE__*/ _react['default'].createElement('span', null),
+              /*#__PURE__*/ _react.default.createElement('span', null),
             ),
           ),
         ); // Insert the handle at the beginning of the content if our directio is west or north
@@ -419,7 +269,7 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
           content.push(handle);
         }
 
-        return /*#__PURE__*/ _react['default'].createElement(
+        return /*#__PURE__*/ _react.default.createElement(
           'div',
           {
             ref: this.wrapperRef,
@@ -431,9 +281,8 @@ var ResizePanel = /*#__PURE__*/ (function (_React$Component) {
       },
     },
   ]);
-
   return ResizePanel;
-})(_react['default'].Component);
+})(_react.default.Component);
 
 var _default = ResizePanel;
-exports['default'] = _default;
+exports.default = _default;

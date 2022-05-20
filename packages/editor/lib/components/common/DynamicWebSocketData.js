@@ -1,63 +1,21 @@
 'use strict';
 
+var _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 exports.dynamicWebSocketData = dynamicWebSocketData;
 
+var _objectSpread2 = _interopRequireDefault(require('@babel/runtime/helpers/objectSpread2'));
+
 var _Layout = require('../Layout');
 
 var _moment = _interopRequireDefault(require('moment'));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
+// @ts-nocheck
 // 里面的字符可以根据自己的需要进行调整
-_moment['default'].locale('zh-cn', {
+_moment.default.locale('zh-cn', {
   months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
   monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
   weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
@@ -167,8 +125,8 @@ function dynamicWebSocketData() {
           ) {
             _Layout.canvas.socket.socket.send(
               JSON.stringify(
-                _objectSpread(
-                  _objectSpread({}, node.property.dataPointParam),
+                (0, _objectSpread2.default)(
+                  (0, _objectSpread2.default)({}, node.property.dataPointParam),
                   {},
                   {
                     tid: node.TID,
@@ -192,8 +150,8 @@ function dynamicWebSocketData() {
           ) {
             _Layout.canvas.socket.socket.send(
               JSON.stringify(
-                _objectSpread(
-                  _objectSpread({}, node.data.property.dataPointParam),
+                (0, _objectSpread2.default)(
+                  (0, _objectSpread2.default)({}, node.data.property.dataPointParam),
                   {},
                   {
                     tid: node.TID,
@@ -271,7 +229,7 @@ function dynamicWebSocketData() {
                   yAxisData.shift();
                 }
 
-                xAxisData.push((0, _moment['default'])(_r.time).format('LTS'));
+                xAxisData.push((0, _moment.default)(_r.time).format('LTS'));
                 yAxisData.push(_r.value);
                 node.data.echarts.option.xAxis.data = xAxisData;
                 node.data.echarts.option.series[0].data = yAxisData;
