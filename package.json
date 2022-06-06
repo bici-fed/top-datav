@@ -5,8 +5,7 @@
   "license": "MIT",
   "sideEffect": false,
   "workspaces": [
-    "packages/*",
-    "examples/*"
+    "packages/*"
   ],
   "scripts": {
     "start": "dumi dev",
