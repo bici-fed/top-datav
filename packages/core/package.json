@@ -23,7 +23,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@top-datav/editor": "^1.0.13",
+    "@top-datav/editor": "^1.0.14",
     "@top-datav/store-utils": "^1.0.4",
     "mitt": "^2.1.0",
     "mqtt": "^4.3.7"

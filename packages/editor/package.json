@@ -1,6 +1,6 @@
 {
   "name": "@top-datav/editor",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "> TODO: description",
   "author": "jufeng <jufeng@bicitech.cn>",
   "homepage": "",
@@ -36,8 +36,8 @@
     "@top-datav/layout": "^1.0.11",
     "@top-datav/sequence-diagram": "^1.0.11",
     "@top-datav/store-utils": "^1.0.4",
-    "react-table": "^7.6.3",
-    "ahooks": "^2.9.1"
+    "ahooks": "^2.9.1",
+    "react-table": "^7.6.3"
   },
   "devDependencies": {
     "antd": "^4.10.0",
