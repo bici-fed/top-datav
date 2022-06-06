@@ -1,6 +1,6 @@
 {
   "name": "@top-datav/editor",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "> TODO: description",
   "author": "jufeng <jufeng@bicitech.cn>",
   "homepage": "",
@@ -37,12 +37,12 @@
     "@top-datav/sequence-diagram": "^1.0.11",
     "@top-datav/store-utils": "^1.0.4",
     "ahooks": "^2.9.1",
-    "react-table": "^7.6.3",
+    "cash-dom": "^8.1.0",
+    "classnames": "^2.2.6",
     "flv.js": "^1.5.0",
     "react-color": "^2.19.3",
-    "reactcss": "^1.2.3",
-    "cash-dom": "^8.1.0",
-    "classnames": "^2.2.6"
+    "react-table": "^7.6.3",
+    "reactcss": "^1.2.3"
   },
   "devDependencies": {
     "antd": "^4.10.0",
