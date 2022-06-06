@@ -1,0 +1,84 @@
+{
+  "menus": {
+    "en-US": {
+      "/store": [
+        {
+          "path": "/store",
+          "title": "Data",
+          "meta": {}
+        }
+      ],
+      "*": [
+        {
+          "path": "/",
+          "title": "Hello top-datav!",
+          "meta": {}
+        }
+      ],
+      "/docs": [
+        {
+          "title": "文档",
+          "path": "/docs/",
+          "meta": {},
+          "children": [
+            {
+              "path": "/docs/intro",
+              "title": "简介",
+              "meta": {
+                "order": 1
+              }
+            }
+          ]
+        }
+      ],
+      "/resources": [
+        {
+          "title": "资源",
+          "path": "/resources/",
+          "meta": {},
+          "children": [
+            {
+              "path": "/resources/resource",
+              "title": "简介",
+              "meta": {
+                "order": 2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "locales": [
+    {
+      "name": "en-US",
+      "label": "English"
+    }
+  ],
+  "navs": {
+    "en-US": [
+      {
+        "title": "文档",
+        "order": 1,
+        "path": "/docs"
+      },
+      {
+        "title": "资源",
+        "order": 5,
+        "path": "/resources"
+      },
+      {
+        "path": "/store",
+        "title": "Store"
+      }
+    ]
+  },
+  "title": "bici-wui(博智云创UI组件库，react版本)",
+  "logo": "https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png",
+  "mode": "site",
+  "repository": {
+    "url": "",
+    "branch": "master"
+  },
+  "theme": {}
+}
