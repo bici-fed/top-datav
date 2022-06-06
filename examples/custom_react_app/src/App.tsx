@@ -12,10 +12,10 @@ import preBgImg4 from './bg04.svg';
 import DataBindModal from './FilterDataPoint';
 import { industry_List } from './common/config';
 import VideoMonitoringModal from './VideoMonitoring';
-// import 'antd/dist/antd.less';
+import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
-const token = 'XBZ9EE68OJ3A9j8YOx3aF';
+const token = '6wm2oFLUreNKitZcYmbLvH';
 
 const testId = '3169f6dae49e4490bf7decab5c76eb8c';
 
@@ -82,26 +82,28 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
       key: '9',
     },
   ];
+
   const uploadConfig = {
     baseURL: apiURL,
     self: {
       baseURL: apiURL,
       token: token,
-      url: '/file/file/uploadReturnPath',
+      url: '/file/service/file/uploadReturnPath',
       apiUrl: {
-        list: '/applications/service/remote/custom/component/componentList',
-        delete: '/file/file/deleteDbData',
-        update: '/file/file/updateFile',
+        list: '/file/service/file/getMappingFile',
+        delete: '/file/service/file/delete',
+        update: '/file/service/file/updateFile',
       },
       data: {
         mappingId: 'ooip6ffe388d487db754b885b8aa65b9',
-        mappingType: '106',
+        mappingType: 106,
+        getPdf: false,
       },
     },
     preInstall: {
       baseURL: apiURL,
       token: token,
-      url: '/file/file/uploadReturnPath',
+      url: 'file/service/file/uploadReturnPath',
       data: {
         mappingId: 'ooip6ffe388d487db754b885b8aa65b9',
         mappingType: '107',
@@ -112,7 +114,10 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
       token: token,
       list: {
         url: '/applications/service/remote/customComponent/list',
-        params: {},
+        params: {
+          mappingType: '101',
+          mappingId: 'ooip6ffe388d487db754b885b8aa65b9',
+        },
       },
       add: {
         url: '/applications/service/remote/customComponent/save',

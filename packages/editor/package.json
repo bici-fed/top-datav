@@ -36,7 +36,10 @@
     "@top-datav/layout": "^1.0.11",
     "@top-datav/sequence-diagram": "^1.0.11",
     "@top-datav/store-utils": "^1.0.4",
-    "ahooks": "^2.9.1",
+    "react-table": "^7.6.3",
+    "ahooks": "^2.9.1"
+  },
+  "devDependencies": {
     "antd": "^4.10.0",
     "axios": "^0.21.0",
     "bici-transformers": "^0.19.7",
@@ -53,8 +56,7 @@
     "react-dnd-html5-backend": "7.0.2",
     "react-draggable": "4.4.3",
     "react-responsive-carousel": "^3.2.21",
-    "react-table": "^7.6.3",
     "reactcss": "^1.2.3"
   },
-  "gitHead": "e0027b056a477aa08b813beec5692a7af3434c7c"
+  "gitHead": "6ed8c316bac837353031e4ca099c3df533893a18"
 }

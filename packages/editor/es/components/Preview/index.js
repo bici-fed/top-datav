@@ -310,16 +310,24 @@ var Preview = function Preview(_ref) {
     setCurrentNode = _useState8[1];
 
   var renderCanvasInterval;
+  /**
+   * window事件绑定，解决tab切换后setInterbal触发频率会变慢的问题，也是在tab切换的时候，停止页面刷新
+   */
 
-  window.οnfοcus = function (window) {
-    renderCanvasInterval = setInterval(function () {
-      canvas.updateProps(false);
-    }, 1000);
-  };
+  useEffect(function () {
+    window.οnfοcus = function (window) {
+      renderCanvasInterval = setInterval(function () {
+        canvas.updateProps(false);
+      }, 1000);
+    };
 
-  window.onblur = function () {
-    clearInterval(renderCanvasInterval);
-  };
+    window.onblur = function () {
+      clearInterval(renderCanvasInterval);
+    };
+  }, []);
+  /**
+   * 看板初始化以及数据处理
+   */
 
   useEffect(
     function () {
@@ -350,6 +358,20 @@ var Preview = function Preview(_ref) {
 
       canvas._emitter.on('lfOpenDrawer', initEmmitevent);
 
+      var websocketIntv = setInterval(function () {
+        var _canvas$socket;
+
+        if (
+          canvas != undefined &&
+          ((_canvas$socket = canvas.socket) === null || _canvas$socket === void 0
+            ? void 0
+            : _canvas$socket.socket.readyState) !== 1
+        ) {
+          initWebsocketData();
+        } else {
+          clearInterval(websocketIntv);
+        }
+      }, 2000);
       renderCanvasInterval = setInterval(function () {
         canvas.updateProps(false);
       }, 1000);
@@ -772,6 +794,9 @@ var Preview = function Preview(_ref) {
         });
     });
   };
+  /**
+   * 初始化websocket
+   */
 
   var initWebsocketData = function initWebsocketData() {
     canvas.closeSocket();
@@ -819,6 +844,10 @@ var Preview = function Preview(_ref) {
 
     updateTimerCom(canvas.data.pens);
   };
+  /**
+   * 遍历画布节点，为所有的带有websocket的节点发送消息
+   * @param pens
+   */
 
   var sendMessage = function sendMessage(pens) {
     (pens || []).map(function (node) {
@@ -862,6 +891,10 @@ var Preview = function Preview(_ref) {
       }
     });
   };
+  /**
+   * 更新日期组件
+   * @param pens
+   */
 
   var updateTimerCom = function updateTimerCom(pens) {
     (pens || []).map(function (node) {
@@ -883,6 +916,11 @@ var Preview = function Preview(_ref) {
       value: [moment().subtract(1, 'seconds'), null],
     });
   }
+  /**
+   * 获得websocket数据，更新组件
+   * @param pens
+   * @param data
+   */
 
   var updateComp = function updateComp(pens, data) {
     var theChart; // {"dc":"Data2022042017504628","ts":1650783704941,"v":2582,"vt":1}
