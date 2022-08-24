@@ -539,7 +539,6 @@ export class Topology {
   };
 
   resize(size?: { width: number; height: number }) {
-    console.log('>>>>', size);
     this.data.width = size?.width || 826;
     this.data.height = size?.height || 1168;
     this.canvas.resize(size);
@@ -742,7 +741,6 @@ export class Topology {
           // this.data.pens.push(new Node(item));
           if (item.name == 'combine') {
             for (const child of item.children) {
-              console.log(child);
               if (child.name == 'echarts') {
                 hasChart = true;
               }
