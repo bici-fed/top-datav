@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType } from '/Users/angus/study/top-datav/node_modules/umi/node_modules/@umijs/runtime';
+import { ApplyPluginsType } from '/Users/brady/work/bici/bicilib/top-datav/node_modules/umi/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 
@@ -12,7 +12,7 @@ export function getRoutes() {
     "wrappers": [require('../dumi/layout').default],
     "component": ((props) => {
         const React = require('react');
-        const { default: getDemoRenderArgs } = require('/Users/angus/study/top-datav/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
+        const { default: getDemoRenderArgs } = require('/Users/brady/work/bici/bicilib/top-datav/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
         const { default: Previewer } = require('dumi-theme-default/es/builtins/Previewer.js');
         const { usePrefersColor, context } = require('dumi/theme');
 
@@ -55,11 +55,11 @@ export function getRoutes() {
     "__dumiRoot": true,
     "layout": false,
     "path": "/",
-    "wrappers": [require('../dumi/layout').default, require('/Users/angus/study/top-datav/node_modules/dumi-theme-default/es/layout.js').default],
+    "wrappers": [require('../dumi/layout').default, require('/Users/brady/work/bici/bicilib/top-datav/node_modules/dumi-theme-default/es/layout.js').default],
     "routes": [
       {
         "path": "/store",
-        "component": require('/Users/angus/study/top-datav/packages/store-utils/src/store/README.md').default,
+        "component": require('/Users/brady/work/bici/bicilib/top-datav/packages/store-utils/src/store/README.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/store-utils/src/store/README.md",
@@ -91,7 +91,7 @@ export function getRoutes() {
       },
       {
         "path": "/",
-        "component": require('/Users/angus/study/top-datav/docs/index.md').default,
+        "component": require('/Users/brady/work/bici/bicilib/top-datav/docs/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
@@ -137,7 +137,7 @@ export function getRoutes() {
       },
       {
         "path": "/docs/intro",
-        "component": require('/Users/angus/study/top-datav/docs/intro.md').default,
+        "component": require('/Users/brady/work/bici/bicilib/top-datav/docs/intro.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/intro.md",
@@ -170,7 +170,7 @@ export function getRoutes() {
       },
       {
         "path": "/resources/resource",
-        "component": require('/Users/angus/study/top-datav/docs/resource.md').default,
+        "component": require('/Users/brady/work/bici/bicilib/top-datav/docs/resource.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/resource.md",

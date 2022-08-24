@@ -4,8 +4,8 @@ import '@@/core/devScripts';
 import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from '/Users/angus/study/top-datav/node_modules/umi/node_modules/@umijs/runtime';
-import { renderClient } from '/Users/angus/study/top-datav/node_modules/@umijs/renderer-react';
+import { ApplyPluginsType } from '/Users/brady/work/bici/bicilib/top-datav/node_modules/umi/node_modules/@umijs/runtime';
+import { renderClient } from '/Users/brady/work/bici/bicilib/top-datav/node_modules/@umijs/renderer-react';
 import { getRoutes } from './core/routes';
 
 
