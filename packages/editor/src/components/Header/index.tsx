@@ -209,11 +209,9 @@ const Header: React.FC<HeaderProps> = React.forwardRef((props: HeaderProps, ref)
         canvas.combine(pens);
         break;
       case 'unCombo':
-        console.log(pens);
         pens
           .filter((pen) => pen.name === 'combine')
           .forEach((pen) => {
-            console.log(pen);
             canvas.uncombine(pen);
           });
         break;
@@ -423,9 +421,6 @@ const Header: React.FC<HeaderProps> = React.forwardRef((props: HeaderProps, ref)
       </Tag>
       <ButtonGroup style={{ flex: 1, flexDirection: 'row-reverse', right: 20 }}>
         <Space size="large">
-          <Button type="link" style={{ color: 'green' }} icon={<CheckOutlined />}>
-            保存成功
-          </Button>
           <Button onClick={handlePreview}>预览</Button>
           <Button type="primary" onClick={handleSave}>
             保存

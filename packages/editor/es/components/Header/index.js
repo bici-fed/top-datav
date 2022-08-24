@@ -65,7 +65,7 @@ function _arrayWithHoles(arr) {
 
 import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Button, Menu, Popover, Tag, Space, Tooltip } from 'antd';
-import { PlusOutlined, MinusOutlined, CheckOutlined } from '@ant-design/icons';
+import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { useFullscreen } from 'ahooks';
 import CustomIcon from '../config/iconConfig';
 import styles from './index.module.css';
@@ -632,17 +632,6 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
         {
           size: 'large',
         },
-        /*#__PURE__*/ React.createElement(
-          Button,
-          {
-            type: 'link',
-            style: {
-              color: 'green',
-            },
-            icon: /*#__PURE__*/ React.createElement(CheckOutlined, null),
-          },
-          '\u4FDD\u5B58\u6210\u529F',
-        ),
         /*#__PURE__*/ React.createElement(
           Button,
           {

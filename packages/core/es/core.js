@@ -1492,7 +1492,6 @@ export var Topology = /*#__PURE__*/ (function () {
     {
       key: 'resize',
       value: function resize(size) {
-        console.log('>>>>', size);
         this.data.width = (size === null || size === void 0 ? void 0 : size.width) || 826;
         this.data.height = (size === null || size === void 0 ? void 0 : size.height) || 1168;
         this.canvas.resize(size);
@@ -1752,7 +1751,6 @@ export var Topology = /*#__PURE__*/ (function () {
                   try {
                     for (_iterator4.s(); !(_step4 = _iterator4.n()).done; ) {
                       var _child = _step4.value;
-                      console.log(_child);
 
                       if (_child.name == 'echarts') {
                         hasChart = true;
