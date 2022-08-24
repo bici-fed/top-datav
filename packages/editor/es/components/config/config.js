@@ -18,8 +18,7 @@ import gauge from './setting/gauge';
 import biciMeasure from './setting/biciMeasure';
 import timeLine from './setting/timeLine';
 import video from './setting/video';
-import dateFormat from './setting/dateFormat'; // biciText=数据统计
-// biciCard2=数据卡片2 华夏演示专用
+import dateFormat from './setting/dateFormat'; // biciCard2=数据卡片2 华夏演示专用
 
 export var defaultToolsConfig = [
   'rectangle',

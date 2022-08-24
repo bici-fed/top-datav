@@ -1752,6 +1752,7 @@ export var Topology = /*#__PURE__*/ (function () {
                   try {
                     for (_iterator4.s(); !(_step4 = _iterator4.n()).done; ) {
                       var _child = _step4.value;
+                      console.log(_child);
 
                       if (_child.name == 'echarts') {
                         hasChart = true;
@@ -3692,8 +3693,9 @@ export var Topology = /*#__PURE__*/ (function () {
           node.elementRendered = false;
           node.elementId = null;
           delete node.id;
-        }
+        } // 不知道什么原因，组件复制操作后，有图片的组合组件name=image，这里强制赋值weicombine
 
+        node.name = 'combine';
         return node;
       },
     },

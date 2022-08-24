@@ -5,7 +5,8 @@
   "license": "MIT",
   "sideEffect": false,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
     "start": "dumi dev",
@@ -35,9 +36,9 @@
     ]
   },
   "dependencies": {
+    "@babel/runtime": "^7.18.0",
     "react": "^16.12.0 || ^17.0.0",
-    "react-dom": "^16.12.0 || ^17.0.0",
-    "@babel/runtime": "^7.18.0"
+    "react-dom": "^16.12.0 || ^17.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.1",
@@ -45,13 +46,14 @@
     "@types/jest": "^27.0.3",
     "@umijs/fabric": "^2.8.1",
     "@umijs/test": "^3.0.5",
-    "dumi": "^1.1.0",
     "antd": "4.20.2",
     "babel-plugin-import": "^1.12.2",
-    "lerna": "4.x",
+    "dumi": "^1.1.0",
     "father-build": "^1.22.1",
     "gh-pages": "^3.0.0",
+    "lerna": "4.x",
     "lint-staged": "^10.0.7",
+    "postcss-normalize": "^10.0.1",
     "prettier": "^2.2.1",
     "yorkie": "^2.0.0"
   }

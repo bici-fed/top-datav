@@ -1,7 +1,0 @@
-117 error Error: Command failed with exit code 128: git tag custom-react-app@1.0.10 -m custom-react-app@1.0.10
-117 error fatal: tag 'custom-react-app@1.0.10' already exists
-117 error     at makeError (/Users/angus/study/top-datav/node_modules/execa/lib/error.js:60:11)
-117 error     at handlePromise (/Users/angus/study/top-datav/node_modules/execa/index.js:118:26)
-117 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
-117 error     at async Promise.all (index 0)
-117 error     at async Promise.all (index 0)

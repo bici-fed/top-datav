@@ -63,23 +63,7 @@ export function getBarOption() {
       x: dimensions[0],
       y: dimensions[1],
     },
-    datasetIndex: 0, // itemStyle:{
-    //     color: function(obj){
-    //         const defaultChartColors2=[
-    //             "#157EFB",
-    //             "#F7B500",
-    //             "#1EC622",
-    //             "#E63C5F",
-    //             "#44D7B6",
-    //             "#6236FF",
-    //             "#673D3D",
-    //             "#71A3CB",
-    //             "#766863",
-    //             "#FA6400"
-    //           ]
-    //         return defaultChartColors2[obj["dataIndex"]]
-    //     }
-    // }
+    datasetIndex: 0,
   }; // 后端数据
   // 后端数据
 
@@ -197,6 +181,7 @@ export function getBarOption() {
       },
     },
     grid: {
+      //图表的位置
       top: '20%',
       left: '6%',
       right: '6%',

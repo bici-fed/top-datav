@@ -65,7 +65,7 @@ function _arrayWithHoles(arr) {
 
 import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Button, Menu, Popover, Tag, Space, Tooltip } from 'antd';
-import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import { PlusOutlined, MinusOutlined, CheckOutlined } from '@ant-design/icons';
 import { useFullscreen } from 'ahooks';
 import CustomIcon from '../config/iconConfig';
 import styles from './index.module.css';
@@ -281,12 +281,14 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
         break;
 
       case 'unCombo':
+        console.log(pens);
         pens
           .filter(function (pen) {
             return pen.name === 'combine';
           })
           .forEach(function (pen) {
-            return canvas.uncombine(pen);
+            console.log(pen);
+            canvas.uncombine(pen);
           });
         break;
 
@@ -630,6 +632,17 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
         {
           size: 'large',
         },
+        /*#__PURE__*/ React.createElement(
+          Button,
+          {
+            type: 'link',
+            style: {
+              color: 'green',
+            },
+            icon: /*#__PURE__*/ React.createElement(CheckOutlined, null),
+          },
+          '\u4FDD\u5B58\u6210\u529F',
+        ),
         /*#__PURE__*/ React.createElement(
           Button,
           {
