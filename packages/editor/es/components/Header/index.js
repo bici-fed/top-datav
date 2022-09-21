@@ -281,13 +281,11 @@ var Header = /*#__PURE__*/ React.forwardRef(function (props, ref) {
         break;
 
       case 'unCombo':
-        console.log(pens);
         pens
           .filter(function (pen) {
             return pen.name === 'combine';
           })
           .forEach(function (pen) {
-            console.log(pen);
             canvas.uncombine(pen);
           });
         break;

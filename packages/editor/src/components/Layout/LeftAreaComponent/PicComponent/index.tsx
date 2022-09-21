@@ -5,9 +5,9 @@ import { clientParam } from '../../../data/api';
 import { useClickAway } from 'ahooks';
 import CompContextMenu from '../../../common/CompContextMenu';
 import styles from './index.module.less';
-import {industry_List,onDrag,fitImageSize} from './config'
-import IndustryList from "./IndustryList";
-import {ConfigOnClose} from "antd/es/message";
+import { industry_List, onDrag, fitImageSize } from './config';
+import IndustryList from './IndustryList';
+import { ConfigOnClose } from 'antd/es/message';
 
 const { Panel } = Collapse;
 
@@ -26,10 +26,8 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
   });
   const [selectedItem, setSelectedItem] = useState(null);
   const contextMenuRef = useRef();
-  const divHeight = document.body.clientHeight-170;
-  useEffect(()=>{
-
-  },[])
+  const divHeight = document.body.clientHeight - 170;
+  useEffect(() => {}, []);
   useClickAway(() => {
     setShowContextmenu(false);
   }, contextMenuRef);
@@ -42,10 +40,10 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
   const requstPicList = () => {
     clientParam(uploaConfig.self.baseURL)
       .request({
-        url:uploaConfig.self.apiUrl.list,
-        data:uploaConfig.self.data,
+        url: uploaConfig.self.apiUrl.list,
+        data: uploaConfig.self.data,
         params: uploaConfig.self.data,
-        method:'get',
+        method: 'get',
         headers: {
           token: uploaConfig.self.token,
           'Content-Type': 'application/json',
@@ -84,16 +82,16 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
   }
 
   const beforeUpload = (file) => {
-    const isLt1M = file.size / 1024 / 1024 < 1;
+    const isLt1M = file.size / 1024 / 1024 / 1024 < 1;
     if (!isLt1M) {
-      message.error('上传图片不可大于1M');
+      message.error('上传图片不可大于10M');
     }
     return isLt1M;
   };
 
   const onHandleUpload = ({ file }) => {
     if (file.status === 'done') {
-      requstPicList()
+      requstPicList();
     }
   };
   // 确定重命名
@@ -113,7 +111,7 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
               token: uploaConfig.self.token,
               'Content-Type': 'application/json',
             },
-          }
+          },
         )
         .then((res) => {
           message.success('重命名成功！');
@@ -125,9 +123,9 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
   };
 
   const handleDelete = () => {
-    if(selectedItem==null){
-      message.error('请选择要删除的组件！').then(()=>{
-        message.destroy()
+    if (selectedItem == null) {
+      message.error('请选择要删除的组件！').then(() => {
+        message.destroy();
       });
       return;
     }
@@ -141,16 +139,13 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
         },
       })
       .then((res) => {
-        message.success('删除组件成功！',2,()=>{
-          message.destroy()
+        message.success('删除组件成功！', 2, () => {
+          message.destroy();
           return null;
-        })
+        });
         requstPicList();
       });
   };
-
-
-
 
   // 右键菜单
   const handleContextMenu = (event, item: any) => {
@@ -181,12 +176,13 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
 
   return (
     <div className={styles.container}>
-      <Collapse defaultActiveKey={['999']}
-                expandIconPosition="right"
-                ghost={false} bordered={false}
-                style={{height:divHeight,overflow:"auto"}}
+      <Collapse
+        defaultActiveKey={['999']}
+        expandIconPosition="right"
+        ghost={false}
+        bordered={false}
+        style={{ height: divHeight, overflow: 'auto' }}
       >
-
         {/*<Panel header="工业图库" key="9999">*/}
         {/*  <Row>*/}
         {/*    {industrialLibrary?.map((item, index) => (*/}
@@ -227,60 +223,51 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
         <Panel header="自定义上传" key="998">
           <Row>
             {list?.map((item, index) => (
-                <Col
-                    key={index}
-                    span={8}
-                    className={styles.colStyle}
-                    style={{ textAlign: 'center' }}
-                    onContextMenu={(event) => handleContextMenu(event, item)}
-                >
-                  <a
-                      title={item.name}
-                      draggable
-                      href="#"
-                      onClick={(e) => e.preventDefault()}
-                      onDragStart={(ev) => onDrag(ev, item)}
-                  >
-                    <img
-                        alt={item.name}
-                        src={item.url}
-                        style={{ width: 60, height: 60 }}
-                    />
-                    <span
-                        style={{
-                          marginTop: 5,
-                          overflow: 'hidden',
-                          display: 'block',
-                          whiteSpace: 'nowrap',
-                          textOverflow: 'ellipsis',
-                          color:"#333"
-                        }}
-                    >
-                    {item.name}
-                  </span>
-                  </a>
-                </Col>
-            ))}
-            <Col
-                key="upload"
-                span={12}
+              <Col
+                key={index}
+                span={8}
                 className={styles.colStyle}
                 style={{ textAlign: 'center' }}
-            >
+                onContextMenu={(event) => handleContextMenu(event, item)}
+              >
+                <a
+                  title={item.name}
+                  draggable
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  onDragStart={(ev) => onDrag(ev, item)}
+                >
+                  <img alt={item.name} src={item.url} style={{ width: 60, height: 60 }} />
+                  <span
+                    style={{
+                      marginTop: 5,
+                      overflow: 'hidden',
+                      display: 'block',
+                      whiteSpace: 'nowrap',
+                      textOverflow: 'ellipsis',
+                      color: '#333',
+                    }}
+                  >
+                    {item.name}
+                  </span>
+                </a>
+              </Col>
+            ))}
+            <Col key="upload" span={12} className={styles.colStyle} style={{ textAlign: 'center' }}>
               <Upload
-                  listType="picture-card"
-                  showUploadList={false}
-                  action={`${uploaConfig.self.baseURL}${uploaConfig.self.url}`}
-                  accept="image/*"
-                  data={{
-                    mappingType: uploaConfig.self.data.mappingType,
-                    mappingId: uploaConfig.self.data.mappingId,
-                  }}
-                  headers={{
-                    token: uploaConfig.self.token,
-                  }}
-                  beforeUpload={beforeUpload}
-                  onChange={onHandleUpload}
+                listType="picture-card"
+                showUploadList={false}
+                action={`${uploaConfig.self.baseURL}${uploaConfig.self.url}`}
+                accept="image/*"
+                data={{
+                  mappingType: uploaConfig.self.data.mappingType,
+                  mappingId: uploaConfig.self.data.mappingId,
+                }}
+                headers={{
+                  token: uploaConfig.self.token,
+                }}
+                beforeUpload={beforeUpload}
+                onChange={onHandleUpload}
               >
                 <div>
                   <PlusOutlined />
@@ -291,10 +278,12 @@ const Layout = ({ uploaConfig, industrialLibrary }) => {
           </Row>
         </Panel>
 
-        {(uploaConfig?.industry?.projectIndustryCats||industry_List).map((item,index)=>{
-          return <Panel key={index} header={item[1]}>
-            <IndustryList uploaConfig={uploaConfig} mappingType={item[0]}></IndustryList>
-          </Panel>
+        {(uploaConfig?.industry?.projectIndustryCats || industry_List).map((item, index) => {
+          return (
+            <Panel key={index} header={item[1]}>
+              <IndustryList uploaConfig={uploaConfig} mappingType={item[0]}></IndustryList>
+            </Panel>
+          );
         })}
       </Collapse>
 
