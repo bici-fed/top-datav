@@ -203,10 +203,10 @@ var Layout = function Layout(_ref) {
   }
 
   var beforeUpload = function beforeUpload(file) {
-    var isLt1M = file.size / 1024 / 1024 < 1;
+    var isLt1M = file.size / 1024 / 1024 / 1024 < 1;
 
     if (!isLt1M) {
-      message.error('上传图片不可大于1M');
+      message.error('上传图片不可大于10M');
     }
 
     return isLt1M;
