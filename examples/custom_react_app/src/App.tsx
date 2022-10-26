@@ -15,9 +15,9 @@ import VideoMonitoringModal from './VideoMonitoring';
 import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
-const token = 'BBztGDuJkrerCd6UK69B3';
+const token = '1NlCuQdA9iXGbajS2sDiMF';
 
-const testId = 'b0a3262472b94ab497f958eb0cca3e6d';
+const testId = 'fb3e457592bc415fbad35d325f25abdd';
 
 const apiURL = 'https://zhsd-test.bicisims.com/api';
 

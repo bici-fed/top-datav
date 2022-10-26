@@ -84,7 +84,7 @@ export function getHorizontalBarOption() {
     (node.property.dataPointSelectedRows || []).forEach(function (item) {
       var t = [];
       t[0] = item.dataName;
-      t[1] = item.value * 1 || 1;
+      t[1] = item.value * 1;
       source.push(t);
     });
     config.dimension = dimensions[1];
