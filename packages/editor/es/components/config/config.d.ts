@@ -151,6 +151,8 @@ export declare const Tools: (
                 qtDataList: any[];
                 subscribe: boolean;
               };
+              stateType: string;
+              lightRange: any[];
             };
           };
         };

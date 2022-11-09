@@ -24,6 +24,8 @@ export default {
         qtDataList: [],
         subscribe: true,
       },
+      stateType: 'single',
+      lightRange: [], // 指示灯 状态定义 列表
     },
   },
 };

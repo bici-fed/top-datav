@@ -169,7 +169,9 @@ var fillStyleNodeList = ['circle', 'rectangle', 'biciVarer', 'combine', 'dateFor
 
 var fontStyleNodeList = ['biciPilot', 'circle', 'rectangle', 'text', 'biciVarer', 'dateFormat']; // 边框样式
 
-var boardStyleNodeList = ['circle', 'rectangle', 'biciVarer', 'combine']; // 不展示旋转
+var boardStyleNodeList = ['circle', 'rectangle', 'biciVarer', 'combine']; // 数值显示映射
+
+var customValueStyleNodeList = ['biciVarer']; // 不展示旋转
 
 var disabledRotateList = ['biciPilot', 'echarts', 'biciCard', 'QTLiveVideo'];
 var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
@@ -2925,6 +2927,241 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
       }
     }
   };
+  /**渲染变量样式*/
+
+  var renderVarer = useMemo(
+    function () {
+      var radioButtonStyle = {
+        height: 26,
+        lineHeight: '24px',
+      };
+      return /*#__PURE__*/ React.createElement(
+        Panel,
+        {
+          header: '\u6837\u5F0F',
+          key: 'biciVarer',
+        },
+        /*#__PURE__*/ React.createElement(
+          Form,
+          {
+            form: propertyForm,
+            onValuesChange: handlePropertyValuesChange,
+            labelCol: {
+              span: 6,
+            },
+            labelAlign: 'left',
+          },
+          /*#__PURE__*/ React.createElement(
+            Col,
+            {
+              span: 24,
+            },
+            /*#__PURE__*/ React.createElement(
+              Form.Item,
+              {
+                name: 'stateType',
+                label: '\u72B6\u6001\u5B9A\u4E49',
+              },
+              /*#__PURE__*/ React.createElement(Radio.Group, {
+                options: [
+                  {
+                    label: '单点值',
+                    value: 'single',
+                    style: radioButtonStyle,
+                  },
+                  {
+                    label: '范围值',
+                    value: 'range',
+                    style: radioButtonStyle,
+                  },
+                ],
+                style: {
+                  float: 'right',
+                },
+                onChange: function onChange() {
+                  return propertyForm.setFieldsValue({
+                    lightRange: [],
+                  });
+                },
+                optionType: 'button',
+                buttonStyle: 'solid',
+              }),
+            ),
+          ),
+          /*#__PURE__*/ React.createElement(
+            Form.List,
+            {
+              name: 'lightRange',
+            },
+            function (fields, _ref8) {
+              var add = _ref8.add,
+                remove = _ref8.remove;
+              return /*#__PURE__*/ React.createElement(
+                Fragment,
+                null,
+                fields.map(function (field) {
+                  return /*#__PURE__*/ React.createElement(
+                    Space,
+                    {
+                      key: field.key,
+                      style: {
+                        display: 'flex',
+                        marginBottom: 5,
+                      },
+                      align: 'center',
+                      size: 'small',
+                    },
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
+                      _objectSpread(
+                        _objectSpread({}, field),
+                        {},
+                        {
+                          name: [field.name, 'lightRangeColor'],
+                        },
+                      ),
+                      /*#__PURE__*/ React.createElement(ColorPicker, null),
+                    ),
+                    propertyForm.getFieldValue('stateType') === 'single' &&
+                      /*#__PURE__*/ React.createElement(
+                        Fragment,
+                        null,
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
+                          _objectSpread(
+                            _objectSpread({}, field),
+                            {},
+                            {
+                              name: [field.name, 'lightRangeVal'],
+                              rules: [
+                                {
+                                  required: true,
+                                  message: '必填',
+                                },
+                              ],
+                            },
+                          ),
+                          /*#__PURE__*/ React.createElement(Input, {
+                            placeholder: '\u6570\u503C',
+                            onBlur: checkPilotSingleRepeat,
+                          }),
+                        ),
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
+                          _objectSpread(
+                            _objectSpread({}, field),
+                            {},
+                            {
+                              name: [field.name, 'lightRangeText'],
+                            },
+                          ),
+                          /*#__PURE__*/ React.createElement(Input, {
+                            placeholder: '\u6587\u672C',
+                          }),
+                        ),
+                      ),
+                    propertyForm.getFieldValue('stateType') === 'range' &&
+                      /*#__PURE__*/ React.createElement(
+                        Fragment,
+                        null,
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
+                          _objectSpread(
+                            _objectSpread({}, field),
+                            {},
+                            {
+                              name: [field.name, 'lightRangeBottom'],
+                              rules: [
+                                {
+                                  required: true,
+                                  message: '必填',
+                                },
+                              ],
+                            },
+                          ),
+                          /*#__PURE__*/ React.createElement(InputNumber, {
+                            style: {
+                              width: 60,
+                            },
+                            placeholder: '\u4E0B\u9650',
+                          }),
+                        ),
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
+                          _objectSpread(
+                            _objectSpread({}, field),
+                            {},
+                            {
+                              name: [field.name, 'lightRangeTop'],
+                              rules: [
+                                {
+                                  required: true,
+                                  message: '必填',
+                                },
+                              ],
+                            },
+                          ),
+                          /*#__PURE__*/ React.createElement(InputNumber, {
+                            style: {
+                              width: 60,
+                            },
+                            placeholder: '\u4E0A\u9650',
+                            onBlur: checkPilotRangeRepeat,
+                          }),
+                        ),
+                        /*#__PURE__*/ React.createElement(
+                          Form.Item,
+                          _objectSpread(
+                            _objectSpread({}, field),
+                            {},
+                            {
+                              name: [field.name, 'lightRangeText'],
+                            },
+                          ),
+                          /*#__PURE__*/ React.createElement(Input, {
+                            style: {
+                              width: 50,
+                            },
+                            placeholder: '\u6587\u672C',
+                          }),
+                        ),
+                      ),
+                    /*#__PURE__*/ React.createElement(
+                      Form.Item,
+                      null,
+                      /*#__PURE__*/ React.createElement(MinusCircleOutlined, {
+                        onClick: function onClick() {
+                          return remove(field.name);
+                        },
+                      }),
+                    ),
+                  );
+                }),
+                fields.length < 10 &&
+                  /*#__PURE__*/ React.createElement(
+                    Form.Item,
+                    null,
+                    /*#__PURE__*/ React.createElement(
+                      Button,
+                      {
+                        type: 'dashed',
+                        onClick: function onClick() {
+                          return add();
+                        },
+                        block: true,
+                        icon: /*#__PURE__*/ React.createElement(PlusOutlined, null),
+                      },
+                      '\u6DFB\u52A0',
+                    ),
+                  ),
+              );
+            },
+          ),
+        ),
+      );
+    },
+    [propertyForm, property, data === null || data === void 0 ? void 0 : data.node],
+  );
   /**
    * 渲染指示灯样式
    */
@@ -3132,9 +3369,9 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
             {
               name: 'lightRange',
             },
-            function (fields, _ref8) {
-              var add = _ref8.add,
-                remove = _ref8.remove;
+            function (fields, _ref9) {
+              var add = _ref9.add,
+                remove = _ref9.remove;
               return /*#__PURE__*/ React.createElement(
                 Fragment,
                 null,
@@ -3449,8 +3686,8 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     name: 'dataMin',
                     dependencies: ['dataMax'],
                     rules: [
-                      function (_ref9) {
-                        var getFieldValue = _ref9.getFieldValue;
+                      function (_ref10) {
+                        var getFieldValue = _ref10.getFieldValue;
                         return {
                           validator: function validator(_, value) {
                             if (!value || getFieldValue('dataMax') >= value) {
@@ -3487,8 +3724,8 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                         required: true,
                         message: ' ',
                       },
-                      function (_ref10) {
-                        var getFieldValue = _ref10.getFieldValue;
+                      function (_ref11) {
+                        var getFieldValue = _ref11.getFieldValue;
                         return {
                           validator: function validator(rule, value) {
                             if (!value || getFieldValue('dataMin') <= value) {
@@ -3913,8 +4150,8 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       name: 'dataBottom',
                       dependencies: ['dataTop'],
                       rules: [
-                        function (_ref11) {
-                          var getFieldValue = _ref11.getFieldValue;
+                        function (_ref12) {
+                          var getFieldValue = _ref12.getFieldValue;
                           return {
                             validator: function validator(_, value) {
                               if (!value || getFieldValue('dataTop') >= value) {
@@ -3949,8 +4186,8 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                       name: 'dataTop',
                       dependencies: ['dataBottom'],
                       rules: [
-                        function (_ref12) {
-                          var getFieldValue = _ref12.getFieldValue;
+                        function (_ref13) {
+                          var getFieldValue = _ref13.getFieldValue;
                           return {
                             validator: function validator(_, value) {
                               if (!value || getFieldValue('dataBottom') <= value) {
@@ -4160,9 +4397,9 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                   {
                     name: 'lineGraphRange',
                   },
-                  function (fields, _ref13) {
-                    var add = _ref13.add,
-                      remove = _ref13.remove;
+                  function (fields, _ref14) {
+                    var add = _ref14.add,
+                      remove = _ref14.remove;
                     return /*#__PURE__*/ React.createElement(
                       Fragment,
                       null,
@@ -4465,6 +4702,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
               fontStyleNodeList.includes(name) && renderFontForm,
               fillStyleNodeList.includes(name) && renderFillStyle,
               boardStyleNodeList.includes(name) && renderBorderStyle,
+              customValueStyleNodeList.includes(name) && renderVarer,
               name === 'biciPilot' && renderLight,
               name === 'biciTimer' && renderBiciTimerDataForm,
               name === 'biciCard' && renderDataCard,

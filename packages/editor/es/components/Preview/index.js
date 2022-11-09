@@ -1,56 +1,3 @@
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-  if (!it) {
-    if (
-      Array.isArray(o) ||
-      (it = _unsupportedIterableToArray(o)) ||
-      (allowArrayLike && o && typeof o.length === 'number')
-    ) {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return { done: true };
-          return { done: false, value: o[i++] };
-        },
-        e: function e(_e2) {
-          throw _e2;
-        },
-        f: F,
-      };
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    );
-  }
-  var normalCompletion = true,
-    didErr = false,
-    err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e3) {
-      didErr = true;
-      err = _e3;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    },
-  };
-}
-
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -161,24 +108,6 @@ function _nonIterableRest() {
   );
 }
 
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
 function _iterableToArrayLimit(arr, i) {
   var _i =
     arr == null
@@ -209,6 +138,77 @@ function _iterableToArrayLimit(arr, i) {
 
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
+}
+
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
+  if (!it) {
+    if (
+      Array.isArray(o) ||
+      (it = _unsupportedIterableToArray(o)) ||
+      (allowArrayLike && o && typeof o.length === 'number')
+    ) {
+      if (it) o = it;
+      var i = 0;
+      var F = function F() {};
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return { done: true };
+          return { done: false, value: o[i++] };
+        },
+        e: function e(_e2) {
+          throw _e2;
+        },
+        f: F,
+      };
+    }
+    throw new TypeError(
+      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
+    );
+  }
+  var normalCompletion = true,
+    didErr = false,
+    err;
+  return {
+    s: function s() {
+      it = it.call(o);
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e3) {
+      didErr = true;
+      err = _e3;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it.return != null) it.return();
+      } finally {
+        if (didErr) throw err;
+      }
+    },
+  };
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === 'Object' && o.constructor) n = o.constructor.name;
+  if (n === 'Map' || n === 'Set') return Array.from(o);
+  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+    return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
 }
 
 function _defineProperties(target, props) {
@@ -267,7 +267,85 @@ export var PreviewProps = /*#__PURE__*/ _createClass(function PreviewProps() {
   this.data = void 0;
   this.websocketConf = void 0;
   this.isApp = void 0;
-}); // echartsObjs[node.id].chart
+});
+
+function updateDateRangeTransform(node, r) {
+  var flag = false;
+
+  if (node.property.lightRange && node.property.lightRange.length > 0) {
+    var _iterator = _createForOfIteratorHelper(node.property.lightRange),
+      _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+        var item = _step.value;
+
+        if (node.property.stateType === 'single') {
+          if (node.property.showText !== undefined) {
+            // 说明是指示灯
+            if (item.lightRangeVal == r.value) {
+              node.strokeStyle =
+                (item === null || item === void 0 ? void 0 : item.lightRangeColor) ||
+                node.strokeStyle;
+
+              if (node.property.showText) {
+                node.text =
+                  (item === null || item === void 0 ? void 0 : item.lightRangeText) ||
+                  node.property.text;
+              }
+
+              flag = true;
+              break;
+            }
+          } else {
+            if (item.lightRangeVal == r.value + '') {
+              node.strokeStyle =
+                (item === null || item === void 0 ? void 0 : item.lightRangeColor) ||
+                node.strokeStyle;
+              node.text =
+                (item === null || item === void 0 ? void 0 : item.lightRangeText) ||
+                node.property.text;
+              node.font.color = item === null || item === void 0 ? void 0 : item.lightRangeColor;
+              flag = true;
+              break;
+            }
+          }
+        } else {
+          if (
+            (item.lightRangeBottom <= r.value && item.lightRangeTop > r.value) ||
+            (!item.lightRangeBottom && item.lightRangeTop > r.value) ||
+            (!item.lightRangeTop && item.lightRangeBottom <= r.value)
+          ) {
+            node.strokeStyle =
+              (item === null || item === void 0 ? void 0 : item.lightRangeColor) ||
+              node.strokeStyle;
+
+            if (node.property.showText) {
+              node.text =
+                (item === null || item === void 0 ? void 0 : item.lightRangeText) ||
+                node.property.text;
+            }
+
+            flag = true;
+            break;
+          }
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    if (!flag) {
+      node.strokeStyle = node.property.color;
+
+      if (node.property.showText) {
+        node.text = node.property.text;
+      }
+    }
+  }
+} // echartsObjs[node.id].chart
 
 var Preview = function Preview(_ref) {
   var data = _ref.data,
@@ -1066,7 +1144,8 @@ var Preview = function Preview(_ref) {
               node.text = node.property.dataPointSelectedRows[0].falseDisplay || r.value;
             } // 保存最新值
 
-            socketDataMap[r.id] = r.value; // canvas.updateProps( false,[node]);
+            socketDataMap[r.id] = r.value;
+            updateDateRangeTransform(node, r); // canvas.updateProps( false,[node]);
           }
         } else if (node.name === 'biciMeasure') {
           var _node$property$dataPo4, _node$property$dataPo5;
@@ -1142,71 +1221,13 @@ var Preview = function Preview(_ref) {
           }
         } else if (node.name === 'biciPilot') {
           if (node.property.dataPointParam.qtDataList[0].dataCode == r.id) {
-            var flag = false;
             node.property.val = r.value;
 
             if (r.value == undefined) {
               node.property.val = 0;
             }
 
-            if (node.property.lightRange) {
-              var _iterator = _createForOfIteratorHelper(node.property.lightRange),
-                _step;
-
-              try {
-                for (_iterator.s(); !(_step = _iterator.n()).done; ) {
-                  var item = _step.value;
-
-                  if (node.property.stateType === 'single') {
-                    if (item.lightRangeVal == r.value) {
-                      node.strokeStyle =
-                        (item === null || item === void 0 ? void 0 : item.lightRangeColor) ||
-                        node.strokeStyle;
-
-                      if (node.property.showText) {
-                        node.text =
-                          (item === null || item === void 0 ? void 0 : item.lightRangeText) ||
-                          node.property.text;
-                      }
-
-                      flag = true;
-                      break;
-                    }
-                  } else {
-                    if (
-                      (item.lightRangeBottom <= r.value && item.lightRangeTop > r.value) ||
-                      (!item.lightRangeBottom && item.lightRangeTop > r.value) ||
-                      (!item.lightRangeTop && item.lightRangeBottom <= r.value)
-                    ) {
-                      node.strokeStyle =
-                        (item === null || item === void 0 ? void 0 : item.lightRangeColor) ||
-                        node.strokeStyle;
-
-                      if (node.property.showText) {
-                        node.text =
-                          (item === null || item === void 0 ? void 0 : item.lightRangeText) ||
-                          node.property.text;
-                      }
-
-                      flag = true;
-                      break;
-                    }
-                  }
-                }
-              } catch (err) {
-                _iterator.e(err);
-              } finally {
-                _iterator.f();
-              }
-
-              if (!flag) {
-                node.strokeStyle = node.property.color;
-
-                if (node.property.showText) {
-                  node.text = node.property.text;
-                }
-              }
-            } // canvas.updateProps(false);
+            updateDateRangeTransform(node, r); // canvas.updateProps(false);
           }
         } else if (node.name == 'rectangle') {
           if (r.value) {

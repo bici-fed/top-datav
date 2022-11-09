@@ -15,13 +15,13 @@ import VideoMonitoringModal from './VideoMonitoring';
 import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
-const token = '1NlCuQdA9iXGbajS2sDiMF';
+const token = 'fq0h07thEHIYwh2cQesf8';
 
-const testId = 'fb3e457592bc415fbad35d325f25abdd';
+const testId = '5143460d4cd54d22a4acd479fa8d34ef';
 
-const apiURL = 'https://zhsd-test.bicisims.com/api';
+const apiURL = 'https://zhsd-test.bicisims.com:6600/api';
 
-const esURL = '';
+const websocketURL = 'wss://zhsd-test.bicisims.com:6600/api/websocket/service/websocket/rtData/';
 
 const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
   const history = props.history;
@@ -171,7 +171,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
   ];
 
   const websocketConf = {
-    url: 'ws://47.96.159.115:51060/ws?token=' + token,
+    url: websocketURL + token,
     video: {
       updateStream: 'http://192.168.1.105:8000/surveillance/channel/updateStream',
       rePushStream: 'http://192.168.1.105:8000/surveillance/channel/rePushStream',
@@ -494,7 +494,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
 const PreviewLayout: React.FC<any> = ({ history }) => {
   const [editorData, setEditorData] = useState<any>();
   const websocketConf = {
-    url: 'ws://47.96.159.115:51060/ws?token=' + token,
+    url: websocketURL + token,
     video: {
       updateStream: 'http://192.168.1.105:8000/surveillance/channel/updateStream',
       rePushStream: 'http://192.168.1.105:8000/surveillance/channel/rePushStream',

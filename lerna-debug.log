@@ -1,0 +1,99 @@
+0 silly argv {
+0 silly argv   _: [ 'version' ],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'lerna',
+0 silly argv   bump: 'patch'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/brady/work/bici/bicilib/top-datav
+3 info versioning independent
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly getCurrentBranch
+7 verbose currentBranch master
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 2
+11 silly hasTags
+12 verbose hasTags true
+13 silly git-describe.sync "@top-datav/core@1.0.16-2-ge199c5c" => {"lastTagName":"@top-datav/core@1.0.16","lastVersion":"1.0.16","refCount":"2","sha":"e199c5c","isDirty":false}
+14 info Looking for changed packages since @top-datav/core@1.0.16
+15 silly checking diff examples/custom_react_app
+16 silly found diff in examples/custom_react_app/src/App.tsx
+17 verbose filtered diff [ 'examples/custom_react_app/src/App.tsx' ]
+18 silly checking diff packages/activity-diagram
+19 silly no diff found in @top-datav/activity-diagram
+20 silly checking diff packages/bici-diagram
+21 silly no diff found in @top-datav/bici-diagram
+22 silly checking diff packages/chart-diagram
+23 silly no diff found in @top-datav/chart-diagram
+24 silly checking diff packages/class-diagram
+25 silly no diff found in @top-datav/class-diagram
+26 silly checking diff packages/core
+27 silly no diff found in @top-datav/core
+28 silly checking diff packages/editor
+29 silly found diff in packages/editor/es/components/Layout/LeftAreaComponent/PicComponent/index.js
+29 silly found diff in packages/editor/es/components/config/charts/horizontalbar.js
+29 silly found diff in packages/editor/src/components/config/charts/horizontalbar.ts
+30 verbose filtered diff [
+30 verbose filtered diff   'packages/editor/es/components/Layout/LeftAreaComponent/PicComponent/index.js',
+30 verbose filtered diff   'packages/editor/es/components/config/charts/horizontalbar.js',
+30 verbose filtered diff   'packages/editor/src/components/config/charts/horizontalbar.ts'
+30 verbose filtered diff ]
+31 silly checking diff packages/flow-diagram
+32 silly no diff found in @top-datav/flow-diagram
+33 silly checking diff packages/layout
+34 silly no diff found in @top-datav/layout
+35 silly checking diff packages/sequence-diagram
+36 silly no diff found in @top-datav/sequence-diagram
+37 silly checking diff packages/store-utils
+38 silly no diff found in @top-datav/store-utils
+39 verbose updated custom-react-app
+40 verbose updated @top-datav/core
+41 verbose updated @top-datav/editor
+42 verbose git-describe undefined => "@top-datav/core@1.0.16-2-ge199c5c"
+43 silly git-describe parsed => {"lastTagName":"@top-datav/core@1.0.16","lastVersion":"1.0.16","refCount":"2","sha":"e199c5c","isDirty":false}
+44 info execute Skipping releases
+45 silly lifecycle No script for "preversion" in "top-datav", continuing
+46 warn ECYCLE Dependency cycles detected, you should fix these!
+46 warn ECYCLE @top-datav/core -> @top-datav/editor -> @top-datav/core
+47 silly lifecycle No script for "preversion" in "@top-datav/core", continuing
+48 silly lifecycle No script for "preversion" in "@top-datav/editor", continuing
+49 silly lifecycle No script for "version" in "@top-datav/core", continuing
+50 silly lifecycle No script for "version" in "@top-datav/editor", continuing
+51 silly lifecycle No script for "preversion" in "custom-react-app", continuing
+52 silly lifecycle No script for "version" in "custom-react-app", continuing
+53 silly lifecycle No script for "version" in "top-datav", continuing
+54 silly gitAdd [
+54 silly gitAdd   'packages/core/package.json',
+54 silly gitAdd   'packages/editor/package.json',
+54 silly gitAdd   'examples/custom_react_app/package.json'
+54 silly gitAdd ]
+55 silly gitCommit chore(release): publish
+55 silly gitCommit
+55 silly gitCommit  - custom-react-app@1.0.14
+55 silly gitCommit  - @top-datav/core@1.0.17
+55 silly gitCommit  - @top-datav/editor@1.0.19
+56 verbose git [
+56 verbose git   'commit',
+56 verbose git   '-F',
+56 verbose git   '/private/var/folders/xx/w7_4pn4s59n065qccdcj3vth0000gn/T/91c289c1-257a-451e-b6d5-ba9ba2a980af/lerna-commit.txt'
+56 verbose git ]
+57 silly gitTag custom-react-app@1.0.14
+58 verbose git [ 'tag', 'custom-react-app@1.0.14', '-m', 'custom-react-app@1.0.14' ]
+59 silly gitTag @top-datav/core@1.0.17
+60 verbose git [ 'tag', '@top-datav/core@1.0.17', '-m', '@top-datav/core@1.0.17' ]
+61 silly gitTag @top-datav/editor@1.0.19
+62 verbose git [ 'tag', '@top-datav/editor@1.0.19', '-m', '@top-datav/editor@1.0.19' ]
+63 silly lifecycle No script for "postversion" in "custom-react-app", continuing
+64 silly lifecycle No script for "postversion" in "@top-datav/core", continuing
+65 silly lifecycle No script for "postversion" in "@top-datav/editor", continuing
+66 silly lifecycle No script for "postversion" in "top-datav", continuing
+67 info git Pushing tags...
+68 silly gitPush origin master
+69 error Error: Command failed with exit code 128: git push --follow-tags --no-verify --atomic origin master
+69 error remote: Support for password authentication was removed on August 13, 2021.
+69 error remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+69 error fatal: Authentication failed for 'https://github.com/bici-fed/top-datav.git/'
+69 error     at makeError (/Users/brady/work/bici/bicilib/top-datav/node_modules/execa/lib/error.js:60:11)
+69 error     at handlePromise (/Users/brady/work/bici/bicilib/top-datav/node_modules/execa/index.js:118:26)

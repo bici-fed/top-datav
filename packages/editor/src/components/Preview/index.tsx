@@ -41,6 +41,54 @@ export class PreviewProps {
   isApp?: boolean;
 }
 
+function updateDateRangeTransform(node: Node, r: { id: any; time: any; type: any; value: any }) {
+  let flag = false;
+  if (node.property.lightRange && node.property.lightRange.length > 0) {
+    for (const item of node.property.lightRange) {
+      if (node.property.stateType === 'single') {
+        if (node.property.showText !== undefined) {
+          // 说明是指示灯
+          if (item.lightRangeVal == r.value) {
+            node.strokeStyle = item?.lightRangeColor || node.strokeStyle;
+            if (node.property.showText) {
+              node.text = item?.lightRangeText || node.property.text;
+            }
+            flag = true;
+            break;
+          }
+        } else {
+          if (item.lightRangeVal == r.value + '') {
+            node.strokeStyle = item?.lightRangeColor || node.strokeStyle;
+            node.text = item?.lightRangeText || node.property.text;
+            node.font.color = item?.lightRangeColor || node.font.color;
+            flag = true;
+            break;
+          }
+        }
+      } else {
+        if (
+          (item.lightRangeBottom <= r.value && item.lightRangeTop > r.value) ||
+          (!item.lightRangeBottom && item.lightRangeTop > r.value) ||
+          (!item.lightRangeTop && item.lightRangeBottom <= r.value)
+        ) {
+          node.strokeStyle = item?.lightRangeColor || node.strokeStyle;
+          if (node.property.showText) {
+            node.text = item?.lightRangeText || node.property.text;
+          }
+          flag = true;
+          break;
+        }
+      }
+    }
+    if (!flag) {
+      node.strokeStyle = node.property.color;
+      if (node.property.showText) {
+        node.text = node.property.text;
+      }
+    }
+  }
+}
+
 // echartsObjs[node.id].chart
 const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
   let websocketData = null;
@@ -669,10 +717,10 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             }
             // 保存最新值
             socketDataMap[r.id] = r.value;
+            updateDateRangeTransform(node, r);
             // canvas.updateProps( false,[node]);
           }
         } else if (node.name === 'biciMeasure') {
-          console.log('计量器.....', node.property.dataPointSelectedRows[0]?.dataCode, r.id);
           if (node.property.dataPointSelectedRows[0]?.dataCode == r.id) {
             node.property.value = r.value;
             if (r.value == undefined) {
@@ -728,44 +776,11 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
           }
         } else if (node.name === 'biciPilot') {
           if (node.property.dataPointParam.qtDataList[0].dataCode == r.id) {
-            let flag = false;
             node.property.val = r.value;
             if (r.value == undefined) {
               node.property.val = 0;
             }
-            if (node.property.lightRange) {
-              for (const item of node.property.lightRange) {
-                if (node.property.stateType === 'single') {
-                  if (item.lightRangeVal == r.value) {
-                    node.strokeStyle = item?.lightRangeColor || node.strokeStyle;
-                    if (node.property.showText) {
-                      node.text = item?.lightRangeText || node.property.text;
-                    }
-                    flag = true;
-                    break;
-                  }
-                } else {
-                  if (
-                    (item.lightRangeBottom <= r.value && item.lightRangeTop > r.value) ||
-                    (!item.lightRangeBottom && item.lightRangeTop > r.value) ||
-                    (!item.lightRangeTop && item.lightRangeBottom <= r.value)
-                  ) {
-                    node.strokeStyle = item?.lightRangeColor || node.strokeStyle;
-                    if (node.property.showText) {
-                      node.text = item?.lightRangeText || node.property.text;
-                    }
-                    flag = true;
-                    break;
-                  }
-                }
-              }
-              if (!flag) {
-                node.strokeStyle = node.property.color;
-                if (node.property.showText) {
-                  node.text = node.property.text;
-                }
-              }
-            }
+            updateDateRangeTransform(node, r);
             // canvas.updateProps(false);
           }
         } else if (node.name == 'rectangle') {

@@ -24,6 +24,8 @@ declare const _default: {
         qtDataList: any[];
         subscribe: boolean;
       };
+      stateType: string;
+      lightRange: any[];
     };
   };
 };

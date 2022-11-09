@@ -201,6 +201,7 @@ export function getHorizontalBarOption() {
       },
     },
     grid: {
+      //图表的位置
       top: '10%',
       left: '10%',
       right: '10%',

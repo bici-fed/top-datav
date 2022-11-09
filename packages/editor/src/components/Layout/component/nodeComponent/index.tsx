@@ -74,6 +74,8 @@ const fillStyleNodeList = ['circle', 'rectangle', 'biciVarer', 'combine', 'dateF
 const fontStyleNodeList = ['biciPilot', 'circle', 'rectangle', 'text', 'biciVarer', 'dateFormat'];
 // 边框样式
 const boardStyleNodeList = ['circle', 'rectangle', 'biciVarer', 'combine'];
+// 数值显示映射
+const customValueStyleNodeList = ['biciVarer'];
 // 不展示旋转
 const disabledRotateList = ['biciPilot', 'echarts', 'biciCard', 'QTLiveVideo'];
 
@@ -1525,6 +1527,105 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
       }
     };
 
+    /**渲染变量样式*/
+    const renderVarer = useMemo(() => {
+      const radioButtonStyle = { height: 26, lineHeight: '24px' };
+      return (
+        <Panel header="样式" key="biciVarer">
+          <Form
+            form={propertyForm}
+            onValuesChange={handlePropertyValuesChange}
+            labelCol={{ span: 6 }}
+            labelAlign="left"
+          >
+            <Col span={24}>
+              <Form.Item name="stateType" label="状态定义">
+                <Radio.Group
+                  options={[
+                    { label: '单点值', value: 'single', style: radioButtonStyle },
+                    { label: '范围值', value: 'range', style: radioButtonStyle },
+                  ]}
+                  style={{ float: 'right' }}
+                  onChange={() => propertyForm.setFieldsValue({ lightRange: [] })}
+                  optionType="button"
+                  buttonStyle="solid"
+                />
+              </Form.Item>
+            </Col>
+            <Form.List name="lightRange">
+              {(fields, { add, remove }) => (
+                <Fragment>
+                  {fields.map((field) => (
+                    <Space
+                      key={field.key}
+                      style={{ display: 'flex', marginBottom: 5 }}
+                      align="center"
+                      size="small"
+                    >
+                      <Form.Item {...field} name={[field.name, 'lightRangeColor']}>
+                        <ColorPicker />
+                      </Form.Item>
+                      {propertyForm.getFieldValue('stateType') === 'single' && (
+                        <Fragment>
+                          <Form.Item
+                            {...field}
+                            name={[field.name, 'lightRangeVal']}
+                            rules={[{ required: true, message: '必填' }]}
+                          >
+                            <Input placeholder="数值" onBlur={checkPilotSingleRepeat} />
+                          </Form.Item>
+                          <Form.Item {...field} name={[field.name, 'lightRangeText']}>
+                            <Input placeholder="文本" />
+                          </Form.Item>
+                        </Fragment>
+                      )}
+
+                      {propertyForm.getFieldValue('stateType') === 'range' && (
+                        <Fragment>
+                          <Form.Item
+                            {...field}
+                            name={[field.name, 'lightRangeBottom']}
+                            rules={[{ required: true, message: '必填' }]}
+                          >
+                            <InputNumber style={{ width: 60 }} placeholder="下限" />
+                          </Form.Item>
+
+                          <Form.Item
+                            {...field}
+                            name={[field.name, 'lightRangeTop']}
+                            rules={[{ required: true, message: '必填' }]}
+                          >
+                            <InputNumber
+                              style={{ width: 60 }}
+                              placeholder="上限"
+                              onBlur={checkPilotRangeRepeat}
+                            />
+                          </Form.Item>
+                          <Form.Item {...field} name={[field.name, 'lightRangeText']}>
+                            <Input style={{ width: 50 }} placeholder="文本" />
+                          </Form.Item>
+                        </Fragment>
+                      )}
+                      <Form.Item>
+                        <MinusCircleOutlined onClick={() => remove(field.name)} />
+                      </Form.Item>
+                    </Space>
+                  ))}
+                  {fields.length < 10 && (
+                    <Form.Item>
+                      <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                        添加
+                      </Button>
+                    </Form.Item>
+                  )}
+                </Fragment>
+              )}
+            </Form.List>
+          </Form>
+        </Panel>
+      );
+    }, [propertyForm, property, data?.node]);
+
     /**
      * 渲染指示灯样式
      */
@@ -2278,6 +2379,7 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
                   {fontStyleNodeList.includes(name) && renderFontForm}
                   {fillStyleNodeList.includes(name) && renderFillStyle}
                   {boardStyleNodeList.includes(name) && renderBorderStyle}
+                  {customValueStyleNodeList.includes(name) && renderVarer}
                   {name === 'biciPilot' && renderLight}
                   {name === 'biciTimer' && renderBiciTimerDataForm}
                   {name === 'biciCard' && renderDataCard}
