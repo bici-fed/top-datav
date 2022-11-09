@@ -424,7 +424,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           'bottomLimit.showBkColor': property.bottomLimit.showBkColor,
           'bottomLimit.bkColor': property.bottomLimit.bkColor,
         });
-      } else if (data.node.name === 'biciPilot') {
+      } else if (data.node.name === 'biciPilot' || data.node.name === 'biciVarer') {
         propertyForm.setFieldsValue({
           color: property.color,
           size: Math.round(width / 2),

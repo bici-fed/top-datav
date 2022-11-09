@@ -305,7 +305,9 @@ function updateDateRangeTransform(node, r) {
               node.text =
                 (item === null || item === void 0 ? void 0 : item.lightRangeText) ||
                 node.property.text;
-              node.font.color = item === null || item === void 0 ? void 0 : item.lightRangeColor;
+              node.font.color =
+                (item === null || item === void 0 ? void 0 : item.lightRangeColor) ||
+                node.font.color;
               flag = true;
               break;
             }
@@ -324,6 +326,16 @@ function updateDateRangeTransform(node, r) {
               node.text =
                 (item === null || item === void 0 ? void 0 : item.lightRangeText) ||
                 node.property.text;
+            }
+
+            if (node.property.showText === undefined) {
+              // 变量
+              node.text =
+                (item === null || item === void 0 ? void 0 : item.lightRangeText) ||
+                node.property.text;
+              node.font.color =
+                (item === null || item === void 0 ? void 0 : item.lightRangeColor) ||
+                node.font.color;
             }
 
             flag = true;
@@ -1148,22 +1160,13 @@ var Preview = function Preview(_ref) {
             updateDateRangeTransform(node, r); // canvas.updateProps( false,[node]);
           }
         } else if (node.name === 'biciMeasure') {
-          var _node$property$dataPo4, _node$property$dataPo5;
-
-          console.log(
-            '计量器.....',
-            (_node$property$dataPo4 = node.property.dataPointSelectedRows[0]) === null ||
-              _node$property$dataPo4 === void 0
-              ? void 0
-              : _node$property$dataPo4.dataCode,
-            r.id,
-          );
+          var _node$property$dataPo4;
 
           if (
-            ((_node$property$dataPo5 = node.property.dataPointSelectedRows[0]) === null ||
-            _node$property$dataPo5 === void 0
+            ((_node$property$dataPo4 = node.property.dataPointSelectedRows[0]) === null ||
+            _node$property$dataPo4 === void 0
               ? void 0
-              : _node$property$dataPo5.dataCode) == r.id
+              : _node$property$dataPo4.dataCode) == r.id
           ) {
             node.property.value = r.value;
 
