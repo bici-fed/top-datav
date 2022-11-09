@@ -75,6 +75,11 @@ function updateDateRangeTransform(node: Node, r: { id: any; time: any; type: any
           if (node.property.showText) {
             node.text = item?.lightRangeText || node.property.text;
           }
+          if (node.property.showText === undefined) {
+            // 变量
+            node.text = item?.lightRangeText || node.property.text;
+            node.font.color = item?.lightRangeColor || node.font.color;
+          }
           flag = true;
           break;
         }
