@@ -18,7 +18,7 @@ function createBackgroundColor(pos, checkedPos, uncheckedPos, offColor, onColor)
     var newComponent = weightedValue.toString(16);
 
     if (newComponent.length === 1) {
-      newComponent = '0'.concat(newComponent);
+      newComponent = "0".concat(newComponent);
     }
 
     newColor += newComponent;

@@ -1,73 +1,8 @@
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-  if (!it) {
-    if (
-      Array.isArray(o) ||
-      (it = _unsupportedIterableToArray(o)) ||
-      (allowArrayLike && o && typeof o.length === 'number')
-    ) {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return { done: true };
-          return { done: false, value: o[i++] };
-        },
-        e: function e(_e) {
-          throw _e;
-        },
-        f: F,
-      };
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    );
-  }
-  var normalCompletion = true,
-    didErr = false,
-    err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e2) {
-      didErr = true;
-      err = _e2;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    },
-  };
-}
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 import { Point } from '../../models/point';
 import { Direction } from '../../models/direction';
@@ -78,10 +13,10 @@ export function polyline(ctx, l) {
   ctx.moveTo(l.from.x, l.from.y);
 
   var _iterator = _createForOfIteratorHelper(l.controlPoints),
-    _step;
+      _step;
 
   try {
-    for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var item = _step.value;
       ctx.lineTo(item.x, item.y);
     }
@@ -100,10 +35,10 @@ export function polylineControlPoints(ctx, l) {
   ctx.lineWidth = 2;
 
   var _iterator2 = _createForOfIteratorHelper(l.controlPoints),
-    _step2;
+      _step2;
 
   try {
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
       var item = _step2.value;
       ctx.beginPath();
       ctx.arc(item.x, item.y, 4, 0, Math.PI * 2);
@@ -241,38 +176,31 @@ function getNextPointByUp(from, to) {
     return [];
   } // The to point above the from point.
 
+
   if (from.y > to.y) {
     if (to.direction === Direction.Up && from.y - to.y > 3 * minDistance) {
       if (from.x < to.x) {
         if (to.x - from.x < minDistance) {
-          return [
-            new Point(from.x - 2 * minDistance, from.y),
-            new Point(from.x - 2 * minDistance, to.y),
-          ];
+          return [new Point(from.x - 2 * minDistance, from.y), new Point(from.x - 2 * minDistance, to.y)];
         }
 
         return [new Point(from.x, to.y)];
       } else {
         if (from.x - to.x < minDistance) {
-          return [
-            new Point(from.x + 2 * minDistance, from.y),
-            new Point(from.x + 2 * minDistance, to.y),
-          ];
+          return [new Point(from.x + 2 * minDistance, from.y), new Point(from.x + 2 * minDistance, to.y)];
         }
 
         return [new Point(from.x, to.y)];
       }
     } else {
       // Left top
-      if (
-        (to.direction === Direction.Left && from.x > to.x) ||
-        (to.direction === Direction.Right && from.x < to.x)
-      ) {
+      if (to.direction === Direction.Left && from.x > to.x || to.direction === Direction.Right && from.x < to.x) {
         return [new Point(to.x, from.y)];
       }
 
       return [new Point(from.x, to.y)];
     } // The to point below the from point.
+
   } else {
     if (to.direction === Direction.Bottom) {
       if (from.x < to.x) {
@@ -292,37 +220,30 @@ function getNextPointByBottom(from, to) {
     return [];
   } // The to point below the from point.
 
+
   if (from.y < to.y) {
     if (to.direction === Direction.Bottom && to.y - from.y > 3 * minDistance) {
       if (from.x < to.x) {
         if (to.x - from.x < minDistance) {
-          return [
-            new Point(from.x - 2 * minDistance, from.y),
-            new Point(from.x - 2 * minDistance, to.y),
-          ];
+          return [new Point(from.x - 2 * minDistance, from.y), new Point(from.x - 2 * minDistance, to.y)];
         }
 
         return [new Point(from.x, to.y)];
       } else {
         if (from.x - to.x < minDistance) {
-          return [
-            new Point(from.x + 2 * minDistance, from.y),
-            new Point(from.x + 2 * minDistance, to.y),
-          ];
+          return [new Point(from.x + 2 * minDistance, from.y), new Point(from.x + 2 * minDistance, to.y)];
         }
 
         return [new Point(from.x, to.y)];
       }
     } else {
-      if (
-        (to.direction === Direction.Left && from.x > to.x) ||
-        (to.direction === Direction.Right && from.x < to.x)
-      ) {
+      if (to.direction === Direction.Left && from.x > to.x || to.direction === Direction.Right && from.x < to.x) {
         return [new Point(to.x, from.y)];
       }
 
       return [new Point(from.x, to.y)];
     } // The to point below the from point.
+
   } else {
     if (to.direction === Direction.Up) {
       if (from.x < to.x) {
@@ -342,38 +263,30 @@ function getNextPointByLeft(from, to) {
     return [];
   } // The to point is on the left.
 
+
   if (from.x > to.x) {
     if (to.direction === Direction.Left && from.x - to.x > 3 * minDistance) {
       if (from.y < to.y) {
         if (to.y - from.y < minDistance) {
-          return [
-            new Point(from.x, from.y + 2 * minDistance),
-            new Point(to.x, from.y + 2 * minDistance),
-          ];
+          return [new Point(from.x, from.y + 2 * minDistance), new Point(to.x, from.y + 2 * minDistance)];
         }
 
         return [new Point(to.x, from.y)];
       } else {
         if (from.y - to.y < minDistance) {
-          return [
-            new Point(from.x, from.y - 2 * minDistance),
-            new Point(to.x, from.y - 2 * minDistance),
-          ];
+          return [new Point(from.x, from.y - 2 * minDistance), new Point(to.x, from.y - 2 * minDistance)];
         }
 
         return [new Point(to.x, from.y)];
       }
     } else {
-      if (
-        to.direction === Direction.Left ||
-        (to.direction === Direction.Up && from.y < to.y) ||
-        (to.direction === Direction.Bottom && from.y > to.y)
-      ) {
+      if (to.direction === Direction.Left || to.direction === Direction.Up && from.y < to.y || to.direction === Direction.Bottom && from.y > to.y) {
         return [new Point(to.x, from.y)];
       }
 
       return [new Point(from.x, to.y)];
     } // The to point is on the right.
+
   } else {
     if (to.direction === Direction.Right) {
       if (from.y < to.y) {
@@ -393,38 +306,30 @@ function getNextPointByRight(from, to) {
     return [];
   } // The to point is on the right.
 
+
   if (from.x < to.x) {
     if (to.direction === Direction.Right && to.x - from.x > 3 * minDistance) {
       if (from.y < to.y) {
         if (to.y - from.y < minDistance) {
-          return [
-            new Point(from.x, from.y - 2 * minDistance),
-            new Point(to.x, from.y - 2 * minDistance),
-          ];
+          return [new Point(from.x, from.y - 2 * minDistance), new Point(to.x, from.y - 2 * minDistance)];
         }
 
         return [new Point(to.x, from.y)];
       } else {
         if (from.y - to.y < minDistance) {
-          return [
-            new Point(from.x, from.y + 2 * minDistance),
-            new Point(to.x, from.y + 2 * minDistance),
-          ];
+          return [new Point(from.x, from.y + 2 * minDistance), new Point(to.x, from.y + 2 * minDistance)];
         }
 
         return [new Point(to.x, from.y)];
       }
     } else {
-      if (
-        to.direction === Direction.Right ||
-        (to.direction === Direction.Up && from.y < to.y) ||
-        (to.direction === Direction.Bottom && from.y > to.y)
-      ) {
+      if (to.direction === Direction.Right || to.direction === Direction.Up && from.y < to.y || to.direction === Direction.Bottom && from.y > to.y) {
         return [new Point(to.x, from.y)];
       }
 
       return [new Point(from.x, to.y)];
     } // The to point is on the left.
+
   } else {
     if (to.direction === Direction.Left) {
       if (from.y < to.y) {

@@ -6,11 +6,11 @@ export default {
     hideInput: true,
     rect: {
       width: 200,
-      height: 45,
+      height: 45
     },
     font: {
       fontSize: 14,
-      fontFamily: 'Arial',
+      fontFamily: 'Arial'
     },
     name: 'biciTimer',
     elementRendered: false,
@@ -18,13 +18,13 @@ export default {
     property: {
       date: {
         show: true,
-        format: 'L',
+        format: 'L'
       },
       time: {
         show: true,
-        format: 'LTS',
-      },
+        format: 'LTS'
+      }
     },
-    iconColor: '#ccc',
-  },
+    iconColor: '#ccc'
+  }
 };

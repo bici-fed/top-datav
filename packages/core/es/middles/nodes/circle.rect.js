@@ -24,18 +24,8 @@ export function circleTextRect(node) {
     bottom = 0;
   }
 
-  node.textRect = new Rect(
-    node.rect.x + node.rect.width / 4,
-    node.rect.y + (node.rect.height * 2) / 3 - bottom,
-    node.rect.width / 2,
-    node.rect.height / 3 - 5,
-  );
-  var w = (node.rect.width * 5) / 7;
-  var h = (node.rect.height * 5) / 7;
-  node.fullTextRect = new Rect(
-    node.rect.x + (node.rect.width - w) / 2,
-    node.rect.y + (node.rect.height - h) / 2,
-    w,
-    h,
-  );
+  node.textRect = new Rect(node.rect.x + node.rect.width / 4, node.rect.y + node.rect.height * 2 / 3 - bottom, node.rect.width / 2, node.rect.height / 3 - 5);
+  var w = node.rect.width * 5 / 7;
+  var h = node.rect.height * 5 / 7;
+  node.fullTextRect = new Rect(node.rect.x + (node.rect.width - w) / 2, node.rect.y + (node.rect.height - h) / 2, w, h);
 }

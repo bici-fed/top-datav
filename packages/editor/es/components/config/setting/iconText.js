@@ -5,11 +5,11 @@ export default {
     text: '暂无数据',
     rect: {
       width: 112,
-      height: 40,
+      height: 40
     },
     font: {
       fontSize: 14,
-      fontFamily: '"Microsoft YaHei"',
+      fontFamily: '"Microsoft YaHei"'
     },
     paddingLeft: 10,
     paddingRight: 10,
@@ -19,8 +19,7 @@ export default {
     fillStyle: '#F0F0F0',
     hideInput: true,
     name: 'rectangle',
-    image:
-      'https://bici-qt.oss-cn-hangzhou.aliyuncs.com/industry/化工/2021/01/2ffed161677c449bb882cdba47c55f67诱导循环结晶器.png',
+    image: 'https://bici-qt.oss-cn-hangzhou.aliyuncs.com/industry/化工/2021/01/2ffed161677c449bb882cdba47c55f67诱导循环结晶器.png',
     imageWidth: 20,
     property: {
       dataMethod: 'point',
@@ -28,8 +27,8 @@ export default {
       dataPointSelectedRows: [],
       dataPointParam: {
         qtDataList: [],
-        subscribe: true,
-      },
-    },
-  },
+        subscribe: true
+      }
+    }
+  }
 };

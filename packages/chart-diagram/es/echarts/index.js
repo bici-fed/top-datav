@@ -29,7 +29,7 @@ export function echarts(ctx, node) {
 
   if (!node.elementLoaded) {
     echartsObjs[node.id] = {
-      div: createDiv(node),
+      div: createDiv(node)
     };
     node.elementLoaded = true;
     document.body.appendChild(echartsObjs[node.id].div); // 添加当前节点到div层
@@ -50,9 +50,7 @@ export function echarts(ctx, node) {
   if (!node.elementRendered) {
     // 初始化时，等待父div先渲染完成，避免初始图表控件太大。
     setTimeout(function () {
-      echartsObjs[node.id].chart.setOption(
-        JSON.parse(JSON.stringify(node.data.echarts.option), reviver),
-      );
+      echartsObjs[node.id].chart.setOption(JSON.parse(JSON.stringify(node.data.echarts.option), reviver));
       echartsObjs[node.id].chart.resize();
       node.elementRendered = true;
     });

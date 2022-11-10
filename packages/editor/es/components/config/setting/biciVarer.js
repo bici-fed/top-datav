@@ -5,11 +5,11 @@ export default {
     text: '00:00:00',
     rect: {
       width: 100,
-      height: 45,
+      height: 45
     },
     font: {
       fontSize: 14,
-      fontFamily: 'Arial',
+      fontFamily: 'Arial'
     },
     name: 'biciVarer',
     elementRendered: false,
@@ -22,10 +22,11 @@ export default {
       dataPointSelectedRows: [],
       dataPointParam: {
         qtDataList: [],
-        subscribe: true,
+        subscribe: true
       },
       stateType: 'single',
-      lightRange: [], // 指示灯 状态定义 列表
-    },
-  },
+      lightRange: [] // 指示灯 状态定义 列表
+
+    }
+  }
 };

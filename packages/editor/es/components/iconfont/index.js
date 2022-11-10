@@ -1,33 +1,8 @@
-var _excluded = ['name'];
+var _excluded = ["name"];
 
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-  return target;
-}
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 /* eslint-disable */
 import React from 'react';
@@ -222,572 +197,572 @@ import IcontuichuquanpingCopy from './IcontuichuquanpingCopy';
 
 var IconFont = function IconFont(_ref) {
   var name = _ref.name,
-    rest = _objectWithoutProperties(_ref, _excluded);
+      rest = _objectWithoutProperties(_ref, _excluded);
 
   switch (name) {
     case 'fenxi':
-      return /*#__PURE__*/ React.createElement(Iconfenxi, rest);
+      return /*#__PURE__*/React.createElement(Iconfenxi, rest);
 
     case 'dianjianqingkuangtongjibeifen':
-      return /*#__PURE__*/ React.createElement(Icondianjianqingkuangtongjibeifen, rest);
+      return /*#__PURE__*/React.createElement(Icondianjianqingkuangtongjibeifen, rest);
 
     case 'runhuaqingkuangtongji1':
-      return /*#__PURE__*/ React.createElement(Iconrunhuaqingkuangtongji1, rest);
+      return /*#__PURE__*/React.createElement(Iconrunhuaqingkuangtongji1, rest);
 
     case 'chakanxiangqing':
-      return /*#__PURE__*/ React.createElement(Iconchakanxiangqing, rest);
+      return /*#__PURE__*/React.createElement(Iconchakanxiangqing, rest);
 
     case 'zhengchang':
-      return /*#__PURE__*/ React.createElement(Iconzhengchang, rest);
+      return /*#__PURE__*/React.createElement(Iconzhengchang, rest);
 
     case 'yichang':
-      return /*#__PURE__*/ React.createElement(Iconyichang, rest);
+      return /*#__PURE__*/React.createElement(Iconyichang, rest);
 
     case 'liuhetecaishuzihuagongchang':
-      return /*#__PURE__*/ React.createElement(Iconliuhetecaishuzihuagongchang, rest);
+      return /*#__PURE__*/React.createElement(Iconliuhetecaishuzihuagongchang, rest);
 
     case 'yidu':
-      return /*#__PURE__*/ React.createElement(Iconyidu, rest);
+      return /*#__PURE__*/React.createElement(Iconyidu, rest);
 
     case 'shanchu1':
-      return /*#__PURE__*/ React.createElement(Iconshanchu1, rest);
+      return /*#__PURE__*/React.createElement(Iconshanchu1, rest);
 
     case 'bingzhuangtu':
-      return /*#__PURE__*/ React.createElement(Iconbingzhuangtu, rest);
+      return /*#__PURE__*/React.createElement(Iconbingzhuangtu, rest);
 
     case 'zhexiantu1':
-      return /*#__PURE__*/ React.createElement(Iconzhexiantu1, rest);
+      return /*#__PURE__*/React.createElement(Iconzhexiantu1, rest);
 
     case 'zhuzhuangtu1':
-      return /*#__PURE__*/ React.createElement(Iconzhuzhuangtu1, rest);
+      return /*#__PURE__*/React.createElement(Iconzhuzhuangtu1, rest);
 
     case 'tuichu':
-      return /*#__PURE__*/ React.createElement(Icontuichu, rest);
+      return /*#__PURE__*/React.createElement(Icontuichu, rest);
 
     case 'jiaojieban1':
-      return /*#__PURE__*/ React.createElement(Iconjiaojieban1, rest);
+      return /*#__PURE__*/React.createElement(Iconjiaojieban1, rest);
 
     case 'chakan':
-      return /*#__PURE__*/ React.createElement(Iconchakan, rest);
+      return /*#__PURE__*/React.createElement(Iconchakan, rest);
 
     case 'xuanzhonganniu_hui':
-      return /*#__PURE__*/ React.createElement(IconxuanzhonganniuHui, rest);
+      return /*#__PURE__*/React.createElement(IconxuanzhonganniuHui, rest);
 
     case 'duoxuan':
-      return /*#__PURE__*/ React.createElement(Iconduoxuan, rest);
+      return /*#__PURE__*/React.createElement(Iconduoxuan, rest);
 
     case 'liebiao':
-      return /*#__PURE__*/ React.createElement(Iconliebiao, rest);
+      return /*#__PURE__*/React.createElement(Iconliebiao, rest);
 
     case 'nengyuan-shui':
-      return /*#__PURE__*/ React.createElement(IconnengyuanShui, rest);
+      return /*#__PURE__*/React.createElement(IconnengyuanShui, rest);
 
     case 'nengyuan-dian1':
-      return /*#__PURE__*/ React.createElement(IconnengyuanDian1, rest);
+      return /*#__PURE__*/React.createElement(IconnengyuanDian1, rest);
 
     case 'nengyuan-qi':
-      return /*#__PURE__*/ React.createElement(IconnengyuanQi, rest);
+      return /*#__PURE__*/React.createElement(IconnengyuanQi, rest);
 
     case 'caidan-gongyibianzhi':
-      return /*#__PURE__*/ React.createElement(IconcaidanGongyibianzhi, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanGongyibianzhi, rest);
 
     case 'caidan-banciguanli':
-      return /*#__PURE__*/ React.createElement(IconcaidanBanciguanli, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanBanciguanli, rest);
 
     case 'caidan-jichushuju':
-      return /*#__PURE__*/ React.createElement(IconcaidanJichushuju, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanJichushuju, rest);
 
     case 'caidan-shouye':
-      return /*#__PURE__*/ React.createElement(IconcaidanShouye, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanShouye, rest);
 
     case 'caidan-shebeiku':
-      return /*#__PURE__*/ React.createElement(IconcaidanShebeiku, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanShebeiku, rest);
 
     case 'caidan-shujutianbaotongji':
-      return /*#__PURE__*/ React.createElement(IconcaidanShujutianbaotongji, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanShujutianbaotongji, rest);
 
     case 'caidan-shebeiguanli':
-      return /*#__PURE__*/ React.createElement(IconcaidanShebeiguanli, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanShebeiguanli, rest);
 
     case 'caidan-tongjifenxi':
-      return /*#__PURE__*/ React.createElement(IconcaidanTongjifenxi, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanTongjifenxi, rest);
 
     case 'caidan-shujuguanli':
-      return /*#__PURE__*/ React.createElement(IconcaidanShujuguanli, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanShujuguanli, rest);
 
     case 'caidan-gongyizhiliang':
-      return /*#__PURE__*/ React.createElement(IconcaidanGongyizhiliang, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanGongyizhiliang, rest);
 
     case 'caidan-wangluozhuangtai':
-      return /*#__PURE__*/ React.createElement(IconcaidanWangluozhuangtai, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanWangluozhuangtai, rest);
 
     case 'caidan-zhinengcaiji':
-      return /*#__PURE__*/ React.createElement(IconcaidanZhinengcaiji, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanZhinengcaiji, rest);
 
     case 'caidan-shengchanrenwu':
-      return /*#__PURE__*/ React.createElement(IconcaidanShengchanrenwu, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanShengchanrenwu, rest);
 
     case 'caidan-xitongguanli':
-      return /*#__PURE__*/ React.createElement(IconcaidanXitongguanli, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanXitongguanli, rest);
 
     case 'caidan-zidingyibiaodan':
-      return /*#__PURE__*/ React.createElement(IconcaidanZidingyibiaodan, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanZidingyibiaodan, rest);
 
     case 'caidan-shujuyingyong':
-      return /*#__PURE__*/ React.createElement(IconcaidanShujuyingyong, rest);
+      return /*#__PURE__*/React.createElement(IconcaidanShujuyingyong, rest);
 
     case 'bingtu':
-      return /*#__PURE__*/ React.createElement(Iconbingtu, rest);
+      return /*#__PURE__*/React.createElement(Iconbingtu, rest);
 
     case 'bianji3':
-      return /*#__PURE__*/ React.createElement(Iconbianji3, rest);
+      return /*#__PURE__*/React.createElement(Iconbianji3, rest);
 
     case 'danqi':
-      return /*#__PURE__*/ React.createElement(Icondanqi, rest);
+      return /*#__PURE__*/React.createElement(Icondanqi, rest);
 
     case 'daochubaogao':
-      return /*#__PURE__*/ React.createElement(Icondaochubaogao, rest);
+      return /*#__PURE__*/React.createElement(Icondaochubaogao, rest);
 
     case 'chakangongyiyaoqiu':
-      return /*#__PURE__*/ React.createElement(Iconchakangongyiyaoqiu, rest);
+      return /*#__PURE__*/React.createElement(Iconchakangongyiyaoqiu, rest);
 
     case 'dian1':
-      return /*#__PURE__*/ React.createElement(Icondian1, rest);
+      return /*#__PURE__*/React.createElement(Icondian1, rest);
 
     case 'daochubiaoge':
-      return /*#__PURE__*/ React.createElement(Icondaochubiaoge, rest);
+      return /*#__PURE__*/React.createElement(Icondaochubiaoge, rest);
 
     case 'gerenxinxi':
-      return /*#__PURE__*/ React.createElement(Icongerenxinxi, rest);
+      return /*#__PURE__*/React.createElement(Icongerenxinxi, rest);
 
     case 'mima':
-      return /*#__PURE__*/ React.createElement(Iconmima, rest);
+      return /*#__PURE__*/React.createElement(Iconmima, rest);
 
     case 'kaishianniu':
-      return /*#__PURE__*/ React.createElement(Iconkaishianniu, rest);
+      return /*#__PURE__*/React.createElement(Iconkaishianniu, rest);
 
     case 'jiaojieban':
-      return /*#__PURE__*/ React.createElement(Iconjiaojieban, rest);
+      return /*#__PURE__*/React.createElement(Iconjiaojieban, rest);
 
     case 'meiqi_tianranqi':
-      return /*#__PURE__*/ React.createElement(IconmeiqiTianranqi, rest);
+      return /*#__PURE__*/React.createElement(IconmeiqiTianranqi, rest);
 
     case 'shanchu':
-      return /*#__PURE__*/ React.createElement(Iconshanchu, rest);
+      return /*#__PURE__*/React.createElement(Iconshanchu, rest);
 
     case 'shanchuxiang':
-      return /*#__PURE__*/ React.createElement(Iconshanchuxiang, rest);
+      return /*#__PURE__*/React.createElement(Iconshanchuxiang, rest);
 
     case 'hejinpeiliao':
-      return /*#__PURE__*/ React.createElement(Iconhejinpeiliao, rest);
+      return /*#__PURE__*/React.createElement(Iconhejinpeiliao, rest);
 
     case 'shanchu-hongse':
-      return /*#__PURE__*/ React.createElement(IconshanchuHongse, rest);
+      return /*#__PURE__*/React.createElement(IconshanchuHongse, rest);
 
     case 'tianjia-queding':
-      return /*#__PURE__*/ React.createElement(IcontianjiaQueding, rest);
+      return /*#__PURE__*/React.createElement(IcontianjiaQueding, rest);
 
     case 'tianjia-qing':
-      return /*#__PURE__*/ React.createElement(IcontianjiaQing, rest);
+      return /*#__PURE__*/React.createElement(IcontianjiaQing, rest);
 
     case 'shezhi_peizhi':
-      return /*#__PURE__*/ React.createElement(IconshezhiPeizhi, rest);
+      return /*#__PURE__*/React.createElement(IconshezhiPeizhi, rest);
 
     case 'tianjiaxiang':
-      return /*#__PURE__*/ React.createElement(Icontianjiaxiang, rest);
+      return /*#__PURE__*/React.createElement(Icontianjiaxiang, rest);
 
     case 'tianjia-zhong':
-      return /*#__PURE__*/ React.createElement(IcontianjiaZhong, rest);
+      return /*#__PURE__*/React.createElement(IcontianjiaZhong, rest);
 
     case 'tuichudenglu':
-      return /*#__PURE__*/ React.createElement(Icontuichudenglu, rest);
+      return /*#__PURE__*/React.createElement(Icontuichudenglu, rest);
 
     case 'tianjiatuxing':
-      return /*#__PURE__*/ React.createElement(Icontianjiatuxing, rest);
+      return /*#__PURE__*/React.createElement(Icontianjiatuxing, rest);
 
     case 'yaqi':
-      return /*#__PURE__*/ React.createElement(Iconyaqi, rest);
+      return /*#__PURE__*/React.createElement(Iconyaqi, rest);
 
     case 'xiazai1':
-      return /*#__PURE__*/ React.createElement(Iconxiazai1, rest);
+      return /*#__PURE__*/React.createElement(Iconxiazai1, rest);
 
     case 'yangqi':
-      return /*#__PURE__*/ React.createElement(Iconyangqi, rest);
+      return /*#__PURE__*/React.createElement(Iconyangqi, rest);
 
     case 'xuanze-0':
-      return /*#__PURE__*/ React.createElement(Iconxuanze0, rest);
+      return /*#__PURE__*/React.createElement(Iconxuanze0, rest);
 
     case 'zhankaishouqi':
-      return /*#__PURE__*/ React.createElement(Iconzhankaishouqi, rest);
+      return /*#__PURE__*/React.createElement(Iconzhankaishouqi, rest);
 
     case 'zhexiantu':
-      return /*#__PURE__*/ React.createElement(Iconzhexiantu, rest);
+      return /*#__PURE__*/React.createElement(Iconzhexiantu, rest);
 
     case 'zhuzhuangtu':
-      return /*#__PURE__*/ React.createElement(Iconzhuzhuangtu, rest);
+      return /*#__PURE__*/React.createElement(Iconzhuzhuangtu, rest);
 
     case 'tongbu':
-      return /*#__PURE__*/ React.createElement(Icontongbu, rest);
+      return /*#__PURE__*/React.createElement(Icontongbu, rest);
 
     case 'shubiao':
-      return /*#__PURE__*/ React.createElement(Iconshubiao, rest);
+      return /*#__PURE__*/React.createElement(Iconshubiao, rest);
 
     case 'chakanshujudianquxian':
-      return /*#__PURE__*/ React.createElement(Iconchakanshujudianquxian, rest);
+      return /*#__PURE__*/React.createElement(Iconchakanshujudianquxian, rest);
 
     case 'beijianfenleibianma':
-      return /*#__PURE__*/ React.createElement(Iconbeijianfenleibianma, rest);
+      return /*#__PURE__*/React.createElement(Iconbeijianfenleibianma, rest);
 
     case 'kucundaoru':
-      return /*#__PURE__*/ React.createElement(Iconkucundaoru, rest);
+      return /*#__PURE__*/React.createElement(Iconkucundaoru, rest);
 
     case 'shuaxin':
-      return /*#__PURE__*/ React.createElement(Iconshuaxin, rest);
+      return /*#__PURE__*/React.createElement(Iconshuaxin, rest);
 
     case 'piliangchuli':
-      return /*#__PURE__*/ React.createElement(Iconpiliangchuli, rest);
+      return /*#__PURE__*/React.createElement(Iconpiliangchuli, rest);
 
     case 'tongbubaojingguize':
-      return /*#__PURE__*/ React.createElement(Icontongbubaojingguize, rest);
+      return /*#__PURE__*/React.createElement(Icontongbubaojingguize, rest);
 
     case 'zhidutaishiguizepeizhi':
-      return /*#__PURE__*/ React.createElement(Iconzhidutaishiguizepeizhi, rest);
+      return /*#__PURE__*/React.createElement(Iconzhidutaishiguizepeizhi, rest);
 
     case 'yuedushebeiqingkuangtianbao':
-      return /*#__PURE__*/ React.createElement(Iconyuedushebeiqingkuangtianbao, rest);
+      return /*#__PURE__*/React.createElement(Iconyuedushebeiqingkuangtianbao, rest);
 
     case 'juxing':
-      return /*#__PURE__*/ React.createElement(Iconjuxing, rest);
+      return /*#__PURE__*/React.createElement(Iconjuxing, rest);
 
     case 'fenzhijiedian1':
-      return /*#__PURE__*/ React.createElement(Iconfenzhijiedian1, rest);
+      return /*#__PURE__*/React.createElement(Iconfenzhijiedian1, rest);
 
     case 'fenzhijiedian':
-      return /*#__PURE__*/ React.createElement(Iconfenzhijiedian, rest);
+      return /*#__PURE__*/React.createElement(Iconfenzhijiedian, rest);
 
     case 'houyitian':
-      return /*#__PURE__*/ React.createElement(Iconhouyitian, rest);
+      return /*#__PURE__*/React.createElement(Iconhouyitian, rest);
 
     case 'qianyitian':
-      return /*#__PURE__*/ React.createElement(Iconqianyitian, rest);
+      return /*#__PURE__*/React.createElement(Iconqianyitian, rest);
 
     case 'wuzhuangtai':
-      return /*#__PURE__*/ React.createElement(Iconwuzhuangtai, rest);
+      return /*#__PURE__*/React.createElement(Iconwuzhuangtai, rest);
 
     case 'retingjiguzhang':
-      return /*#__PURE__*/ React.createElement(Iconretingjiguzhang, rest);
+      return /*#__PURE__*/React.createElement(Iconretingjiguzhang, rest);
 
     case 'linshijianxiu':
-      return /*#__PURE__*/ React.createElement(Iconlinshijianxiu, rest);
+      return /*#__PURE__*/React.createElement(Iconlinshijianxiu, rest);
 
     case 'jihuajianxiu':
-      return /*#__PURE__*/ React.createElement(Iconjihuajianxiu, rest);
+      return /*#__PURE__*/React.createElement(Iconjihuajianxiu, rest);
 
     case 'dailiao':
-      return /*#__PURE__*/ React.createElement(Icondailiao, rest);
+      return /*#__PURE__*/React.createElement(Icondailiao, rest);
 
     case 'wurenwushebeiwanhao':
-      return /*#__PURE__*/ React.createElement(Iconwurenwushebeiwanhao, rest);
+      return /*#__PURE__*/React.createElement(Iconwurenwushebeiwanhao, rest);
 
     case 'shengchanrenwuzhengchangyunhang':
-      return /*#__PURE__*/ React.createElement(Iconshengchanrenwuzhengchangyunhang, rest);
+      return /*#__PURE__*/React.createElement(Iconshengchanrenwuzhengchangyunhang, rest);
 
     case 'qiyonggaiziduan':
-      return /*#__PURE__*/ React.createElement(Iconqiyonggaiziduan, rest);
+      return /*#__PURE__*/React.createElement(Iconqiyonggaiziduan, rest);
 
     case 'jinyonggaiziduan':
-      return /*#__PURE__*/ React.createElement(Iconjinyonggaiziduan, rest);
+      return /*#__PURE__*/React.createElement(Iconjinyonggaiziduan, rest);
 
     case 'ziduanpeizhi':
-      return /*#__PURE__*/ React.createElement(Iconziduanpeizhi, rest);
+      return /*#__PURE__*/React.createElement(Iconziduanpeizhi, rest);
 
     case 'xinzengyibiao':
-      return /*#__PURE__*/ React.createElement(Iconxinzengyibiao, rest);
+      return /*#__PURE__*/React.createElement(Iconxinzengyibiao, rest);
 
     case 'jianding':
-      return /*#__PURE__*/ React.createElement(Iconjianding, rest);
+      return /*#__PURE__*/React.createElement(Iconjianding, rest);
 
     case 'daoruyibiao':
-      return /*#__PURE__*/ React.createElement(Icondaoruyibiao, rest);
+      return /*#__PURE__*/React.createElement(Icondaoruyibiao, rest);
 
     case 'zhuangtaibiangeng':
-      return /*#__PURE__*/ React.createElement(Iconzhuangtaibiangeng, rest);
+      return /*#__PURE__*/React.createElement(Iconzhuangtaibiangeng, rest);
 
     case 'shijijianding':
-      return /*#__PURE__*/ React.createElement(Iconshijijianding, rest);
+      return /*#__PURE__*/React.createElement(Iconshijijianding, rest);
 
     case 'daochu':
-      return /*#__PURE__*/ React.createElement(Icondaochu, rest);
+      return /*#__PURE__*/React.createElement(Icondaochu, rest);
 
     case 'YZshanchuhong1':
-      return /*#__PURE__*/ React.createElement(IconYZshanchuhong1, rest);
+      return /*#__PURE__*/React.createElement(IconYZshanchuhong1, rest);
 
     case 'ZYbianjilan1':
-      return /*#__PURE__*/ React.createElement(IconZYbianjilan1, rest);
+      return /*#__PURE__*/React.createElement(IconZYbianjilan1, rest);
 
     case 'ZYbianji':
-      return /*#__PURE__*/ React.createElement(IconZYbianji, rest);
+      return /*#__PURE__*/React.createElement(IconZYbianji, rest);
 
     case 'ZYshanchubai':
-      return /*#__PURE__*/ React.createElement(IconZYshanchubai, rest);
+      return /*#__PURE__*/React.createElement(IconZYshanchubai, rest);
 
     case 'YZshanchuhong':
-      return /*#__PURE__*/ React.createElement(IconYZshanchuhong, rest);
+      return /*#__PURE__*/React.createElement(IconYZshanchuhong, rest);
 
     case 'ZYbianjilan':
-      return /*#__PURE__*/ React.createElement(IconZYbianjilan, rest);
+      return /*#__PURE__*/React.createElement(IconZYbianjilan, rest);
 
     case 'ZYtianjia':
-      return /*#__PURE__*/ React.createElement(IconZYtianjia, rest);
+      return /*#__PURE__*/React.createElement(IconZYtianjia, rest);
 
     case 'ZYshanchu':
-      return /*#__PURE__*/ React.createElement(IconZYshanchu, rest);
+      return /*#__PURE__*/React.createElement(IconZYshanchu, rest);
 
     case 'tianjiafenlei':
-      return /*#__PURE__*/ React.createElement(Icontianjiafenlei, rest);
+      return /*#__PURE__*/React.createElement(Icontianjiafenlei, rest);
 
     case 'ZYshouqi':
-      return /*#__PURE__*/ React.createElement(IconZYshouqi, rest);
+      return /*#__PURE__*/React.createElement(IconZYshouqi, rest);
 
     case 'ZYzhankai':
-      return /*#__PURE__*/ React.createElement(IconZYzhankai, rest);
+      return /*#__PURE__*/React.createElement(IconZYzhankai, rest);
 
     case 'wushuju':
-      return /*#__PURE__*/ React.createElement(Iconwushuju, rest);
+      return /*#__PURE__*/React.createElement(Iconwushuju, rest);
 
     case 'tips':
-      return /*#__PURE__*/ React.createElement(Icontips, rest);
+      return /*#__PURE__*/React.createElement(Icontips, rest);
 
     case 'xiangqing1':
-      return /*#__PURE__*/ React.createElement(Iconxiangqing1, rest);
+      return /*#__PURE__*/React.createElement(Iconxiangqing1, rest);
 
     case 'baojingqushi1':
-      return /*#__PURE__*/ React.createElement(Iconbaojingqushi1, rest);
+      return /*#__PURE__*/React.createElement(Iconbaojingqushi1, rest);
 
     case 'keshihuakanban1':
-      return /*#__PURE__*/ React.createElement(Iconkeshihuakanban1, rest);
+      return /*#__PURE__*/React.createElement(Iconkeshihuakanban1, rest);
 
     case 'dianjianqingkuangtongji1':
-      return /*#__PURE__*/ React.createElement(Icondianjianqingkuangtongji1, rest);
+      return /*#__PURE__*/React.createElement(Icondianjianqingkuangtongji1, rest);
 
     case 'xinjian1':
-      return /*#__PURE__*/ React.createElement(Iconxinjian1, rest);
+      return /*#__PURE__*/React.createElement(Iconxinjian1, rest);
 
     case 'bianji2':
-      return /*#__PURE__*/ React.createElement(Iconbianji2, rest);
+      return /*#__PURE__*/React.createElement(Iconbianji2, rest);
 
     case 'qiehuanguanlian1':
-      return /*#__PURE__*/ React.createElement(Iconqiehuanguanlian1, rest);
+      return /*#__PURE__*/React.createElement(Iconqiehuanguanlian1, rest);
 
     case 'baojingman1':
-      return /*#__PURE__*/ React.createElement(Iconbaojingman1, rest);
+      return /*#__PURE__*/React.createElement(Iconbaojingman1, rest);
 
     case 'erweima1':
-      return /*#__PURE__*/ React.createElement(Iconerweima1, rest);
+      return /*#__PURE__*/React.createElement(Iconerweima1, rest);
 
     case 'rili1':
-      return /*#__PURE__*/ React.createElement(Iconrili1, rest);
+      return /*#__PURE__*/React.createElement(Iconrili1, rest);
 
     case 'tianjia1':
-      return /*#__PURE__*/ React.createElement(Icontianjia1, rest);
+      return /*#__PURE__*/React.createElement(Icontianjia1, rest);
 
     case 'dianjiguanzhu1':
-      return /*#__PURE__*/ React.createElement(Icondianjiguanzhu1, rest);
+      return /*#__PURE__*/React.createElement(Icondianjiguanzhu1, rest);
 
     case 'guanlianmoban1':
-      return /*#__PURE__*/ React.createElement(Iconguanlianmoban1, rest);
+      return /*#__PURE__*/React.createElement(Iconguanlianmoban1, rest);
 
     case 'yiguanzhu1':
-      return /*#__PURE__*/ React.createElement(Iconyiguanzhu1, rest);
+      return /*#__PURE__*/React.createElement(Iconyiguanzhu1, rest);
 
     case 'kong1':
-      return /*#__PURE__*/ React.createElement(Iconkong1, rest);
+      return /*#__PURE__*/React.createElement(Iconkong1, rest);
 
     case 'jiankangzhi':
-      return /*#__PURE__*/ React.createElement(Iconjiankangzhi, rest);
+      return /*#__PURE__*/React.createElement(Iconjiankangzhi, rest);
 
     case 'weiguanzhu':
-      return /*#__PURE__*/ React.createElement(Iconweiguanzhu, rest);
+      return /*#__PURE__*/React.createElement(Iconweiguanzhu, rest);
 
     case 'shijifankui':
-      return /*#__PURE__*/ React.createElement(Iconshijifankui, rest);
+      return /*#__PURE__*/React.createElement(Iconshijifankui, rest);
 
     case 'xiangqing':
-      return /*#__PURE__*/ React.createElement(Iconxiangqing, rest);
+      return /*#__PURE__*/React.createElement(Iconxiangqing, rest);
 
     case 'mubiaosheding':
-      return /*#__PURE__*/ React.createElement(Iconmubiaosheding, rest);
+      return /*#__PURE__*/React.createElement(Iconmubiaosheding, rest);
 
     case 'daichulibaojing':
-      return /*#__PURE__*/ React.createElement(Icondaichulibaojing, rest);
+      return /*#__PURE__*/React.createElement(Icondaichulibaojing, rest);
 
     case 'jiankangfengxianxiang':
-      return /*#__PURE__*/ React.createElement(Iconjiankangfengxianxiang, rest);
+      return /*#__PURE__*/React.createElement(Iconjiankangfengxianxiang, rest);
 
     case 'guzhangqingkuangtongji':
-      return /*#__PURE__*/ React.createElement(Iconguzhangqingkuangtongji, rest);
+      return /*#__PURE__*/React.createElement(Iconguzhangqingkuangtongji, rest);
 
     case 'baojingqushi':
-      return /*#__PURE__*/ React.createElement(Iconbaojingqushi, rest);
+      return /*#__PURE__*/React.createElement(Iconbaojingqushi, rest);
 
     case 'keshihuakanban':
-      return /*#__PURE__*/ React.createElement(Iconkeshihuakanban, rest);
+      return /*#__PURE__*/React.createElement(Iconkeshihuakanban, rest);
 
     case 'runhuaqingkuangtongji':
-      return /*#__PURE__*/ React.createElement(Iconrunhuaqingkuangtongji, rest);
+      return /*#__PURE__*/React.createElement(Iconrunhuaqingkuangtongji, rest);
 
     case 'beipinbeijianxiaohao':
-      return /*#__PURE__*/ React.createElement(Iconbeipinbeijianxiaohao, rest);
+      return /*#__PURE__*/React.createElement(Iconbeipinbeijianxiaohao, rest);
 
     case 'qiehuanguanlian':
-      return /*#__PURE__*/ React.createElement(Iconqiehuanguanlian, rest);
+      return /*#__PURE__*/React.createElement(Iconqiehuanguanlian, rest);
 
     case 'tianjiaguanlian':
-      return /*#__PURE__*/ React.createElement(Icontianjiaguanlian, rest);
+      return /*#__PURE__*/React.createElement(Icontianjiaguanlian, rest);
 
     case 'jiechuguanlian':
-      return /*#__PURE__*/ React.createElement(Iconjiechuguanlian, rest);
+      return /*#__PURE__*/React.createElement(Iconjiechuguanlian, rest);
 
     case 'chaxun':
-      return /*#__PURE__*/ React.createElement(Iconchaxun, rest);
+      return /*#__PURE__*/React.createElement(Iconchaxun, rest);
 
     case 'dianjianqingkuangtongji':
-      return /*#__PURE__*/ React.createElement(Icondianjianqingkuangtongji, rest);
+      return /*#__PURE__*/React.createElement(Icondianjianqingkuangtongji, rest);
 
     case 'sousuo':
-      return /*#__PURE__*/ React.createElement(Iconsousuo, rest);
+      return /*#__PURE__*/React.createElement(Iconsousuo, rest);
 
     case 'baojingman':
-      return /*#__PURE__*/ React.createElement(Iconbaojingman, rest);
+      return /*#__PURE__*/React.createElement(Iconbaojingman, rest);
 
     case 'xinjian':
-      return /*#__PURE__*/ React.createElement(Iconxinjian, rest);
+      return /*#__PURE__*/React.createElement(Iconxinjian, rest);
 
     case 'baocun':
-      return /*#__PURE__*/ React.createElement(Iconbaocun, rest);
+      return /*#__PURE__*/React.createElement(Iconbaocun, rest);
 
     case 'bianji1':
-      return /*#__PURE__*/ React.createElement(Iconbianji1, rest);
+      return /*#__PURE__*/React.createElement(Iconbianji1, rest);
 
     case 'erweima':
-      return /*#__PURE__*/ React.createElement(Iconerweima, rest);
+      return /*#__PURE__*/React.createElement(Iconerweima, rest);
 
     case 'dianjiyichushujudian':
-      return /*#__PURE__*/ React.createElement(Icondianjiyichushujudian, rest);
+      return /*#__PURE__*/React.createElement(Icondianjiyichushujudian, rest);
 
     case 'baojingkong':
-      return /*#__PURE__*/ React.createElement(Iconbaojingkong, rest);
+      return /*#__PURE__*/React.createElement(Iconbaojingkong, rest);
 
     case 'chakansuoyourenwu':
-      return /*#__PURE__*/ React.createElement(Iconchakansuoyourenwu, rest);
+      return /*#__PURE__*/React.createElement(Iconchakansuoyourenwu, rest);
 
     case 'shangchuan':
-      return /*#__PURE__*/ React.createElement(Iconshangchuan, rest);
+      return /*#__PURE__*/React.createElement(Iconshangchuan, rest);
 
     case 'rili':
-      return /*#__PURE__*/ React.createElement(Iconrili, rest);
+      return /*#__PURE__*/React.createElement(Iconrili, rest);
 
     case 'tianjia':
-      return /*#__PURE__*/ React.createElement(Icontianjia, rest);
+      return /*#__PURE__*/React.createElement(Icontianjia, rest);
 
     case 'yiguanzhu':
-      return /*#__PURE__*/ React.createElement(Iconyiguanzhu, rest);
+      return /*#__PURE__*/React.createElement(Iconyiguanzhu, rest);
 
     case 'dianjiguanzhu':
-      return /*#__PURE__*/ React.createElement(Icondianjiguanzhu, rest);
+      return /*#__PURE__*/React.createElement(Icondianjiguanzhu, rest);
 
     case 'guanlianmoban':
-      return /*#__PURE__*/ React.createElement(Iconguanlianmoban, rest);
+      return /*#__PURE__*/React.createElement(Iconguanlianmoban, rest);
 
     case 'kong':
-      return /*#__PURE__*/ React.createElement(Iconkong, rest);
+      return /*#__PURE__*/React.createElement(Iconkong, rest);
 
     case 'xiayibu':
-      return /*#__PURE__*/ React.createElement(Iconxiayibu, rest);
+      return /*#__PURE__*/React.createElement(Iconxiayibu, rest);
 
     case 'youjiantou':
-      return /*#__PURE__*/ React.createElement(Iconyoujiantou, rest);
+      return /*#__PURE__*/React.createElement(Iconyoujiantou, rest);
 
     case 'chakancaozuojilu':
-      return /*#__PURE__*/ React.createElement(Iconchakancaozuojilu, rest);
+      return /*#__PURE__*/React.createElement(Iconchakancaozuojilu, rest);
 
     case 'chakanfanyingjieguo':
-      return /*#__PURE__*/ React.createElement(Iconchakanfanyingjieguo, rest);
+      return /*#__PURE__*/React.createElement(Iconchakanfanyingjieguo, rest);
 
     case 'xinkaichuangkou':
-      return /*#__PURE__*/ React.createElement(Iconxinkaichuangkou, rest);
+      return /*#__PURE__*/React.createElement(Iconxinkaichuangkou, rest);
 
     case 'dian':
-      return /*#__PURE__*/ React.createElement(Icondian, rest);
+      return /*#__PURE__*/React.createElement(Icondian, rest);
 
     case 'xitongguanli':
-      return /*#__PURE__*/ React.createElement(Iconxitongguanli, rest);
+      return /*#__PURE__*/React.createElement(Iconxitongguanli, rest);
 
     case '1ping':
-      return /*#__PURE__*/ React.createElement(Icon1Ping, rest);
+      return /*#__PURE__*/React.createElement(Icon1Ping, rest);
 
     case '4ping':
-      return /*#__PURE__*/ React.createElement(Icon4Ping, rest);
+      return /*#__PURE__*/React.createElement(Icon4Ping, rest);
 
     case '9ping':
-      return /*#__PURE__*/ React.createElement(Icon9Ping, rest);
+      return /*#__PURE__*/React.createElement(Icon9Ping, rest);
 
     case 'huazhixuanze':
-      return /*#__PURE__*/ React.createElement(Iconhuazhixuanze, rest);
+      return /*#__PURE__*/React.createElement(Iconhuazhixuanze, rest);
 
     case 'huazhixuanze-hover':
-      return /*#__PURE__*/ React.createElement(IconhuazhixuanzeHover, rest);
+      return /*#__PURE__*/React.createElement(IconhuazhixuanzeHover, rest);
 
     case 'jietu-hover':
-      return /*#__PURE__*/ React.createElement(IconjietuHover, rest);
+      return /*#__PURE__*/React.createElement(IconjietuHover, rest);
 
     case 'tongdao-hover':
-      return /*#__PURE__*/ React.createElement(IcontongdaoHover, rest);
+      return /*#__PURE__*/React.createElement(IcontongdaoHover, rest);
 
     case 'xiazai-hover':
-      return /*#__PURE__*/ React.createElement(IconxiazaiHover, rest);
+      return /*#__PURE__*/React.createElement(IconxiazaiHover, rest);
 
     case 'tuichuquanping-hover':
-      return /*#__PURE__*/ React.createElement(IcontuichuquanpingHover, rest);
+      return /*#__PURE__*/React.createElement(IcontuichuquanpingHover, rest);
 
     case 'quanpingxianshi-hover':
-      return /*#__PURE__*/ React.createElement(IconquanpingxianshiHover, rest);
+      return /*#__PURE__*/React.createElement(IconquanpingxianshiHover, rest);
 
     case 'bianji-hover':
-      return /*#__PURE__*/ React.createElement(IconbianjiHover, rest);
+      return /*#__PURE__*/React.createElement(IconbianjiHover, rest);
 
     case 'shezhi-hover':
-      return /*#__PURE__*/ React.createElement(IconshezhiHover, rest);
+      return /*#__PURE__*/React.createElement(IconshezhiHover, rest);
 
     case 'bianji':
-      return /*#__PURE__*/ React.createElement(Iconbianji, rest);
+      return /*#__PURE__*/React.createElement(Iconbianji, rest);
 
     case 'tuichuquanping':
-      return /*#__PURE__*/ React.createElement(Icontuichuquanping, rest);
+      return /*#__PURE__*/React.createElement(Icontuichuquanping, rest);
 
     case 'tongdao-0':
-      return /*#__PURE__*/ React.createElement(Icontongdao0, rest);
+      return /*#__PURE__*/React.createElement(Icontongdao0, rest);
 
     case 'xiazai':
-      return /*#__PURE__*/ React.createElement(Iconxiazai, rest);
+      return /*#__PURE__*/React.createElement(Iconxiazai, rest);
 
     case 'shipinjiankong':
-      return /*#__PURE__*/ React.createElement(Iconshipinjiankong, rest);
+      return /*#__PURE__*/React.createElement(Iconshipinjiankong, rest);
 
     case 'quanpingxianshi':
-      return /*#__PURE__*/ React.createElement(Iconquanpingxianshi, rest);
+      return /*#__PURE__*/React.createElement(Iconquanpingxianshi, rest);
 
     case 'jietu':
-      return /*#__PURE__*/ React.createElement(Iconjietu, rest);
+      return /*#__PURE__*/React.createElement(Iconjietu, rest);
 
     case 'shezhi':
-      return /*#__PURE__*/ React.createElement(Iconshezhi, rest);
+      return /*#__PURE__*/React.createElement(Iconshezhi, rest);
 
     case 'quanpingxianshi-copy':
-      return /*#__PURE__*/ React.createElement(IconquanpingxianshiCopy, rest);
+      return /*#__PURE__*/React.createElement(IconquanpingxianshiCopy, rest);
 
     case 'tuichuquanping-copy':
-      return /*#__PURE__*/ React.createElement(IcontuichuquanpingCopy, rest);
+      return /*#__PURE__*/React.createElement(IcontuichuquanpingCopy, rest);
   }
 
   return null;

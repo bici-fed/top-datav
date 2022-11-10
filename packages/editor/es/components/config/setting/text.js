@@ -5,13 +5,13 @@ export default {
     text: '文本',
     rect: {
       width: 160,
-      height: 30,
+      height: 30
     },
     font: {
       fontSize: 14,
-      fontFamily: '"Microsoft YaHei"',
+      fontFamily: '"Microsoft YaHei"'
     },
     name: 'text',
-    hideInput: false,
-  },
+    hideInput: false
+  }
 };

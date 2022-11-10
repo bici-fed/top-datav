@@ -1,11 +1,8 @@
-export declare function calcCanvas(
-  width?: string | number,
-  height?: string | number,
-): {
-  minWidth: number;
-  minHeight: number;
-  left: number;
-  top: number;
+export declare function calcCanvas(width?: string | number, height?: string | number): {
+    minWidth: number;
+    minHeight: number;
+    left: number;
+    top: number;
 };
 export declare function calcScroll(width?: string | number, height?: string | number): void;
 export declare function getHexColor(color: any): any;

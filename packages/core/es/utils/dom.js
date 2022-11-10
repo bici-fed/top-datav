@@ -22,10 +22,10 @@ export function createLayerDiv(node) {
   div.style.bottom = '-9999px';
   div.style.width = node.rect.width + 'px';
   div.style.height = node.rect.height + 'px';
-  div.style.backgroundColor = '#ccc';
+  div.style.backgroundColor = "#ccc";
 
   if (node.elementId) {
-    div.id = node.elementId + '-layer';
+    div.id = node.elementId + "-layer";
   }
 
   return div;
@@ -38,6 +38,7 @@ export function loadJS(url, callback, render) {
     if (callback) {
       callback();
     } // how to do
+
 
     if (render) {
       Store.set('LT:render', true);

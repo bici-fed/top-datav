@@ -19,20 +19,8 @@ export function simpleText(ctx, node) {
 
   ctx.beginPath();
   ctx.moveTo(node.rect.x + r, node.rect.y);
-  ctx.arcTo(
-    node.rect.x + node.rect.width,
-    node.rect.y,
-    node.rect.x + node.rect.width,
-    node.rect.y + node.rect.height,
-    r,
-  );
-  ctx.arcTo(
-    node.rect.x + node.rect.width,
-    node.rect.y + node.rect.height,
-    node.rect.x,
-    node.rect.y + node.rect.height,
-    r,
-  );
+  ctx.arcTo(node.rect.x + node.rect.width, node.rect.y, node.rect.x + node.rect.width, node.rect.y + node.rect.height, r);
+  ctx.arcTo(node.rect.x + node.rect.width, node.rect.y + node.rect.height, node.rect.x, node.rect.y + node.rect.height, r);
   ctx.arcTo(node.rect.x, node.rect.y + node.rect.height, node.rect.x, node.rect.y, r);
   ctx.arcTo(node.rect.x, node.rect.y, node.rect.x + node.rect.width, node.rect.y, r);
   ctx.closePath();
@@ -41,12 +29,7 @@ export function simpleText(ctx, node) {
   var height = node.rect.y + 20 + node.rect.height / 2;
   ctx.moveTo(node.rect.x, height); //ctx.lineTo(node.rect.ex, height);
 
-  var linear = ctx.createLinearGradient(
-    node.rect.x,
-    node.rect.y,
-    node.rect.ex + node.rect.width / 2,
-    node.rect.ey + node.rect.height,
-  ); // const linear = ctx.createRadialGradient(
+  var linear = ctx.createLinearGradient(node.rect.x, node.rect.y, node.rect.ex + node.rect.width / 2, node.rect.ey + node.rect.height); // const linear = ctx.createRadialGradient(
   //     node.rect.x+node.rect.width/2,
   //     node.rect.y+node.rect.height/2,
   //     10,
@@ -61,7 +44,7 @@ export function simpleText(ctx, node) {
   //   ctx.strokeStyle=fillStyle;
   // }
 
-  ctx.strokeStyle = 'transparent';
+  ctx.strokeStyle = "transparent";
   ctx.lineWidth = 0; // (node.fillStyle || node.bkType) && ctx.fill();
 
   ctx.stroke();
@@ -73,7 +56,7 @@ function hexToRgb(str) {
 
   if (r.test(str)) {
     //replace替换查找的到的字符串
-    str = str.replace('#', ''); //match得到查询数组
+    str = str.replace("#", ""); //match得到查询数组
 
     var hxs = str.match(/../g);
 
@@ -94,6 +77,7 @@ function hexToRgb(str) {
   return str;
 } //得到hex颜色值为color的减淡颜色值，level为加深的程度，限0-1之间
 
+
 function getLightColor(color, level) {
   var rgbc = hexToRgb(color);
 
@@ -104,14 +88,15 @@ function getLightColor(color, level) {
   return rgbToHex(rgbc[0], rgbc[1], rgbc[2]);
 } //GRB颜色转Hex颜色
 
+
 function rgbToHex(a, b, c) {
   var r = /^\d{1,3}$/;
-  if (!r.test(a) || !r.test(b) || !r.test(c)) return 'white';
+  if (!r.test(a) || !r.test(b) || !r.test(c)) return "white";
   var hexs = [a.toString(16), b.toString(16), c.toString(16)];
 
   for (var i = 0; i < 3; i++) {
-    if (hexs[i].length == 1) hexs[i] = '0' + hexs[i];
+    if (hexs[i].length == 1) hexs[i] = "0" + hexs[i];
   }
 
-  return '#' + hexs.join('');
+  return "#" + hexs.join("");
 }

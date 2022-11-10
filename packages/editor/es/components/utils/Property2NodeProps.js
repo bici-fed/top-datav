@@ -16,7 +16,7 @@ moment.locale('zh-cn', {
     l: 'YY/MM/DD',
     ll: 'MM/DD',
     lll: 'YYYY年M月D日 HH:mm',
-    llll: 'YYYY年M月D日dddd HH:mm',
+    llll: 'YYYY年M月D日dddd HH:mm'
   },
   meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
   meridiemHour: function meridiemHour(hour, meridiem) {
@@ -56,7 +56,7 @@ moment.locale('zh-cn', {
     nextWeek: '[下]ddddLT',
     lastDay: '[昨天]LT',
     lastWeek: '[上]ddddLT',
-    sameElse: 'L',
+    sameElse: 'L'
   },
   dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
   relativeTime: {
@@ -73,13 +73,14 @@ moment.locale('zh-cn', {
     M: '1个月',
     MM: '%d个月',
     y: '1年',
-    yy: '%d年',
+    yy: '%d年'
   },
   week: {
     // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
     dow: 1,
-    doy: 4, // The week that contains Jan 4th is the first week of the year.
-  },
+    doy: 4 // The week that contains Jan 4th is the first week of the year.
+
+  }
 });
 export function formatTimer(node, canvas) {
   var y = '';
@@ -96,7 +97,7 @@ export function formatTimer(node, canvas) {
   node.text = y + ' ' + h;
 
   if (node.text == ' ') {
-    node.text = moment().format('LLLL');
+    node.text = moment().format("LLLL");
   }
 
   canvas.updateProps(false);
@@ -107,7 +108,7 @@ export function formatTimer(node, canvas) {
  */
 
 export function getNodeType(node) {
-  if (node.name == 'echarts') {
+  if (node.name == "echarts") {
     return node.property.echartsType;
   } else {
     return node.name;

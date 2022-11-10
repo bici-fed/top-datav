@@ -11,23 +11,10 @@ import { lineAnchors } from './nodes/line.anchor';
 import { circleIconRect, circleTextRect } from './nodes/circle.rect';
 import { triangleIconRect, triangleTextRect } from './nodes/triangle.rect';
 import { diamondIconRect, diamondTextRect } from './nodes/diamond.rect';
-import {
-  twowayArrowIconRect,
-  twowayArrowTextRect,
-  leftArrowIconRect,
-  leftArrowTextRect,
-  rightArrowIconRect,
-  rightArrowTextRect,
-} from './nodes/arrow.rect';
+import { twowayArrowIconRect, twowayArrowTextRect, leftArrowIconRect, leftArrowTextRect, rightArrowIconRect, rightArrowTextRect } from './nodes/arrow.rect';
 import { lineIconRect, lineTextRect } from './nodes/line.rect';
 import { line, lineControlPoints, calcLineControlPoints } from './lines/line';
-import {
-  polyline,
-  polylineControlPoints,
-  pointInPolyline,
-  calcPolylineControlPoints,
-  dockPolylineControlPoint,
-} from './lines/polyline';
+import { polyline, polylineControlPoints, pointInPolyline, calcPolylineControlPoints, dockPolylineControlPoint } from './lines/polyline';
 import { curve, curveControlPoints, pointInCurve, calcCurveControlPoints } from './lines/curve';
 import { mind, calcMindControlPoints, mindControlPoints, pointInMind } from './lines/mind';
 import { triangleSolid, triangle as arrowTriangle } from './arrows/triangle';
@@ -168,26 +155,26 @@ function init() {
     drawFn: line,
     drawControlPointsFn: lineControlPoints,
     controlPointsFn: calcLineControlPoints,
-    pointIn: pointInPolyline,
+    pointIn: pointInPolyline
   };
   drawLineFns.polyline = {
     drawFn: polyline,
     drawControlPointsFn: polylineControlPoints,
     controlPointsFn: calcPolylineControlPoints,
     dockControlPointFn: dockPolylineControlPoint,
-    pointIn: pointInPolyline,
+    pointIn: pointInPolyline
   };
   drawLineFns.curve = {
     drawFn: curve,
     drawControlPointsFn: curveControlPoints,
     controlPointsFn: calcCurveControlPoints,
-    pointIn: pointInCurve,
+    pointIn: pointInCurve
   };
   drawLineFns.mind = {
     drawFn: mind,
     drawControlPointsFn: mindControlPoints,
     controlPointsFn: calcMindControlPoints,
-    pointIn: pointInMind,
+    pointIn: pointInMind
   }; // ********end********
   // ********Default nodes.*******
 
@@ -231,14 +218,7 @@ export function registerNode(name, drawFn, anchorsFn, iconRectFn, textRectFn) {
 // dockControlPointFn - Dock a point to horizontal/vertial or related position.
 // force - Overwirte the node if exists.
 
-export function registerLine(
-  name,
-  drawFn,
-  drawControlPointsFn,
-  controlPointsFn,
-  dockControlPointFn,
-  pointInFn,
-) {
+export function registerLine(name, drawFn, drawControlPointsFn, controlPointsFn, dockControlPointFn, pointInFn) {
   var force = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : true;
 
   // Exist
@@ -251,7 +231,7 @@ export function registerLine(
     drawControlPointsFn: drawControlPointsFn,
     controlPointsFn: controlPointsFn,
     dockControlPointFn: dockControlPointFn,
-    pointIn: pointInFn,
+    pointIn: pointInFn
   };
   return true;
 } // registerArrow: Register a custom arrow.

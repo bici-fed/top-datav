@@ -1,75 +1,10 @@
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = (typeof Symbol !== 'undefined' && o[Symbol.iterator]) || o['@@iterator'];
-  if (!it) {
-    if (
-      Array.isArray(o) ||
-      (it = _unsupportedIterableToArray(o)) ||
-      (allowArrayLike && o && typeof o.length === 'number')
-    ) {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return { done: true };
-          return { done: false, value: o[i++] };
-        },
-        e: function e(_e) {
-          throw _e;
-        },
-        f: F,
-      };
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    );
-  }
-  var normalCompletion = true,
-    didErr = false,
-    err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e2) {
-      didErr = true;
-      err = _e2;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it.return != null) it.return();
-      } finally {
-        if (didErr) throw err;
-      }
-    },
-  };
-}
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === 'Object' && o.constructor) n = o.constructor.name;
-  if (n === 'Map' || n === 'Set') return Array.from(o);
-  if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-    return _arrayLikeToArray(o, minLen);
-}
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-import { Store } from '@top-datav/store-utils'; // getWords: Get the word array from text. A single Chinese character is a word.
+import { Store } from "@top-datav/store-utils"; // getWords: Get the word array from text. A single Chinese character is a word.
 
 export function getWords(txt) {
   var words = [];
@@ -158,17 +93,12 @@ export function calcTextRect(ctx, pen) {
   var width = 0;
 
   var _iterator = _createForOfIteratorHelper(lines),
-    _step;
+      _step;
 
   try {
-    for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var item = _step.value;
-      ctx.font = ''
-        .concat(pen.font.fontStyle || 'normal', ' normal ')
-        .concat(pen.font.fontWeight || 'normal', ' ')
-        .concat(pen.font.fontSize, 'px/')
-        .concat(pen.font.lineHeight, ' ')
-        .concat(pen.font.fontFamily);
+      ctx.font = "".concat(pen.font.fontStyle || 'normal', " normal ").concat(pen.font.fontWeight || 'normal', " ").concat(pen.font.fontSize, "px/").concat(pen.font.lineHeight, " ").concat(pen.font.fontFamily);
       var r = ctx.measureText(item);
       var w = r.width;
 
@@ -184,7 +114,7 @@ export function calcTextRect(ctx, pen) {
 
   return {
     width: width,
-    height: lines.length * pen.font.fontSize * pen.font.lineHeight,
+    height: lines.length * pen.font.fontSize * pen.font.lineHeight
   };
 }
 
@@ -271,12 +201,7 @@ export function text(ctx, node) {
   ctx.beginPath();
   delete ctx.shadowColor;
   delete ctx.shadowBlur;
-  ctx.font = ''
-    .concat(node.font.fontStyle || 'normal', ' normal ')
-    .concat(node.font.fontWeight || 'normal', ' ')
-    .concat(node.font.fontSize, 'px/')
-    .concat(node.font.lineHeight, ' ')
-    .concat(node.font.fontFamily);
+  ctx.font = "".concat(node.font.fontStyle || 'normal', " normal ").concat(node.font.fontWeight || 'normal', " ").concat(node.font.fontSize, "px/").concat(node.font.lineHeight, " ").concat(node.font.fontFamily);
 
   if (node.font.color) {
     ctx.fillStyle = node.font.color;
@@ -298,7 +223,7 @@ export function text(ctx, node) {
   var maxLineLen = node.textMaxLine || lines.length; // By default, the text is center aligned.
 
   var x = textRect.x + textRect.width / 2;
-  var y = textRect.y + (textRect.height - lineHeight * maxLineLen) / 2 + (lineHeight * 4) / 7;
+  var y = textRect.y + (textRect.height - lineHeight * maxLineLen) / 2 + lineHeight * 4 / 7;
 
   switch (ctx.textAlign) {
     case 'left':
@@ -320,17 +245,7 @@ export function text(ctx, node) {
       break;
   }
 
-  fillText(
-    ctx,
-    lines,
-    x + node.textOffsetX,
-    y + node.textOffsetY,
-    textRect.width,
-    textRect.height,
-    lineHeight,
-    maxLineLen,
-    node.font.background,
-  );
+  fillText(ctx, lines, x + node.textOffsetX, y + node.textOffsetY, textRect.width, textRect.height, lineHeight, maxLineLen, node.font.background);
   ctx.restore();
 }
 export function iconfont(ctx, node) {
@@ -392,15 +307,14 @@ export function iconfont(ctx, node) {
   }
 
   if (node.iconSize > 0) {
-    ctx.font = ''.concat(node.iconSize, 'px ').concat(node.iconFamily);
+    ctx.font = "".concat(node.iconSize, "px ").concat(node.iconFamily);
   } else if (iconRect.width > iconRect.height) {
-    ctx.font = ''.concat(iconRect.height, 'px ').concat(node.iconFamily);
+    ctx.font = "".concat(iconRect.height, "px ").concat(node.iconFamily);
   } else {
-    ctx.font = ''.concat(iconRect.width, 'px ').concat(node.iconFamily);
+    ctx.font = "".concat(iconRect.width, "px ").concat(node.iconFamily);
   }
 
-  ctx.fillStyle =
-    node.iconColor || Store.get(node.generateStoreKey('LT:iconColor')) || node.font.color;
+  ctx.fillStyle = node.iconColor || Store.get(node.generateStoreKey('LT:iconColor')) || node.font.color;
   ctx.beginPath();
   ctx.fillText(node.icon, x, y);
   ctx.restore();

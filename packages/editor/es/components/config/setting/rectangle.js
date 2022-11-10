@@ -5,11 +5,11 @@ export default {
     text: '',
     rect: {
       width: 100,
-      height: 100,
+      height: 100
     },
     font: {
       fontSize: 14,
-      fontFamily: '"Microsoft YaHei"',
+      fontFamily: '"Microsoft YaHei"'
     },
     paddingLeft: 10,
     paddingRight: 10,
@@ -17,6 +17,6 @@ export default {
     paddingBottom: 10,
     borderRadius: 0,
     fillStyle: '#F0F0F0',
-    name: 'rectangle',
-  },
+    name: 'rectangle'
+  }
 };

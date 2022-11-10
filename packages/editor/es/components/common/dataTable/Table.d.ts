@@ -1,9 +1,9 @@
 import './style.less';
 interface TableProps {
-  columns: any;
-  data: any;
-  node: any;
-  [field: string]: any;
+    columns: any;
+    data: any;
+    node: any;
+    [field: string]: any;
 }
 /***
  * 数据表格

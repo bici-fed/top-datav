@@ -8,7 +8,7 @@ export default {
       x: 100,
       y: 200,
       width: 350,
-      height: 200,
+      height: 200
     },
     name: 'webPage',
     elementRendered: false,
@@ -17,34 +17,27 @@ export default {
     data: {},
     property: {
       props: {
-        iframe: '',
+        iframe: ""
       },
       form: {
-        style: [
-          {
-            group: '设置链接',
-            formItems: [
-              {
-                name: ['refreshRate'],
-                value: 10,
-              },
-              {
-                name: ['refreshRateCheck'],
-                value: true,
-              },
-              {
-                name: ['iframe'],
-                value: '',
-              },
-              {
-                name: ['pullRateUnit'],
-                value: 60,
-              },
-            ],
-          },
-        ],
-        data: [],
-      },
-    },
-  },
+        style: [{
+          group: '设置链接',
+          formItems: [{
+            name: ['refreshRate'],
+            value: 10
+          }, {
+            name: ['refreshRateCheck'],
+            value: true
+          }, {
+            name: ['iframe'],
+            value: ''
+          }, {
+            name: ['pullRateUnit'],
+            value: 60
+          }]
+        }],
+        data: []
+      }
+    }
+  }
 };

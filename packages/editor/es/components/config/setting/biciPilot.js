@@ -6,12 +6,12 @@ export default {
     hideInput: true,
     rect: {
       width: 30,
-      height: 30,
+      height: 30
     },
     font: {
       fontFamily: '"Microsoft YaHei"',
       textAlign: 'left',
-      fontSize: 14,
+      fontSize: 14
     },
     // hideAnchor: true,
     hideRotateCP: true,
@@ -29,8 +29,8 @@ export default {
       dataPointSelectedRows: [],
       dataPointParam: {
         qtDataList: [],
-        subscribe: true,
-      },
-    },
-  },
+        subscribe: true
+      }
+    }
+  }
 };

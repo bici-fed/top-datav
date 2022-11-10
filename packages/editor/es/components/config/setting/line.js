@@ -5,24 +5,21 @@ export default {
     text: '',
     type: 1,
     data: {
-      type: 'myLine',
+      type: 'myLine'
     },
     rect: {
       x: 0,
       y: 100,
       width: 100,
-      height: 0,
+      height: 0
     },
-    controlPoints: [
-      {
-        x: 0,
-        y: 0,
-      },
-      {
-        x: 0,
-        y: 100,
-      },
-    ],
-    name: 'line',
-  },
+    controlPoints: [{
+      x: 0,
+      y: 0
+    }, {
+      x: 0,
+      y: 100
+    }],
+    name: 'line'
+  }
 };

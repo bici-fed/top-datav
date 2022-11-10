@@ -1,5 +1,5 @@
-import { defaultLineColors } from '../../data/defines';
-import { getGaugeOption } from '../charts/gauge';
+import { defaultLineColors } from "../../data/defines";
+import { getGaugeOption } from "../charts/gauge";
 export default {
   name: '仪表盘',
   icon: 'iconyibiaopan',
@@ -9,7 +9,7 @@ export default {
     hideInput: true,
     rect: {
       width: 300,
-      height: 300,
+      height: 300
     },
     strokeStyle: 'rgba(0,0,0,0)',
     hideRotateCP: true,
@@ -21,8 +21,8 @@ export default {
     paddingLeftNum: 0,
     data: {
       echarts: {
-        option: getGaugeOption(),
-      },
+        option: getGaugeOption()
+      }
     },
     property: {
       echartsType: 'gauge',
@@ -31,40 +31,34 @@ export default {
       dataPointSelectedRows: [],
       dataPointParam: {
         qtDataList: [],
-        subscribe: true,
+        subscribe: true
       },
-      dataColors: [
-        {
-          checked: false,
-          color: defaultLineColors[0],
-          top: 20,
-          bottom: null,
-        },
-        {
-          checked: false,
-          color: defaultLineColors[1],
-          top: 40,
-          bottom: null,
-        },
-        {
-          checked: false,
-          color: defaultLineColors[2],
-          top: 60,
-          bottom: null,
-        },
-        {
-          checked: false,
-          color: defaultLineColors[3],
-          top: 80,
-          bottom: null,
-        },
-        {
-          checked: false,
-          color: defaultLineColors[4],
-          top: 100,
-          bottom: null,
-        },
-      ],
+      dataColors: [{
+        checked: false,
+        color: defaultLineColors[0],
+        top: 20,
+        bottom: null
+      }, {
+        checked: false,
+        color: defaultLineColors[1],
+        top: 40,
+        bottom: null
+      }, {
+        checked: false,
+        color: defaultLineColors[2],
+        top: 60,
+        bottom: null
+      }, {
+        checked: false,
+        color: defaultLineColors[3],
+        top: 80,
+        bottom: null
+      }, {
+        checked: false,
+        color: defaultLineColors[4],
+        top: 100,
+        bottom: null
+      }],
       dataMax: 100,
       dataMin: 0,
       chartTitle: '仪表盘',
@@ -73,8 +67,8 @@ export default {
       chartUnit: 'C',
       marks: 10,
       markChecked: true,
-      chartTitleColor: '#222222',
-      chartTitleColorChecked: false,
-    },
-  },
+      chartTitleColor: "#222222",
+      chartTitleColorChecked: false
+    }
+  }
 };

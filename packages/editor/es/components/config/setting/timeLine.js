@@ -1,4 +1,4 @@
-import { getTimeLineOption } from '../charts/timeline';
+import { getTimeLineOption } from "../charts/timeline";
 export default {
   elementRendered: false,
   name: '实时曲线',
@@ -7,7 +7,7 @@ export default {
     text: '',
     rect: {
       width: 500,
-      height: 270,
+      height: 270
     },
     name: 'echarts',
     strokeStyle: 'rgba(0,0,0,0)',
@@ -16,8 +16,8 @@ export default {
     hideInput: true,
     data: {
       echarts: {
-        option: getTimeLineOption(),
-      },
+        option: getTimeLineOption()
+      }
     },
     property: {
       echartsType: 'timeLine',
@@ -26,7 +26,7 @@ export default {
       dataPointSelectedRows: [],
       dataPointParam: {
         qtDataList: [],
-        subscribe: true,
+        subscribe: true
       },
       smooth: true,
       limitType: 'custom',
@@ -40,7 +40,7 @@ export default {
       chartBackgroundChecked: false,
       lineReferenceChecked: true,
       lineReferenceColor: '#ccc',
-      lineColors: [],
-    },
-  },
+      lineColors: []
+    }
+  }
 };

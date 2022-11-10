@@ -24,18 +24,8 @@ export function diamondTextRect(node) {
     bottom = 0;
   }
 
-  node.textRect = new Rect(
-    node.rect.x + node.rect.width / 3,
-    node.rect.y + (node.rect.height * 2) / 3 - bottom,
-    node.rect.width / 3,
-    node.rect.height / 3 - 5,
-  );
+  node.textRect = new Rect(node.rect.x + node.rect.width / 3, node.rect.y + node.rect.height * 2 / 3 - bottom, node.rect.width / 3, node.rect.height / 3 - 5);
   var w = node.rect.width / 2;
-  var h = (node.rect.height * 1) / 2;
-  node.fullTextRect = new Rect(
-    node.rect.x + (node.rect.width - w) / 2,
-    node.rect.y + node.rect.height / 4,
-    w,
-    h,
-  );
+  var h = node.rect.height * 1 / 2;
+  node.fullTextRect = new Rect(node.rect.x + (node.rect.width - w) / 2, node.rect.y + node.rect.height / 4, w, h);
 }

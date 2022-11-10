@@ -8,7 +8,7 @@ export default {
       x: 100,
       y: 200,
       width: 350,
-      height: 200,
+      height: 200
     },
     name: 'liveVideo',
     elementRendered: false,
@@ -19,50 +19,39 @@ export default {
     property: {
       video: {
         selectedRowKeys: [],
-        selectedRows: [],
+        selectedRows: []
       },
       props: {
-        iframe: 'http://localhost:3000/',
+        iframe: "http://localhost:3000/"
       },
       form: {
-        style: [
-          {
-            group: '路径配置',
-            formItems: [
-              {
-                name: ['username'],
-                value: 'Ant Design',
-              },
-              {
-                name: ['fontStyle'],
-                value: '#ccc000',
-              },
-              {
-                name: ['refreshRate'],
-                value: 10,
-              },
-              {
-                name: ['refreshRateCheck'],
-                value: true,
-              },
-              {
-                name: ['iframe'],
-                value: 'http://localhost:3000/',
-              },
-            ],
-          },
-          {
-            group: '其他设置',
-            formItems: [
-              {
-                name: ['color'],
-                value: '#ccc',
-              },
-            ],
-          },
-        ],
-        data: [],
-      },
-    },
-  },
+        style: [{
+          group: '路径配置',
+          formItems: [{
+            name: ['username'],
+            value: 'Ant Design'
+          }, {
+            name: ['fontStyle'],
+            value: '#ccc000'
+          }, {
+            name: ['refreshRate'],
+            value: 10
+          }, {
+            name: ['refreshRateCheck'],
+            value: true
+          }, {
+            name: ['iframe'],
+            value: 'http://localhost:3000/'
+          }]
+        }, {
+          group: '其他设置',
+          formItems: [{
+            name: ['color'],
+            value: '#ccc'
+          }]
+        }],
+        data: []
+      }
+    }
+  }
 };

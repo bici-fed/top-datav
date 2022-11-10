@@ -1,62 +1,59 @@
-export declare function getGroupBarOption(
-  node?: any,
-  resData?: any,
-): {
-  color: any;
-  tooltip: {};
-  backgroundColor: any;
-  title: {
-    text: string;
-    left: string;
-    textStyle: any;
-  };
-  legend: {
-    orient: string;
-    right: string;
-    top: string;
-    itemWidth: number;
-    itemHeight: number;
-    textStyle: {
-      color: any;
-      fontSize: number;
+export declare function getGroupBarOption(node?: any, resData?: any): {
+    color: any;
+    tooltip: {};
+    backgroundColor: any;
+    title: {
+        text: string;
+        left: string;
+        textStyle: any;
     };
-  };
-  grid: {
-    top: string;
-    left: string;
-    right: string;
-    bottom: string;
-    containLabel: boolean;
-  };
-  dataset: {
-    dimensions: string[];
-    source: (string | number)[][];
-  }[];
-  xAxis: {
-    type: string;
-    axisLabel: {
-      color: any;
+    legend: {
+        orient: string;
+        right: string;
+        top: string;
+        itemWidth: number;
+        itemHeight: number;
+        textStyle: {
+            color: any;
+            fontSize: number;
+        };
     };
-    axisTick: {
-      show: boolean;
+    grid: {
+        top: string;
+        left: string;
+        right: string;
+        bottom: string;
+        containLabel: boolean;
     };
-  };
-  yAxis: {
-    axisLabel: {
-      color: any;
+    dataset: {
+        dimensions: string[];
+        source: (string | number)[][];
+    }[];
+    xAxis: {
+        type: string;
+        axisLabel: {
+            color: any;
+        };
+        axisTick: {
+            show: boolean;
+        };
     };
-    axisTick: {
-      show: boolean;
+    yAxis: {
+        axisLabel: {
+            color: any;
+        };
+        axisTick: {
+            show: boolean;
+        };
+        splitLine: {
+            show: boolean;
+            lineStyle: {
+                color: string;
+            };
+        };
     };
-    splitLine: {
-      show: boolean;
-      lineStyle: {
-        color: string;
-      };
-    };
-  };
-  series: {
-    type: string;
-    seriesLayoutBy: string;
-  }[];
+    series: {
+        type: string;
+        seriesLayoutBy: string;
+    }[];
 };

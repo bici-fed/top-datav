@@ -7,13 +7,13 @@ export default {
     fillStyle: '#F0F0F0',
     rect: {
       width: 100,
-      height: 100,
+      height: 100
     },
     font: {
       fontSize: 14,
-      fontFamily: '"Microsoft YaHei"',
+      fontFamily: '"Microsoft YaHei"'
     },
     name: 'circle',
-    textMaxLine: 1,
-  },
+    textMaxLine: 1
+  }
 };

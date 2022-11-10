@@ -1,2 +1,4 @@
-declare const AnimateComponent: ({ canvasData }: { canvasData: any }) => JSX.Element;
+declare const AnimateComponent: ({ canvasData }: {
+    canvasData: any;
+}) => JSX.Element;
 export default AnimateComponent;

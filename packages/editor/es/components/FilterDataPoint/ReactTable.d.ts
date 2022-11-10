@@ -3,35 +3,34 @@
  */
 import { Component } from 'react';
 export default class ReactTable extends Component<any, any> {
-  state: {
-    code: string;
-    position: string;
-    name: string;
-    period: string;
-    source: string;
-    statusList: any[];
-    pagination: {
-      current: number;
-      pageSize: number;
-      total: number;
+    state: {
+        code: string;
+        position: string;
+        name: string;
+        period: string;
+        source: string;
+        statusList: any[];
+        pagination: {
+            current: number;
+            pageSize: number;
+            total: number;
+        };
+        sorter: {
+            field: string;
+            order: string;
+        };
+        dataList: any[];
+        total: number;
+        sorterList: any[];
+        selectedRowKeys: any[];
+        selectedRows: any[];
     };
-    sorter: {
-      field: string;
-      order: string;
-    };
-    dataList: any[];
-    total: number;
-    sorterList: any[];
-    selectedRowKeys: any[];
-    selectedRows: any[];
-  };
-  componentDidMount(): void;
-  requestList(): void;
-  handleSearch: (key: any, value: any) => void;
-  handleTableChange: (pagination: any, filters: any, sorter: any) => void;
-  handleFilterTagsChange: (tagsArr: any) => void;
-  columns: () => (
-    | {
+    componentDidMount(): void;
+    requestList(): void;
+    handleSearch: (key: any, value: any) => void;
+    handleTableChange: (pagination: any, filters: any, sorter: any) => void;
+    handleFilterTagsChange: (tagsArr: any) => void;
+    columns: () => ({
         title: string;
         dataIndex: string;
         width: string;
@@ -42,8 +41,7 @@ export default class ReactTable extends Component<any, any> {
         checkDisabled?: undefined;
         fixed?: undefined;
         render?: undefined;
-      }
-    | {
+    } | {
         title: string;
         dataIndex: string;
         width: string;
@@ -54,14 +52,13 @@ export default class ReactTable extends Component<any, any> {
         checkDisabled?: undefined;
         fixed?: undefined;
         render?: undefined;
-      }
-    | {
+    } | {
         title: string;
         dataIndex: string;
         width: number;
         filters: {
-          value: number;
-          text: string;
+            value: number;
+            text: string;
         }[];
         filterMultiple: boolean;
         checkDisabled: boolean;
@@ -69,7 +66,6 @@ export default class ReactTable extends Component<any, any> {
         render: (text: any, record: any) => JSX.Element;
         filterType?: undefined;
         handleSubmitSearch?: undefined;
-      }
-  )[];
-  render(): JSX.Element;
+    })[];
+    render(): JSX.Element;
 }

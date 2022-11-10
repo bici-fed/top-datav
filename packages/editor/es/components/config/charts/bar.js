@@ -1,45 +1,8 @@
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly &&
-      (symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })),
-      keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2
-      ? ownKeys(Object(source), !0).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        })
-      : Object.getOwnPropertyDescriptors
-      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
-      : ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-  }
-  return target;
-}
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import { defaultChartColors } from '../../data/defines';
 import * as _ from 'lodash';
@@ -51,19 +14,15 @@ export function getBarOption() {
 
   var chartColors = _.cloneDeep(defaultChartColors);
 
-  var source = [
-    ['补强板', 99.899],
-    ['电梯导轨', 1457.332],
-    ['扁钢', 1768.992],
-  ];
+  var source = [['补强板', 99.899], ['电梯导轨', 1457.332], ['扁钢', 1768.992]];
   var series = {
     type: 'bar',
     barWidth: 20,
     encode: {
       x: dimensions[0],
-      y: dimensions[1],
+      y: dimensions[1]
     },
-    datasetIndex: 0,
+    datasetIndex: 0
   }; // 后端数据
   // 后端数据
 
@@ -136,6 +95,7 @@ export function getBarOption() {
       font.fontSize = node.property.props.titleFontSize;
     } // 设置图形颜色
 
+
     if (node.property.props.lineGraphRange) {
       (node.property.props.lineGraphRange || []).forEach(function (element, index) {
         if (element.lineGraphRangeCheck) {
@@ -143,6 +103,7 @@ export function getBarOption() {
         }
       });
     } // 设置参考线
+
 
     if (node.property.props.chartRefLineShow) {
       chartRefLineShow = true;
@@ -157,18 +118,14 @@ export function getBarOption() {
     color: chartColors,
     backgroundColor: chartBackgroundColor,
     tooltip: {
-      trigger: 'axis',
+      trigger: 'axis'
     },
     title: {
       text: titleShow ? title : '',
       left: titlePosition,
-      textStyle: _objectSpread(
-        _objectSpread({}, font),
-        {},
-        {
-          rich: {},
-        },
-      ),
+      textStyle: _objectSpread(_objectSpread({}, font), {}, {
+        rich: {}
+      })
     },
     legend: {
       top: '4%',
@@ -177,8 +134,8 @@ export function getBarOption() {
       itemHeight: 12,
       textStyle: {
         color: font.color,
-        fontSize: 10,
-      },
+        fontSize: 10
+      }
     },
     grid: {
       //图表的位置
@@ -186,46 +143,44 @@ export function getBarOption() {
       left: '6%',
       right: '6%',
       bottom: '6%',
-      containLabel: true,
+      containLabel: true
     },
-    dataset: [
-      {
-        dimensions: dimensions,
-        source: source,
-      },
-    ],
+    dataset: [{
+      dimensions: dimensions,
+      source: source
+    }],
     xAxis: {
       type: 'category',
       axisLabel: {
         interval: 0,
         rotate: 0,
-        color: font.color,
+        color: font.color
       },
       axisLine: {
-        show: false,
+        show: false
       },
       axisTick: {
-        show: false,
-      },
+        show: false
+      }
     },
     yAxis: {
       axisLine: {
-        show: false,
+        show: false
       },
       axisLabel: {
-        color: font.color,
+        color: font.color
       },
       axisTick: {
-        show: false,
+        show: false
       },
       splitLine: {
         show: chartRefLineShow,
         lineStyle: {
-          color: chartRefLineColor,
-        },
-      },
+          color: chartRefLineColor
+        }
+      }
     },
-    series: series,
+    series: series
   };
   return option;
 }

@@ -1,19 +1,19 @@
 export var KeyType;
 
 (function (KeyType) {
-  KeyType[(KeyType['Any'] = -1)] = 'Any';
-  KeyType[(KeyType['CtrlOrAlt'] = 0)] = 'CtrlOrAlt';
-  KeyType[(KeyType['Ctrl'] = 1)] = 'Ctrl';
-  KeyType[(KeyType['Shift'] = 2)] = 'Shift';
-  KeyType[(KeyType['Alt'] = 3)] = 'Alt';
+  KeyType[KeyType["Any"] = -1] = "Any";
+  KeyType[KeyType["CtrlOrAlt"] = 0] = "CtrlOrAlt";
+  KeyType[KeyType["Ctrl"] = 1] = "Ctrl";
+  KeyType[KeyType["Shift"] = 2] = "Shift";
+  KeyType[KeyType["Alt"] = 3] = "Alt";
 })(KeyType || (KeyType = {}));
 
 export var KeydownType;
 
 (function (KeydownType) {
-  KeydownType[(KeydownType['None'] = -1)] = 'None';
-  KeydownType[(KeydownType['Document'] = 0)] = 'Document';
-  KeydownType[(KeydownType['Canvas'] = 1)] = 'Canvas';
+  KeydownType[KeydownType["None"] = -1] = "None";
+  KeydownType[KeydownType["Document"] = 0] = "Document";
+  KeydownType[KeydownType["Canvas"] = 1] = "Canvas";
 })(KeydownType || (KeydownType = {}));
 
 export var DefalutOptions = {
@@ -25,7 +25,7 @@ export var DefalutOptions = {
     fontSize: 12,
     lineHeight: 1.5,
     textAlign: 'center',
-    textBaseline: 'middle',
+    textBaseline: 'middle'
   },
   color: '#222222',
   activeColor: '#1890ff',
@@ -46,5 +46,5 @@ export var DefalutOptions = {
   autoAnchor: true,
   gridSize: 10,
   gridColor: '#f3f3f3',
-  ruleColor: '#888888',
+  ruleColor: '#888888'
 };

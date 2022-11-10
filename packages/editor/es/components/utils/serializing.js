@@ -1,6 +1,6 @@
 export var reviver = function reviver(key, value) {
   if (typeof value === 'string' && value.indexOf('function') !== -1) {
-    var functionTemplate = '('.concat(value, ')');
+    var functionTemplate = "(".concat(value, ")");
     return eval(functionTemplate);
   }
 

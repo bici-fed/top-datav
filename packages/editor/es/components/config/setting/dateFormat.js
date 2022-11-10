@@ -4,11 +4,11 @@ export default {
   data: {
     rect: {
       width: 100,
-      height: 45,
+      height: 45
     },
     font: {
       fontSize: 14,
-      fontFamily: 'Arial',
+      fontFamily: 'Arial'
     },
     name: 'dateFormat',
     elementRendered: false,
@@ -18,8 +18,8 @@ export default {
     property: {
       props: {
         style: {
-          color: 'red',
-        },
+          color: 'red'
+        }
       },
       text: '1分钟前',
       dataMethod: 'point',
@@ -27,8 +27,8 @@ export default {
       dataPointSelectedRows: [],
       dataPointParam: {
         qtDataList: [],
-        subscribe: true,
-      },
-    },
-  },
+        subscribe: true
+      }
+    }
+  }
 };

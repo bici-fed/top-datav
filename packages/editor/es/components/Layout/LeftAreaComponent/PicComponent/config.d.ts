@@ -16,13 +16,9 @@ export declare const NEW_BOARD_INDUSTRY_BOILER: [number, string];
 export declare const NEW_BOARD_INDUSTRY_KLEP: [number, string];
 export declare const industry_List: [number, string][];
 export declare const onDrag: (event: any, item: any) => void;
-export declare const scaleWidthHeight: (
-  width: number,
-  height: number,
-  maxSize: number,
-) => {
-  width: number;
-  height: number;
+export declare const scaleWidthHeight: (width: number, height: number, maxSize: number) => {
+    width: number;
+    height: number;
 };
 export declare const rtnImg: (nImg: any, resolve: any, maxSize: number, img: any) => void;
 /**

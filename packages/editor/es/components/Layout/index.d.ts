@@ -8,29 +8,5 @@ export declare let canvas: Topology;
  * @param history
  * @constructor
  */
-declare const EditorLayout: React.ForwardRefExoticComponent<
-  Pick<
-    DataVEditorProps,
-    | 'history'
-    | 'onExtraSetting'
-    | 'onEditorSaveCb'
-    | 'onPoweroff'
-    | 'autoSaveInterval'
-    | 'onPreview'
-    | 'key'
-    | 'token'
-    | 'onAddDataPoint'
-    | 'onAddVedioSource'
-    | 'dataPointPropsMap'
-    | 'industrialLibrary'
-    | 'websocketConf'
-    | 'apiURL'
-    | 'selfIndustrialLibrary'
-    | 'preInstallBgImages'
-    | 'editorData'
-    | 'boardData'
-    | 'uploadConfig'
-  > &
-    React.RefAttributes<unknown>
->;
+declare const EditorLayout: React.ForwardRefExoticComponent<Pick<DataVEditorProps, "history" | "onExtraSetting" | "onEditorSaveCb" | "onPoweroff" | "autoSaveInterval" | "onPreview" | "key" | "token" | "onAddDataPoint" | "onAddVedioSource" | "dataPointPropsMap" | "industrialLibrary" | "websocketConf" | "apiURL" | "selfIndustrialLibrary" | "preInstallBgImages" | "editorData" | "boardData" | "uploadConfig"> & React.RefAttributes<unknown>>;
 export default EditorLayout;

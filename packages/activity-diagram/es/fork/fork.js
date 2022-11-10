@@ -19,20 +19,8 @@ export function fork(ctx, node) {
 
   ctx.beginPath();
   ctx.moveTo(node.rect.x + r, node.rect.y);
-  ctx.arcTo(
-    node.rect.x + node.rect.width,
-    node.rect.y,
-    node.rect.x + node.rect.width,
-    node.rect.y + node.rect.height,
-    r,
-  );
-  ctx.arcTo(
-    node.rect.x + node.rect.width,
-    node.rect.y + node.rect.height,
-    node.rect.x,
-    node.rect.y + node.rect.height,
-    r,
-  );
+  ctx.arcTo(node.rect.x + node.rect.width, node.rect.y, node.rect.x + node.rect.width, node.rect.y + node.rect.height, r);
+  ctx.arcTo(node.rect.x + node.rect.width, node.rect.y + node.rect.height, node.rect.x, node.rect.y + node.rect.height, r);
   ctx.arcTo(node.rect.x, node.rect.y + node.rect.height, node.rect.x, node.rect.y, r);
   ctx.arcTo(node.rect.x, node.rect.y, node.rect.x + node.rect.width, node.rect.y, r);
   ctx.closePath();

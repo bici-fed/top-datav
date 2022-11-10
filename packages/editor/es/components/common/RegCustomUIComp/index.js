@@ -1,13 +1,13 @@
 import { registerNode } from '@top-datav/core';
 import { Button, DatePicker, Result, Table } from 'antd';
 import drawReactNode from './drawReactNode';
-import WebPage from '../WebPage';
-import ProductQueue from '../../customMade/ProductQueue';
-import PDMonthReport from '../../customMade/PDMonthReport';
+import WebPage from "../WebPage";
+import ProductQueue from "../../customMade/ProductQueue";
+import PDMonthReport from "../../customMade/PDMonthReport";
 import DataTable from '../dataTable';
 import LiveVideo from '../LiveVideo';
 import QTLiveVideo from '../QTLiveVideo';
-import DateFormat from '../DateFormat';
+import DateFormat from "../DateFormat";
 export function register() {
   registerNode('button', drawReactNode(Button), null, null, null);
   registerNode('datePicker', drawReactNode(DatePicker), null, null, null);
