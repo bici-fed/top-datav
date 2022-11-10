@@ -1,6 +1,6 @@
 {
   "name": "@top-datav/core",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "> TODO: description",
   "author": "jufeng <jufeng@bicitech.cn>",
   "homepage": "",
@@ -23,7 +23,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@top-datav/editor": "^1.0.20",
+    "@top-datav/editor": "^1.0.21",
     "@top-datav/store-utils": "^1.0.5",
     "mitt": "^2.1.0",
     "mqtt": "^4.3.7"
