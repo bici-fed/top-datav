@@ -1958,10 +1958,10 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
         },
       }).then(function (res) {
         if (res.data.data) {
-          setDataSource(res.data.data);
+          setDataSource(res.data.data.list);
 
-          var dataSourceObj = _.find(res.data.data, function (item) {
-            return item.externalInterfaceManageId == data.node.property.dataSourceId;
+          var dataSourceObj = _.find(res.data.data.list, function (item) {
+            return item.id == data.node.property.dataSourceId;
           });
 
           if (dataSourceObj) {
