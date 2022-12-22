@@ -15,7 +15,7 @@ import VideoMonitoringModal from './VideoMonitoring';
 import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
-const token = '4iEqlcbLK0tA7K6cQV3aPP';
+const token = '6YbJI3t1SI7jXhh6T3JgFM';
 
 const testId = '5143460d4cd54d22a4acd479fa8d34ef';
 

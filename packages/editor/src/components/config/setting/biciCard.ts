@@ -106,7 +106,6 @@ export default {
       },
       dataMethod: 'point',
       dataFormat: CHART_DATA,
-      dataUrl: 'http://qt.test.bicisims.com/api/applications/service/remote/customComponent/list',
       dataSourceId: undefined,
       dataSourceUrl: undefined,
       pullRate: 120,

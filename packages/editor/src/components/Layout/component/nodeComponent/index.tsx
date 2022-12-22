@@ -1013,10 +1013,10 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
           pagination: { current: 1, pageSize: 10 },
         }).then((res) => {
           if (res.data.data) {
-            setDataSource(res.data.data);
+            setDataSource(res.data.data.list);
             const dataSourceObj = _.find(
-              res.data.data,
-              (item) => item.externalInterfaceManageId == data.node.property.dataSourceId,
+              res.data.data.list,
+              (item) => item.id == data.node.property.dataSourceId,
             );
             if (dataSourceObj) {
               setRemoteInterfaces(dataSourceObj.externalInterfaceManageDetailList);

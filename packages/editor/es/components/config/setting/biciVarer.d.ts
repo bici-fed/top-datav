@@ -20,7 +20,6 @@ declare const _default: {
       dataMethod: string;
       dataDot: number;
       dataFormat: string;
-      dataUrl: string;
       dataSourceId: any;
       dataSourceUrl: any;
       pullRate: number;

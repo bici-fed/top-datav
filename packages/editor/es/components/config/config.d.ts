@@ -147,7 +147,6 @@ export declare const Tools: (
               dataMethod: string;
               dataDot: number;
               dataFormat: string;
-              dataUrl: string;
               dataSourceId: any;
               dataSourceUrl: any;
               pullRate: number;
@@ -267,7 +266,6 @@ export declare const Tools: (
               };
               dataMethod: string;
               dataFormat: string;
-              dataUrl: string;
               dataSourceId: any;
               dataSourceUrl: any;
               pullRate: number;
