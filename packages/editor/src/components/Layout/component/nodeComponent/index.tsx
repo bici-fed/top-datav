@@ -1005,7 +1005,7 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
     // 外部接口内层list
     let [remoteInterfaces, setRemoteInterfaces] = useState([]);
 
-    // 加载接口数据11
+    // 加载接口数据
     const getDataSourceFocus = () => {
       if (dataSource.length == 0) {
         fetchDataSourceList({
@@ -1013,10 +1013,11 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
           pagination: { current: 1, pageSize: 10 },
         }).then((res) => {
           if (res.data.data) {
-            setDataSource(res.data.data.list);
+            setDataSource(res.data.data.list || res.data.data);
             const dataSourceObj = _.find(
-              res.data.data.list,
-              (item) => item.id == data.node.property.dataSourceId,
+              res.data.data.list || res.data.data,
+              (item) =>
+                (item.externalInterfaceManageId || item.id) == data.node.property.dataSourceId,
             );
             if (dataSourceObj) {
               setRemoteInterfaces(dataSourceObj.externalInterfaceManageDetailList);
