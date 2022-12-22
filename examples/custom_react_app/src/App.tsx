@@ -15,13 +15,13 @@ import VideoMonitoringModal from './VideoMonitoring';
 import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
-const token = 'fq0h07thEHIYwh2cQesf8';
+const token = '4iEqlcbLK0tA7K6cQV3aPP';
 
 const testId = '5143460d4cd54d22a4acd479fa8d34ef';
 
-const apiURL = 'https://zhsd-test.bicisims.com:6600/api';
+const apiURL = 'https://zhsd-test.bicisims.com/api';
 
-const websocketURL = 'wss://zhsd-test.bicisims.com:6600/api/websocket/service/websocket/rtData/';
+const websocketURL = 'wss://zhsd-test.bicisims.com/api/websocket/service/websocket/rtData/';
 
 const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
   const history = props.history;

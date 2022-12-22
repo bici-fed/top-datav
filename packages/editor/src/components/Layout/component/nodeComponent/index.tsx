@@ -1013,10 +1013,10 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
           pagination: { current: 1, pageSize: 10 },
         }).then((res) => {
           if (res.data.data) {
-            setDataSource(res.data.data.list);
+            setDataSource(res.data.data);
             const dataSourceObj = _.find(
-              res.data.data.list,
-              (item) => item.id == data.node.property.dataSourceId,
+              res.data.data,
+              (item) => item.externalInterfaceManageId == data.node.property.dataSourceId,
             );
             if (dataSourceObj) {
               setRemoteInterfaces(dataSourceObj.externalInterfaceManageDetailList);
@@ -1039,6 +1039,8 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
                 {name == 'dataTable' ||
                 property?.echartsType == 'circleAndPie' ||
                 property?.echartsType == 'horizontalBar' ||
+                name == 'biciCard' ||
+                name == 'biciVarer' ||
                 property?.echartsType == 'verticalBar' ? (
                   <Select
                     placeholder="选择"
@@ -1192,17 +1194,19 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
               data.node.name == 'VODCarousel' ||
               data.node.name == 'stationCarousel' ||
               data.node.name == 'emptyCom') && (
-              <Col span={24}>
-                <Form.Item name="reqData" label="请求参数">
-                  <TextArea rows={10} />
-                </Form.Item>
-              </Col>
+              <>
+                <Col span={24}>
+                  <Form.Item name="reqData" label="请求参数">
+                    <TextArea rows={10} />
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <Form.Item name="dataPointReq" label="绑定设备数据点">
+                    <TextArea />
+                  </Form.Item>
+                </Col>
+              </>
             )}
-            <Col span={24}>
-              <Form.Item name="dataPointReq" label="绑定设备数据点">
-                <TextArea />
-              </Form.Item>
-            </Col>
           </Row>
         </Form>
       );

@@ -432,6 +432,12 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             node.children[2].text = resTmp['value'];
             // canvas.updateProps(false,[node])
             break;
+          case 'biciCard':
+            node.children[0].text = resTmp['text'];
+            break;
+          case 'biciVarer':
+            node.text = resTmp['text'];
+            break;
         }
       } else if (resTmp.hasOwnProperty('dimensions') && resTmp.hasOwnProperty('source')) {
         // 是图表组件的数据

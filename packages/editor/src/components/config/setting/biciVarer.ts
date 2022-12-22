@@ -1,3 +1,5 @@
+import { CHART_DATA } from './common';
+
 export default {
   name: '变量值',
   icon: 'iconbianliangzhi',
@@ -19,6 +21,11 @@ export default {
     property: {
       dataMethod: 'point',
       dataDot: 2,
+      dataFormat: CHART_DATA,
+      dataUrl: 'http://qt.test.bicisims.com/api/applications/service/remote/customComponent/list',
+      dataSourceId: undefined,
+      dataSourceUrl: undefined,
+      pullRate: 120,
       dataPointSelectedRows: [],
       dataPointParam: {
         qtDataList: [],
