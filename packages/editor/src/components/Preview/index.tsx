@@ -625,9 +625,9 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
     // {"dc":"Data2022042017504628","ts":1650783704941,"v":2582,"vt":1}
     const v = JSON.parse(data.data);
     const r = {
-      id: v.dc,
-      value: v.v,
-      time: v.ts,
+      id: v.dc || v.id,
+      value: v.v || v.value,
+      time: v.ts || v.time,
       type: v.vt,
     };
 
