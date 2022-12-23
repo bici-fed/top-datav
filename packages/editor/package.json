@@ -1,6 +1,6 @@
 {
   "name": "@top-datav/editor",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "> TODO: description",
   "author": "jufeng <jufeng@bicitech.cn>",
   "homepage": "",
@@ -31,7 +31,7 @@
     "@top-datav/bici-diagram": "^1.1.0",
     "@top-datav/chart-diagram": "^1.1.0",
     "@top-datav/class-diagram": "^1.1.0",
-    "@top-datav/core": "^1.1.6",
+    "@top-datav/core": "^1.1.7",
     "@top-datav/flow-diagram": "^1.1.0",
     "@top-datav/layout": "^1.1.0",
     "@top-datav/sequence-diagram": "^1.1.0",
