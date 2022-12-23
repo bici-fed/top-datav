@@ -494,10 +494,10 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
       // const ajax = axios.create({baseURL: `http://qt.test.bicisims.com`, timeout, maxContentLength,withCredentials})
       ajax
         .request({
-          url: myURL.pathname, //myURL.pathname
+          url: myURL.pathname + myURL.search, //myURL.pathname
           method: 'get',
           headers: {
-            // token: '2sdIEuFCYR768oVd4fvUyj'||interfaceToken,
+            token: window['token'],
             'Content-Type': 'application/json',
           },
         })
