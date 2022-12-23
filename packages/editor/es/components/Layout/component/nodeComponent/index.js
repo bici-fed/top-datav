@@ -1926,9 +1926,10 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
       propertyForm.setFieldsValue({
         dataSourceUrl: null,
       });
+      setRemoteInterfaces([]);
 
       var dataSourceObj = _.find(dataSource, function (item) {
-        return item.id == value;
+        return (item.externalInterfaceManageId || item.id) == value;
       });
 
       if (dataSourceObj) {
@@ -1946,7 +1947,7 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
   var _useState17 = useState([]),
     _useState18 = _slicedToArray(_useState17, 2),
     remoteInterfaces = _useState18[0],
-    setRemoteInterfaces = _useState18[1]; // 加载接口数据11
+    setRemoteInterfaces = _useState18[1]; // 加载接口数据
 
   var getDataSourceFocus = function getDataSourceFocus() {
     if (dataSource.length == 0) {
@@ -1958,10 +1959,10 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
         },
       }).then(function (res) {
         if (res.data.data) {
-          setDataSource(res.data.data.list);
+          setDataSource(res.data.data.list || res.data.data);
 
-          var dataSourceObj = _.find(res.data.data.list, function (item) {
-            return item.id == data.node.property.dataSourceId;
+          var dataSourceObj = _.find(res.data.data.list || res.data.data, function (item) {
+            return (item.externalInterfaceManageId || item.id) == data.node.property.dataSourceId;
           });
 
           if (dataSourceObj) {

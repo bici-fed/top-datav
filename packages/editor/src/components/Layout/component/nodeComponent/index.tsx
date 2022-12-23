@@ -992,7 +992,11 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
         propertyForm.setFieldsValue({
           dataSourceUrl: null,
         });
-        const dataSourceObj = _.find(dataSource, (item) => item.id == value);
+        setRemoteInterfaces([]);
+        const dataSourceObj = _.find(
+          dataSource,
+          (item) => (item.externalInterfaceManageId || item.id) == value,
+        );
         if (dataSourceObj) {
           setRemoteInterfaces(dataSourceObj.externalInterfaceManageDetailList);
         }

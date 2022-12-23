@@ -575,11 +575,14 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             intervalTime: item.intervalTime,
             count: 0,
             ext: 'number',
+            id: item.id,
+            type: item.type,
           };
         });
         canvas.socket.socket.send(
           JSON.stringify({
             dcList,
+            qtDataList: dcList,
             subscribe: true,
             companyId: '',
             nodeTid: node.TID,
