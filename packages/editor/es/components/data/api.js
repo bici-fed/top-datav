@@ -95,7 +95,7 @@ export function fetchDataSourceList(params) {
     {
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
-        token: window['token'] || '55CEBSPBOaCTezPuMMU0w5',
+        token: window['token'] || '6XkPfIvu5tM4ebz0fpJ6cY',
         'Content-Type': 'application/json',
       },
     },

@@ -15,12 +15,12 @@ import VideoMonitoringModal from './VideoMonitoring';
 import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
-const token = '55CEBSPBOaCTezPuMMU0w5';
+const token = '6XkPfIvu5tM4ebz0fpJ6cY';
 
 const testId = '5143460d4cd54d22a4acd479fa8d34ef';
 
-const apiURL = 'http://192.168.110.172:50002/api';
-// const apiURL = 'https://zhsd-test.bicisims.com/api';
+// const apiURL = 'http://192.168.110.172:50002/api';
+const apiURL = 'https://zhsd-test.bicisims.com/api';
 
 const websocketURL = 'wss://zhsd-test.bicisims.com/api/websocket/service/websocket/rtData/';
 // const websocketURL = 'wss://zhsd-test.bicisims.com/api/websocket/service/websocket/rtData/';

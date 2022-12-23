@@ -986,6 +986,12 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
      * 渲染元素额外数据 {"qtDataList":[{"id":"6413f3a606754c31987ec584ed56d5b7","type":2}],"subscribe":true,"page":"动态曲线"}
      *
      */
+
+    // 外部接口外层list
+    const [dataSource, setDataSource] = useState([]);
+    // 外部接口内层list
+    let [remoteInterfaces, setRemoteInterfaces] = useState([]);
+
     // 选择接口来源发生变化
     const onDataSourceChange = useCallback(
       (value) => {
@@ -1001,13 +1007,8 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
           setRemoteInterfaces(dataSourceObj.externalInterfaceManageDetailList);
         }
       },
-      [data?.node],
+      [data?.node, dataSource],
     );
-
-    // 外部接口外层list
-    const [dataSource, setDataSource] = useState([]);
-    // 外部接口内层list
-    let [remoteInterfaces, setRemoteInterfaces] = useState([]);
 
     // 加载接口数据
     const getDataSourceFocus = () => {

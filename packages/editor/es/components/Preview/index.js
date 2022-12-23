@@ -868,10 +868,10 @@ var Preview = function Preview(_ref) {
 
       ajax
         .request({
-          url: myURL.pathname,
+          url: myURL.pathname + myURL.search,
           method: 'get',
           headers: {
-            // token: '2sdIEuFCYR768oVd4fvUyj'||interfaceToken,
+            token: window['token'],
             'Content-Type': 'application/json',
           },
         })

@@ -1919,7 +1919,17 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
    * 渲染元素额外数据 {"qtDataList":[{"id":"6413f3a606754c31987ec584ed56d5b7","type":2}],"subscribe":true,"page":"动态曲线"}
    *
    */
-  // 选择接口来源发生变化
+  // 外部接口外层list
+
+  var _useState15 = useState([]),
+    _useState16 = _slicedToArray(_useState15, 2),
+    dataSource = _useState16[0],
+    setDataSource = _useState16[1]; // 外部接口内层list
+
+  var _useState17 = useState([]),
+    _useState18 = _slicedToArray(_useState17, 2),
+    remoteInterfaces = _useState18[0],
+    setRemoteInterfaces = _useState18[1]; // 选择接口来源发生变化
 
   var onDataSourceChange = useCallback(
     function (value) {
@@ -1936,18 +1946,8 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
         setRemoteInterfaces(dataSourceObj.externalInterfaceManageDetailList);
       }
     },
-    [data === null || data === void 0 ? void 0 : data.node],
-  ); // 外部接口外层list
-
-  var _useState15 = useState([]),
-    _useState16 = _slicedToArray(_useState15, 2),
-    dataSource = _useState16[0],
-    setDataSource = _useState16[1]; // 外部接口内层list
-
-  var _useState17 = useState([]),
-    _useState18 = _slicedToArray(_useState17, 2),
-    remoteInterfaces = _useState18[0],
-    setRemoteInterfaces = _useState18[1]; // 加载接口数据
+    [data === null || data === void 0 ? void 0 : data.node, dataSource],
+  ); // 加载接口数据
 
   var getDataSourceFocus = function getDataSourceFocus() {
     if (dataSource.length == 0) {
