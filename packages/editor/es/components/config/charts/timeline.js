@@ -1,7 +1,7 @@
-import { defaultLineColors, defaultTimelineShowData } from "../../data/defines";
+import { defaultLineColors, defaultTimelineShowData } from '../../data/defines';
 import * as _ from 'lodash';
 import moment from 'moment';
-import { getContrastColor, getFixed } from "../../utils/cacl";
+import { getContrastColor, getFixed } from '../../utils/cacl';
 moment.locale('zh-cn', {
   months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
   monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
@@ -18,7 +18,7 @@ moment.locale('zh-cn', {
     l: 'YY/MM/DD',
     ll: 'MM/DD',
     lll: 'YYYY年M月D日 HH:mm',
-    llll: 'YYYY年M月D日dddd HH:mm'
+    llll: 'YYYY年M月D日dddd HH:mm',
   },
   meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
   meridiemHour: function meridiemHour(hour, meridiem) {
@@ -58,7 +58,7 @@ moment.locale('zh-cn', {
     nextWeek: '[下]ddddLT',
     lastDay: '[昨天]LT',
     lastWeek: '[上]ddddLT',
-    sameElse: 'L'
+    sameElse: 'L',
   },
   dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
   relativeTime: {
@@ -75,14 +75,13 @@ moment.locale('zh-cn', {
     M: '1个月',
     MM: '%d个月',
     y: '1年',
-    yy: '%d年'
+    yy: '%d年',
   },
   week: {
     // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
     dow: 1,
-    doy: 4 // The week that contains Jan 4th is the first week of the year.
-
-  }
+    doy: 4, // The week that contains Jan 4th is the first week of the year.
+  },
 });
 export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
   var firstLine = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
@@ -108,7 +107,6 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
   }
   /******/
 
-
   var smooth;
 
   if (node && node.property.smooth == true) {
@@ -117,7 +115,6 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
     smooth = false;
   }
   /****上下线**/
-
 
   var dataTopShow;
   var dataTop = 100;
@@ -135,11 +132,10 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
   }
   /*****背景颜色和参考线**/
 
-
   var showReference;
-  var showReferenceColor = "#1b2735";
+  var showReferenceColor = '#1b2735';
   var showBackground;
-  var showBackgroundColor = "transparent";
+  var showBackgroundColor = 'transparent';
 
   if (node && node.property.chartBackgroundChecked == true) {
     showBackground = true;
@@ -148,7 +144,7 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
     showBackground = false;
 
     if (node) {
-      showBackgroundColor = "transparent";
+      showBackgroundColor = 'transparent';
     }
   }
 
@@ -162,14 +158,13 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
   var trastColor = getContrastColor(showBackgroundColor);
 
   if (showBackgroundColor == 'transparent') {
-    trastColor = "#4a4a4a";
+    trastColor = '#4a4a4a';
   }
   /**title**/
 
-
   var chartTitleChecked = false,
-      chartTitle = '实时曲线',
-      chartTitleColor = '#c0c0c0';
+    chartTitle = '实时曲线',
+    chartTitleColor = '#c0c0c0';
 
   if (node && node.property.chartTitleChecked == true) {
     chartTitleChecked = node.property.chartTitleChecked;
@@ -184,7 +179,6 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
     chartTitle = '';
     chartTitleColor = '#c0c0c0';
   } //
-
 
   if (node && node.data.echarts.option) {
     // 添加默认的时间
@@ -205,18 +199,17 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
         seriesLayoutBy: 'row',
         symbol: 'none',
         label: {
-          color: 'auto'
-        }
+          color: 'auto',
+        },
       });
       datasetSource.push(source);
     });
   } // 设置显示时间
 
-
   datasetSource.map(function (item, index) {
     if (item.length < defaultTimelineShowData) {
       for (var _i = 0; _i < defaultTimelineShowData; _i++) {
-        item.push("");
+        item.push('');
       }
 
       datasetSource[index] = item;
@@ -239,7 +232,7 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
         datasetSource = node.data.echarts.option.dataset.source;
       }
 
-      if (socketData.id == row.dataCode) {
+      if (socketData.id == row.dataCode || socketData.id == row.id) {
         datasetSource[index + 1].push(getFixed(socketData.value, node.property.dataDot));
 
         if (datasetSource[index + 1].length > defaultTimelineShowData) {
@@ -256,7 +249,6 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
     });
   } // 添加标注线
 
-
   series.push({
     name: '',
     type: 'line',
@@ -268,18 +260,20 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
         normal: {
           lineStyle: {
             color: '#18D8F7',
-            opacity: dataTopShow
-          }
-        }
+            opacity: dataTopShow,
+          },
+        },
       },
       label: {
-        show: dataTopShow
+        show: dataTopShow,
       },
-      data: [{
-        type: 'median',
-        name: '下限'
-      }]
-    }
+      data: [
+        {
+          type: 'median',
+          name: '下限',
+        },
+      ],
+    },
   });
   series.push({
     name: '',
@@ -288,37 +282,39 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
     symbolSize: 0,
     showSymbol: false,
     label: {
-      show: false
+      show: false,
     },
     markLine: {
       itemStyle: {
         normal: {
           lineStyle: {
             color: '#FF0000',
-            opacity: dataTopShow
-          }
-        }
+            opacity: dataTopShow,
+          },
+        },
       },
       label: {
-        show: dataTopShow
+        show: dataTopShow,
       },
-      data: [{
-        type: 'median',
-        name: '上限'
-      }]
-    }
+      data: [
+        {
+          type: 'median',
+          name: '上限',
+        },
+      ],
+    },
   });
   var option = {
     title: {
       text: chartTitle,
       show: chartTitleChecked,
-      left: "18px",
-      top: "0",
+      left: '18px',
+      top: '0',
       textStyle: {
         color: chartTitleColor,
         fontSize: 12,
-        fontWeight: '400'
-      }
+        fontWeight: '400',
+      },
     },
     backgroundColor: showBackgroundColor,
     color: lineColors,
@@ -327,29 +323,29 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
       axisPointer: {
         type: 'cross',
         crossStyle: {
-          color: '#999'
+          color: '#999',
         },
         lineStyle: {
-          type: 'dashed'
-        }
-      }
+          type: 'dashed',
+        },
+      },
     },
     grid: {
       left: '25',
       right: '25',
       bottom: '24',
       top: '75',
-      containLabel: true
+      containLabel: true,
     },
     legend: {
       orient: 'horizontal',
-      icon: "rect",
+      icon: 'rect',
       show: true,
       left: 20,
       top: 25,
       textStyle: {
-        color: trastColor
-      }
+        color: trastColor,
+      },
     },
     xAxis: {
       type: 'category',
@@ -357,22 +353,22 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
       minInterval: 1000,
       maxInterval: 5000,
       splitLine: {
-        show: false
+        show: false,
       },
       axisTick: {
-        show: false
+        show: false,
       },
       axisLine: {
         show: true,
         lineStyle: {
-          color: trastColor
-        }
+          color: trastColor,
+        },
       },
       axisLabel: {
         textStyle: {
-          color: trastColor
-        }
-      }
+          color: trastColor,
+        },
+      },
     },
     yAxis: {
       type: 'value',
@@ -383,8 +379,8 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
       axisLabel: {
         color: '#999',
         textStyle: {
-          fontSize: 12
-        }
+          fontSize: 12,
+        },
       },
       // splitLine: {
       //     show: true,
@@ -397,15 +393,15 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
         show: showReference,
         lineStyle: {
           color: showReferenceColor,
-          type: 'dashed'
-        }
+          type: 'dashed',
+        },
       },
       axisTick: {
-        show: false
+        show: false,
       },
       axisLine: {
-        show: false
-      }
+        show: false,
+      },
     },
     animationEasing: 'linear',
     animation: false,
@@ -414,9 +410,9 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
       // 默认把第一个维度映射到 X 轴上，第二个维度映射到 Y 轴上。
       // 如果不指定 dimensions，也可以通过指定 series.encode
       // 完成映射，参见后文。
-      source: datasetSource
+      source: datasetSource,
     },
-    series: series
+    series: series,
   };
   return option;
 }

@@ -7,18 +7,22 @@ export function clientParam(apiURL: string) {
 }
 
 export function apiClientParam(apiURL: string) {
-  return axios.create({ baseURL: `${apiURL}/manager`, timeout, maxContentLength, withCredentials });
+  return axios.create({ baseURL: `${apiURL}/`, timeout, maxContentLength, withCredentials });
 }
 
 // 查询数据点列表
 export function fetchSearchDataPointManageList(params: any) {
-  return apiClientParam(window['__CONKPIT_API_URL']).post('/datapoint/list', params, {
-    headers: {
-      'X-Requested-With': 'XMLHttpRequest',
-      token: window['__CONKPIT_TOKEN'],
-      'Content-Type': 'application/json',
+  return apiClientParam(window['__CONKPIT_API_URL']).post(
+    '/applications/service/remote/datapoint/list',
+    params,
+    {
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        token: window['__CONKPIT_TOKEN'],
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 }
 // 查询视频列表
 export function fetchVedioList(params: any) {

@@ -1034,7 +1034,11 @@ var Preview = function Preview(_ref) {
       type: v.vt,
     };
     (pens || []).map(function (node) {
-      var _node$property$dataPo3, _node$property3, _node$property3$dataP, _node$property3$dataP2;
+      var _node$property$dataPo3,
+        _node$property$dataPo4,
+        _node$property3,
+        _node$property3$dataP,
+        _node$property3$dataP2;
 
       if (node.name == 'combine') {
         updateComp(node.children, data);
@@ -1048,7 +1052,11 @@ var Preview = function Preview(_ref) {
               ((_node$property$dataPo3 = node.property.dataPointSelectedRows[0]) === null ||
               _node$property$dataPo3 === void 0
                 ? void 0
-                : _node$property$dataPo3.dataCode) == r.id
+                : _node$property$dataPo3.dataCode) == r.id ||
+              ((_node$property$dataPo4 = node.property.dataPointSelectedRows[0]) === null ||
+              _node$property$dataPo4 === void 0
+                ? void 0
+                : _node$property$dataPo4.id) == r.id
             ) {
               var cd = {
                 value: undefined,
@@ -1072,7 +1080,7 @@ var Preview = function Preview(_ref) {
             var selectedRows = node.property.dataPointSelectedRows;
             var timesxAix = node.data.echarts.option.dataset.source[0];
             (selectedRows || []).map(function (row, index) {
-              if (row.dataCode == r.id) {
+              if (row.dataCode == r.id || row.id == r.id) {
                 if (index == 0) {
                   timesxAix.push(moment(parseInt(r.time / 1000 + '') * 1000).format('LTS'));
 
@@ -1097,7 +1105,7 @@ var Preview = function Preview(_ref) {
           case 'horizontalBar':
             var n = node.property.dataDot;
             var rows = (node.property.dataPointSelectedRows || []).map(function (row) {
-              if (row.dataCode == r.id) {
+              if (row.dataCode == r.id || row.id == r.id) {
                 return _objectSpread(
                   _objectSpread({}, row),
                   {},
@@ -1137,7 +1145,9 @@ var Preview = function Preview(_ref) {
       ) {
         // 非图表组件
         if (node.name == 'biciVarer') {
-          var tt = node.property.dataPointParam.qtDataList[0].dataCode == r.id;
+          var tt =
+            node.property.dataPointParam.qtDataList[0].dataCode == r.id ||
+            node.property.dataPointParam.qtDataList[0].id == r.id;
 
           if (tt) {
             if (r.value === undefined) {
@@ -1171,13 +1181,17 @@ var Preview = function Preview(_ref) {
             updateDateRangeTransform(node, r); // canvas.updateProps( false,[node]);
           }
         } else if (node.name === 'biciMeasure') {
-          var _node$property$dataPo4;
+          var _node$property$dataPo5, _node$property$dataPo6;
 
           if (
-            ((_node$property$dataPo4 = node.property.dataPointSelectedRows[0]) === null ||
-            _node$property$dataPo4 === void 0
+            ((_node$property$dataPo5 = node.property.dataPointSelectedRows[0]) === null ||
+            _node$property$dataPo5 === void 0
               ? void 0
-              : _node$property$dataPo4.dataCode) == r.id
+              : _node$property$dataPo5.dataCode) == r.id ||
+            ((_node$property$dataPo6 = node.property.dataPointSelectedRows[0]) === null ||
+            _node$property$dataPo6 === void 0
+              ? void 0
+              : _node$property$dataPo6.id) == r.id
           ) {
             node.property.value = r.value;
 
@@ -1186,7 +1200,10 @@ var Preview = function Preview(_ref) {
             } // canvas.updateProps(false);
           }
         } else if (node.name === 'biciCard') {
-          if (node.property.dataPointParam.qtDataList[0].dataCode == r.id) {
+          if (
+            node.property.dataPointParam.qtDataList[0].dataCode == r.id ||
+            node.property.dataPointParam.qtDataList[0].id == r.id
+          ) {
             var _n3 = node.property.dataDot;
             var val = getFixed(r.value, _n3);
 
@@ -1234,7 +1251,10 @@ var Preview = function Preview(_ref) {
             } // canvas.updateProps(false);
           }
         } else if (node.name === 'biciPilot') {
-          if (node.property.dataPointParam.qtDataList[0].dataCode == r.id) {
+          if (
+            node.property.dataPointParam.qtDataList[0].dataCode == r.id ||
+            node.property.dataPointParam.qtDataList[0].id == r.id
+          ) {
             node.property.val = r.value;
 
             if (r.value == undefined) {
@@ -1253,7 +1273,7 @@ var Preview = function Preview(_ref) {
           var _n4 = node.property.dataDot;
 
           var _rows = (node.property.dataPointSelectedRows || []).map(function (row) {
-            if (row.dataCode == r.id) {
+            if (row.dataCode == r.id || row.id == r.id) {
               return _objectSpread(
                 _objectSpread({}, row),
                 {},
