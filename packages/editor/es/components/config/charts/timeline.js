@@ -233,7 +233,9 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
       }
 
       if (socketData.id == row.dataCode || socketData.id == row.id) {
-        datasetSource[index + 1].push(getFixed(socketData.value, node.property.dataDot));
+        datasetSource[index + 1].push(
+          getFixed(parseFloat(socketData.value), node.property.dataDot),
+        );
 
         if (datasetSource[index + 1].length > defaultTimelineShowData) {
           datasetSource[index + 1].splice(1, 1);

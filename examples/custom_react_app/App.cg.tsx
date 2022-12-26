@@ -19,7 +19,7 @@ const { confirm } = Modal;
 const token = '7Lgm6qoSSZDG8CvCXg0kDc';
 
 // const testId = '5143460d4cd54d22a4acd479fa8d34ef';
-const testId = 'd8395a3f2890469eaf815f388f67c5bc';
+const testId = 'db722c0fd9b2433fb2256cad150dd71e';
 
 // const apiURL = 'http://192.168.110.172:50002/api';
 // const apiURL = 'https://zhsd-test.bicisims.com/api';

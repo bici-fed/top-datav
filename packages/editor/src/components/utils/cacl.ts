@@ -1,8 +1,5 @@
 // @ts-nocheck
-export function calcCanvas(
-  width: string | number = 826,
-  height: string | number = 1168
-) {
+export function calcCanvas(width: string | number = 826, height: string | number = 1168) {
   let minWidth = 3198;
   let minHeight = 2288;
   let left = 1186;
@@ -27,10 +24,7 @@ export function calcCanvas(
     top,
   };
 }
-export function calcScroll(
-  width: string | number = 826,
-  height: string | number = 1168
-) {}
+export function calcScroll(width: string | number = 826, height: string | number = 1168) {}
 export function getHexColor(color) {
   if (color === 'transparent') return 'transparent';
   if (color == undefined) {
@@ -73,10 +67,10 @@ export function base64ToFile(data) {
 
 // 保留n位小数并格式化输出（不足的部分补0）
 export function roundFun(value: any, n: any) {
-  if(!isNumber(value)){
+  if (!isNumber(value)) {
     return value;
   }
-  let s = (Math.round(value * Math.pow(10, n)) / Math.pow(10, n));
+  let s = Math.round(value * Math.pow(10, n)) / Math.pow(10, n);
   // let rs = s.indexOf('.');
   // if (rs < 0) {
   //   s += '.';
@@ -87,18 +81,18 @@ export function roundFun(value: any, n: any) {
   return s;
 }
 
-export function getFixed(num,fix):string {
-  if(typeof num!=='number'){
-    return "";
+export function getFixed(num, fix): string {
+  if (!isNaN(parseFloat(num)) && isFinite(num)) {
+    let sh = Math.round(num * Math.pow(10, fix)) / Math.pow(10, fix);
+    let numStr = sh.toString();
+    let index = numStr.indexOf('.');
+    if (index < 0) return numStr;
+    if (fix == 0) {
+      return numStr.slice(0, index + fix) + '';
+    }
+    return numStr.slice(0, index + fix + 1) + '';
   }
-  let sh=Math.round(num*Math.pow(10, fix))/Math.pow(10, fix);
-  let numStr = sh.toString()
-  let index = numStr.indexOf('.')
-  if(index<0) return numStr;
-  if(fix==0){
-    return numStr.slice(0, index + fix)+''
-  }
-  return numStr.slice(0, index + fix+1)+''
+  return '';
 }
 
 /**
@@ -106,24 +100,23 @@ export function getFixed(num,fix):string {
  * @param node
  * @param source
  */
-export function handleDotData(node,source){
-  const dot = node.property.dataDot||0;
-  (source||[]).forEach(((item,i)=>{
-    item.forEach((v,index)=>{
-      if(isNumber(v)&&index>0){
-        item[index]=parseFloat(getFixed(v,dot))
+export function handleDotData(node, source) {
+  const dot = node.property.dataDot || 0;
+  (source || []).forEach((item, i) => {
+    item.forEach((v, index) => {
+      if (isNumber(v) && index > 0) {
+        item[index] = parseFloat(getFixed(v, dot));
       }
-    })
-    source[i]=item;
-  }))
+    });
+    source[i] = item;
+  });
 }
 
-
 // 判断区间是否有重叠，返回重叠区
-export function eraseOverlapIntervals(intervals):any[] {
+export function eraseOverlapIntervals(intervals): any[] {
   intervals.sort((a, b) => a[1] - b[1]); //按照区间末位对这些区间排个位，保证结束时间是按序上升的，从前往后取总是能取到当前结束时间的最小值
   // 重叠的区间
-  let res = []
+  let res = [];
 
   let flag = -Infinity; //记录前一区间的结束值，此处一开始需取负无穷，因为必须保证这里一开始是最小的
   // let sum = 0; //记录需要移除的区间个数
@@ -161,15 +154,15 @@ export function calcRepeatIndex(newArr) {
     return res;
   }
 }
-export function rgbaStringToRgb(rgba,isFilter) {
+export function rgbaStringToRgb(rgba, isFilter) {
   //用来判断是否把连续的0去掉
   isFilter = isFilter || false;
-  if (typeof rgba === "string") {
+  if (typeof rgba === 'string') {
     // var arr = Str.match(/(0\d{2,})|([1-9]\d+)/g);
     //"/[1-9]\d{1,}/g",表示匹配1到9,一位数以上的数字(不包括一位数).
     //"/\d{2,}/g",  表示匹配至少二个数字至多无穷位数字
-    var arr = rgba.match( isFilter ? /[1-9]\d{1,}/g : /\d{2,}/g);
-    return (arr||[]).map(function (item) {
+    var arr = rgba.match(isFilter ? /[1-9]\d{1,}/g : /\d{2,}/g);
+    return (arr || []).map(function (item) {
       //转换为整数，
       //但是提取出来的数字，如果是连续的多个0会被改为一个0，如000---->0，
       //或者0开头的连续非零数字，比如015，会被改为15，这是一个坑
@@ -182,17 +175,24 @@ export function rgbaStringToRgb(rgba,isFilter) {
   }
 }
 export function getContrastColor(rgbStr) {
-  const rgb=rgbaStringToRgb(rgbStr,true);
+  const rgb = rgbaStringToRgb(rgbStr, true);
 
-  var hsl = rgbToHsl(rgb[0],rgb[1],rgb[2]);
-  if(hsl[2]){
+  var hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
+  if (hsl[2]) {
     hsl[2] = (hsl[2] + 0.5) % 1.0;
     var new_rgb = hslToRgb.apply(this, hsl);
-    return ['rgb(',parseInt(new_rgb[0]+''),',',parseInt(new_rgb[1]+''),',',parseInt(new_rgb[2]+''),')'].join('');
-  }else{
-    return "rgba(255,255,255,0.8)";
+    return [
+      'rgb(',
+      parseInt(new_rgb[0] + ''),
+      ',',
+      parseInt(new_rgb[1] + ''),
+      ',',
+      parseInt(new_rgb[2] + ''),
+      ')',
+    ].join('');
+  } else {
+    return 'rgba(255,255,255,0.8)';
   }
-
 }
 /**
 
@@ -217,18 +217,11 @@ export function getContrastColor(rgbStr) {
  */
 
 export function hslToRgb(h, s, l) {
-
   var r, g, b;
 
-
-
   if (s == 0) {
-
     r = g = b = l; // achromatic
-
   } else {
-
-
     var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
 
     var p = 2 * l - q;
@@ -238,16 +231,11 @@ export function hslToRgb(h, s, l) {
     g = hue2rgb(p, q, h);
 
     b = hue2rgb(p, q, h - 1 / 3);
-
   }
 
-
-
   return [r * 255, g * 255, b * 255];
-
 }
 function hue2rgb(p, q, t) {
-
   if (t < 0) t += 1;
 
   if (t > 1) t -= 1;
@@ -259,9 +247,7 @@ function hue2rgb(p, q, t) {
   if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
 
   return p;
-
 }
-
 
 /**
 
@@ -286,48 +272,51 @@ function hue2rgb(p, q, t) {
  */
 
 export function rgbToHsl(r, g, b) {
+  (r /= 255), (g /= 255), (b /= 255);
 
-  r /= 255, g /= 255, b /= 255;
+  var max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
 
-  var max = Math.max(r, g, b), min = Math.min(r, g, b);
-
-  var h, s, l = (max + min) / 2;
-
-
+  var h,
+    s,
+    l = (max + min) / 2;
 
   if (max == min) {
-
     h = s = 0; // achromatic
-
   } else {
-
     var d = max - min;
 
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
 
     switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
 
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
 
-      case g: h = (b - r) / d + 2; break;
-
-      case b: h = (r - g) / d + 4; break;
-
+      case b:
+        h = (r - g) / d + 4;
+        break;
     }
 
     h /= 6;
-
   }
   return [h, s, l];
 }
 
-export function isNumber(obj:any){
-  return Object.prototype.toString.call(obj)==='[object Number]';
+export function isNumber(obj: any) {
+  return Object.prototype.toString.call(obj) === '[object Number]';
 }
 
 export function isRTSP(str) {
-  const reg= /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
-  const reg1= /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5]):[0-9]{1,5}/;
-  const reg2= /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\//;
-  return (reg.test(str) || reg1.test(str) || reg2.test(str));
+  const reg =
+    /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+  const reg1 =
+    /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5]):[0-9]{1,5}/;
+  const reg2 =
+    /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\//;
+  return reg.test(str) || reg1.test(str) || reg2.test(str);
 }

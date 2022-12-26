@@ -16,16 +16,14 @@ import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
 // const token = '1lLPYvQyZ1M9Uoj3rf2YnS';
-const token = '7Lgm6qoSSZDG8CvCXg0kDc';
+const token = '1lLPYvQyZ1M9Uoj3rf2YnS';
 
-// const testId = '5143460d4cd54d22a4acd479fa8d34ef';
-const testId = 'd8395a3f2890469eaf815f388f67c5bc';
+const testId = '5143460d4cd54d22a4acd479fa8d34ef';
 
 // const apiURL = 'http://192.168.110.172:50002/api';
-// const apiURL = 'https://zhsd-test.bicisims.com/api';
-const apiURL = 'http://192.168.110.172:50002/api';
+const apiURL = 'https://zhsd-test.bicisims.com/api';
 
-const websocketURL = 'ws://cqgys-test.bicisims.com/ws?token=';
+const websocketURL = 'wss://zhsd-test.bicisims.com/api/websocket/service/websocket/rtData/';
 // const websocketURL = 'wss://zhsd-test.bicisims.com/api/websocket/service/websocket/rtData/';
 
 const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
@@ -120,22 +118,22 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
       apiURL: apiURL,
       token: token,
       list: {
-        url: '/applications/customComponent/list',
+        url: '/applications/service/remote/customComponent/list',
         params: {
           mappingType: '101',
           mappingId: 'ooip6ffe388d487db754b885b8aa65b9',
         },
       },
       add: {
-        url: '/applications/customComponent/save',
+        url: '/applications/service/remote/customComponent/save',
         params: {},
       },
       delete: {
-        url: '/applications/customComponent/delete',
+        url: '/applications/service/remote/customComponent/delete',
         params: {},
       },
       rename: {
-        url: '/applications/customComponent/update',
+        url: '/applications/service/remote/customComponent/update',
         params: {},
       },
     },
@@ -180,7 +178,8 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     video: {
       updateStream: 'http://192.168.1.105:8000/surveillance/channel/updateStream',
       rePushStream: 'http://192.168.1.105:8000/surveillance/channel/rePushStream',
-      pushStream: 'http://192.168.1.69:50010/applications/customComponent/pushStream',
+      pushStream:
+        'http://192.168.1.69:50010/applications/service/remote/customComponent/pushStream',
     },
     toolsConfig,
   };
@@ -197,7 +196,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     // 获取面板数据
     // 获取面板数据
     instance
-      .get('/applications/newBoard/detail', {
+      .get('/applications/service/remote/newBoard/detail', {
         method: 'get',
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
@@ -222,7 +221,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     // 获取获取当前租户下 上传的背景图片
     // instance
     //   .post(
-    //     '/applications/custom/component/componentList',
+    //     '/applications/service/remote/custom/component/componentList',
     //     { mappingType: '107' },
     //     {
     //       method: 'post',
@@ -237,7 +236,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     // 获取获取当前租户下 指定自定义组件图片列表
     instance
       .post(
-        '/applications/custom/component/industryList',
+        '/applications/service/remote/custom/component/industryList',
         { mappingType: '121' },
         {
           method: 'post',
@@ -285,7 +284,7 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     delete data.screenshot;
     instance
       .request({
-        url: '/applications/newBoard/updateProperty',
+        url: '/applications/service/remote/newBoard/updateProperty',
         method: 'POST',
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
@@ -512,7 +511,7 @@ const PreviewLayout: React.FC<any> = ({ history }) => {
     });
     // 获取面板数据
     instance
-      .get('/applications/newBoard/detail', {
+      .get('/applications/service/remote/newBoard/detail', {
         method: 'get',
         headers: {
           'X-Requested-With': 'XMLHttpRequest',

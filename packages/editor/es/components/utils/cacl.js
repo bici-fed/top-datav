@@ -25,7 +25,7 @@ export function calcCanvas() {
     minWidth: minWidth,
     minHeight: minHeight,
     left: left,
-    top: top
+    top: top,
   };
 }
 export function calcScroll() {
@@ -40,10 +40,15 @@ export function getHexColor(color) {
   }
 
   var a = parseFloat(color.a || 1),
-      r = Math.floor(a * parseInt(color.r) + (1 - a) * 255),
-      g = Math.floor(a * parseInt(color.g) + (1 - a) * 255),
-      b = Math.floor(a * parseInt(color.b) + (1 - a) * 255);
-  return '#' + ('0' + r.toString(16)).slice(-2) + ('0' + g.toString(16)).slice(-2) + ('0' + b.toString(16)).slice(-2);
+    r = Math.floor(a * parseInt(color.r) + (1 - a) * 255),
+    g = Math.floor(a * parseInt(color.g) + (1 - a) * 255),
+    b = Math.floor(a * parseInt(color.b) + (1 - a) * 255);
+  return (
+    '#' +
+    ('0' + r.toString(16)).slice(-2) +
+    ('0' + g.toString(16)).slice(-2) +
+    ('0' + b.toString(16)).slice(-2)
+  );
 }
 /**
  * 将base64的图片数据转化成file对象上传
@@ -61,10 +66,10 @@ export function base64ToFile(data) {
   }
 
   var fileData = new Blob([new Uint8Array(array)], {
-    type: mime
+    type: mime,
   });
-  var file = new File([fileData], "".concat(new Date().getTime(), ".png"), {
-    type: mime
+  var file = new File([fileData], ''.concat(new Date().getTime(), '.png'), {
+    type: mime,
   });
   return file;
 } // 保留n位小数并格式化输出（不足的部分补0）
@@ -85,20 +90,20 @@ export function roundFun(value, n) {
   return s;
 }
 export function getFixed(num, fix) {
-  if (typeof num !== 'number') {
-    return "";
+  if (!isNaN(parseFloat(num)) && isFinite(num)) {
+    var sh = Math.round(num * Math.pow(10, fix)) / Math.pow(10, fix);
+    var numStr = sh.toString();
+    var index = numStr.indexOf('.');
+    if (index < 0) return numStr;
+
+    if (fix == 0) {
+      return numStr.slice(0, index + fix) + '';
+    }
+
+    return numStr.slice(0, index + fix + 1) + '';
   }
 
-  var sh = Math.round(num * Math.pow(10, fix)) / Math.pow(10, fix);
-  var numStr = sh.toString();
-  var index = numStr.indexOf('.');
-  if (index < 0) return numStr;
-
-  if (fix == 0) {
-    return numStr.slice(0, index + fix) + '';
-  }
-
-  return numStr.slice(0, index + fix + 1) + '';
+  return '';
 }
 /**
  * 处理图表二维数组中数字精度问题
@@ -165,7 +170,7 @@ export function rgbaStringToRgb(rgba, isFilter) {
   //用来判断是否把连续的0去掉
   isFilter = isFilter || false;
 
-  if (typeof rgba === "string") {
+  if (typeof rgba === 'string') {
     // var arr = Str.match(/(0\d{2,})|([1-9]\d+)/g);
     //"/[1-9]\d{1,}/g",表示匹配1到9,一位数以上的数字(不包括一位数).
     //"/\d{2,}/g",  表示匹配至少二个数字至多无穷位数字
@@ -188,9 +193,17 @@ export function getContrastColor(rgbStr) {
   if (hsl[2]) {
     hsl[2] = (hsl[2] + 0.5) % 1.0;
     var new_rgb = hslToRgb.apply(this, hsl);
-    return ['rgb(', parseInt(new_rgb[0] + ''), ',', parseInt(new_rgb[1] + ''), ',', parseInt(new_rgb[2] + ''), ')'].join('');
+    return [
+      'rgb(',
+      parseInt(new_rgb[0] + ''),
+      ',',
+      parseInt(new_rgb[1] + ''),
+      ',',
+      parseInt(new_rgb[2] + ''),
+      ')',
+    ].join('');
   } else {
-    return "rgba(255,255,255,0.8)";
+    return 'rgba(255,255,255,0.8)';
   }
 }
 /**
@@ -261,14 +274,13 @@ function hue2rgb(p, q, t) {
 
  */
 
-
 export function rgbToHsl(r, g, b) {
-  r /= 255, g /= 255, b /= 255;
+  (r /= 255), (g /= 255), (b /= 255);
   var max = Math.max(r, g, b),
-      min = Math.min(r, g, b);
+    min = Math.min(r, g, b);
   var h,
-      s,
-      l = (max + min) / 2;
+    s,
+    l = (max + min) / 2;
 
   if (max == min) {
     h = s = 0; // achromatic
@@ -299,8 +311,11 @@ export function isNumber(obj) {
   return Object.prototype.toString.call(obj) === '[object Number]';
 }
 export function isRTSP(str) {
-  var reg = /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
-  var reg1 = /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5]):[0-9]{1,5}/;
-  var reg2 = /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\//;
+  var reg =
+    /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+  var reg1 =
+    /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5]):[0-9]{1,5}/;
+  var reg2 =
+    /^rtsp:\/\/([a-z]{0,10}:.{0,10}@)?(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\//;
   return reg.test(str) || reg1.test(str) || reg2.test(str);
 }

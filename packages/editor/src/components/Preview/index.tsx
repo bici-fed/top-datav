@@ -661,10 +661,14 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             let selectedRows = node.property.dataPointSelectedRows;
 
             const timesxAix = node.data.echarts.option.dataset.source[0];
+            r.value = parseFloat(r.value);
             (selectedRows || []).map((row, index) => {
               if (row.dataCode == r.id || row.id == r.id) {
                 if (index == 0) {
-                  timesxAix.push(moment(parseInt(r.time / 1000 + '') * 1000).format('LTS'));
+                  const xtime = moment(parseInt(r.time / 1000 + '') * 1000).format('LTS');
+                  if (!timesxAix.includes(xtime)) {
+                    timesxAix.push(xtime);
+                  }
                   if (timesxAix.length > defaultTimelineShowData) {
                     timesxAix.splice(1, 1);
                   }
