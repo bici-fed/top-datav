@@ -1028,9 +1028,9 @@ var Preview = function Preview(_ref) {
 
     var v = JSON.parse(data.data);
     var r = {
-      id: v.dc,
-      value: v.v,
-      time: v.ts,
+      id: v.dc || v.id,
+      value: v.v || v.value,
+      time: v.ts || v.time,
       type: v.vt,
     };
     (pens || []).map(function (node) {

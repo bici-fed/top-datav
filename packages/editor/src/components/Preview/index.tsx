@@ -639,7 +639,10 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
         theChart = node.property.echartsType;
         switch (theChart) {
           case 'gauge':
-            if (node.property.dataPointSelectedRows[0]?.dataCode == r.id) {
+            if (
+              node.property.dataPointSelectedRows[0]?.dataCode == r.id ||
+              node.property.dataPointSelectedRows[0]?.id == r.id
+            ) {
               const cd = {
                 value: undefined,
                 name: node.property.chartTitle,
@@ -659,7 +662,7 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
 
             const timesxAix = node.data.echarts.option.dataset.source[0];
             (selectedRows || []).map((row, index) => {
-              if (row.dataCode == r.id) {
+              if (row.dataCode == r.id || row.id == r.id) {
                 if (index == 0) {
                   timesxAix.push(moment(parseInt(r.time / 1000 + '') * 1000).format('LTS'));
                   if (timesxAix.length > defaultTimelineShowData) {
@@ -680,7 +683,7 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
           case 'horizontalBar':
             const n = node.property.dataDot;
             const rows = (node.property.dataPointSelectedRows || []).map((row) => {
-              if (row.dataCode == r.id) {
+              if (row.dataCode == r.id || row.id == r.id) {
                 return {
                   ...row,
                   value: getFixed(r.value, n),
@@ -705,7 +708,9 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
       } else if (node.property?.dataPointParam?.qtDataList?.length > 0) {
         // 非图表组件
         if (node.name == 'biciVarer') {
-          const tt = node.property.dataPointParam.qtDataList[0].dataCode == r.id;
+          const tt =
+            node.property.dataPointParam.qtDataList[0].dataCode == r.id ||
+            node.property.dataPointParam.qtDataList[0].id == r.id;
           if (tt) {
             if (r.value === undefined) {
               node.text = '';
@@ -735,7 +740,10 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             // canvas.updateProps( false,[node]);
           }
         } else if (node.name === 'biciMeasure') {
-          if (node.property.dataPointSelectedRows[0]?.dataCode == r.id) {
+          if (
+            node.property.dataPointSelectedRows[0]?.dataCode == r.id ||
+            node.property.dataPointSelectedRows[0]?.id == r.id
+          ) {
             node.property.value = r.value;
             if (r.value == undefined) {
               node.property.value = node.property.dataMin;
@@ -743,7 +751,10 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             // canvas.updateProps(false);
           }
         } else if (node.name === 'biciCard') {
-          if (node.property.dataPointParam.qtDataList[0].dataCode == r.id) {
+          if (
+            node.property.dataPointParam.qtDataList[0].dataCode == r.id ||
+            node.property.dataPointParam.qtDataList[0].id == r.id
+          ) {
             const n = node.property.dataDot;
             let val = getFixed(r.value, n);
             if (r.value == undefined) {
@@ -789,7 +800,10 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             // canvas.updateProps(false);
           }
         } else if (node.name === 'biciPilot') {
-          if (node.property.dataPointParam.qtDataList[0].dataCode == r.id) {
+          if (
+            node.property.dataPointParam.qtDataList[0].dataCode == r.id ||
+            node.property.dataPointParam.qtDataList[0].id == r.id
+          ) {
             node.property.val = r.value;
             if (r.value == undefined) {
               node.property.val = 0;
@@ -807,7 +821,7 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
         } else if (node.name == 'dataTable') {
           const n = node.property.dataDot;
           const rows = (node.property.dataPointSelectedRows || []).map((row) => {
-            if (row.dataCode == r.id) {
+            if (row.dataCode == r.id || row.id == r.id) {
               return {
                 ...row,
                 value: getFixed(r.value, n),
