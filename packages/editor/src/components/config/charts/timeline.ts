@@ -233,8 +233,6 @@ export function getTimeLineOption(
     });
   }
 
-  console.log('datasetSource>>>>', datasetSource);
-
   // 添加标注线
 
   series.push({
