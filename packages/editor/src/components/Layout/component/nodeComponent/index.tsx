@@ -253,6 +253,8 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
         data.node.name == 'pdMonthReport' ||
         data.node.name == 'productQueue' ||
         data.node.name === 'biciCard2' ||
+        data.node.name === 'biciCard' ||
+        data.node.name === 'biciVarer' ||
         data.node.name === 'liveVideo' ||
         data.node.name === 'QTLiveVideo' ||
         data.node.name === 'dataTable'

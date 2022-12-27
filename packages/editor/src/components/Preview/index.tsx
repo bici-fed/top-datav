@@ -564,7 +564,10 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
       // 循环遍历
       if (node.name == 'combine') {
         sendMessage(node.children);
-      } else if (node.property?.dataPointParam?.qtDataList?.length > 0) {
+      } else if (
+        node.property?.dataPointParam?.qtDataList?.length > 0 &&
+        node.property?.dataMethod == 'point'
+      ) {
         let socketId = node.property.dataPointParam.qtDataList[0].id;
         let k = node.id + '__' + socketId;
         socketNodeMap[k] = node;

@@ -1083,7 +1083,7 @@ var Preview = function Preview(_ref) {
             (selectedRows || []).map(function (row, index) {
               if (row.dataCode == r.id || row.id == r.id) {
                 if (index == 0) {
-                  var xtime = moment(parseInt(r.time / 1000 + '') * 1000).format('LTS');
+                  var xtime = moment(parseInt(r.time / 1000 + '') * 1000).format('HH:mm:ss');
 
                   if (!timesxAix.includes(xtime)) {
                     timesxAix.push(xtime);

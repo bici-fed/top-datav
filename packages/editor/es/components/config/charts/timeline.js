@@ -249,9 +249,7 @@ export function getTimeLineOption(node, changeValues, socketData, timesxAix) {
         }
       }
     });
-  }
-
-  console.log('datasetSource>>>>', datasetSource); // 添加标注线
+  } // 添加标注线
 
   series.push({
     name: '',
