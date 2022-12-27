@@ -105,7 +105,7 @@ export default {
         bkColor: '#FA6400',
       },
       dataMethod: 'point',
-      dataFormat: CHART_DATA,
+      dataFormat: TONGJI_DATA,
       dataSourceId: undefined,
       dataSourceUrl: undefined,
       pullRate: 120,

@@ -217,6 +217,12 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
           cardTitle: property.cardTitle,
           limitType: property.limitType,
           showLimit: property.showLimit,
+          pullRate: property.pullRate,
+          pullRateUnit: property.pullRateUnit,
+          dataFormat: property.dataFormat,
+          dataUrl: property.dataUrl,
+          dataSourceId: dataSourceId,
+          dataSourceUrl: dataSourceUrl,
           'limit.bottom': property.limit.bottom,
           'limit.top': property.limit.top,
           'normal.fontFamily': property.normal.fontFamily,
@@ -243,6 +249,12 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
           text: property.text,
           stateType: property.stateType,
           lightRange: property.lightRange,
+          pullRate: property.pullRate,
+          pullRateUnit: property.pullRateUnit,
+          dataFormat: property.dataFormat,
+          dataUrl: property.dataUrl,
+          dataSourceId: dataSourceId,
+          dataSourceUrl: dataSourceUrl,
         });
         const btnSize = width / 2 <= 15 ? 'small' : width / 2 <= 20 ? 'middle' : 'large';
         setPilotBtnSize(btnSize);
@@ -253,8 +265,6 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
         data.node.name == 'pdMonthReport' ||
         data.node.name == 'productQueue' ||
         data.node.name === 'biciCard2' ||
-        data.node.name === 'biciCard' ||
-        data.node.name === 'biciVarer' ||
         data.node.name === 'liveVideo' ||
         data.node.name === 'QTLiveVideo' ||
         data.node.name === 'dataTable'
@@ -395,6 +405,11 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
     // 数据绑定方式
     const handlePropertyDataMethodChange = (value) => {
       data.node.property.dataMethod = value;
+      data.node.property.dataPointSelectedRows = [];
+      data.node.property.dataPointParam = {
+        qtDataList: [],
+        subscribe: true,
+      };
       setRefreshProperty(!refreshProperty);
     };
 

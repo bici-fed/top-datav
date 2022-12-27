@@ -949,7 +949,7 @@ var Preview = function Preview(_ref) {
 
   var sendMessage = function sendMessage(pens) {
     (pens || []).map(function (node) {
-      var _node$property2, _node$property2$dataP, _node$property2$dataP2;
+      var _node$property2, _node$property2$dataP, _node$property2$dataP2, _node$property3;
 
       // 循环遍历
       if (node.name == 'combine') {
@@ -963,7 +963,10 @@ var Preview = function Preview(_ref) {
           : (_node$property2$dataP2 = _node$property2$dataP.qtDataList) === null ||
             _node$property2$dataP2 === void 0
           ? void 0
-          : _node$property2$dataP2.length) > 0
+          : _node$property2$dataP2.length) > 0 &&
+        ((_node$property3 = node.property) === null || _node$property3 === void 0
+          ? void 0
+          : _node$property3.dataMethod) == 'point'
       ) {
         var socketId = node.property.dataPointParam.qtDataList[0].id;
         var k = node.id + '__' + socketId;
@@ -1036,9 +1039,9 @@ var Preview = function Preview(_ref) {
     (pens || []).map(function (node) {
       var _node$property$dataPo3,
         _node$property$dataPo4,
-        _node$property3,
-        _node$property3$dataP,
-        _node$property3$dataP2;
+        _node$property4,
+        _node$property4$dataP,
+        _node$property4$dataP2;
 
       if (node.name == 'combine') {
         updateComp(node.children, data);
@@ -1138,15 +1141,15 @@ var Preview = function Preview(_ref) {
           default:
         } //
       } else if (
-        ((_node$property3 = node.property) === null || _node$property3 === void 0
+        ((_node$property4 = node.property) === null || _node$property4 === void 0
           ? void 0
-          : (_node$property3$dataP = _node$property3.dataPointParam) === null ||
-            _node$property3$dataP === void 0
+          : (_node$property4$dataP = _node$property4.dataPointParam) === null ||
+            _node$property4$dataP === void 0
           ? void 0
-          : (_node$property3$dataP2 = _node$property3$dataP.qtDataList) === null ||
-            _node$property3$dataP2 === void 0
+          : (_node$property4$dataP2 = _node$property4$dataP.qtDataList) === null ||
+            _node$property4$dataP2 === void 0
           ? void 0
-          : _node$property3$dataP2.length) > 0
+          : _node$property4$dataP2.length) > 0
       ) {
         // 非图表组件
         if (node.name == 'biciVarer') {

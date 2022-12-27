@@ -406,6 +406,12 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           cardTitle: property.cardTitle,
           limitType: property.limitType,
           showLimit: property.showLimit,
+          pullRate: property.pullRate,
+          pullRateUnit: property.pullRateUnit,
+          dataFormat: property.dataFormat,
+          dataUrl: property.dataUrl,
+          dataSourceId: dataSourceId,
+          dataSourceUrl: dataSourceUrl,
           'limit.bottom': property.limit.bottom,
           'limit.top': property.limit.top,
           'normal.fontFamily': property.normal.fontFamily,
@@ -432,6 +438,12 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
           text: property.text,
           stateType: property.stateType,
           lightRange: property.lightRange,
+          pullRate: property.pullRate,
+          pullRateUnit: property.pullRateUnit,
+          dataFormat: property.dataFormat,
+          dataUrl: property.dataUrl,
+          dataSourceId: dataSourceId,
+          dataSourceUrl: dataSourceUrl,
         });
         var btnSize = width / 2 <= 15 ? 'small' : width / 2 <= 20 ? 'middle' : 'large';
         setPilotBtnSize(btnSize);
@@ -713,6 +725,11 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
 
   var handlePropertyDataMethodChange = function handlePropertyDataMethodChange(value) {
     data.node.property.dataMethod = value;
+    data.node.property.dataPointSelectedRows = [];
+    data.node.property.dataPointParam = {
+      qtDataList: [],
+      subscribe: true,
+    };
     setRefreshProperty(!refreshProperty);
   }; // 添加数据点
 

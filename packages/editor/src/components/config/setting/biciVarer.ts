@@ -1,4 +1,4 @@
-import { CHART_DATA } from './common';
+import { CHART_DATA, TONGJI_DATA } from './common';
 
 export default {
   name: '变量值',
@@ -21,7 +21,7 @@ export default {
     property: {
       dataMethod: 'point',
       dataDot: 2,
-      dataFormat: CHART_DATA,
+      dataFormat: TONGJI_DATA,
       dataSourceId: undefined,
       dataSourceUrl: undefined,
       pullRate: 120,

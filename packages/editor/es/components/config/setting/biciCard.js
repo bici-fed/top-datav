@@ -1,4 +1,4 @@
-import { CHART_DATA } from './common';
+import { TONGJI_DATA } from './common';
 export default {
   name: '数据卡片',
   icon: 'iconshujukapian',
@@ -104,7 +104,7 @@ export default {
         bkColor: '#FA6400',
       },
       dataMethod: 'point',
-      dataFormat: CHART_DATA,
+      dataFormat: TONGJI_DATA,
       dataSourceId: undefined,
       dataSourceUrl: undefined,
       pullRate: 120,
