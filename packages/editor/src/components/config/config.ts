@@ -19,6 +19,8 @@ import biciMeasure from './setting/biciMeasure';
 import timeLine from './setting/timeLine';
 import video from './setting/video';
 import dateFormat from './setting/dateFormat';
+import twoXAxis from './setting/twoXAxis';
+import lineChart from './setting/lineChart';
 
 // biciCard2=数据卡片2 华夏演示专用
 export const defaultToolsConfig = [
@@ -80,6 +82,8 @@ export const Tools = [
       gauge: gauge,
       biciMeasure: biciMeasure,
       timeLine: timeLine,
+      twoXAxis: twoXAxis,
+      lineChart: lineChart,
     },
   },
 ];

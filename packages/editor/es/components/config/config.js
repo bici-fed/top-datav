@@ -18,36 +18,70 @@ import gauge from './setting/gauge';
 import biciMeasure from './setting/biciMeasure';
 import timeLine from './setting/timeLine';
 import video from './setting/video';
-import dateFormat from './setting/dateFormat'; // biciCard2=数据卡片2 华夏演示专用
+import dateFormat from './setting/dateFormat';
+import twoXAxis from './setting/twoXAxis';
+import lineChart from './setting/lineChart'; // biciCard2=数据卡片2 华夏演示专用
 
-export var defaultToolsConfig = ['rectangle', 'circle', 'text', 'biciTimer', 'biciVarer', 'biciPilot', 'biciText', 'biciCard', 'biciCard2', 'line', 'webPage', 'dataTable', 'liveVideo', 'video', 'groupBar', 'verticalBar', 'stackBar', 'horizontalBar', 'circleAndPie', 'gauge', 'biciMeasure', 'timeLine', 'gbImage', 'productionStatus', 'pointEnergyCarousel', 'dateFormat'];
-export var Tools = [{
-  group: '通用组件',
-  children: {
-    rectangle: rectangle,
-    circle: circle,
-    text: text,
-    biciTimer: biciTimer,
-    dateFormat: dateFormat,
-    biciVarer: biciVarer,
-    biciCard: biciCard,
-    biciPilot: biciPilot,
-    line: line,
-    dataTable: dataTable,
-    webPage: webPage,
-    liveVideo: liveVideo,
-    video: video
-  }
-}, {
-  group: '图表控件',
-  children: {
-    groupBar: groupBar,
-    verticalBar: verticalBar,
-    stackBar: stackBar,
-    horizontalBar: horizontalBar,
-    circleAndPie: circleAndPie,
-    gauge: gauge,
-    biciMeasure: biciMeasure,
-    timeLine: timeLine
-  }
-}];
+export var defaultToolsConfig = [
+  'rectangle',
+  'circle',
+  'text',
+  'biciTimer',
+  'biciVarer',
+  'biciPilot',
+  'biciText',
+  'biciCard',
+  'biciCard2',
+  'line',
+  'webPage',
+  'dataTable',
+  'liveVideo',
+  'video',
+  'groupBar',
+  'verticalBar',
+  'stackBar',
+  'horizontalBar',
+  'circleAndPie',
+  'gauge',
+  'biciMeasure',
+  'timeLine',
+  'gbImage',
+  'productionStatus',
+  'pointEnergyCarousel',
+  'dateFormat',
+];
+export var Tools = [
+  {
+    group: '通用组件',
+    children: {
+      rectangle: rectangle,
+      circle: circle,
+      text: text,
+      biciTimer: biciTimer,
+      dateFormat: dateFormat,
+      biciVarer: biciVarer,
+      biciCard: biciCard,
+      biciPilot: biciPilot,
+      line: line,
+      dataTable: dataTable,
+      webPage: webPage,
+      liveVideo: liveVideo,
+      video: video,
+    },
+  },
+  {
+    group: '图表控件',
+    children: {
+      groupBar: groupBar,
+      verticalBar: verticalBar,
+      stackBar: stackBar,
+      horizontalBar: horizontalBar,
+      circleAndPie: circleAndPie,
+      gauge: gauge,
+      biciMeasure: biciMeasure,
+      timeLine: timeLine,
+      twoXAxis: twoXAxis,
+      lineChart: lineChart,
+    },
+  },
+];

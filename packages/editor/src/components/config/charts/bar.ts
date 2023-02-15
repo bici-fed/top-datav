@@ -14,19 +14,19 @@ export function getBarOption(node: any = null, resData: any = null) {
   let series = {
     type: 'bar',
     barWidth: 20,
-    encode: { x: dimensions[0], y: dimensions[1] },
+    // encode: { x: dimensions[0], y: dimensions[1] },
     datasetIndex: 0,
   };
   // 后端数据
 
   // 后端数据
-  if (node && node.dataMethod === 'restful') {
+  if (node && node.property.dataMethod === 'restful') {
     if (resData) {
       dimensions = resData['dimensions'];
       source = resData['source'];
       // 处理数据精度问题
-      handleDotData(node, source);
-      series.encode.y = dimensions[1];
+      // handleDotData(node, source);
+      // series.encode.y = dimensions[1];
     }
   } else if (node && node.property.dataMethod === 'point') {
     dimensions = ['数据点', '数据值'];
@@ -35,7 +35,7 @@ export function getBarOption(node: any = null, resData: any = null) {
       const t = [];
       t[0] = item.dataName;
       t[1] = item.value * 1 || 0;
-      series.encode.y = dimensions[1];
+      // series.encode.y = dimensions[1];
       source.push(t);
     });
   }
@@ -131,12 +131,9 @@ export function getBarOption(node: any = null, resData: any = null) {
       bottom: '6%',
       containLabel: true,
     },
-    dataset: [
-      {
-        dimensions: dimensions,
-        source: source,
-      },
-    ],
+    dataset: {
+      source: [dimensions, ...source],
+    },
     xAxis: {
       type: 'category',
       axisLabel: { interval: 0, rotate: 0, color: font.color },

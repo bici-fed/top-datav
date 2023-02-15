@@ -10,76 +10,57 @@ declare const _default: {
     name: string;
     strokeStyle: string;
     elementRendered: boolean;
+    hideRotateCP: boolean;
     hideInput: boolean;
     data: {
       echarts: {
         option: {
-          color: any;
-          backgroundColor: any;
+          legend: {};
           tooltip: {
             trigger: string;
-          };
-          title: {
-            text: string;
-            left: string;
-            textStyle: any;
-          };
-          legend: {
-            top: string;
-            right: string;
-            itemWidth: number;
-            itemHeight: number;
-            textStyle: {
-              color: any;
-              fontSize: number;
-            };
-          };
-          grid: {
-            top: string;
-            left: string;
-            right: string;
-            bottom: string;
-            containLabel: boolean;
+            showContent: boolean;
           };
           dataset: {
             source: (string | number)[][];
           };
           xAxis: {
             type: string;
-            axisLabel: {
-              interval: number;
-              rotate: number;
-              color: any;
-            };
-            axisLine: {
-              show: boolean;
-            };
-            axisTick: {
-              show: boolean;
-            };
           };
           yAxis: {
+            type: string;
+            name: string;
+            position: string;
+            alignTicks: boolean;
             axisLine: {
-              show: boolean;
-            };
-            axisLabel: {
-              color: any;
-            };
-            axisTick: {
-              show: boolean;
-            };
-            splitLine: {
               show: boolean;
               lineStyle: {
                 color: string;
               };
             };
+            axisLabel: {
+              formatter: string;
+            };
+          }[];
+          grid: {
+            top: string;
+            bottom: string;
+            right: number;
           };
           series: {
             type: string;
-            barWidth: number;
-            datasetIndex: number;
-          };
+            smooth: boolean;
+            seriesLayoutBy: string;
+            yAxisIndex: number;
+            lineStyle: {
+              color: string;
+            };
+            itemStyle: {
+              color: string;
+            };
+            emphasis: {
+              focus: string;
+            };
+          }[];
         };
       };
     };
@@ -87,16 +68,11 @@ declare const _default: {
       echartsType: string;
       dataMethod: string;
       dataFormat: string;
-      dataUrl: any;
-      dataSourceId: any;
-      dataSourceUrl: any;
+      dataUrl: string;
+      dataSourceId: string;
+      dataSourceUrl: string;
       pullRate: number;
       dataDot: number;
-      dataPointSelectedRows: any[];
-      dataPointParam: {
-        qtDataList: any[];
-        subscribe: boolean;
-      };
       props: {
         iframe: string;
       };

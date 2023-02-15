@@ -27,6 +27,8 @@ import { getGroupBarOption } from '../config/charts/groupbar';
 import { getStackBarOption } from '../config/charts/stackbar';
 import { getHorizontalBarOption } from '../config/charts/horizontalbar';
 import { getPieOptionByChangeProp } from '../config/charts/pie';
+import { getLineChartOption } from '../config/charts/lineChart';
+import { getTwoXAxisLineBarOption } from '../config/charts/twoXAxisLineBar';
 export let canvas;
 let x, y;
 export class PreviewProps {
@@ -458,6 +460,12 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             break;
           case 'circleAndPie':
             node.data.echarts.option = getPieOptionByChangeProp(node, res);
+            break;
+          case 'twoXAxis':
+            node.data.echarts.option = getTwoXAxisLineBarOption(node, res);
+            break;
+          case 'lineChart':
+            node.data.echarts.option = getLineChartOption(node, res);
             break;
           case 'timeLine':
             break;

@@ -1,140 +1,163 @@
 export declare function getPieOption(): {
-    color: string[];
-    title: {
-        text: string;
-        textStyle: {
-            fontWeight: string;
-            fontSize: number;
-        };
+  color: string[];
+  title: {
+    text: string;
+    textStyle: {
+      fontWeight: string;
+      fontSize: number;
     };
-    grid: {
-        top: string;
-        left: string;
-        right: string;
-        bottom: string;
-        containLabel: boolean;
+  };
+  grid: {
+    top: string;
+    left: string;
+    right: string;
+    bottom: string;
+    containLabel: boolean;
+  };
+  legend: {
+    orient: string;
+    bottom: string;
+  };
+  dataset: {
+    dimensions: string[];
+    source: (string | number)[][];
+  }[];
+  series: {
+    type: string;
+    radius: string[];
+    center: string[];
+    selectedOffset: number;
+    label: {
+      edgeDistance: string;
+      alignTo: string;
+      formatter: (param: any) => string;
     };
-    legend: {
-        orient: string;
-        bottom: string;
-    };
-    dataset: {
-        dimensions: string[];
-        source: (string | number)[][];
-    }[];
-    series: {
-        type: string;
-        radius: string[];
-        center: string[];
-        selectedOffset: number;
-        label: {
-            edgeDistance: string;
-            alignTo: string;
-            formatter: (param: any) => string;
-        };
-    }[];
-    media: ({
+  }[];
+  media: (
+    | {
         query: {
-            minAspectRatio: number;
+          minAspectRatio: number;
         };
         option: {
-            series: {
-                center: string[];
-            }[];
+          series: {
+            center: string[];
+          }[];
         };
-    } | {
+      }
+    | {
         option: {
-            series: {
-                center: string[];
-            }[];
+          series: {
+            center: string[];
+          }[];
         };
         query?: undefined;
-    })[];
+      }
+  )[];
 };
-export declare function getPieOptionByChangeProp(node: any, resData: any): {
-    color: any;
-    backgroundColor: any;
-    tooltip: {
-        trigger: string;
-    };
-    title: ({
-        show: any;
+export declare function getPieOptionByChangeProp(
+  node: any,
+  resData: any,
+): {
+  color: any;
+  backgroundColor: any;
+  tooltip: {
+    trigger: string;
+  };
+  title:
+    | {
         text: string;
-        top: string;
-        left: string;
+        x: string;
+        y: string;
         textStyle: {
-            rich: {
+          fontSize: number;
+          color: string;
+        };
+      }
+    | (
+        | {
+            show: any;
+            text: string;
+            top: string;
+            left: string;
+            textStyle: {
+              rich: {
                 name: {
-                    fontSize: number;
-                    fontWeight: string;
-                    color: any;
-                    padding: number[];
+                  fontSize: number;
+                  fontWeight: string;
+                  color: any;
+                  padding: number[];
                 };
                 val: {
-                    fontSize: number;
-                    fontWeight: string;
-                    color: any;
+                  fontSize: number;
+                  fontWeight: string;
+                  color: any;
                 };
+              };
             };
-        };
-    } | {
-        text: string;
-        left: any;
-        textStyle: any;
-        show?: undefined;
-        top?: undefined;
-    })[];
-    grid: {
-        top: string;
-        left: string;
-        right: string;
-        bottom: string;
-        containLabel: boolean;
+          }
+        | {
+            text: string;
+            left: any;
+            textStyle: any;
+            show?: undefined;
+            top?: undefined;
+          }
+      )[];
+  grid: {
+    top: string;
+    left: string;
+    right: string;
+    bottom: string;
+    containLabel: boolean;
+  };
+  legend: {
+    orient: string;
+    bottom: string;
+    show: any;
+    textStyle: {
+      color: any;
+      fontSize: number;
     };
-    legend: {
-        orient: string;
-        bottom: string;
-        textStyle: {
-            color: any;
-            fontSize: number;
-        };
+  };
+  dataset: {
+    dimensions: string[];
+    source: (string | number)[][];
+  }[];
+  series: {
+    type: string;
+    radius: any;
+    center: string[];
+    selectedOffset: number;
+    label: {
+      edgeDistance: string;
+      alignTo: string;
+      color: any;
+      formatter: (param: any) => string;
     };
-    dataset: {
-        dimensions: string[];
-        source: (string | number)[][];
-    }[];
-    series: {
-        type: string;
-        radius: any;
-        center: string[];
-        selectedOffset: number;
-        label: {
-            edgeDistance: string;
-            alignTo: string;
-            color: any;
-            formatter: (param: any) => string;
-        };
-        labelLine: {
-            length: number;
-            length2: number;
-            minTurnAngle: number;
-        };
-    }[];
-    media: ({
+    labelLine: {
+      length: number;
+      length2: number;
+      minTurnAngle: number;
+    };
+  }[];
+  media: (
+    | {
         query: {
-            minAspectRatio: number;
+          minAspectRatio: number;
         };
         option: {
-            series: {
-                center: string[];
-            }[];
+          series: {
+            center: string[];
+          }[];
         };
-    } | {
+      }
+    | {
         option: {
-            series: {
-                center: string[];
-            }[];
+          series: {
+            center: string[];
+          }[];
         };
         query?: undefined;
-    })[];
+      }
+  )[];
 };

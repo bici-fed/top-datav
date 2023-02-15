@@ -16,14 +16,15 @@ import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
 // const token = '1lLPYvQyZ1M9Uoj3rf2YnS';
-const token = '7Lgm6qoSSZDG8CvCXg0kDc';
+const token = '1moTqse0i0X1XamA08j3cc';
+window.token = '1moTqse0i0X1XamA08j3cc';
 
 // const testId = '5143460d4cd54d22a4acd479fa8d34ef';
-const testId = 'd8395a3f2890469eaf815f388f67c5bc';
+const testId = '76714d0159974fc385a1e00aa007c2a2';
 
 // const apiURL = 'http://192.168.110.172:50002/api';
 // const apiURL = 'https://zhsd-test.bicisims.com/api';
-const apiURL = 'http://192.168.110.172:50002/api';
+const apiURL = 'http://cqgys-test.bicisims.com/api';
 
 const websocketURL = 'ws://cqgys-test.bicisims.com/ws?token=';
 // const websocketURL = 'wss://zhsd-test.bicisims.com/api/websocket/service/websocket/rtData/';
@@ -173,6 +174,8 @@ const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {
     'gauge',
     'biciMeasure',
     'timeLine',
+    'twoXAxis',
+    'lineChart',
   ];
 
   const websocketConf = {

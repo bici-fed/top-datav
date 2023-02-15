@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "start": "dumi dev",
+    "less": "lessc --js --modify-var='ant-prefix=antdv4' node_modules/antd/dist/antd.less ./antd.css",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",

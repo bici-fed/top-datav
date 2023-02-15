@@ -1,15 +1,15 @@
-import { TONGJI_DATA, CHART_DATA, PEIDING_DATA, TICKET_LIST_DATA, DATA_BASE_API } from './common';
-import { getPieOption } from '../charts/pie';
+import { getTwoXAxisLineBarOption } from '../charts/twoXAxisLineBar';
+import { CHART_DATA, DATA_BASE_API } from './common';
 import { lineRangedefaultColor } from '../../data/defines';
 
 export default {
-  name: '饼状图',
-  icon: 'iconbingzhuangtu1',
+  name: '双Y轴bar',
+  icon: 'iconfenzuzhuzhuangtu',
   data: {
     text: '',
     rect: {
-      width: 250,
-      height: 180,
+      width: 350,
+      height: 200,
     },
     name: 'echarts',
     strokeStyle: 'rgba(0,0,0,0)',
@@ -18,23 +18,18 @@ export default {
     hideInput: true,
     data: {
       echarts: {
-        option: getPieOption(),
+        option: getTwoXAxisLineBarOption(),
       },
     },
     property: {
-      echartsType: 'circleAndPie',
+      echartsType: 'twoXAxis',
       dataMethod: 'restful',
       dataFormat: CHART_DATA,
-      dataUrl: DATA_BASE_API + '/creditBalance/productReceiveMonthQtChart',
-      dataSourceId: undefined,
-      dataSourceUrl: undefined,
+      dataUrl: DATA_BASE_API + '/creditBalance/storageGoodsReportQtMonth',
+      dataSourceId: '',
+      dataSourceUrl: '',
       pullRate: 120,
       dataDot: 2,
-      dataPointSelectedRows: [],
-      dataPointParam: {
-        qtDataList: [],
-        subscribe: true,
-      },
       props: {
         iframe: 'abcd',
       },
@@ -43,9 +38,8 @@ export default {
           {
             group: '标题字符',
             formItems: [
-              { name: ['title'], value: '饼/环状图' },
+              { name: ['title'], value: '分组柱状图' },
               { name: ['titleShow'], value: true },
-              { name: ['legendShow'], value: true },
               { name: ['titleFontFamily'], value: '"Microsoft YaHei"' },
               { name: ['titleFontColor'], value: '#333333' },
               { name: ['titleFontSize'], value: 14 },
@@ -64,21 +58,17 @@ export default {
             ],
           },
           {
-            group: '图表设置',
+            group: '填充',
             formItems: [
-              { name: ['chartShape'], value: 'pie' },
-              { name: ['chartBkColor'], value: '#ccc' },
-              { name: ['chartBkColorChecked'], value: false },
               { name: ['lineGraphRange'], value: lineRangedefaultColor },
+              { name: ['chartBkColor'], value: '#999999' },
+              { name: ['chartBkColorShow'], value: false },
+              { name: ['chartRefLineShow'], value: true },
+              { name: ['chartRefLineColor'], value: '#ccc' },
             ],
           },
         ],
-        data: [
-          {
-            group: '绑定数据',
-            forItems: [{ name: ['dataMethod'], value: 'restful' }],
-          },
-        ],
+        data: [],
       },
     },
   },
