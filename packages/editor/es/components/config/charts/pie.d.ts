@@ -70,7 +70,7 @@ export declare function getPieOptionByChangeProp(
         y: string;
         textStyle: {
           fontSize: number;
-          color: string;
+          color: any;
         };
       }
     | (

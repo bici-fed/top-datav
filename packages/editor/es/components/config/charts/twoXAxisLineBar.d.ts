@@ -53,10 +53,15 @@ export declare function getTwoXAxisLineBarOption(
             color: string;
           };
         };
+        splitLine: {
+          show: boolean;
+          lineStyle: {
+            color: string;
+          };
+        };
         axisLabel: {
           formatter: string;
         };
-        splitLine?: undefined;
       }
   )[];
   grid: {

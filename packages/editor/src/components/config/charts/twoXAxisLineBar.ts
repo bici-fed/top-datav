@@ -91,6 +91,12 @@ export function getTwoXAxisLineBarOption(node: any = null, resData: any = null) 
             color: colors[0],
           },
         },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: '#999',
+          },
+        },
         axisLabel: {
           formatter: '{value}',
         },

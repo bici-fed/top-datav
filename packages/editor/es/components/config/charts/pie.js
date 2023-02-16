@@ -219,7 +219,7 @@ export function getPieOptionByChangeProp(node, resData) {
     y: 'center',
     textStyle: {
       fontSize: 12,
-      color: '#eee',
+      color: font.color,
     },
   };
   var pieTitle = [
@@ -313,9 +313,9 @@ export function getPieOptionByChangeProp(node, resData) {
           },
         },
         labelLine: {
-          length: 5,
-          length2: 5,
-          minTurnAngle: 60,
+          length: 15,
+          length2: 15,
+          minTurnAngle: 120,
         },
       },
     ],

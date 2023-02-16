@@ -160,7 +160,7 @@ export function getPieOptionByChangeProp(node: any, resData: any) {
     y: 'center',
     textStyle: {
       fontSize: 12,
-      color: '#eee',
+      color: font.color,
     },
   };
 
@@ -244,9 +244,9 @@ export function getPieOptionByChangeProp(node: any, resData: any) {
           },
         },
         labelLine: {
-          length: 5,
-          length2: 5,
-          minTurnAngle: 60,
+          length: 15,
+          length2: 15,
+          minTurnAngle: 120,
         },
       },
     ],
