@@ -244,9 +244,9 @@ export function getPieOptionByChangeProp(node: any, resData: any) {
           },
         },
         labelLine: {
-          length: 10,
-          length2: 10,
-          minTurnAngle: 120,
+          length: 5,
+          length2: 5,
+          minTurnAngle: 60,
         },
       },
     ],

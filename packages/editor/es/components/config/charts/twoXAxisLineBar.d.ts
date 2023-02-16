@@ -2,7 +2,12 @@ export declare function getTwoXAxisLineBarOption(
   node?: any,
   resData?: any,
 ): {
-  legend: {};
+  legend: {
+    textStyle: {
+      color: string;
+      fontSize: number;
+    };
+  };
   tooltip: {
     trigger: string;
     showContent: boolean;
@@ -20,6 +25,12 @@ export declare function getTwoXAxisLineBarOption(
         position: string;
         alignTicks: boolean;
         axisLine: {
+          show: boolean;
+          lineStyle: {
+            color: string;
+          };
+        };
+        splitLine: {
           show: boolean;
           lineStyle: {
             color: string;
@@ -45,6 +56,7 @@ export declare function getTwoXAxisLineBarOption(
         axisLabel: {
           formatter: string;
         };
+        splitLine?: undefined;
       }
   )[];
   grid: {

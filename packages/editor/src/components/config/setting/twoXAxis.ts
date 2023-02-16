@@ -41,7 +41,7 @@ export default {
               { name: ['title'], value: '分组柱状图' },
               { name: ['titleShow'], value: true },
               { name: ['titleFontFamily'], value: '"Microsoft YaHei"' },
-              { name: ['titleFontColor'], value: '#333333' },
+              { name: ['titleFontColor'], value: '#fff' },
               { name: ['titleFontSize'], value: 14 },
               { name: ['titleFontBold'], value: 800 },
               { name: ['titleFontItalic'], value: 'normal' },

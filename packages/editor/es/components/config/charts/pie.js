@@ -55,6 +55,7 @@ export function getPieOption() {
       },
     },
     grid: {
+      //图表的位置
       top: '10%',
       left: '2%',
       right: '2%',
@@ -275,6 +276,7 @@ export function getPieOptionByChangeProp(node, resData) {
     },
     title: node.property.props.chartShape == 'circle' ? circleTitleOption : pieTitle,
     grid: {
+      //图表的位置
       top: '10%',
       left: '2%',
       right: '2%',
@@ -311,9 +313,9 @@ export function getPieOptionByChangeProp(node, resData) {
           },
         },
         labelLine: {
-          length: 10,
-          length2: 10,
-          minTurnAngle: 120,
+          length: 5,
+          length2: 5,
+          minTurnAngle: 60,
         },
       },
     ],

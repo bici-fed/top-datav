@@ -2420,6 +2420,7 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
                     property?.echartsType == 'stackBar' ||
                     property?.echartsType == 'horizontalBar' ||
                     property?.echartsType == 'verticalBar' ||
+                    property?.echartsType == 'twoXAxis' ||
                     property?.echartsType == 'groupBar') &&
                     dynamicForm}
                 </Collapse>

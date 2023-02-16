@@ -61,8 +61,48 @@ export function getTwoXAxisLineBarOption() {
     source = resData === null || resData === void 0 ? void 0 : resData.source;
   }
 
+  var font = {}; // 组件属性改变
+
+  if (node) {
+    (node.property.props.titleFontStyle || []).forEach(function (item) {
+      if (item.name == 'bold') {
+        if (item.checked) {
+          font.fontWeight = item.value;
+        } else {
+          font.fontWeight = 'normal';
+        }
+      }
+
+      if (item.name == 'italic') {
+        if (item.checked) {
+          font.fontStyle = item.value;
+        } else {
+          font.fontStyle = 'normal';
+        }
+      }
+    });
+
+    if (node.property.props.titleFontColor) {
+      font.color = node.property.props.titleFontColor;
+    }
+
+    if (node.property.props.titleFontFamily) {
+      font.fontFamily = node.property.props.titleFontFamily;
+    }
+
+    if (node.property.props.titleFontSize) {
+      font.fontSize = node.property.props.titleFontSize;
+    }
+  }
+
+  console.log('font===', font);
   var option = {
-    legend: {},
+    legend: {
+      textStyle: {
+        color: '#e1e1e1',
+        fontSize: 14,
+      },
+    },
     tooltip: {
       trigger: 'axis',
       showContent: true,
@@ -83,6 +123,12 @@ export function getTwoXAxisLineBarOption() {
           show: true,
           lineStyle: {
             color: colors[1],
+          },
+        },
+        splitLine: {
+          show: false,
+          lineStyle: {
+            color: 'red',
           },
         },
         axisLabel: {

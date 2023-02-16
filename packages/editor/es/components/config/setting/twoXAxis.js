@@ -51,7 +51,7 @@ export default {
               },
               {
                 name: ['titleFontColor'],
-                value: '#333333',
+                value: '#fff',
               },
               {
                 name: ['titleFontSize'],

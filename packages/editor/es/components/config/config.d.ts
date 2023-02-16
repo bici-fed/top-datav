@@ -1700,7 +1700,12 @@ export declare const Tools: (
             data: {
               echarts: {
                 option: {
-                  legend: {};
+                  legend: {
+                    textStyle: {
+                      color: string;
+                      fontSize: number;
+                    };
+                  };
                   tooltip: {
                     trigger: string;
                     showContent: boolean;
@@ -1718,6 +1723,12 @@ export declare const Tools: (
                         position: string;
                         alignTicks: boolean;
                         axisLine: {
+                          show: boolean;
+                          lineStyle: {
+                            color: string;
+                          };
+                        };
+                        splitLine: {
                           show: boolean;
                           lineStyle: {
                             color: string;
@@ -1743,6 +1754,7 @@ export declare const Tools: (
                         axisLabel: {
                           formatter: string;
                         };
+                        splitLine?: undefined;
                       }
                   )[];
                   grid: {

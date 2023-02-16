@@ -4748,6 +4748,8 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                 (property === null || property === void 0 ? void 0 : property.echartsType) ==
                   'verticalBar' ||
                 (property === null || property === void 0 ? void 0 : property.echartsType) ==
+                  'twoXAxis' ||
+                (property === null || property === void 0 ? void 0 : property.echartsType) ==
                   'groupBar') &&
                 dynamicForm,
             ),

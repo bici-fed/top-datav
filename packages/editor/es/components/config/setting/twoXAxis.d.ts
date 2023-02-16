@@ -15,7 +15,12 @@ declare const _default: {
     data: {
       echarts: {
         option: {
-          legend: {};
+          legend: {
+            textStyle: {
+              color: string;
+              fontSize: number;
+            };
+          };
           tooltip: {
             trigger: string;
             showContent: boolean;
@@ -33,6 +38,12 @@ declare const _default: {
                 position: string;
                 alignTicks: boolean;
                 axisLine: {
+                  show: boolean;
+                  lineStyle: {
+                    color: string;
+                  };
+                };
+                splitLine: {
                   show: boolean;
                   lineStyle: {
                     color: string;
@@ -58,6 +69,7 @@ declare const _default: {
                 axisLabel: {
                   formatter: string;
                 };
+                splitLine?: undefined;
               }
           )[];
           grid: {
