@@ -589,9 +589,6 @@ export declare const Tools: (
                     textStyle: any;
                   };
                   legend: {
-                    orient: string;
-                    right: string;
-                    top: string;
                     itemWidth: number;
                     itemHeight: number;
                     textStyle: {
