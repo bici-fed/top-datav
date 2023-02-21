@@ -5,9 +5,7 @@ import { Node } from '@top-datav/core';
 
 // 里面的字符可以根据自己的需要进行调整
 moment.locale('zh-cn', {
-  months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split(
-    '_'
-  ),
+  months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
   monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
   weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
   weekdaysShort: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
@@ -17,7 +15,7 @@ moment.locale('zh-cn', {
     LTS: 'HH:mm:ss',
     L: 'YYYY-MM-DD',
     LL: 'YYYY/MM/DD',
-    LLL: 'YYYY年MM月DD日Ah点mm分',
+    LLL: 'YYYY年MM月DD日',
     LLLL: 'YYYY年MM月DD日ddddAh点mm分',
     l: 'YY/MM/DD',
     ll: 'MM/DD',
@@ -87,8 +85,7 @@ moment.locale('zh-cn', {
 });
 
 export function dynamicWebSocketData() {
-  canvas.socket.socket.onerror = () => {
-  };
+  canvas.socket.socket.onerror = () => {};
   canvas.socket.socket.onopen = () => {
     if (canvas.data && canvas.data.pens.length > 0) {
       // 有数据，去遍历有websocket的组件，并订阅
@@ -100,7 +97,7 @@ export function dynamicWebSocketData() {
                 ...node.property.dataPointParam,
                 tid: node.TID,
                 id: node.id,
-              })
+              }),
             );
           } else if (
             node.data != '' &&
@@ -112,7 +109,7 @@ export function dynamicWebSocketData() {
                 ...node.data.property.dataPointParam,
                 tid: node.TID,
                 id: node.id,
-              })
+              }),
             );
           }
         });

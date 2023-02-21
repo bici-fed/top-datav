@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment';
 
 // 里面的字符可以根据自己的需要进行调整
 moment.locale('zh-cn', {
@@ -12,7 +12,7 @@ moment.locale('zh-cn', {
     LTS: 'HH:mm:ss',
     L: 'YYYY-MM-DD',
     LL: 'YYYY/MM/DD',
-    LLL: 'YYYY年MM月DD日Ah点mm分',
+    LLL: 'YYYY年MM月DD日',
     LLLL: 'YYYY年MM月DD日ddddAh点mm分',
     l: 'YY/MM/DD',
     ll: 'MM/DD',
@@ -24,8 +24,7 @@ moment.locale('zh-cn', {
     if (hour === 12) {
       hour = 0;
     }
-    if (meridiem === '凌晨' || meridiem === '早上' ||
-      meridiem === '上午') {
+    if (meridiem === '凌晨' || meridiem === '早上' || meridiem === '上午') {
       return hour;
     } else if (meridiem === '下午' || meridiem === '晚上') {
       return hour + 12;
@@ -56,7 +55,7 @@ moment.locale('zh-cn', {
     nextWeek: '[下]ddddLT',
     lastDay: '[昨天]LT',
     lastWeek: '[上]ddddLT',
-    sameElse: 'L'
+    sameElse: 'L',
   },
   dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
   relativeTime: {
@@ -73,39 +72,39 @@ moment.locale('zh-cn', {
     M: '1个月',
     MM: '%d个月',
     y: '1年',
-    yy: '%d年'
+    yy: '%d年',
   },
   week: {
     // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
     dow: 1, // Monday is the first day of the week.
-    doy: 4  // The week that contains Jan 4th is the first week of the year.
-  }
-})
+    doy: 4, // The week that contains Jan 4th is the first week of the year.
+  },
+});
 
-export function formatTimer(node,canvas) {
-  let y=''
-  let h=''
-  if(node.property.date.show){
-    y=moment().format(node.property.date.format)
+export function formatTimer(node, canvas) {
+  let y = '';
+  let h = '';
+  if (node.property.date.show) {
+    y = moment().format(node.property.date.format);
   }
-  if(node.property.time.show){
-    h=moment().format(node.property.time.format)
+  if (node.property.time.show) {
+    h = moment().format(node.property.time.format);
   }
-  node.text=y+' '+h
-  if(node.text==' '){
-    node.text=moment().format("LLLL")
+  node.text = y + ' ' + h;
+  if (node.text == ' ') {
+    node.text = moment().format('LLLL');
   }
-  canvas.updateProps(false)
+  canvas.updateProps(false);
 }
 
 /**
  * 返回节点的真实类型
  * @param node
  */
-export function getNodeType(node:any):string {
-  if(node.name=="echarts"){
-    return node.property.echartsType
-  }else{
-    return node.name
+export function getNodeType(node: any): string {
+  if (node.name == 'echarts') {
+    return node.property.echartsType;
+  } else {
+    return node.name;
   }
 }

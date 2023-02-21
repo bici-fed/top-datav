@@ -1,8 +1,45 @@
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly &&
+      (symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      })),
+      keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2
+      ? ownKeys(Object(source), !0).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        })
+      : Object.getOwnPropertyDescriptors
+      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
+      : ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+  }
+  return target;
+}
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
 
 // @ts-nocheck
 import { canvas } from '../Layout';
@@ -19,12 +56,12 @@ moment.locale('zh-cn', {
     LTS: 'HH:mm:ss',
     L: 'YYYY-MM-DD',
     LL: 'YYYY/MM/DD',
-    LLL: 'YYYY年MM月DD日Ah点mm分',
+    LLL: 'YYYY年MM月DD日',
     LLLL: 'YYYY年MM月DD日ddddAh点mm分',
     l: 'YY/MM/DD',
     ll: 'MM/DD',
     lll: 'YYYY年M月D日 HH:mm',
-    llll: 'YYYY年M月D日dddd HH:mm'
+    llll: 'YYYY年M月D日dddd HH:mm',
   },
   meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
   meridiemHour: function meridiemHour(hour, meridiem) {
@@ -64,7 +101,7 @@ moment.locale('zh-cn', {
     nextWeek: '[下]ddddLT',
     lastDay: '[昨天]LT',
     lastWeek: '[上]ddddLT',
-    sameElse: 'L'
+    sameElse: 'L',
   },
   dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
   relativeTime: {
@@ -81,14 +118,13 @@ moment.locale('zh-cn', {
     M: '1个月',
     MM: '%d个月',
     y: '1年',
-    yy: '%d年'
+    yy: '%d年',
   },
   week: {
     // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
     dow: 1,
-    doy: 4 // The week that contains Jan 4th is the first week of the year.
-
-  }
+    doy: 4, // The week that contains Jan 4th is the first week of the year.
+  },
 });
 export function dynamicWebSocketData() {
   canvas.socket.socket.onerror = function () {};
@@ -98,18 +134,61 @@ export function dynamicWebSocketData() {
       // 有数据，去遍历有websocket的组件，并订阅
       if (canvas.socket != undefined) {
         (canvas.data.pens || []).map(function (node) {
-          var _node$property, _node$property$dataPo, _node$property$dataPo2, _node$data$property, _node$data$property$d, _node$data$property$d2;
+          var _node$property,
+            _node$property$dataPo,
+            _node$property$dataPo2,
+            _node$data$property,
+            _node$data$property$d,
+            _node$data$property$d2;
 
-          if (((_node$property = node.property) === null || _node$property === void 0 ? void 0 : (_node$property$dataPo = _node$property.dataPointParam) === null || _node$property$dataPo === void 0 ? void 0 : (_node$property$dataPo2 = _node$property$dataPo.qtDataList) === null || _node$property$dataPo2 === void 0 ? void 0 : _node$property$dataPo2.length) > 0) {
-            canvas.socket.socket.send(JSON.stringify(_objectSpread(_objectSpread({}, node.property.dataPointParam), {}, {
-              tid: node.TID,
-              id: node.id
-            })));
-          } else if (node.data != '' && node.data != undefined && ((_node$data$property = node.data.property) === null || _node$data$property === void 0 ? void 0 : (_node$data$property$d = _node$data$property.dataPointParam) === null || _node$data$property$d === void 0 ? void 0 : (_node$data$property$d2 = _node$data$property$d.qtDataList) === null || _node$data$property$d2 === void 0 ? void 0 : _node$data$property$d2.length) > 0) {
-            canvas.socket.socket.send(JSON.stringify(_objectSpread(_objectSpread({}, node.data.property.dataPointParam), {}, {
-              tid: node.TID,
-              id: node.id
-            })));
+          if (
+            ((_node$property = node.property) === null || _node$property === void 0
+              ? void 0
+              : (_node$property$dataPo = _node$property.dataPointParam) === null ||
+                _node$property$dataPo === void 0
+              ? void 0
+              : (_node$property$dataPo2 = _node$property$dataPo.qtDataList) === null ||
+                _node$property$dataPo2 === void 0
+              ? void 0
+              : _node$property$dataPo2.length) > 0
+          ) {
+            canvas.socket.socket.send(
+              JSON.stringify(
+                _objectSpread(
+                  _objectSpread({}, node.property.dataPointParam),
+                  {},
+                  {
+                    tid: node.TID,
+                    id: node.id,
+                  },
+                ),
+              ),
+            );
+          } else if (
+            node.data != '' &&
+            node.data != undefined &&
+            ((_node$data$property = node.data.property) === null || _node$data$property === void 0
+              ? void 0
+              : (_node$data$property$d = _node$data$property.dataPointParam) === null ||
+                _node$data$property$d === void 0
+              ? void 0
+              : (_node$data$property$d2 = _node$data$property$d.qtDataList) === null ||
+                _node$data$property$d2 === void 0
+              ? void 0
+              : _node$data$property$d2.length) > 0
+          ) {
+            canvas.socket.socket.send(
+              JSON.stringify(
+                _objectSpread(
+                  _objectSpread({}, node.data.property.dataPointParam),
+                  {},
+                  {
+                    tid: node.TID,
+                    id: node.id,
+                  },
+                ),
+              ),
+            );
           }
         });
       }
@@ -125,7 +204,17 @@ export function dynamicWebSocketData() {
         (canvas.data.pens || []).map(function (node) {
           var _node$property2, _node$property2$dataP, _node$property2$dataP2;
 
-          if (((_node$property2 = node.property) === null || _node$property2 === void 0 ? void 0 : (_node$property2$dataP = _node$property2.dataPointParam) === null || _node$property2$dataP === void 0 ? void 0 : (_node$property2$dataP2 = _node$property2$dataP.qtDataList) === null || _node$property2$dataP2 === void 0 ? void 0 : _node$property2$dataP2.length) > 0) {
+          if (
+            ((_node$property2 = node.property) === null || _node$property2 === void 0
+              ? void 0
+              : (_node$property2$dataP = _node$property2.dataPointParam) === null ||
+                _node$property2$dataP === void 0
+              ? void 0
+              : (_node$property2$dataP2 = _node$property2$dataP.qtDataList) === null ||
+                _node$property2$dataP2 === void 0
+              ? void 0
+              : _node$property2$dataP2.length) > 0
+          ) {
             var r = JSON.parse(data.data);
 
             if (node.name == 'biciVarer') {

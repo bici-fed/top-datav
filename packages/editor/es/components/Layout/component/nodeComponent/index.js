@@ -1772,6 +1772,13 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     /*#__PURE__*/ React.createElement(
                       Option,
                       {
+                        value: 'LLL',
+                      },
+                      'YYYY\u5E74MM\u6708DD\u65E5',
+                    ),
+                    /*#__PURE__*/ React.createElement(
+                      Option,
+                      {
                         value: 'LL',
                       },
                       'YYYY/MM/DD',

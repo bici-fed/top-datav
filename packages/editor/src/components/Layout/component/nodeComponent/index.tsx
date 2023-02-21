@@ -898,6 +898,7 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
                       allowClear={false}
                     >
                       <Option value="L">YYYY-MM-DD</Option>
+                      <Option value="LLL">YYYY年MM月DD日</Option>
                       <Option value="LL">YYYY/MM/DD</Option>
                       <Option value="l">YY/MM/DD</Option>
                     </Select>

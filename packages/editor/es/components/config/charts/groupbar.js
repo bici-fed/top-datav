@@ -180,6 +180,7 @@ export function getGroupBarOption() {
       },
     },
     grid: {
+      //图表的位置
       top: '20%',
       left: '2%',
       right: '2%',

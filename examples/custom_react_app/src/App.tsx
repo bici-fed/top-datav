@@ -16,8 +16,8 @@ import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
 // const token = '1lLPYvQyZ1M9Uoj3rf2YnS';
-const token = '1moTqse0i0X1XamA08j3cc';
-window.token = '1moTqse0i0X1XamA08j3cc';
+const token = '68Dpg7Kq0ANMU8Hnli11UA';
+window.token = '68Dpg7Kq0ANMU8Hnli11UA';
 
 // const testId = '5143460d4cd54d22a4acd479fa8d34ef';
 const testId = '76714d0159974fc385a1e00aa007c2a2';
