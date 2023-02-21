@@ -1765,30 +1765,30 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     /*#__PURE__*/ React.createElement(
                       Option,
                       {
-                        value: 'L',
+                        value: 'YYYY-MM-DD',
                       },
                       'YYYY-MM-DD',
                     ),
                     /*#__PURE__*/ React.createElement(
                       Option,
                       {
-                        value: 'LLL',
+                        value: 'YYYY\u5E74MM\u6708DD\u65E5',
                       },
                       'YYYY\u5E74MM\u6708DD\u65E5',
                     ),
                     /*#__PURE__*/ React.createElement(
                       Option,
                       {
-                        value: 'LL',
+                        value: 'YY/MM/DD',
                       },
-                      'YYYY/MM/DD',
+                      'YY/MM/DD',
                     ),
                     /*#__PURE__*/ React.createElement(
                       Option,
                       {
-                        value: 'l',
+                        value: 'YYYY/MM/DD',
                       },
-                      'YY/MM/DD',
+                      'YYYY/MM/DD',
                     ),
                   ),
                 ),
@@ -1842,16 +1842,16 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     /*#__PURE__*/ React.createElement(
                       Option,
                       {
-                        value: 'LTS',
+                        value: 'hh\uFF1Amm\uFF1Ass',
                       },
                       'hh\uFF1Amm\uFF1Ass',
                     ),
                     /*#__PURE__*/ React.createElement(
                       Option,
                       {
-                        value: 'LT',
+                        value: 'HH:mm',
                       },
-                      'hh:mm(24h)',
+                      'HH:mm',
                     ),
                   ),
                 ),

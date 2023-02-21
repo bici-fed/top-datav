@@ -897,10 +897,10 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
                       onChange={onSetBiciTimerDataFmt}
                       allowClear={false}
                     >
-                      <Option value="L">YYYY-MM-DD</Option>
-                      <Option value="LLL">YYYY年MM月DD日</Option>
-                      <Option value="LL">YYYY/MM/DD</Option>
-                      <Option value="l">YY/MM/DD</Option>
+                      <Option value="YYYY-MM-DD">YYYY-MM-DD</Option>
+                      <Option value="YYYY年MM月DD日">YYYY年MM月DD日</Option>
+                      <Option value="YY/MM/DD">YY/MM/DD</Option>
+                      <Option value="YYYY/MM/DD">YYYY/MM/DD</Option>
                     </Select>
                   </Form.Item>
                 </Col>
@@ -927,8 +927,8 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
                       onChange={onSetBiciTimerDataFmt}
                       allowClear={false}
                     >
-                      <Option value="LTS">hh：mm：ss</Option>
-                      <Option value="LT">hh:mm(24h)</Option>
+                      <Option value="hh：mm：ss">hh：mm：ss</Option>
+                      <Option value="HH:mm">HH:mm</Option>
                     </Select>
                   </Form.Item>
                 </Col>
