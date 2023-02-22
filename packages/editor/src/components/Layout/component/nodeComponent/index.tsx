@@ -927,7 +927,7 @@ const NodeCanvasProps: React.FC<ICanvasProps> = React.forwardRef(
                       onChange={onSetBiciTimerDataFmt}
                       allowClear={false}
                     >
-                      <Option value="hh：mm：ss">hh：mm：ss</Option>
+                      <Option value="HH:mm:ss">HH:mm:ss</Option>
                       <Option value="HH:mm">HH:mm</Option>
                     </Select>
                   </Form.Item>
