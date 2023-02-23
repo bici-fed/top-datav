@@ -555,6 +555,9 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
         canvas.dispatch('socketDataSuccess', data);
         const nodes = [];
         websocketData = JSON.parse(data.data);
+        if (websocket_data_list && websocket_data_list.length > 200) {
+          websocket_data_list = [];
+        }
         websocket_data_list.push(websocketData);
         if (canvas.data && canvas.data.pens.length > 0) {
           // 有数据，去遍历有websocket的组件，并订阅
