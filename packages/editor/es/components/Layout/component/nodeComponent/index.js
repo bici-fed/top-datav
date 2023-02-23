@@ -1842,9 +1842,9 @@ var NodeCanvasProps = /*#__PURE__*/ React.forwardRef(function (_ref, ref) {
                     /*#__PURE__*/ React.createElement(
                       Option,
                       {
-                        value: 'hh\uFF1Amm\uFF1Ass',
+                        value: 'HH:mm:ss',
                       },
-                      'hh\uFF1Amm\uFF1Ass',
+                      'HH:mm:ss',
                     ),
                     /*#__PURE__*/ React.createElement(
                       Option,

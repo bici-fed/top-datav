@@ -96,6 +96,8 @@ function updateDateRangeTransform(node: Node, r: { id: any; time: any; type: any
   }
 }
 
+const mapRestData = new Map();
+
 // echartsObjs[node.id].chart
 const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
   let websocketData = null;
@@ -347,6 +349,7 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
   const loginAndFetchData = (node) => {
     requestData(node).then((data) => {
       mapRestDataToChart(node, data);
+      mapRestData.set(node.id, data);
     });
     // if(!interfaceToken){
     //   loginSZGC().then((res:string)=>{
@@ -447,25 +450,34 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
 
         switch (nodeType) {
           case 'groupBar':
-            node.data.echarts.option = getGroupBarOption(node, res);
+            node.data.echarts.option = getGroupBarOption(node, res || mapRestData.get(node.id));
             break;
           case 'verticalBar':
-            node.data.echarts.option = getBarOption(node, res);
+            node.data.echarts.option = getBarOption(node, res || mapRestData.get(node.id));
             break;
           case 'stackBar':
-            node.data.echarts.option = getStackBarOption(node, res);
+            node.data.echarts.option = getStackBarOption(node, res || mapRestData.get(node.id));
             break;
           case 'horizontalBar':
-            node.data.echarts.option = getHorizontalBarOption(node, res);
+            node.data.echarts.option = getHorizontalBarOption(
+              node,
+              res || mapRestData.get(node.id),
+            );
             break;
           case 'circleAndPie':
-            node.data.echarts.option = getPieOptionByChangeProp(node, res);
+            node.data.echarts.option = getPieOptionByChangeProp(
+              node,
+              res || mapRestData.get(node.id),
+            );
             break;
           case 'twoXAxis':
-            node.data.echarts.option = getTwoXAxisLineBarOption(node, res);
+            node.data.echarts.option = getTwoXAxisLineBarOption(
+              node,
+              res || mapRestData.get(node.id),
+            );
             break;
           case 'lineChart':
-            node.data.echarts.option = getLineChartOption(node, res);
+            node.data.echarts.option = getLineChartOption(node, res || mapRestData.get(node.id));
             break;
           case 'timeLine':
             break;
