@@ -721,11 +721,11 @@ const Preview = ({ data, websocketConf, isApp }: PreviewProps) => {
             });
             node.property.dataPointSelectedRows = rows;
             if (theChart == 'circleAndPie') {
-              node.data.echarts.option = getPieOptionByChangeProp(node, null);
+              node.data.echarts.option = getPieOptionByChangeProp(node, mapRestData.get(node.id));
             } else if (theChart == 'verticalBar') {
-              node.data.echarts.option = getBarOption(node, null);
+              node.data.echarts.option = getBarOption(node, mapRestData.get(node.id));
             } else if (theChart == 'horizontalBar') {
-              node.data.echarts.option = getHorizontalBarOption(node, null);
+              node.data.echarts.option = getHorizontalBarOption(node, mapRestData.get(node.id));
             }
             updateChartNode(node);
             break;

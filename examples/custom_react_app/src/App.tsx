@@ -16,17 +16,19 @@ import 'antd/dist/antd.less';
 
 const { confirm } = Modal;
 // const token = '1lLPYvQyZ1M9Uoj3rf2YnS';
-const token = '68Dpg7Kq0ANMU8Hnli11UA';
-window.token = '68Dpg7Kq0ANMU8Hnli11UA';
+const token = '2goDbHTaTi1Jc5CMslEYUY';
+window.token = '2goDbHTaTi1Jc5CMslEYUY';
 
 // const testId = '5143460d4cd54d22a4acd479fa8d34ef';
-const testId = '76714d0159974fc385a1e00aa007c2a2';
+const testId = '076d5d7be2b5487393c56632ece651c8';
 
 // const apiURL = 'http://192.168.110.172:50002/api';
 // const apiURL = 'https://zhsd-test.bicisims.com/api';
-const apiURL = 'http://cqgys-test.bicisims.com/api';
+const apiURL = 'http://cqgys.bicisims.com/api';
 
-const websocketURL = 'ws://cqgys-test.bicisims.com/ws?token=';
+// ws://cqgys.bicisims.com/ws
+
+const websocketURL = 'ws://cqgys.bicisims.com/ws?token=';
 // const websocketURL = 'wss://zhsd-test.bicisims.com/api/websocket/service/websocket/rtData/';
 
 const EditorLayoutCanvas: React.FC<any> = ({ ...props }) => {

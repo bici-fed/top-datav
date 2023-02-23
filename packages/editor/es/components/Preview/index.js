@@ -359,7 +359,9 @@ function updateDateRangeTransform(node, r) {
       }
     }
   }
-} // echartsObjs[node.id].chart
+}
+
+var mapRestData = new Map(); // echartsObjs[node.id].chart
 
 var Preview = function Preview(_ref) {
   var data = _ref.data,
@@ -706,6 +708,7 @@ var Preview = function Preview(_ref) {
   var loginAndFetchData = function loginAndFetchData(node) {
     requestData(node).then(function (data) {
       mapRestDataToChart(node, data);
+      mapRestData.set(node.id, data);
     }); // if(!interfaceToken){
     //   loginSZGC().then((res:string)=>{
     //     interfaceToken=res;
@@ -812,31 +815,40 @@ var Preview = function Preview(_ref) {
 
         switch (_nodeType) {
           case 'groupBar':
-            node.data.echarts.option = getGroupBarOption(node, res);
+            node.data.echarts.option = getGroupBarOption(node, res || mapRestData.get(node.id));
             break;
 
           case 'verticalBar':
-            node.data.echarts.option = getBarOption(node, res);
+            node.data.echarts.option = getBarOption(node, res || mapRestData.get(node.id));
             break;
 
           case 'stackBar':
-            node.data.echarts.option = getStackBarOption(node, res);
+            node.data.echarts.option = getStackBarOption(node, res || mapRestData.get(node.id));
             break;
 
           case 'horizontalBar':
-            node.data.echarts.option = getHorizontalBarOption(node, res);
+            node.data.echarts.option = getHorizontalBarOption(
+              node,
+              res || mapRestData.get(node.id),
+            );
             break;
 
           case 'circleAndPie':
-            node.data.echarts.option = getPieOptionByChangeProp(node, res);
+            node.data.echarts.option = getPieOptionByChangeProp(
+              node,
+              res || mapRestData.get(node.id),
+            );
             break;
 
           case 'twoXAxis':
-            node.data.echarts.option = getTwoXAxisLineBarOption(node, res);
+            node.data.echarts.option = getTwoXAxisLineBarOption(
+              node,
+              res || mapRestData.get(node.id),
+            );
             break;
 
           case 'lineChart':
-            node.data.echarts.option = getLineChartOption(node, res);
+            node.data.echarts.option = getLineChartOption(node, res || mapRestData.get(node.id));
             break;
 
           case 'timeLine':
@@ -1138,11 +1150,11 @@ var Preview = function Preview(_ref) {
             node.property.dataPointSelectedRows = rows;
 
             if (theChart == 'circleAndPie') {
-              node.data.echarts.option = getPieOptionByChangeProp(node, null);
+              node.data.echarts.option = getPieOptionByChangeProp(node, mapRestData.get(node.id));
             } else if (theChart == 'verticalBar') {
-              node.data.echarts.option = getBarOption(node, null);
+              node.data.echarts.option = getBarOption(node, mapRestData.get(node.id));
             } else if (theChart == 'horizontalBar') {
-              node.data.echarts.option = getHorizontalBarOption(node, null);
+              node.data.echarts.option = getHorizontalBarOption(node, mapRestData.get(node.id));
             }
 
             updateChartNode(node);
