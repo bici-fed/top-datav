@@ -940,7 +940,7 @@ var Preview = function Preview(_ref) {
         var nodes = [];
         websocketData = JSON.parse(data.data);
 
-        if (websocket_data_list && websocket_data_list.length > 100) {
+        if (websocket_data_list && websocket_data_list.length > 200) {
           websocket_data_list = [];
         }
 
@@ -1054,10 +1054,6 @@ var Preview = function Preview(_ref) {
    */
 
   var updateComp = function updateComp(pens, data) {
-    console.log('socketDataMap>>>>', socketDataMap);
-    console.log('socketNodeMap>>>>', socketNodeMap);
-    console.log('websocket_data_list>>>>', websocket_data_list);
-    console.log('websocketData>>>>', websocketData);
     var theChart; // {"dc":"Data2022042017504628","ts":1650783704941,"v":2582,"vt":1}
 
     var v = JSON.parse(data.data);
