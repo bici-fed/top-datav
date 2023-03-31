@@ -39,7 +39,7 @@ var _ReactTable = _interopRequireDefault(require('./ReactTable'));
 
 var _propTypes = _interopRequireDefault(require('prop-types'));
 
-var _biciTransformers = require('bici-transformers');
+var _biciTransformers = require('bici-transformer');
 
 /**
  * @file 筛选数据点/复杂感知点/复杂反应堆 ，支持多选单选

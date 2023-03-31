@@ -5240,10 +5240,10 @@ before-after-hook@^2.2.0:
   resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.2.2.tgz#a6e8ca41028d90ee2c24222f201c90956091613e"
   integrity sha512-3pZEU3NT5BFUo/AD5ERPWOgQOCZITni6iavr5AUw5AUwQjMlI0kzu5btnyD39AF0gUEsDPwJT+oY1ORBJijPjQ==
 
-bici-transformers@^0.19.7:
-  version "0.19.8"
-  resolved "https://registry.yarnpkg.com/bici-transformers/-/bici-transformers-0.19.8.tgz#0d0b9d8e7bd8ec8ec6c68020e6f12bc7b9d302a5"
-  integrity sha512-q/uzDgIcZHnbm4cZ9KgscfsYBmTgxr/0j1fW02eJGO91KjJc7bp2H7uteg9GwUD0ike4pEJtqsxoqeHfRexq3g==
+bici-transformer@^0.19.24:
+  version "0.19.24"
+  resolved "https://registry.yarnpkg.com/bici-transformer/-/bici-transformer-0.19.24.tgz#87baf0bf62563a5eab73ffc96eece875e4235fdd"
+  integrity sha512-djeTGN2pCbiAtLUEei6Lh3bTQT7JrJtHfKuP2gCtv72IgdhaCaAkgCDDgs6aEnwc4SEWM6wfnyn+JWoAUpFTpw==
   dependencies:
     react-dnd "7.0.2"
     react-dnd-html5-backend "7.0.2"

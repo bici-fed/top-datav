@@ -47,7 +47,7 @@
   "devDependencies": {
     "antd": "^4.10.0",
     "axios": "^0.21.0",
-    "bici-transformers": "^0.19.7",
+    "bici-transformer": "^0.19.24",
     "echarts": "^5.2.1",
     "file-saver": "^2.0.2",
     "html2canvas": "^1.0.0-rc.7",

@@ -1,52 +1,188 @@
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _typeof(obj) {
+  '@babel/helpers - typeof';
+  return (
+    (_typeof =
+      'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
+        ? function (obj) {
+            return typeof obj;
+          }
+        : function (obj) {
+            return obj &&
+              'function' == typeof Symbol &&
+              obj.constructor === Symbol &&
+              obj !== Symbol.prototype
+              ? 'symbol'
+              : typeof obj;
+          }),
+    _typeof(obj)
+  );
+}
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly &&
+      (symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      })),
+      keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2
+      ? ownKeys(Object(source), !0).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        })
+      : Object.getOwnPropertyDescriptors
+      ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
+      : ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+  }
+  return target;
+}
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError('Cannot call a class as a function');
+  }
+}
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ('value' in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, 'prototype', { writable: false });
+  return Constructor;
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== 'function' && superClass !== null) {
+    throw new TypeError('Super expression must either be null or a function');
+  }
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: { value: subClass, writable: true, configurable: true },
+  });
+  Object.defineProperty(subClass, 'prototype', { writable: false });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf =
+    Object.setPrototypeOf ||
+    function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+  return _setPrototypeOf(o, p);
+}
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+      result;
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+    return _possibleConstructorReturn(this, result);
+  };
+}
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === 'object' || typeof call === 'function')) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError('Derived constructors may only return object or undefined');
+  }
+  return _assertThisInitialized(self);
+}
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return self;
+}
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === 'undefined' || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === 'function') return true;
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf
+    ? Object.getPrototypeOf
+    : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+      };
+  return _getPrototypeOf(o);
+}
 
 /**
  * 用户侧：复杂感知点 > 列表
  */
 import React, { PureComponent } from 'react';
-import { ComplexTable } from 'bici-transformers';
+import { ComplexTable } from 'bici-transformer';
 import _ from 'lodash';
 import { fetchPerceptualPointList } from '../data/api'; // 传感器状态
 
-export var DEVICE_STATUS = [{
-  value: 1,
-  text: '正常'
-}, {
-  value: 2,
-  text: '超过上限'
-}, {
-  value: 3,
-  text: '低于下限'
-}, {
-  value: -1,
-  text: '无数据'
-}];
+export var DEVICE_STATUS = [
+  {
+    value: 1,
+    text: '正常',
+  },
+  {
+    value: 2,
+    text: '超过上限',
+  },
+  {
+    value: 3,
+    text: '低于下限',
+  },
+  {
+    value: -1,
+    text: '无数据',
+  },
+];
 var initialQueryParams = {
   calculationCode: '',
   dataName: '',
@@ -55,17 +191,16 @@ var initialQueryParams = {
   statusList: [],
   sorter: {
     field: '',
-    order: '' // ascend, descend
-
+    order: '', // ascend, descend
   },
   pagination: {
     current: 1,
     pageSize: 10,
-    total: 0
-  }
+    total: 0,
+  },
 };
 
-var ComplexDataPoint = /*#__PURE__*/function (_PureComponent) {
+var ComplexDataPoint = /*#__PURE__*/ (function (_PureComponent) {
   _inherits(ComplexDataPoint, _PureComponent);
 
   var _super = _createSuper(ComplexDataPoint);
@@ -80,130 +215,186 @@ var ComplexDataPoint = /*#__PURE__*/function (_PureComponent) {
     }
 
     _this = _super.call.apply(_super, [this].concat(args));
-    _this.state = _objectSpread({
-      dataList: [],
-      sorterList: [],
-      total: 0,
-      selectedRowKeys: [],
-      selectedRows: [],
-      doubleArr: []
-    }, initialQueryParams);
+    _this.state = _objectSpread(
+      {
+        dataList: [],
+        sorterList: [],
+        total: 0,
+        selectedRowKeys: [],
+        selectedRows: [],
+        doubleArr: [],
+      },
+      initialQueryParams,
+    );
 
     _this.getColumns = function () {
-      return [{
-        title: '计算编号',
-        dataIndex: 'calculationCode',
-        width: 'lg',
-        filterType: 'search',
-        handleSubmitSearch: function handleSubmitSearch(val) {
-          return _this.handleSearch('calculationCode', val);
-        }
-      }, {
-        title: '数据名称',
-        dataIndex: 'dataName',
-        width: 'hg',
-        filterType: 'search',
-        handleSubmitSearch: function handleSubmitSearch(val) {
-          return _this.handleSearch('dataName', val);
-        }
-      }, {
-        title: '计算周期(s)',
-        dataIndex: 'calculationCycle',
-        width: 'sm'
-      }, {
-        title: '位置',
-        dataIndex: 'position',
-        width: 'lg',
-        filterType: 'search',
-        handleSubmitSearch: function handleSubmitSearch(val) {
-          return _this.handleSearch('position', val);
-        }
-      }, {
-        title: '范围上下限',
-        width: 'lg',
-        render: function render(record) {
-          var _record$scopeMin = record.scopeMin,
+      return [
+        {
+          title: '计算编号',
+          dataIndex: 'calculationCode',
+          width: 'lg',
+          filterType: 'search',
+          handleSubmitSearch: function handleSubmitSearch(val) {
+            return _this.handleSearch('calculationCode', val);
+          },
+        },
+        {
+          title: '数据名称',
+          dataIndex: 'dataName',
+          width: 'hg',
+          filterType: 'search',
+          handleSubmitSearch: function handleSubmitSearch(val) {
+            return _this.handleSearch('dataName', val);
+          },
+        },
+        {
+          title: '计算周期(s)',
+          dataIndex: 'calculationCycle',
+          width: 'sm',
+        },
+        {
+          title: '位置',
+          dataIndex: 'position',
+          width: 'lg',
+          filterType: 'search',
+          handleSubmitSearch: function handleSubmitSearch(val) {
+            return _this.handleSearch('position', val);
+          },
+        },
+        {
+          title: '范围上下限',
+          width: 'lg',
+          render: function render(record) {
+            var _record$scopeMin = record.scopeMin,
               scopeMin = _record$scopeMin === void 0 ? '' : _record$scopeMin,
               _record$scopeMax = record.scopeMax,
               scopeMax = _record$scopeMax === void 0 ? '' : _record$scopeMax;
-          var scope = "".concat(scopeMin, " ~ ").concat(scopeMax);
-          var scopeText = /*#__PURE__*/React.createElement("div", {
-            style: {
-              width: ComplexTable.columnWidth.lg - 16
-            }
-          }, scope);
-          return _.isNumber(scopeMin) || _.isNumber(scopeMax) ? scopeText : '';
-        }
-      }, {
-        title: '标签',
-        dataIndex: 'tagName',
-        width: 'lg',
-        filterType: 'search',
-        handleSubmitSearch: function handleSubmitSearch(val) {
-          return _this.handleSearch('tagName', val);
-        }
-      }, {
-        title: '状态',
-        dataIndex: 'statusList',
-        width: 100,
-        filters: DEVICE_STATUS,
-        filterMultiple: true,
-        checkDisabled: true,
-        fixed: 'right',
-        render: function render(text, record) {
-          var show;
+            var scope = ''.concat(scopeMin, ' ~ ').concat(scopeMax);
+            var scopeText = /*#__PURE__*/ React.createElement(
+              'div',
+              {
+                style: {
+                  width: ComplexTable.columnWidth.lg - 16,
+                },
+              },
+              scope,
+            );
+            return _.isNumber(scopeMin) || _.isNumber(scopeMax) ? scopeText : '';
+          },
+        },
+        {
+          title: '标签',
+          dataIndex: 'tagName',
+          width: 'lg',
+          filterType: 'search',
+          handleSubmitSearch: function handleSubmitSearch(val) {
+            return _this.handleSearch('tagName', val);
+          },
+        },
+        {
+          title: '状态',
+          dataIndex: 'statusList',
+          width: 100,
+          filters: DEVICE_STATUS,
+          filterMultiple: true,
+          checkDisabled: true,
+          fixed: 'right',
+          render: function render(text, record) {
+            var show;
 
-          if (record.status === 1) {
-            show = /*#__PURE__*/React.createElement("span", {
-              className: 'green6'
-            }, "\u6B63\u5E38");
-          } else if (record.status === 2) {
-            show = /*#__PURE__*/React.createElement("span", {
-              className: 'red6'
-            }, "\u8D85\u8FC7\u4E0A\u9650");
-          } else if (record.status === 3) {
-            show = /*#__PURE__*/React.createElement("span", {
-              className: 'red6'
-            }, "\u4F4E\u4E8E\u4E0B\u9650");
-          } else if (record.status === -1) {
-            show = /*#__PURE__*/React.createElement("span", {
-              className: 'black85'
-            }, "\u65E0\u6570\u636E");
-          }
-
-          return /*#__PURE__*/React.createElement("div", {
-            style: {
-              width: 80
+            if (record.status === 1) {
+              show = /*#__PURE__*/ React.createElement(
+                'span',
+                {
+                  className: 'green6',
+                },
+                '\u6B63\u5E38',
+              );
+            } else if (record.status === 2) {
+              show = /*#__PURE__*/ React.createElement(
+                'span',
+                {
+                  className: 'red6',
+                },
+                '\u8D85\u8FC7\u4E0A\u9650',
+              );
+            } else if (record.status === 3) {
+              show = /*#__PURE__*/ React.createElement(
+                'span',
+                {
+                  className: 'red6',
+                },
+                '\u4F4E\u4E8E\u4E0B\u9650',
+              );
+            } else if (record.status === -1) {
+              show = /*#__PURE__*/ React.createElement(
+                'span',
+                {
+                  className: 'black85',
+                },
+                '\u65E0\u6570\u636E',
+              );
             }
-          }, show);
-        }
-      }];
+
+            return /*#__PURE__*/ React.createElement(
+              'div',
+              {
+                style: {
+                  width: 80,
+                },
+              },
+              show,
+            );
+          },
+        },
+      ];
     };
 
     _this.handleSearch = function (key, value) {
-      _this.setState(_defineProperty({
-        pagination: initialQueryParams.pagination
-      }, key, value), function () {
-        _this.requestList();
-      });
+      _this.setState(
+        _defineProperty(
+          {
+            pagination: initialQueryParams.pagination,
+          },
+          key,
+          value,
+        ),
+        function () {
+          _this.requestList();
+        },
+      );
     };
 
     _this.handleTableChange = function (pagination, filters, sorter) {
       var field = sorter.field,
-          order = sorter.order;
+        order = sorter.order;
       var resultOrder = order === 'ascend' ? 'asc' : 'desc';
-      var sorterList = order ? [{
-        field: field,
-        order: resultOrder
-      }] : [];
+      var sorterList = order
+        ? [
+            {
+              field: field,
+              order: resultOrder,
+            },
+          ]
+        : [];
 
-      _this.setState(_objectSpread(_objectSpread({
-        pagination: pagination
-      }, filters), {}, {
-        sorterList: sorterList
-      }), function () {
-        return _this.requestList();
-      });
+      _this.setState(
+        _objectSpread(
+          _objectSpread(
+            {
+              pagination: pagination,
+            },
+            filters,
+          ),
+          {},
+          {
+            sorterList: sorterList,
+          },
+        ),
+        function () {
+          return _this.requestList();
+        },
+      );
     };
 
     _this.handleFilterTagsChange = function (tagsArr) {
@@ -237,17 +428,19 @@ var ComplexDataPoint = /*#__PURE__*/function (_PureComponent) {
     return _this;
   }
 
-  _createClass(ComplexDataPoint, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.requestList();
-    }
-  }, {
-    key: "requestList",
-    value: function requestList() {
-      var _this2 = this;
+  _createClass(ComplexDataPoint, [
+    {
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        this.requestList();
+      },
+    },
+    {
+      key: 'requestList',
+      value: function requestList() {
+        var _this2 = this;
 
-      var _this$state = this.state,
+        var _this$state = this.state,
           pagination = _this$state.pagination,
           sorterList = _this$state.sorterList,
           calculationCode = _this$state.calculationCode,
@@ -255,90 +448,92 @@ var ComplexDataPoint = /*#__PURE__*/function (_PureComponent) {
           position = _this$state.position,
           tagName = _this$state.tagName,
           statusList = _this$state.statusList;
-      var params = {
-        pagination: pagination,
-        sorterList: sorterList,
-        dataTypeList: [1]
-      };
+        var params = {
+          pagination: pagination,
+          sorterList: sorterList,
+          dataTypeList: [1],
+        };
 
-      if (calculationCode) {
-        params.calculationCode = calculationCode;
-      }
+        if (calculationCode) {
+          params.calculationCode = calculationCode;
+        }
 
-      if (dataName) {
-        params.dataName = dataName;
-      }
+        if (dataName) {
+          params.dataName = dataName;
+        }
 
-      if (position) {
-        params.position = position;
-      }
+        if (position) {
+          params.position = position;
+        }
 
-      if (tagName) {
-        params.tagName = tagName;
-      }
+        if (tagName) {
+          params.tagName = tagName;
+        }
 
-      if (statusList && statusList.length) {
-        params.statusList = statusList;
-      }
+        if (statusList && statusList.length) {
+          params.statusList = statusList;
+        }
 
-      fetchPerceptualPointList(params).then(function (res) {
-        if (res["data"].data) {
-          var _res$data$data = res["data"].data,
+        fetchPerceptualPointList(params).then(function (res) {
+          if (res['data'].data) {
+            var _res$data$data = res['data'].data,
               list = _res$data$data.list,
               total = _res$data$data.total;
 
-          _this2.setState({
-            dataList: list,
-            total: total
-          });
-        }
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
+            _this2.setState({
+              dataList: list,
+              total: total,
+            });
+          }
+        });
+      },
+    },
+    {
+      key: 'render',
+      value: function render() {
+        var _this3 = this;
 
-      var _this$state2 = this.state,
+        var _this$state2 = this.state,
           dataList = _this$state2.dataList,
           total = _this$state2.total,
           pagination = _this$state2.pagination;
-      var _this$props = this.props,
+        var _this$props = this.props,
           selectedRowKeys = _this$props.selectedRowKeys,
           mode = _this$props.mode,
           disableDataId = _this$props.disableDataId,
           source = _this$props.source,
           selectedRows = _this$props.selectedRows;
-      var rowSelection = {
-        type: mode,
-        selectedRowKeys: selectedRowKeys,
-        getCheckboxProps: function getCheckboxProps(record) {
-          return {
-            disabled: disableDataId.includes(record.id)
-          };
-        },
-        onSelect: function onSelect(record, selected) {
-          return _this3.props.onSelectRow(record, selected, 'id');
-        },
-        onSelectAll: function onSelectAll(selected, record, changeRows) {
-          return _this3.props.onSelectRow(changeRows, selected, 'id');
-        }
-      };
-      pagination.total = total;
-      return /*#__PURE__*/React.createElement(ComplexTable, {
-        rowKey: "id",
-        minWidth: 800,
-        dataSource: dataList,
-        pagination: pagination,
-        columns: this.getColumns(),
-        rowSelection: rowSelection,
-        onChange: this.handleTableChange,
-        onFilterTagsChange: this.handleFilterTagsChange
-      });
-    }
-  }]);
+        var rowSelection = {
+          type: mode,
+          selectedRowKeys: selectedRowKeys,
+          getCheckboxProps: function getCheckboxProps(record) {
+            return {
+              disabled: disableDataId.includes(record.id),
+            };
+          },
+          onSelect: function onSelect(record, selected) {
+            return _this3.props.onSelectRow(record, selected, 'id');
+          },
+          onSelectAll: function onSelectAll(selected, record, changeRows) {
+            return _this3.props.onSelectRow(changeRows, selected, 'id');
+          },
+        };
+        pagination.total = total;
+        return /*#__PURE__*/ React.createElement(ComplexTable, {
+          rowKey: 'id',
+          minWidth: 800,
+          dataSource: dataList,
+          pagination: pagination,
+          columns: this.getColumns(),
+          rowSelection: rowSelection,
+          onChange: this.handleTableChange,
+          onFilterTagsChange: this.handleFilterTagsChange,
+        });
+      },
+    },
+  ]);
 
   return ComplexDataPoint;
-}(PureComponent);
+})(PureComponent);
 
 export { ComplexDataPoint as default };

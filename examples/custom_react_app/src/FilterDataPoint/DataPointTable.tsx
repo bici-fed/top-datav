@@ -2,7 +2,7 @@
  * 用户侧：数据点管理 > 列表
  */
 import React, { Component } from 'react';
-import { ComplexTable } from 'bici-transformers';
+import { ComplexTable } from 'bici-transformer';
 import { DATAPOINT_STATUS, DATA_ORIGIN } from '../common/userSide';
 import _ from 'lodash';
 import { fetchSearchDataPointManageList } from '../data/api';

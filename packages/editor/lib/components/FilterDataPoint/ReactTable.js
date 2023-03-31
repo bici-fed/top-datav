@@ -23,7 +23,7 @@ var _createSuper2 = _interopRequireDefault(require('@babel/runtime/helpers/creat
 
 var _react = _interopRequireWildcard(require('react'));
 
-var _biciTransformers = require('bici-transformers');
+var _biciTransformers = require('bici-transformer');
 
 var _api = require('../data/api');
 
